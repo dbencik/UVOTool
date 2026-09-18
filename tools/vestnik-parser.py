@@ -186,11 +186,28 @@ def extract_buyer(containers: list[list[str]], orgs: dict) -> dict:
             org_id = m.group(1) or m.group(3)
             name_from_id = m.group(2) or ''
             if org_id in orgs:
-                buyer['nazov'] = orgs[org_id]['name'] or name_from_id
-                ico = orgs[org_id]['ico']
-                # Skip UVO's own IČO
+                org = orgs[org_id]
+                # Prefer name from ID reference — org registry may have wrong ORG mapping
+                # when documents lack explicit ORG-XXXX headers
+                buyer['nazov'] = name_from_id or org['name']
+                ico = org['ico']
+                # Skip UVO's own IČO (31797903) — UVO is the platform, not the buyer
                 buyer['ico'] = ico if ico != '31797903' else ''
-                buyer['email'] = orgs[org_id]['email']
+                buyer['email'] = org['email']
+                # If org registry name doesn't match ID reference, look up correct org
+                if name_from_id and org['name'] != name_from_id:
+                    # ORG registry has wrong mapping — find correct org by name
+                    name_idx = orgs.get('_name_to_ico', {})
+                    if name_from_id in name_idx:
+                        buyer['ico'] = name_idx[name_from_id]
+                    # Find email from correct org
+                    for o in orgs.values():
+                        if isinstance(o, dict) and o.get('name') == name_from_id:
+                            if o.get('email'):
+                                buyer['email'] = o['email']
+                            if o.get('ico') and o['ico'] != '31797903':
+                                buyer['ico'] = o['ico']
+                            break
             else:
                 buyer['nazov'] = name_from_id
             # If buyer IČO is empty, look for it by name

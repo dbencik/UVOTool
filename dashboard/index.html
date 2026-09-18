@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVO Vestnik Dashboard</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f8f9fa;
+  color: #1a1a1a;
+  line-height: 1.5;
+}
+
+.container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+header h1 { font-size: 24px; font-weight: 700; color: #1a1a1a; }
+header .subtitle { font-size: 14px; color: #6c757d; margin-top: 2px; }
+header .meta { font-size: 13px; color: #868e96; text-align: right; }
+
+/* Summary cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.card .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #868e96; margin-bottom: 4px; }
+.card .value { font-size: 28px; font-weight: 700; color: #1a1a1a; }
+.card .value.green { color: #2b8a3e; }
+.card .value.blue { color: #1971c2; }
+.card .value.purple { color: #7048e8; }
+.card .value.orange { color: #e8590c; }
+
+/* Filters */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filters input, .filters select {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+}
+
+.filters input:focus, .filters select:focus { border-color: #4dabf7; box-shadow: 0 0 0 2px rgba(77,171,247,0.15); }
+.filters input { flex: 1; min-width: 250px; }
+
+/* Table */
+.table-wrap {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 32px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+thead th {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #495057;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+}
+
+thead th:hover { color: #1a1a1a; }
+thead th .sort-arrow { font-size: 10px; margin-left: 4px; color: #adb5bd; }
+thead th.sorted .sort-arrow { color: #1971c2; }
+
+tbody tr { border-bottom: 1px solid #f1f3f5; }
+tbody tr:hover { background: #f8f9fa; }
+tbody td { padding: 8px 12px; vertical-align: top; }
+
+td a { color: #1971c2; text-decoration: none; }
+td a:hover { text-decoration: underline; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-vysledok { background: #d3f9d8; color: #2b8a3e; }
+.badge-vyhlasenie { background: #d0ebff; color: #1971c2; }
+.badge-zmena_zmluvy { background: #e5dbff; color: #7048e8; }
+.badge-oprava { background: #ffe8cc; color: #e8590c; }
+
+.num-col { font-family: "SF Mono", "Menlo", monospace; font-size: 12px; }
+.val-col { text-align: right; font-family: "SF Mono", "Menlo", monospace; font-size: 12px; white-space: nowrap; }
+.predmet-col { max-width: 320px; }
+
+.no-results { padding: 40px; text-align: center; color: #868e96; }
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) { .stats { grid-template-columns: 1fr; } }
+
+.stats-panel {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.stats-panel h3 { font-size: 14px; font-weight: 600; color: #495057; margin-bottom: 12px; }
+
+.stats-list { list-style: none; }
+.stats-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f3f5;
+  font-size: 13px;
+}
+.stats-list li:last-child { border-bottom: none; }
+.stats-list .name { flex: 1; margin-right: 12px; color: #495057; }
+.stats-list .count {
+  font-family: "SF Mono", "Menlo", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+}
+
+.bar-bg {
+  flex: 0 0 120px;
+  height: 6px;
+  background: #f1f3f5;
+  border-radius: 3px;
+  margin-right: 10px;
+  overflow: hidden;
+}
+.bar-fill { height: 100%; border-radius: 3px; background: #4dabf7; }
+
+.loading { text-align: center; padding: 80px 20px; color: #868e96; font-size: 16px; }
+.error { text-align: center; padding: 40px; color: #e03131; }
+
+footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div>
+    <h1>UVO Vestnik Dashboard</h1>
+    <div class="subtitle">Verejne obstaravanie — prehlad dokumentov</div>
+  </div>
+  <div class="meta" id="header-meta"></div>
+</header>
+
+<div class="cards" id="cards"></div>
+
+<div class="filters">
+  <input type="text" id="search" placeholder="Hladat (cislo, obstaravatel, predmet, vitaz...)">
+  <select id="type-filter">
+    <option value="">Vsetky typy</option>
+    <option value="vysledok">Vysledky</option>
+    <option value="vyhlasenie">Vyhlasenia</option>
+    <option value="zmena_zmluvy">Zmeny zmluv</option>
+    <option value="oprava">Opravy</option>
+  </select>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-col="num">Cislo <span class="sort-arrow"></span></th>
+        <th data-col="action">Typ <span class="sort-arrow"></span></th>
+        <th data-col="obstaravatel">Obstaravatel <span class="sort-arrow"></span></th>
+        <th data-col="predmet">Predmet zakazky <span class="sort-arrow"></span></th>
+        <th data-col="hodnota">Hodnota (EUR) <span class="sort-arrow"></span></th>
+        <th data-col="vitaz">Vitaz / Lehota <span class="sort-arrow"></span></th>
+        <th data-col="vestnik">Vestnik <span class="sort-arrow"></span></th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <tr><td colspan="7" class="loading">Nacitavam data...</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<footer>UVO Vestnik Dashboard &mdash; data z vestnik-parser.py</footer>
+
+</div>
+
+<script>
+let DATA = [];
+let sortCol = 'num';
+let sortAsc = false;
+
+function formatEur(val) {
+  if (val == null || val === '') return '';
+  const n = Number(val);
+  if (isNaN(n)) return '';
+  return n.toLocaleString('sk-SK', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' EUR';
+}
+
+function formatEurShort(val) {
+  const n = Number(val);
+  if (isNaN(n) || n === 0) return '0 EUR';
+  if (n >= 1e6) return (n / 1e6).toLocaleString('sk-SK', { maximumFractionDigits: 1 }) + ' mil. EUR';
+  if (n >= 1e3) return (n / 1e3).toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' tis. EUR';
+  return n.toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' EUR';
+}
+
+const ACTION_LABELS = {
+  vysledok: 'Vysledok',
+  vyhlasenie: 'Vyhlasenie',
+  zmena_zmluvy: 'Zmena zmluvy',
+  oprava: 'Oprava'
+};
+
+function extractRow(doc) {
+  const ext = doc.extraction || {};
+  const obst = ext.obstaravatel || {};
+  const zak = ext.zakazka || {};
+  const vys = ext.vysledok || {};
+  const pril = ext.prilezitost || {};
+  const zm = ext.zmena_zmluvy || {};
+
+  let hodnota = null;
+  let vitaz = '';
+
+  if (doc.action === 'vysledok') {
+    hodnota = vys.celkova_hodnota;
+    const winners = (vys.ucastnici || []).filter(u => u.je_vitaz);
+    vitaz = winners.map(w => w.nazov).join(', ') || '';
+  } else if (doc.action === 'vyhlasenie') {
+    hodnota = pril.hodnota;
+    vitaz = pril.lehota_datum ? ('Lehota: ' + pril.lehota_datum) : '';
+  } else if (doc.action === 'zmena_zmluvy') {
+    hodnota = zm.hodnota_po_zmene;
+    vitaz = zm.dodavatel ? zm.dodavatel.nazov : '';
+  }
+
+  return {
+    num: doc.num || '',
+    action: doc.action || '',
+    type_label: ACTION_LABELS[doc.action] || doc.action,
+    obstaravatel: obst.nazov || '',
+    ico: obst.ico || '',
+    predmet: zak.predmet || '',
+    hodnota: hodnota,
+    vitaz: vitaz,
+    vestnik: doc.vestnik || '',
+    url: doc.url || '',
+    id: doc.id || ''
+  };
+}
+
+function renderCards(rows) {
+  const total = rows.length;
+  const counts = { vysledok: 0, vyhlasenie: 0, zmena_zmluvy: 0, oprava: 0 };
+  let totalValue = 0;
+
+  rows.forEach(r => {
+    counts[r.action] = (counts[r.action] || 0) + 1;
+    if (r.hodnota != null && !isNaN(r.hodnota)) totalValue += r.hodnota;
+  });
+
+  document.getElementById('cards').innerHTML = `
+    <div class="card"><div class="label">Dokumenty celkom</div><div class="value">${total}</div></div>
+    <div class="card"><div class="label">Vysledky</div><div class="value green">${counts.vysledok}</div></div>
+    <div class="card"><div class="label">Vyhlasenia</div><div class="value blue">${counts.vyhlasenie}</div></div>
+    <div class="card"><div class="label">Zmeny zmluv</div><div class="value purple">${counts.zmena_zmluvy}</div></div>
+    <div class="card"><div class="label">Opravy</div><div class="value orange">${counts.oprava}</div></div>
+    <div class="card"><div class="label">Celkova hodnota</div><div class="value">${formatEurShort(totalValue)}</div></div>
+  `;
+}
+
+function renderTable(rows) {
+  const tbody = document.getElementById('table-body');
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="no-results">Ziadne vysledky</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = rows.map(r => `
+    <tr>
+      <td class="num-col"><a href="${r.url}" target="_blank" title="Otvorit na UVO">${r.num}</a></td>
+      <td><span class="badge badge-${r.action}">${r.type_label}</span></td>
+      <td>${esc(r.obstaravatel)}${r.ico ? ' <span style="color:#adb5bd;font-size:11px">(' + r.ico + ')</span>' : ''}</td>
+      <td class="predmet-col">${esc(r.predmet)}</td>
+      <td class="val-col">${r.hodnota != null ? formatEur(r.hodnota) : '<span style="color:#ced4da">-</span>'}</td>
+      <td>${esc(r.vitaz)}</td>
+      <td style="white-space:nowrap;font-size:12px;color:#868e96">${esc(r.vestnik)}</td>
+    </tr>
+  `).join('');
+}
+
+function renderStats(rows) {
+  // Top obstaravatelia by count
+  const obstCounts = {};
+  rows.forEach(r => {
+    if (r.obstaravatel) obstCounts[r.obstaravatel] = (obstCounts[r.obstaravatel] || 0) + 1;
+  });
+  const topObst = Object.entries(obstCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const maxObstCount = topObst.length > 0 ? topObst[0][1] : 1;
+
+  // Top vitazi by value
+  const vitazValues = {};
+  rows.forEach(r => {
+    if (r.action === 'vysledok' && r.vitaz && r.hodnota > 0) {
+      vitazValues[r.vitaz] = (vitazValues[r.vitaz] || 0) + r.hodnota;
+    }
+  });
+  const topVitaz = Object.entries(vitazValues).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const maxVitazVal = topVitaz.length > 0 ? topVitaz[0][1] : 1;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stats-panel">
+      <h3>Top 5 obstaravatelia (podla poctu)</h3>
+      <ul class="stats-list">
+        ${topObst.map(([name, count]) => `
+          <li>
+            <span class="name">${esc(name)}</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:${(count / maxObstCount * 100).toFixed(0)}%"></div></div>
+            <span class="count">${count}</span>
+          </li>
+        `).join('')}
+        ${topObst.length === 0 ? '<li class="no-results">Ziadne data</li>' : ''}
+      </ul>
+    </div>
+    <div class="stats-panel">
+      <h3>Top 5 vitazi (podla hodnoty)</h3>
+      <ul class="stats-list">
+        ${topVitaz.map(([name, val]) => `
+          <li>
+            <span class="name">${esc(name)}</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:${(val / maxVitazVal * 100).toFixed(0)}%;background:#51cf66"></div></div>
+            <span class="count">${formatEurShort(val)}</span>
+          </li>
+        `).join('')}
+        ${topVitaz.length === 0 ? '<li class="no-results">Ziadne data</li>' : ''}
+      </ul>
+    </div>
+  `;
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function getFiltered() {
+  const search = document.getElementById('search').value.toLowerCase().trim();
+  const typeFilter = document.getElementById('type-filter').value;
+  let rows = DATA;
+
+  if (typeFilter) {
+    rows = rows.filter(r => r.action === typeFilter);
+  }
+  if (search) {
+    rows = rows.filter(r =>
+      r.num.toLowerCase().includes(search) ||
+      r.obstaravatel.toLowerCase().includes(search) ||
+      r.predmet.toLowerCase().includes(search) ||
+      r.vitaz.toLowerCase().includes(search) ||
+      r.ico.toLowerCase().includes(search) ||
+      r.vestnik.toLowerCase().includes(search)
+    );
+  }
+
+  // Sort
+  rows = [...rows].sort((a, b) => {
+    let va = a[sortCol], vb = b[sortCol];
+    if (sortCol === 'hodnota') {
+      va = va == null ? -Infinity : va;
+      vb = vb == null ? -Infinity : vb;
+      return sortAsc ? va - vb : vb - va;
+    }
+    if (sortCol === 'num') {
+      const na = parseInt(va) || 0, nb = parseInt(vb) || 0;
+      return sortAsc ? na - nb : nb - na;
+    }
+    va = (va || '').toString().toLowerCase();
+    vb = (vb || '').toString().toLowerCase();
+    return sortAsc ? va.localeCompare(vb, 'sk') : vb.localeCompare(va, 'sk');
+  });
+
+  return rows;
+}
+
+function render() {
+  const rows = getFiltered();
+  renderCards(rows);
+  renderTable(rows);
+  renderStats(rows);
+
+  // Update sort arrows
+  document.querySelectorAll('thead th').forEach(th => {
+    const col = th.dataset.col;
+    th.classList.toggle('sorted', col === sortCol);
+    const arrow = th.querySelector('.sort-arrow');
+    if (col === sortCol) {
+      arrow.textContent = sortAsc ? ' \u25B2' : ' \u25BC';
+    } else {
+      arrow.textContent = '';
+    }
+  });
+}
+
+// Sort on header click
+document.querySelectorAll('thead th').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) {
+      sortAsc = !sortAsc;
+    } else {
+      sortCol = col;
+      sortAsc = col === 'obstaravatel' || col === 'predmet' || col === 'vitaz';
+    }
+    render();
+  });
+});
+
+// Filter events
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('type-filter').addEventListener('change', render);
+
+// Load data
+fetch('/api/data')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(docs => {
+    DATA = docs.map(extractRow);
+    const vestniks = [...new Set(docs.map(d => d.vestnik).filter(Boolean))].sort();
+    document.getElementById('header-meta').innerHTML =
+      'Vestniky: ' + vestniks.join(', ') + '<br>Nacitane: ' + docs.length + ' dokumentov';
+    render();
+  })
+  .catch(err => {
+    document.getElementById('table-body').innerHTML =
+      '<tr><td colspan="7" class="error">Chyba pri nacitani dat: ' + err.message + '</td></tr>';
+  });
+</script>
+</body>
+</html>
