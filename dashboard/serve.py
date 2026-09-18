@@ -42,6 +42,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    HTTPServer.allow_reuse_address = True
     server = HTTPServer(("0.0.0.0", PORT), DashboardHandler)
     print(f"UVO Vestnik Dashboard: http://localhost:{PORT}")
     print(f"API endpoint: http://localhost:{PORT}/api/data")

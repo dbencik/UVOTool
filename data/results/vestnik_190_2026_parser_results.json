@@ -1,0 +1,1632 @@
+[
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1405485",
+    "id": "1405485",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Najvyšší kontrolný úrad Slovenskej republiky",
+        "ico": "30844878",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Nákup pohonných hmôt prostredníctvom palivových kariet so zahraničnou akceptáciou",
+        "cpv_kod": "Ropné výrobky, palivo, elektrina a ostatné zdroje energie",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "SLOVNAFT, a.s.",
+            "ico": "31322832",
+            "cena": 334735.32,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 4.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1415818",
+    "id": "1415818",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Národný inštitút vzdelávania a mládeže",
+        "ico": "00164348",
+        "email": "jakub.klikac@nivam.sk"
+      },
+      "zakazka": {
+        "predmet": "Rekonštrukcia režimového pracoviska Stromová",
+        "cpv_kod": "Stavebné práce na kancelárskych budovách",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 621474.09,
+        "mena": "EUR",
+        "lehota_datum": "30.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 2.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416813",
+    "id": "1416813",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "error": "no_containers"
+    },
+    "time_ms": 0.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417245",
+    "id": "1417245",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "NÁRODNÁ BANKA SLOVENSKA",
+        "ico": "30844789",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Razba a dodávky obehových euromincí, pamätných euromincí a euromincí určených do ročníkových súborov v rokoch 2026 – 2030",
+        "cpv_kod": "Mince",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "Mincovňa Kremnica, štátny podnik",
+            "ico": "00010448",
+            "cena": 19598093.56,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417685",
+    "id": "1417685",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Žilina",
+        "ico": "00321796",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Zelený park na Bajzovej ulici v Žiline",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": 479042.29,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "STRABAG s.r.o.",
+            "ico": "17317282",
+            "cena": 479042.29,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417692",
+    "id": "1417692",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Rudňany",
+        "ico": "00329533",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "IBV PIARG, Rudňany 1",
+        "cpv_kod": "Stavebné práce na stavbe domov",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": []
+      }
+    },
+    "time_ms": 0.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417693",
+    "id": "1417693",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Národný ústav detských chorôb",
+        "ico": "00607231",
+        "email": "michal.privara@nudch.eu"
+      },
+      "zakazka": {
+        "predmet": "Vykonávanie pravidelnej kontroly a servisu Elektronickej požiarnej signalizácie, Hlasovej signalizácie požiaru v NÚDCH v Bratislave",
+        "cpv_kod": "Opravy a údržba protipožiarnych zariadení",
+        "druh": "Služby"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "TAST spol. s r.o.",
+            "ico": "35810068",
+            "cena": 90294.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417694",
+    "id": "1417694",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Technické siete Bratislava, a.s.",
+        "ico": "54302102",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Dodávka zemného plynu pre Hlavné mesto SR Bratislava, organizácie v jeho pôsobnosti a mestské spoločnosti",
+        "cpv_kod": "Zemný plyn",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "21.09.2026",
+        "lehota_cas": "13:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417845",
+    "id": "1417845",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Regionálna správa a údržba ciest Nitra a.s.",
+        "ico": "35960736",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Mulčovacie ramená s príslušenstvom",
+        "cpv_kod": "Žacie mechanizmy",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": 140000.0,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "POLMEX, spol. s r.o.",
+            "ico": "31440754",
+            "cena": 140000.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.3
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417880",
+    "id": "1417880",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mestská časť Bratislava - Lamač",
+        "ico": "00603414",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Obstarávanie gastrotechnologických zariadení a ostatného vybavenia školských kuchýň",
+        "cpv_kod": "Nábytok (vrátane kancelárskeho nábytku), zariadenie interiéru, domáce spotrebiče (s výnimkou osvetlenia) a čistiace prostriedky",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": 2217.0,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [
+          {
+            "nazov": "OMES spol. s r.o.",
+            "ico": "47505214",
+            "cena": 2217.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417884",
+    "id": "1417884",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Košický samosprávny kraj",
+        "ico": "35541016",
+        "email": "luc.senkova@gmail.com"
+      },
+      "zakazka": {
+        "predmet": "Stredná odborná škola technická a ekonomická Jozefa Szakkayho, Košice: IKT vybavenie",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 88692.54,
+        "mena": "EUR",
+        "lehota_datum": "20.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417887",
+    "id": "1417887",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "error": "no_containers"
+    },
+    "time_ms": 0.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417893",
+    "id": "1417893",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Stredná odborná škola, Pod Sokolicami 14, Trenčín",
+        "ico": "17053668",
+        "email": "melotikova.petra@gmail.com"
+      },
+      "zakazka": {
+        "predmet": "Mäso a mäsové výrobky, čerstvá hydina a hydinové mäso",
+        "cpv_kod": "Potraviny, nápoje, tabak a príbuzné produkty",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 170731.97,
+        "mena": "EUR",
+        "lehota_datum": "16.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417899",
+    "id": "1417899",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Košický samosprávny kraj",
+        "ico": "35541016",
+        "email": "luc.senkova@gmail.com"
+      },
+      "zakazka": {
+        "predmet": "Stredná odborná škola technická a ekonomická Jozefa Szakkayho, Košice: Veľkokapacitné tlačiarne so serverom a tlačovým manažmentom",
+        "cpv_kod": "Tlačiarske/kopírovacie a grafické zariadenia",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 20551.27,
+        "mena": "EUR",
+        "lehota_datum": "21.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417901",
+    "id": "1417901",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Lednické Rovne",
+        "ico": "00317462",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Vybudovanie stojísk a obci Lednické Rovne",
+        "cpv_kod": "Konštrukcie a časti konštrukcií",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 451655.33,
+        "mena": "EUR",
+        "lehota_datum": "06.10.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417902",
+    "id": "1417902",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "error": "no_containers"
+    },
+    "time_ms": 0.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417905",
+    "id": "1417905",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Vojenské lesy a majetky SR, štátny podnik",
+        "ico": "31577920",
+        "email": "obstaravanie@vlm.sk"
+      },
+      "zakazka": {
+        "predmet": "Protipovodňové opatrenia v povodí Ostrého potoka a Koľačkovského potoka",
+        "cpv_kod": "Regulácia riek a protipovodňové práce",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 4267286.86,
+        "mena": "EUR",
+        "lehota_datum": "06.10.2026",
+        "lehota_cas": "08:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417906",
+    "id": "1417906",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Skalité",
+        "ico": "00314285",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Centrum európskej goralskej kultúry – nákup nábytku",
+        "cpv_kod": "Nábytok",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 117230.27,
+        "mena": "EUR",
+        "lehota_datum": "29.09.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417907",
+    "id": "1417907",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Generálna prokuratúra SR",
+        "ico": "00166481",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Nákup nástroja pre Extended Detection and Response - rozšírenie licencií XDR platformy a nákup implementačných prác",
+        "cpv_kod": "Antivírusový softvérový balík",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 202241.0,
+        "mena": "EUR",
+        "lehota_datum": "02.10.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.3
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417908",
+    "id": "1417908",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Dopravný podnik mesta Košice, akciová spoločnosť",
+        "ico": "31701914",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Dodávka nových, plne nízkopodlažných električiek pre Dopravný podnik mesta Košice",
+        "cpv_kod": "Električkové osobné vozne",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 135000000.0,
+        "mena": "EUR",
+        "lehota_datum": "",
+        "lehota_cas": "",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Kvalita"
+      }
+    },
+    "time_ms": 0.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417909",
+    "id": "1417909",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Trenčiansky samosprávny kraj",
+        "ico": "36126624",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "IKT vybavenie do jazykovej učebne, učebne technického kreslenia a učebne virtuálnej reality (SOŠ Nováky)",
+        "cpv_kod": "Kancelárske a počítacie stroje, vybavenie a spotrebný materiál s výnimkou nábytku a softvérových balíkov",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": 195007.0,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "KP plus, s.r.o.",
+            "ico": "36475025",
+            "cena": 195007.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417917",
+    "id": "1417917",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Hnúšťa",
+        "ico": "00318744",
+        "email": "michal.vacula@hnusta.sk"
+      },
+      "zakazka": {
+        "predmet": "Zavedenie systému množstvového zberu KO v meste Hnúšťa – kontajnerové stojiská",
+        "cpv_kod": "Kontajnery a nádoby na odpad a odpadky",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 479491.74,
+        "mena": "EUR",
+        "lehota_datum": "15.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417920",
+    "id": "1417920",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Stredná odborná škola drevárska, Lučenecká 2193/17, Zvolen",
+        "ico": "37956469",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "SOŠdrevZv-IVCE – MTZ – Hi-tech učebne – IKT technológie",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": 51525.0,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "MIVASOFT, spol. s r.o.",
+            "ico": "36289906",
+            "cena": 51525.0,
+            "poradie": 2,
+            "je_vitaz": false
+          }
+        ]
+      }
+    },
+    "time_ms": 1.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417932",
+    "id": "1417932",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "error": "no_containers"
+    },
+    "time_ms": 0.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417938",
+    "id": "1417938",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Nitra",
+        "ico": "00308307",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Zabezpečenie služieb projektanta pre oblasť inžinierske stavby",
+        "cpv_kod": "Inžinierske projektovanie",
+        "druh": "Služby"
+      },
+      "vysledok": {
+        "celkova_hodnota": 82500.0,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "iProdos s.r.o.",
+            "ico": "50831399",
+            "cena": 82500.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417947",
+    "id": "1417947",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Slovenská národná galéria",
+        "ico": "00164712",
+        "email": "sekretariat@sng.sk"
+      },
+      "zakazka": {
+        "predmet": "Občasný stavebný dozor - Obnova NKP Zvolenský zámok",
+        "cpv_kod": "Stavebný dozor",
+        "druh": "Služby"
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "16.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417953",
+    "id": "1417953",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "DataCentrum",
+        "ico": "00151564",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Nákup náhradných dielov NON-IT",
+        "cpv_kod": "Elektropotreby a príslušenstvo",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": 30380.0,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "DICIT spol. s r. o.",
+            "ico": "43953794",
+            "cena": 30380.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Plánovanie",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417954",
+    "id": "1417954",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Centrum zdieľaných služieb BBSK, s. r. o.",
+        "ico": "56931654",
+        "email": "ivana.mesiarikova@zdielanesluzby.sk"
+      },
+      "zakazka": {
+        "predmet": "Prípravné trhové konzultácie: Dodanie eshopovej platformy",
+        "cpv_kod": "Softvérové balíky a informačné systémy",
+        "druh": "Tovary"
+      }
+    },
+    "time_ms": 0.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417958",
+    "id": "1417958",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+        "ico": "00164381",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "DNS na HW úradu ministerstva",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": 4687398.37,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "DATALAN, a.s.",
+            "ico": "35810734",
+            "cena": 4687398.37,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417959",
+    "id": "1417959",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Ústav na výkon trestu odňatia slobody",
+        "ico": "00738336",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Potraviny",
+        "cpv_kod": "Potraviny, nápoje, tabak a príbuzné produkty",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "GLOBUS spol. s r.o.",
+            "ico": "31571697",
+            "cena": 7500.0,
+            "poradie": 4,
+            "je_vitaz": false
+          }
+        ]
+      }
+    },
+    "time_ms": 0.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417964",
+    "id": "1417964",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Žilina",
+        "ico": "00321796",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "INTELIGENTNÝ SYSTÉM ANALÝZ A RIADENIA (ISAR)",
+        "cpv_kod": "Programovanie softvéru a poradenstvo",
+        "druh": "Služby"
+      },
+      "prilezitost": {
+        "hodnota": 389461.67,
+        "mena": "EUR",
+        "lehota_datum": "18.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417975",
+    "id": "1417975",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Ministerstvo kultúry Slovenskej republiky",
+        "ico": "00165182",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Lepšie e-GOV služby Ministerstva kultúry SR",
+        "cpv_kod": "Služby informačných technológií: konzultácie, vývoj softvéru, internet a podpora",
+        "druh": "Služby"
+      },
+      "prilezitost": {
+        "hodnota": 1965000.0,
+        "mena": "EUR",
+        "lehota_datum": "05.11.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417976",
+    "id": "1417976",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Správa Tatranského národného parku so sídlom v Tatranskej Lomnici",
+        "ico": "54435293",
+        "email": "veronika.vodhanelova@tanap.sk"
+      },
+      "zakazka": {
+        "predmet": "Oblečenie na každodenné nosenie – TANAP OOPP",
+        "cpv_kod": "Ochranné a bezpečnostné odevy",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 118216.32,
+        "mena": "EUR",
+        "lehota_datum": "29.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417979",
+    "id": "1417979",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Lednické Rovne",
+        "ico": "00317462",
+        "email": "podatelna@lednickerovne.sk"
+      },
+      "zakazka": {
+        "predmet": "Zabezpečenie podmienok pre rozvoj kultúry v obci Lednické Rovne",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 581484.22,
+        "mena": "EUR",
+        "lehota_datum": "08.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417981",
+    "id": "1417981",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Banská Štiavnica",
+        "ico": "00320501",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Vytvorenie centrálnej dátovej platformy a trvalý monitoring kvality ovzdušia, analýzy dopravy, parkovania a bezpečnosti",
+        "cpv_kod": "Bezpečnostné kamery",
+        "druh": "Tovary"
+      },
+      "prilezitost": {
+        "hodnota": 185746.0,
+        "mena": "EUR",
+        "lehota_datum": "09.10.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417982",
+    "id": "1417982",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Banskobystrický samosprávny kraj",
+        "ico": "37828100",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Rekonštrukcia cesty a mostov II/571 hr. okresov LC/RS – Pavlovce (križovatka s cestou II/531); kumulatívne staničenie km 12,008 – 31,900; I. etapa – (I. úsek) a Most cez rieku Rimava v obci Jesenské, IDM M2219-571-032",
+        "cpv_kod": "Práce vrchnej stavby ciest",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 5,
+        "ucastnici": [
+          {
+            "nazov": "Metrostav DS a.s.",
+            "ico": "46120602",
+            "cena": 1796971.14,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417985",
+    "id": "1417985",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Slovenská správa ciest",
+        "ico": "00003328",
+        "email": "milan.kolkus@ssc.sk"
+      },
+      "zakazka": {
+        "predmet": "M7159 cez inundačné územie pred Tisovcom",
+        "cpv_kod": "Stavebné práce na cestných mostoch",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 1101285.7,
+        "mena": "EUR",
+        "lehota_datum": "08.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417995",
+    "id": "1417995",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Národná transfúzna služba SR",
+        "ico": "30853915",
+        "email": "andrea.chlebcova@ntssr.sk"
+      },
+      "zakazka": {
+        "predmet": "Licencie Office 2024 LTSC",
+        "cpv_kod": "Softvérové balíky a informačné systémy",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "Navetta s. r. o.",
+            "ico": "51324539",
+            "cena": 11560.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1417999",
+    "id": "1417999",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Bratislavský samosprávny kraj",
+        "ico": "36063606",
+        "email": "katarina.vancova@region-bsk.sk"
+      },
+      "zakazka": {
+        "predmet": "Realizácia prieskumných hydrogeologických vrtov pre tepelné čerpadlá voda–voda v areáli Kampus zdravia a športu, Bratislava – Petržalka",
+        "cpv_kod": "Prieskumné vrty a vrtné práce",
+        "druh": "Služby"
+      },
+      "prilezitost": {
+        "hodnota": 136121.67,
+        "mena": "EUR",
+        "lehota_datum": "29.09.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418000",
+    "id": "1418000",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Kremnica",
+        "ico": "00320781",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Vybudovanie stojísk a zavedenie množstvového zberu v meste Kremnica",
+        "cpv_kod": "Inštalácia kovových konštrukcií",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": []
+      }
+    },
+    "time_ms": 0.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418004",
+    "id": "1418004",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Svätoplukovo",
+        "ico": "00611191",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Zvýšenie energetickej účinnosti Obecného úradu a Kultúrneho domu",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 709880.29,
+        "mena": "EUR",
+        "lehota_datum": "21.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418011",
+    "id": "1418011",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Kysucký Lieskovec",
+        "ico": "00314081",
+        "email": "obstaravanie@evmi.sk"
+      },
+      "zakazka": {
+        "predmet": "Oprava miestnych komunikácií obce Kysucký Lieskovec",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "STRABAG s.r.o.",
+            "ico": "17317282",
+            "cena": 81881.66,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418017",
+    "id": "1418017",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Červená Voda",
+        "ico": "00326909",
+        "email": "celonsro@gmail.com"
+      },
+      "zakazka": {
+        "predmet": "Modernizácia miestnych komunikácii Vetva A1, A2",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 342930.04,
+        "mena": "EUR",
+        "lehota_datum": "09.10.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418018",
+    "id": "1418018",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Dunajov",
+        "ico": "00314013",
+        "email": "obstaravanie@evmi.sk"
+      },
+      "zakazka": {
+        "predmet": "Sadové úpravy pri cintoríne Dunajov",
+        "cpv_kod": "Výsadba a údržba zelených plôch",
+        "druh": "Služby"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "TRIPL servis s.r.o.",
+            "ico": "51669919",
+            "cena": 84039.06,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418020",
+    "id": "1418020",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Správa Tatranského národného parku so sídlom v Tatranskej Lomnici",
+        "ico": "54435293",
+        "email": "veronika.vodhanelova@tanap.sk"
+      },
+      "zakazka": {
+        "predmet": "Oplotenie k.ú. Tatranská Javorina",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": 334468.67,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "Restau. Art s. r. o.",
+            "ico": "47669951",
+            "cena": 334468.67,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418027",
+    "id": "1418027",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Medzilaborce",
+        "ico": "00323233",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Výstavba sociálnych bytov v Medzilaborciach – stavebné práce",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": 2065434.82,
+        "mena": "EUR",
+        "pocet_ponuk": 5,
+        "ucastnici": [
+          {
+            "nazov": "PB bau, s.r.o.",
+            "ico": "51204452",
+            "cena": 2065434.82,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 1.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418035",
+    "id": "1418035",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Brezno",
+        "ico": "00313319",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Národná kultúrna pamiatka – Obnova Radnice mesta Brezno - opakovanie",
+        "cpv_kod": "Stavebné práce na objektoch historických pamiatok alebo pamätníkov",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 2222445.52,
+        "mena": "EUR",
+        "lehota_datum": "21.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418039",
+    "id": "1418039",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Národný ústav detských chorôb",
+        "ico": "00607231",
+        "email": "michal.privara@nudch.eu"
+      },
+      "zakazka": {
+        "predmet": "Mayfeldov držiak na hlavu",
+        "cpv_kod": "Chirurgické nástroje",
+        "druh": "Tovary"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "RATAN medical equipment s.r.o.",
+            "ico": "27136809",
+            "cena": 49999.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418062",
+    "id": "1418062",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Žilinský samosprávny kraj",
+        "ico": "37808427",
+        "email": "iveta.hlavata@zilinskazupa.sk"
+      },
+      "zakazka": {
+        "predmet": "Dolnooravská nemocnica s poliklinikou Dolný Kubín - Stavebné úpravy oddelenia ortopédie",
+        "cpv_kod": "Stavebné práce na stavbe budov určených pre zdravotníctvo",
+        "druh": "Stavebné práce"
+      },
+      "prilezitost": {
+        "hodnota": 535669.74,
+        "mena": "EUR",
+        "lehota_datum": "07.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 1.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418106",
+    "id": "1418106",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Mesto Martin",
+        "ico": "00316792",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Realizácia diela ,,Základná škola J. Kronera v Martine - zvyšovanie energetickej účinnosti budovy“",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 10,
+        "ucastnici": [
+          {
+            "nazov": "MIPE Invest, s.r.o.",
+            "ico": "36837075",
+            "cena": 540000.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418125",
+    "id": "1418125",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Obec Zbudza",
+        "ico": "00326062",
+        "email": ""
+      },
+      "zakazka": {
+        "predmet": "Obecné nájomné byty v obci Zbudza",
+        "cpv_kod": "Stavebné práce na obytných domoch",
+        "druh": "Stavebné práce"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "Vargovci s. r. o.",
+            "ico": "53858751",
+            "cena": 1194088.0,
+            "poradie": 1,
+            "je_vitaz": true
+          }
+        ]
+      }
+    },
+    "time_ms": 0.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1418129",
+    "id": "1418129",
+    "vestnik": "VVO 190/2026",
+    "extraction": {
+      "obstaravatel": {
+        "nazov": "Centrum výcviku Lešť",
+        "ico": "00804932",
+        "email": "lucia.lazarova@mil.sk"
+      },
+      "zakazka": {
+        "predmet": "CV- 261/2026 - Vykonanie odborných prehliadok, odborných skúšok a úradných skúšok zdvíhacích zariadení",
+        "cpv_kod": "Technická kontrola",
+        "druh": "Služby"
+      },
+      "prilezitost": {
+        "hodnota": 5395.36,
+        "mena": "EUR",
+        "lehota_datum": "15.10.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena"
+      }
+    },
+    "time_ms": 0.5
+  }
+]

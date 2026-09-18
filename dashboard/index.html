@@ -285,7 +285,7 @@ function extractRow(doc) {
   }
 
   return {
-    num: doc.num || '',
+    num: doc.num || doc.id || '',
     action: doc.action || '',
     type_label: ACTION_LABELS[doc.action] || doc.action,
     obstaravatel: obst.nazov || '',
