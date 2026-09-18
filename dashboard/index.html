@@ -20,7 +20,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   padding-bottom: 16px;
   border-bottom: 2px solid #e9ecef;
 }
@@ -28,6 +28,41 @@ header {
 header h1 { font-size: 24px; font-weight: 700; color: #1a1a1a; }
 header .subtitle { font-size: 14px; color: #6c757d; margin-top: 2px; }
 header .meta { font-size: 13px; color: #868e96; text-align: right; }
+
+/* Main navigation tabs */
+.main-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0;
+}
+
+.main-tab {
+  padding: 10px 24px;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #868e96;
+  transition: all 0.15s;
+  position: relative;
+  bottom: -2px;
+}
+
+.main-tab:hover { color: #495057; background: #f1f3f5; }
+.main-tab.active {
+  background: #fff;
+  color: #1971c2;
+  border-color: #e9ecef;
+  border-bottom: 2px solid #fff;
+}
+
+.main-content-section { display: none; }
+.main-content-section.active { display: block; }
 
 /* Summary cards */
 .cards {
@@ -51,6 +86,7 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
 .card .value.blue { color: #1971c2; }
 .card .value.purple { color: #7048e8; }
 .card .value.orange { color: #e8590c; }
+.card .value.red { color: #e03131; }
 
 /* Year tabs */
 .year-tabs {
@@ -287,6 +323,156 @@ td a:hover { text-decoration: underline; }
 .error { text-align: center; padding: 40px; color: #e03131; }
 
 footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
+
+/* ── Analyza tab styles ── */
+.analyza-section {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.analyza-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.analyza-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.analyza-table thead th {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #495057;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.analyza-table tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f1f3f5;
+  vertical-align: top;
+}
+
+.analyza-table tbody tr:last-child td { border-bottom: none; }
+
+.rate-high { color: #e03131; font-weight: 700; }
+.rate-medium { color: #e8590c; font-weight: 600; }
+.rate-normal { color: #495057; }
+
+.side-by-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) { .side-by-side { grid-template-columns: 1fr; } }
+
+.threshold-group { margin-bottom: 16px; }
+.threshold-label {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #fff3bf;
+  color: #e67700;
+  margin-bottom: 8px;
+}
+
+/* ── Graf tab styles ── */
+#graph-canvas-container {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+#graph-canvas-container svg {
+  display: block;
+  width: 100%;
+  height: 600px;
+}
+
+.graph-tooltip {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 200;
+  display: none;
+  max-width: 300px;
+}
+
+.graph-tooltip .tt-name { font-weight: 700; margin-bottom: 2px; }
+.graph-tooltip .tt-ico { color: #868e96; font-size: 12px; }
+.graph-tooltip .tt-value { margin-top: 4px; font-family: "SF Mono","Menlo",monospace; font-size: 12px; }
+
+.graph-legend {
+  display: flex;
+  gap: 20px;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: #495057;
+  border-top: 1px solid #f1f3f5;
+  background: #f8f9fa;
+}
+
+.graph-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.graph-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.self-dealing-list {
+  list-style: none;
+}
+
+.self-dealing-list li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f1f3f5;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.self-dealing-list li:last-child { border-bottom: none; }
+
+.self-dealing-name { flex: 1; color: #e03131; font-weight: 500; }
+.self-dealing-value {
+  font-family: "SF Mono","Menlo",monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #e03131;
+  white-space: nowrap;
+}
 </style>
 </head>
 <body>
@@ -295,10 +481,20 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 <header>
   <div>
     <h1>UVO Vestnik Dashboard</h1>
-    <div class="subtitle">Verejne obstaravanie — prehlad dokumentov</div>
+    <div class="subtitle">Verejne obstaravanie -- prehlad dokumentov</div>
   </div>
   <div class="meta" id="header-meta"></div>
 </header>
+
+<!-- Main navigation tabs -->
+<div class="main-tabs">
+  <div class="main-tab active" data-tab="dokumenty">Dokumenty</div>
+  <div class="main-tab" data-tab="analyza">Analyza</div>
+  <div class="main-tab" data-tab="graf">Graf</div>
+</div>
+
+<!-- ═══════════════════ DOKUMENTY TAB ═══════════════════ -->
+<div class="main-content-section active" id="section-dokumenty">
 
 <div class="cards" id="cards"></div>
 
@@ -336,6 +532,18 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 
 <div class="stats" id="stats"></div>
 
+</div><!-- end section-dokumenty -->
+
+<!-- ═══════════════════ ANALYZA TAB ═══════════════════ -->
+<div class="main-content-section" id="section-analyza">
+  <div id="analyza-content" class="loading">Nacitavam analyzu...</div>
+</div>
+
+<!-- ═══════════════════ GRAF TAB ═══════════════════ -->
+<div class="main-content-section" id="section-graf">
+  <div id="graf-content" class="loading">Nacitavam graf...</div>
+</div>
+
 <footer>UVO Vestnik Dashboard &mdash; data z vestnik-parser.py</footer>
 
 </div>
@@ -347,12 +555,24 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div id="detail-content"></div>
 </div>
 
+<!-- Graph tooltip -->
+<div class="graph-tooltip" id="graph-tooltip">
+  <div class="tt-name"></div>
+  <div class="tt-ico"></div>
+  <div class="tt-value"></div>
+</div>
+
 <script>
-let RAW_DATA = [];
-let DATA = [];
-let sortCol = 'num';
-let sortAsc = false;
-let activeYear = '';
+// ══════════════════════════════════════════════════════════════
+// GLOBAL UTILITIES
+// ══════════════════════════════════════════════════════════════
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
 
 function formatEur(val) {
   if (val == null || val === '') return '';
@@ -368,6 +588,44 @@ function formatEurShort(val) {
   if (n >= 1e3) return (n / 1e3).toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' tis. EUR';
   return n.toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' EUR';
 }
+
+function formatNum(val) {
+  if (val == null) return '-';
+  return Number(val).toLocaleString('sk-SK');
+}
+
+// ══════════════════════════════════════════════════════════════
+// MAIN TAB NAVIGATION
+// ══════════════════════════════════════════════════════════════
+
+let analysisLoaded = false;
+let graphLoaded = false;
+
+document.querySelectorAll('.main-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.main-content-section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('section-' + tab.dataset.tab).classList.add('active');
+
+    if (tab.dataset.tab === 'analyza' && !analysisLoaded) {
+      loadAnalysis();
+    }
+    if (tab.dataset.tab === 'graf' && !graphLoaded) {
+      loadGraph();
+    }
+  });
+});
+
+// ══════════════════════════════════════════════════════════════
+// DOKUMENTY TAB (existing logic preserved)
+// ══════════════════════════════════════════════════════════════
+
+let RAW_DATA = [];
+let DATA = [];
+let sortCol = 'num';
+let sortAsc = false;
+let activeYear = '';
 
 const ACTION_LABELS = {
   vysledok: 'Vysledok',
@@ -482,7 +740,6 @@ function renderTable(rows) {
     </tr>
   `).join('');
 
-  // Click to show detail (but not on links)
   tbody.querySelectorAll('tr[data-idx]').forEach(tr => {
     tr.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') return;
@@ -552,7 +809,6 @@ function showDetail(row) {
 
   let html = `<h2>${esc(zak.predmet || 'Dokument ' + row.num)}</h2>`;
 
-  // Basic info
   html += `<div class="detail-section">
     <h3>Zakladne udaje</h3>
     <div class="detail-row"><span class="detail-label">ID dokumentu</span><span class="detail-value"><a href="${row.url}" target="_blank">${esc(row.num)}</a></span></div>
@@ -562,7 +818,6 @@ function showDetail(row) {
     ${doc.type ? `<div class="detail-row"><span class="detail-label">Typ formulara</span><span class="detail-value">${esc(doc.type)}</span></div>` : ''}
   </div>`;
 
-  // Buyer
   html += `<div class="detail-section">
     <h3>Obstaravatel</h3>
     <div class="detail-row"><span class="detail-label">Nazov</span><span class="detail-value">${esc(obst.nazov || '-')}</span></div>
@@ -570,7 +825,6 @@ function showDetail(row) {
     <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value">${esc(obst.email || '-')}</span></div>
   </div>`;
 
-  // Subject
   html += `<div class="detail-section">
     <h3>Zakazka</h3>
     <div class="detail-row"><span class="detail-label">Predmet</span><span class="detail-value">${esc(zak.predmet || '-')}</span></div>
@@ -578,7 +832,6 @@ function showDetail(row) {
     <div class="detail-row"><span class="detail-label">Druh zakazky</span><span class="detail-value">${esc(zak.druh || '-')}</span></div>
   </div>`;
 
-  // Result details
   if (doc.action === 'vysledok' || doc.action === 'suhrn') {
     html += `<div class="detail-section">
       <h3>Vysledok</h3>
@@ -603,7 +856,6 @@ function showDetail(row) {
     }
   }
 
-  // Opportunity details
   if (doc.action === 'vyhlasenie' || (doc.action === 'oprava' && ext.prilezitost)) {
     html += `<div class="detail-section">
       <h3>Prilezitost</h3>
@@ -617,7 +869,6 @@ function showDetail(row) {
     </div>`;
   }
 
-  // Contract modification details
   if (doc.action === 'zmena_zmluvy') {
     html += `<div class="detail-section">
       <h3>Zmena zmluvy</h3>
@@ -646,14 +897,7 @@ document.getElementById('detail-close').addEventListener('click', closeDetail);
 document.getElementById('detail-overlay').addEventListener('click', closeDetail);
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDetail(); });
 
-// ──── Utilities ────
-
-function esc(s) {
-  if (!s) return '';
-  const d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
-}
+// ──── Dokumenty filter / sort / render ────
 
 function getFiltered() {
   const search = document.getElementById('search').value.toLowerCase().trim();
@@ -697,7 +941,6 @@ function getFiltered() {
 }
 
 function render() {
-  const allRows = DATA.filter(r => !activeYear || r.year === activeYear);
   const rows = getFiltered();
   renderYearTabs(DATA);
   renderCards(rows);
@@ -716,7 +959,6 @@ function render() {
   });
 }
 
-// Sort on header click
 document.querySelectorAll('thead th').forEach(th => {
   th.addEventListener('click', () => {
     const col = th.dataset.col;
@@ -730,11 +972,10 @@ document.querySelectorAll('thead th').forEach(th => {
   });
 });
 
-// Filter events
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('type-filter').addEventListener('change', render);
 
-// Load data
+// Load Dokumenty data
 fetch('/api/data')
   .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
   .then(docs => {
@@ -749,6 +990,457 @@ fetch('/api/data')
     document.getElementById('table-body').innerHTML =
       '<tr><td colspan="7" class="error">Chyba pri nacitani dat: ' + err.message + '</td></tr>';
   });
+
+// ══════════════════════════════════════════════════════════════
+// ANALYZA TAB
+// ══════════════════════════════════════════════════════════════
+
+function loadAnalysis() {
+  fetch('/api/analysis')
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(data => {
+      analysisLoaded = true;
+      renderAnalysis(data);
+    })
+    .catch(err => {
+      document.getElementById('analyza-content').innerHTML =
+        '<div class="error">Chyba pri nacitani analyzy: ' + err.message + '</div>';
+    });
+}
+
+function renderAnalysis(data) {
+  const sb = data.single_bidder || {};
+  const sbTotal = sb.celkovo || {};
+  const topStats = data.top_stats || {};
+  const priceAn = data.price_anomalies || {};
+  const topVitazi = topStats.top_vitazi || [];
+  const topObst = topStats.top_obstaravatelia || [];
+  const yearly = topStats.hodnota_podla_roka || [];
+
+  // Calculate total value from yearly data
+  let celkovaHodnota = 0;
+  let pocetVitazov = new Set();
+  yearly.forEach(y => { celkovaHodnota += (y.celkova_hodnota || 0); });
+  topVitazi.forEach(v => { pocetVitazov.add(v.ico); });
+
+  let html = '';
+
+  // Summary cards
+  html += `<div class="cards">
+    <div class="card"><div class="label">Celkom zakaziek</div><div class="value">${formatNum(sbTotal.total || 0)}</div></div>
+    <div class="card"><div class="label">Single-bidder miera</div><div class="value red">${(sbTotal.rate_pct || 0).toLocaleString('sk-SK', {maximumFractionDigits:1})} %</div></div>
+    <div class="card"><div class="label">Celkova hodnota</div><div class="value blue">${formatEurShort(celkovaHodnota)}</div></div>
+    <div class="card"><div class="label">Pocet vitazov (top)</div><div class="value green">${pocetVitazov.size}</div></div>
+  </div>`;
+
+  // Single-bidder section
+  const sbObst = sb.top_obstaravatelia || [];
+  html += `<div class="analyza-section">
+    <h3>Single-bidder obstaravatelia</h3>
+    <table class="analyza-table">
+      <thead><tr>
+        <th>Obstaravatel</th><th>ICO</th><th>Zakazky</th><th>Single-bidder</th><th>Miera %</th>
+      </tr></thead>
+      <tbody>
+        ${sbObst.map(o => {
+          let rateClass = 'rate-normal';
+          if (o.rate_pct > 70) rateClass = 'rate-high';
+          else if (o.rate_pct > 50) rateClass = 'rate-medium';
+          return `<tr>
+            <td>${esc(o.nazov)}</td>
+            <td class="num-col">${esc(o.ico)}</td>
+            <td style="text-align:center">${o.total_tenders}</td>
+            <td style="text-align:center">${o.single_bidder}</td>
+            <td class="${rateClass}" style="text-align:right">${o.rate_pct.toLocaleString('sk-SK', {maximumFractionDigits:1})} %</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  </div>`;
+
+  // Price anomalies
+  const thresholds = priceAn.threshold_proximity || [];
+  if (thresholds.length > 0) {
+    html += `<div class="analyza-section">
+      <h3>Cenove anomalie (blizko prahovych hodnot)</h3>`;
+    thresholds.forEach(thr => {
+      // Deduplicate by doc_id+hodnota
+      const seen = new Set();
+      const unique = thr.records.filter(r => {
+        const key = r.doc_id + '_' + r.hodnota;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+      html += `<div class="threshold-group">
+        <span class="threshold-label">Prah: ${esc(thr.label)} (${thr.count} zaznamov)</span>
+        <table class="analyza-table" style="margin-top:8px">
+          <thead><tr><th>Vestnik</th><th>Obstaravatel</th><th style="text-align:right">Hodnota</th></tr></thead>
+          <tbody>
+            ${unique.slice(0, 10).map(r => `<tr>
+              <td style="white-space:nowrap;font-size:12px;color:#868e96">${esc(r.vestnik || '-')}</td>
+              <td>${esc(r.obstaravatel)}</td>
+              <td class="val-col">${formatEur(r.hodnota)}</td>
+            </tr>`).join('')}
+            ${unique.length > 10 ? `<tr><td colspan="3" style="text-align:center;color:#868e96;font-size:12px">... a dalsich ${unique.length - 10}</td></tr>` : ''}
+          </tbody>
+        </table>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  // Top vitazi and obstaravatelia side by side
+  const maxVitazVal = topVitazi.length > 0 ? topVitazi[0].celkova_cena : 1;
+  const maxObstVal = topObst.length > 0 ? topObst[0].celkovy_vydavok : 1;
+
+  html += `<div class="side-by-side">
+    <div class="analyza-section" style="margin-bottom:0">
+      <h3>Top 10 vitazi (podla hodnoty)</h3>
+      <ul class="stats-list">
+        ${topVitazi.map(v => `<li>
+          <span class="name">${esc(v.nazov)}</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:${(v.celkova_cena / maxVitazVal * 100).toFixed(0)}%;background:#51cf66"></div></div>
+          <span class="count">${formatEurShort(v.celkova_cena)}</span>
+        </li>`).join('')}
+      </ul>
+    </div>
+    <div class="analyza-section" style="margin-bottom:0">
+      <h3>Top 10 obstaravatelia (podla vydavkov)</h3>
+      <ul class="stats-list">
+        ${topObst.map(o => `<li>
+          <span class="name">${esc(o.nazov)}</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:${(o.celkovy_vydavok / maxObstVal * 100).toFixed(0)}%"></div></div>
+          <span class="count">${formatEurShort(o.celkovy_vydavok)}</span>
+        </li>`).join('')}
+      </ul>
+    </div>
+  </div>`;
+
+  // Yearly breakdown
+  html += `<div class="analyza-section">
+    <h3>Prehlad podla rokov</h3>
+    <table class="analyza-table">
+      <thead><tr><th>Rok</th><th style="text-align:center">Zakazky</th><th style="text-align:right">Celkova hodnota</th><th style="text-align:right">Priemerna hodnota</th></tr></thead>
+      <tbody>
+        ${yearly.map(y => `<tr>
+          <td style="font-weight:600">${y.rok}</td>
+          <td style="text-align:center">${y.pocet_zakaziek}</td>
+          <td class="val-col">${formatEurShort(y.celkova_hodnota)}</td>
+          <td class="val-col">${formatEurShort(y.priemerna_hodnota)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+
+  document.getElementById('analyza-content').innerHTML = html;
+}
+
+// ══════════════════════════════════════════════════════════════
+// GRAF TAB
+// ══════════════════════════════════════════════════════════════
+
+function loadGraph() {
+  // Load D3.js first, then fetch data
+  const script = document.createElement('script');
+  script.src = 'https://d3js.org/d3.v7.min.js';
+  script.onload = () => {
+    fetch('/api/graph')
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(data => {
+        graphLoaded = true;
+        renderGraph(data);
+      })
+      .catch(err => {
+        document.getElementById('graf-content').innerHTML =
+          '<div class="error">Chyba pri nacitani grafu: ' + err.message + '</div>';
+      });
+  };
+  script.onerror = () => {
+    document.getElementById('graf-content').innerHTML =
+      '<div class="error">Nepodarilo sa nacitat D3.js kniznicu</div>';
+  };
+  document.head.appendChild(script);
+}
+
+function renderGraph(data) {
+  const bwg = data.buyer_winner_graph || {};
+  const cobid = data.cobidding_graph || {};
+  const summary = bwg.summary || {};
+  const components = bwg.components || {};
+  const selfDealing = bwg.self_dealing_risk || [];
+  const pagerank = bwg.top_20_pagerank || [];
+  const topEdges = bwg.top_20_edges || [];
+  const bidRigging = cobid.bid_rigging_signals || [];
+  const cobidPairs = cobid.top_20_cobidding_pairs || [];
+
+  let html = '';
+
+  // D3 force graph container
+  html += `<div id="graph-canvas-container">
+    <div id="d3-graph"></div>
+    <div class="graph-legend">
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#4dabf7"></div> Obstaravatel</div>
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#51cf66"></div> Vitaz</div>
+      <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#e03131"></div> Oboje (self-dealing riziko)</div>
+    </div>
+  </div>`;
+
+  // Key metrics
+  html += `<div class="cards" style="margin-bottom:24px">
+    <div class="card"><div class="label">Uzly v grafe</div><div class="value">${formatNum(summary.nodes)}</div></div>
+    <div class="card"><div class="label">Hrany (vztahy)</div><div class="value blue">${formatNum(summary.edges)}</div></div>
+    <div class="card"><div class="label">Komponenty</div><div class="value purple">${formatNum(components.count)}</div></div>
+    <div class="card"><div class="label">Self-dealing entity</div><div class="value red">${selfDealing.length}</div></div>
+  </div>`;
+
+  // Self-dealing
+  if (selfDealing.length > 0) {
+    html += `<div class="analyza-section">
+      <h3>Self-dealing riziko (kupujuci aj vitaz)</h3>
+      <ul class="self-dealing-list">
+        ${selfDealing.map(s => `<li>
+          <span class="self-dealing-name">${esc(s.name)} <span style="color:#adb5bd;font-size:11px;font-weight:400">(${esc(s.ico)})</span></span>
+          <span class="self-dealing-value">${formatEurShort(s.total_value)}</span>
+        </li>`).join('')}
+      </ul>
+    </div>`;
+  }
+
+  // Co-bidding signals + top pairs side by side
+  html += `<div class="side-by-side">`;
+
+  // Bid rigging signals
+  html += `<div class="analyza-section" style="margin-bottom:0">
+    <h3>Signaly bid-riggingu (jednostranne vyhry)</h3>
+    <table class="analyza-table">
+      <thead><tr><th>Vzdy vyhra</th><th>Vzdy prehra</th><th>Spolucne ponuky</th></tr></thead>
+      <tbody>
+        ${bidRigging.length === 0 ? '<tr><td colspan="3" class="no-results">Ziadne signaly</td></tr>' : ''}
+        ${bidRigging.map(s => `<tr>
+          <td>${esc(s.consistent_winner_name)} <span style="color:#adb5bd;font-size:11px">(${esc(s.consistent_winner_ico)})</span></td>
+          <td>${esc(s.consistent_loser_name)} <span style="color:#adb5bd;font-size:11px">(${esc(s.consistent_loser_ico)})</span></td>
+          <td style="text-align:center;font-weight:600">${s.co_bids}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+
+  // Top co-bidding pairs
+  html += `<div class="analyza-section" style="margin-bottom:0">
+    <h3>Top spolucne ponuky (co-bidding)</h3>
+    <table class="analyza-table">
+      <thead><tr><th>Firma A</th><th>Firma B</th><th style="text-align:center">Spolucne</th></tr></thead>
+      <tbody>
+        ${cobidPairs.slice(0, 10).map(p => `<tr>
+          <td>${esc(p.company_a_name)}</td>
+          <td>${esc(p.company_b_name)}</td>
+          <td style="text-align:center;font-weight:600">${p.co_bids}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+
+  html += `</div>`;
+
+  // PageRank top 20
+  html += `<div class="analyza-section">
+    <h3>PageRank Top 20</h3>
+    <table class="analyza-table">
+      <thead><tr><th>#</th><th>Nazov</th><th>ICO</th><th>Typ</th><th style="text-align:right">Hodnota</th></tr></thead>
+      <tbody>
+        ${pagerank.map((p, i) => `<tr>
+          <td style="font-weight:600;color:#868e96">${i + 1}</td>
+          <td>${esc(p.name)}</td>
+          <td class="num-col">${esc(p.ico)}</td>
+          <td><span class="badge" style="background:${p.type === 'winner' ? '#d3f9d8;color:#2b8a3e' : p.type === 'buyer' ? '#d0ebff;color:#1971c2' : '#ffe3e3;color:#e03131'}">${p.type === 'winner' ? 'Vitaz' : p.type === 'buyer' ? 'Obstaravatel' : 'Oboje'}</span></td>
+          <td class="val-col">${formatEurShort(p.total_value)}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+
+  document.getElementById('graf-content').innerHTML = html;
+
+  // Now build D3 force graph
+  buildD3Graph(pagerank, topEdges, selfDealing);
+}
+
+function buildD3Graph(pagerank, topEdges, selfDealing) {
+  const container = document.getElementById('d3-graph');
+  const width = container.parentElement.clientWidth;
+  const height = 600;
+
+  // Build nodes from pagerank + edges
+  const nodeMap = new Map();
+  const selfDealingIcos = new Set(selfDealing.map(s => s.ico));
+
+  // Add pagerank nodes
+  pagerank.forEach(p => {
+    nodeMap.set(p.ico, {
+      id: p.ico,
+      name: p.name,
+      type: selfDealingIcos.has(p.ico) ? 'both' : p.type,
+      value: p.total_value || 0
+    });
+  });
+
+  // Add edge nodes that might not be in pagerank
+  topEdges.forEach(e => {
+    if (!nodeMap.has(e.buyer_ico)) {
+      nodeMap.set(e.buyer_ico, {
+        id: e.buyer_ico,
+        name: e.buyer_name,
+        type: selfDealingIcos.has(e.buyer_ico) ? 'both' : 'buyer',
+        value: e.total_value || 0
+      });
+    }
+    if (!nodeMap.has(e.winner_ico)) {
+      nodeMap.set(e.winner_ico, {
+        id: e.winner_ico,
+        name: e.winner_name,
+        type: selfDealingIcos.has(e.winner_ico) ? 'both' : 'winner',
+        value: e.total_value || 0
+      });
+    }
+  });
+
+  const nodes = Array.from(nodeMap.values());
+  const links = topEdges.map(e => ({
+    source: e.buyer_ico,
+    target: e.winner_ico,
+    contracts: e.contracts,
+    value: e.total_value
+  }));
+
+  // Color scale
+  const colorMap = { buyer: '#4dabf7', winner: '#51cf66', both: '#e03131' };
+
+  // Size scale
+  const maxVal = Math.max(...nodes.map(n => n.value), 1);
+  const sizeScale = (val) => 5 + Math.sqrt(val / maxVal) * 25;
+
+  const svg = d3.select('#d3-graph')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .attr('viewBox', [0, 0, width, height]);
+
+  // Zoom
+  const g = svg.append('g');
+  svg.call(d3.zoom()
+    .scaleExtent([0.2, 5])
+    .on('zoom', (event) => { g.attr('transform', event.transform); })
+  );
+
+  // Arrow markers
+  g.append('defs').append('marker')
+    .attr('id', 'arrowhead')
+    .attr('viewBox', '0 -5 10 10')
+    .attr('refX', 20)
+    .attr('refY', 0)
+    .attr('markerWidth', 6)
+    .attr('markerHeight', 6)
+    .attr('orient', 'auto')
+    .append('path')
+    .attr('d', 'M0,-5L10,0L0,5')
+    .attr('fill', '#ced4da');
+
+  const simulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(d => d.id).distance(100))
+    .force('charge', d3.forceManyBody().strength(-300))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('collision', d3.forceCollide().radius(d => sizeScale(d.value) + 2));
+
+  const link = g.append('g')
+    .selectAll('line')
+    .data(links)
+    .join('line')
+    .attr('stroke', '#dee2e6')
+    .attr('stroke-width', d => Math.max(1, Math.min(d.contracts, 5)))
+    .attr('marker-end', 'url(#arrowhead)');
+
+  const node = g.append('g')
+    .selectAll('circle')
+    .data(nodes)
+    .join('circle')
+    .attr('r', d => sizeScale(d.value))
+    .attr('fill', d => colorMap[d.type] || '#868e96')
+    .attr('stroke', '#fff')
+    .attr('stroke-width', 1.5)
+    .style('cursor', 'pointer');
+
+  // Labels for larger nodes
+  const labels = g.append('g')
+    .selectAll('text')
+    .data(nodes.filter(n => sizeScale(n.value) > 12))
+    .join('text')
+    .text(d => d.name.length > 20 ? d.name.substring(0, 18) + '...' : d.name)
+    .attr('font-size', 10)
+    .attr('fill', '#495057')
+    .attr('text-anchor', 'middle')
+    .attr('dy', d => sizeScale(d.value) + 14)
+    .style('pointer-events', 'none');
+
+  // Tooltip
+  const tooltip = document.getElementById('graph-tooltip');
+
+  node.on('mouseover', (event, d) => {
+    tooltip.style.display = 'block';
+    tooltip.querySelector('.tt-name').textContent = d.name;
+    tooltip.querySelector('.tt-ico').textContent = 'ICO: ' + d.id;
+    tooltip.querySelector('.tt-value').textContent = formatEurShort(d.value);
+  })
+  .on('mousemove', (event) => {
+    tooltip.style.left = (event.pageX + 12) + 'px';
+    tooltip.style.top = (event.pageY - 10) + 'px';
+  })
+  .on('mouseout', () => {
+    tooltip.style.display = 'none';
+  });
+
+  // Click to pin/unpin
+  node.on('click', (event, d) => {
+    if (d.fx != null) {
+      d.fx = null;
+      d.fy = null;
+    } else {
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+    simulation.alpha(0.3).restart();
+  });
+
+  // Drag
+  node.call(d3.drag()
+    .on('start', (event, d) => {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    })
+    .on('drag', (event, d) => {
+      d.fx = event.x;
+      d.fy = event.y;
+    })
+    .on('end', (event, d) => {
+      if (!event.active) simulation.alphaTarget(0);
+    })
+  );
+
+  simulation.on('tick', () => {
+    link
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
+    node
+      .attr('cx', d => d.x)
+      .attr('cy', d => d.y);
+    labels
+      .attr('x', d => d.x)
+      .attr('y', d => d.y);
+  });
+}
 </script>
 </body>
 </html>

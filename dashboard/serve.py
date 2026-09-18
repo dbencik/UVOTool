@@ -18,8 +18,30 @@ class DashboardHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == "/api/data":
             self.send_api_data()
+        elif self.path == "/api/analysis":
+            self.send_json_file("analysis_report.json")
+        elif self.path == "/api/graph":
+            self.send_json_file("graph_analysis.json")
         else:
             super().do_GET()
+
+    def send_json_file(self, filename):
+        filepath = os.path.join(DATA_DIR, filename)
+        if not os.path.exists(filepath):
+            self.send_response(404)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(b'{"error": "not found"}')
+            return
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = f.read()
+        response = data.encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(response)))
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(response)
 
     def send_api_data(self):
         all_docs = []
