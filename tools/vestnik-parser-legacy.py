@@ -112,8 +112,9 @@ def classify_document(html: str) -> tuple[str, str, str]:
 # ═══════════════════════════════════════════════════════
 
 def extract_contact(html_block: str) -> dict:
-    """Extract name, IČO, email from a ContactSelectList block."""
-    contact = {'nazov': '', 'ico': '', 'email': '', 'mesto': ''}
+    """Extract name, IČO, email, address, phone, web, DIČ from a ContactSelectList block."""
+    contact = {'nazov': '', 'ico': '', 'email': '', 'mesto': '',
+               'adresa': '', 'psc': '', 'telefon': '', 'web': '', 'dic': ''}
 
     m = re.search(r'<span class="bold">(.*?)</span>', html_block)
     if m:
@@ -130,10 +131,35 @@ def extract_contact(html_block: str) -> dict:
     m = re.search(r'<text>\s*(.+?)\s*</text>', html_block)
     if m:
         addr = strip_html(m.group(1)).strip()
+        contact['adresa'] = addr
         # Last part after comma is usually the city
         parts = addr.rsplit(',', 1)
         if len(parts) > 1:
-            contact['mesto'] = parts[-1].strip()
+            city_part = parts[-1].strip()
+            # Strip PSČ prefix from city (e.g. "01109 Žilina" → "Žilina")
+            city_clean = re.sub(r'^\d{3}\s?\d{2}\s+', '', city_part)
+            contact['mesto'] = city_clean if city_clean else city_part
+        # PSČ: 5 digits before city name (pattern: "01109 Žilina" or "010 09")
+        psc_m = re.search(r'(\d{3}\s?\d{2})\s+\S', addr)
+        if psc_m:
+            contact['psc'] = psc_m.group(1).replace(' ', '')
+
+    # Phone
+    m = re.search(r'Telefón:</span>\s*<span>\s*([^<]+)', html_block)
+    if m:
+        contact['telefon'] = m.group(1).strip()
+
+    # Web URL
+    m = re.search(r'(?:Hlavná adresa\(URL\)|Webové sídlo):</span>\s*<span>\s*([^<]+)', html_block)
+    if not m:
+        m = re.search(r'Hlavná adresa\(URL\):</span>\s*<span>\s*([^<]+)', html_block)
+    if m:
+        contact['web'] = m.group(1).strip()
+
+    # DIČ
+    m = re.search(r'DIČ:</span>\s*<span>\s*([^<]+)', html_block)
+    if m:
+        contact['dic'] = m.group(1).strip()
 
     return contact
 
@@ -206,12 +232,41 @@ def extract_buyer(sections: dict) -> dict:
     if not sec:
         return {'nazov': '', 'ico': '', 'email': ''}
 
+    buyer = {'nazov': '', 'ico': '', 'email': '', 'adresa': '', 'psc': '',
+             'mesto': '', 'telefon': '', 'typ_kupujuceho': '', 'cinnost': ''}
+
     contacts = extract_all_contacts(sec)
     if contacts:
         c = contacts[0]
-        return {'nazov': c['nazov'], 'ico': c['ico'], 'email': c['email']}
+        buyer['nazov'] = c['nazov']
+        buyer['ico'] = c['ico']
+        buyer['email'] = c['email']
+        buyer['adresa'] = c.get('adresa', '')
+        buyer['psc'] = c.get('psc', '')
+        buyer['mesto'] = c.get('mesto', '')
+        buyer['telefon'] = c.get('telefon', '')
 
-    return {'nazov': '', 'ico': '', 'email': ''}
+    # Typ kupujúceho: "DRUH VEREJNÉHO OBSTARÁVATEĽA" subsection
+    # Pattern 1: dropdownlist or selectList after the title
+    m = re.search(r'Druh verejného obstarávateľa[^<]*</span>\s*<span>([^<]+)', sec)
+    if m:
+        buyer['typ_kupujuceho'] = m.group(1).strip()
+    else:
+        # Pattern 2: radioButtonList
+        m = re.search(r'DRUH VEREJNÉHO OBSTARÁVATEĽA.*?(?:radioButtonList|dropdownlist_|selectList)[^>]*>.*?<span>([^<]+)</span>', sec, re.DOTALL)
+        if m:
+            val = strip_html(m.group(1)).strip()
+            if val:
+                buyer['typ_kupujuceho'] = val
+
+    # Hlavná činnosť: shorttext or span after "HLAVNÁ ČINNOSŤ" subtitle
+    m = re.search(r'HLAVNÁ ČINNOSŤ.*?(?:shorttext_|dropdownlist_)[^>]*>\s*(?:<span>)?\s*([^<]+)', sec, re.DOTALL)
+    if m:
+        val = m.group(1).strip()
+        if val:
+            buyer['cinnost'] = val
+
+    return buyer
 
 
 # ═══════════════════════════════════════════════════════
@@ -221,7 +276,8 @@ def extract_buyer(sections: dict) -> dict:
 def extract_subject(sections: dict, html: str) -> dict:
     """Extract subject from ODDIEL II."""
     sec = sections.get('II', '')
-    subject = {'predmet': '', 'cpv_kod': '', 'druh': ''}
+    subject = {'predmet': '', 'cpv_kod': '', 'druh': '',
+               'opis': '', 'nuts': '', 'miesto_plnenia': '', 'druh_postupu': ''}
 
     # Subject: ordercomponent div
     m = re.search(r'<div class="ordercomponent_[^"]*">\s*(.*?)\s*</div>', sec, re.DOTALL)
@@ -243,6 +299,28 @@ def extract_subject(sections: dict, html: str) -> dict:
         if m:
             subject['druh'] = m.group(1)
 
+    # Opis: II.1.4 "Stručný opis" textArea, truncate to 500 chars
+    m = re.search(r'(?:II\.1\.4|Stručný opis).*?<div class="textArea">\s*<span>.*?</span>\s*<span>(.*?)</span>', sec, re.DOTALL)
+    if m:
+        subject['opis'] = strip_html(m.group(1)).strip()[:500]
+
+    # NUTS code: multiSelectList
+    m = re.search(r'<div class="multiSelectList">\s*<div>([^<]+)</div>', sec)
+    if m:
+        subject['nuts'] = m.group(1).strip()
+
+    # Miesto plnenia: textArea after "Hlavné miesto dodania alebo plnenia"
+    m = re.search(r'Hlavné miesto dodania alebo plnenia.*?<div class="textArea">\s*<span>.*?</span>\s*<span>(.*?)</span>', sec, re.DOTALL)
+    if m:
+        subject['miesto_plnenia'] = strip_html(m.group(1)).strip()
+
+    # Druh postupu: from ODDIEL IV
+    sec_iv = sections.get('IV', '')
+    if sec_iv:
+        m = re.search(r'Druh postupu.*?<div class="dropdownlist_[^"]*">\s*<span>\s*(.*?)\s*</span>', sec_iv, re.DOTALL)
+        if m:
+            subject['druh_postupu'] = strip_html(m.group(1)).strip()
+
     return subject
 
 
@@ -257,6 +335,8 @@ def extract_vyhlasenie(sections: dict) -> dict:
         'mena': 'EUR',
         'lehota_datum': '',
         'lehota_cas': '',
+        'elektronicka_aukcia': None,
+        'trvanie': '',
     }
 
     sec_ii = sections.get('II', '')
@@ -283,6 +363,35 @@ def extract_vyhlasenie(sections: dict) -> dict:
         m = re.search(r'class="date_[^"]*"[^>]*>.*?(\d{2}\.\d{2}\.\d{4})', sec_iv, re.DOTALL)
         if m:
             result['lehota_datum'] = m.group(1)
+
+    # Elektronická aukcia: in ODDIEL IV, dropdownlist after "elektronickej aukcii" title
+    if sec_iv:
+        m = re.search(r'elektronick.*?aukci.*?<div class="dropdownlist_[^"]*">(.*?)</div>', sec_iv, re.DOTALL | re.IGNORECASE)
+        if m:
+            text = strip_html(m.group(1)).lower()
+            if 'použije sa' in text or 'použila sa' in text or 'áno' in text:
+                result['elektronicka_aukcia'] = True
+            elif 'nepoužije' in text or 'nepoužila' in text or 'nie' in text:
+                result['elektronicka_aukcia'] = False
+        else:
+            # Fallback: radioButtonList pattern
+            m = re.search(r'elektronick.*?aukci.*?radioButtonList.*?<span>(.*?)</span>', sec_iv, re.DOTALL | re.IGNORECASE)
+            if m:
+                text = strip_html(m.group(1)).lower()
+                if 'áno' in text:
+                    result['elektronicka_aukcia'] = True
+                elif 'nie' in text:
+                    result['elektronicka_aukcia'] = False
+
+    # Trvanie: from ODDIEL II — "v mesiacoch" or "v dňoch" pattern
+    if sec_ii:
+        m = re.search(r'v mesiacoch.*?(?:shorttext_|<span>)\s*[^>]*>\s*(?:<span>)?\s*(\d+)', sec_ii, re.DOTALL)
+        if m:
+            result['trvanie'] = f"{m.group(1)} mesiacov"
+        else:
+            m = re.search(r'v dňoch.*?(?:shorttext_|<span>)\s*[^>]*>\s*(?:<span>)?\s*(\d+)', sec_ii, re.DOTALL)
+            if m:
+                result['trvanie'] = f"{m.group(1)} dní"
 
     return result
 
@@ -319,11 +428,29 @@ def extract_vysledok(sections: dict) -> dict:
     # Winners: ContactSelectList blocks in ODDIEL V
     winners = extract_all_contacts(sec_v)
 
+    # Electronic bids count
+    m = re.search(r'Počet ponúk prijatých elektronicky.*?<span>\s*(\d+)\s*</span>', sec_v, re.DOTALL)
+    if not m:
+        m = re.search(r'ponúk doručených elektronicky.*?<span>\s*(\d+)\s*</span>', sec_v, re.DOTALL)
+    if m:
+        result['elektronicke_ponuky'] = int(m.group(1))
+    else:
+        result['elektronicke_ponuky'] = None
+
+    # Contract info (date from V.2.1)
+    zmluvy = []
+    for dm in re.finditer(r'Dátum uzatvorenia zmluvy.*?<div class="date_[^"]*">\s*(\d{2}\.\d{2}\.\d{4})', sec_v, re.DOTALL):
+        zmluvy.append({'datum': dm.group(1).strip()})
+    result['zmluvy'] = zmluvy
+
     # Winner value — try to find value near each winner
     # Simple approach: find all values in section
     values = re.findall(r'Hodnota zákazky/časti.*?<span>\s*([\d\s,\.]+)\s*</span>', sec_v, re.DOTALL)
     if not values:
         values = re.findall(r'Celková hodnota zákazky.*?<span>\s*([\d\s,\.]+)\s*</span>', sec_v, re.DOTALL)
+
+    # MSP (small/medium enterprise) indicators — find all in section
+    msp_flags = re.findall(r'Dodávateľom je MSP.*?<span>\s*(.*?)\s*</span>', sec_v, re.DOTALL)
 
     for i, w in enumerate(winners):
         tender = {
@@ -333,6 +460,17 @@ def extract_vysledok(sections: dict) -> dict:
             'poradie': 1,
             'je_vitaz': True,
         }
+        # Velkost podniku from MSP flag
+        if i < len(msp_flags):
+            val = strip_html(msp_flags[i]).strip()
+            if 'Áno' in val or 'áno' in val:
+                tender['velkost_podniku'] = 'MSP'
+            elif 'Nie' in val or 'nie' in val:
+                tender['velkost_podniku'] = 'Veľký podnik'
+            else:
+                tender['velkost_podniku'] = ''
+        else:
+            tender['velkost_podniku'] = ''
         result['ucastnici'].append(tender)
 
     # If we have a total value but no winner-level values
@@ -387,6 +525,45 @@ def extract_zmena_zmluvy(sections: dict) -> dict:
 
 
 # ═══════════════════════════════════════════════════════
+# Metadata extraction (header area)
+# ═══════════════════════════════════════════════════════
+
+def extract_metadata(html: str) -> dict:
+    """Extract document metadata from MainHeader area."""
+    meta = {
+        'cislo_dokumentu': '',
+        'kod': '',
+        'typ_oznamenia': '',
+        'druh_zakazky': '',
+        'vestnik_cislo': '',
+    }
+
+    headers = re.findall(r'<div class="MainHeader">(.*?)</div>', html)
+    if headers:
+        # First header: "22333 - MST"
+        m = re.match(r'(\d+)\s*-\s*(\w+)', headers[0])
+        if m:
+            meta['cislo_dokumentu'] = m.group(1)
+            meta['kod'] = m.group(2)
+
+        # Second header: full type name
+        if len(headers) > 1:
+            meta['typ_oznamenia'] = strip_html(headers[1]).strip()
+
+    # Vestník č.: div between first and second MainHeader
+    m = re.search(r'<div class="MainHeader">.*?</div>\s*<div>(Vestník č\.[^<]+)</div>', html, re.DOTALL)
+    if m:
+        meta['vestnik_cislo'] = strip_html(m.group(1)).strip()
+
+    # Druh zákazky
+    m = re.search(r'<strong>Druh zákazky:\s*</strong>\s*([^<]+)', html)
+    if m:
+        meta['druh_zakazky'] = m.group(1).strip()
+
+    return meta
+
+
+# ═══════════════════════════════════════════════════════
 # Main parse function
 # ═══════════════════════════════════════════════════════
 
@@ -400,8 +577,10 @@ def parse_document(html: str) -> dict:
 
     buyer = extract_buyer(sections)
     subject = extract_subject(sections, html)
+    metadata = extract_metadata(html)
 
     result = {
+        'metadata': metadata,
         'obstaravatel': buyer,
         'zakazka': subject,
     }

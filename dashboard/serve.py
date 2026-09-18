@@ -23,14 +23,18 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
     def send_api_data(self):
         all_docs = []
-        pattern = os.path.join(DATA_DIR, "vestnik_*_parser_results.json")
-        for filepath in sorted(glob.glob(pattern)):
-            try:
-                with open(filepath, "r", encoding="utf-8") as f:
-                    docs = json.load(f)
-                    all_docs.extend(docs)
-            except (json.JSONDecodeError, IOError) as e:
-                print(f"Error reading {filepath}: {e}")
+        patterns = [
+            os.path.join(DATA_DIR, "vestnik_*_parser_results.json"),
+            os.path.join(DATA_DIR, "vestnik_*_legacy_results.json"),
+        ]
+        for pattern in patterns:
+            for filepath in sorted(glob.glob(pattern)):
+                try:
+                    with open(filepath, "r", encoding="utf-8") as f:
+                        docs = json.load(f)
+                        all_docs.extend(docs)
+                except (json.JSONDecodeError, IOError) as e:
+                    print(f"Error reading {filepath}: {e}")
 
         response = json.dumps(all_docs, ensure_ascii=False).encode("utf-8")
         self.send_response(200)

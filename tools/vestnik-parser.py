@@ -157,6 +157,26 @@ def parse_organizations(items: list[str]) -> dict:
                 orgs[current_org]['email'] = item.split(':', 1)[1].strip()
             elif item.startswith('Mesto:'):
                 orgs[current_org]['city'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Ulica:'):
+                orgs[current_org]['adresa'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Číslo:'):
+                cislo = item.split(':', 1)[1].strip()
+                if cislo:
+                    orgs[current_org]['adresa'] = (orgs[current_org].get('adresa', '') + ' ' + cislo).strip()
+            elif item.startswith('PSČ:'):
+                orgs[current_org]['psc'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Nižšia územná jednotka krajiny:'):
+                orgs[current_org]['kraj'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Krajina:'):
+                orgs[current_org]['krajina'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Telefónne číslo:'):
+                orgs[current_org]['telefon'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Internetová adresa (URL):'):
+                orgs[current_org]['web'] = item.split(':', 1)[1].strip()
+            elif item.startswith('DIČ:'):
+                orgs[current_org]['dic'] = item.split(':', 1)[1].strip()
+            elif item.startswith('Zatriedenie hospodárskeho subjektu podľa veľkosti podniku:'):
+                orgs[current_org]['velkost_podniku'] = item.split(':', 1)[1].strip()
 
     # Build name→ico index (excluding UVO)
     orgs['_name_to_ico'] = {}
@@ -177,9 +197,11 @@ def extract_buyer(containers: list[list[str]], orgs: dict) -> dict:
         return {}
 
     items = containers[2]
-    buyer = {'nazov': '', 'ico': '', 'email': ''}
+    buyer = {'nazov': '', 'ico': '', 'email': '', 'adresa': '', 'psc': '', 'mesto': '',
+             'telefon': '', 'typ_kupujuceho': '', 'cinnost': '', 'profil_url': ''}
 
     # "ID kupujúceho: ORG-0002 (Názov)"  or  "ID kupujúceho : ORG-0002 (Názov)"
+    matched_org = None
     for item in items:
         m = re.match(r'ID kupujúceho\s*:\s*(?:(ORG-\d+)\s*\(([^)]+)\)|(ORG-\d+))', item)
         if m:
@@ -192,6 +214,7 @@ def extract_buyer(containers: list[list[str]], orgs: dict) -> dict:
                 buyer['nazov'] = name_from_id or org['name']
                 buyer['ico'] = org['ico'] if not is_uvo else ''
                 buyer['email'] = org['email']
+                matched_org = org
                 # If org is UVO or name doesn't match, find the real buyer org
                 if is_uvo or (name_from_id and org['name'] != name_from_id):
                     target_name = name_from_id
@@ -208,6 +231,7 @@ def extract_buyer(containers: list[list[str]], orgs: dict) -> dict:
                             buyer['ico'] = o['ico']
                         if o.get('email'):
                             buyer['email'] = o['email']
+                        matched_org = o
                         break
             else:
                 buyer['nazov'] = name_from_id
@@ -217,6 +241,35 @@ def extract_buyer(containers: list[list[str]], orgs: dict) -> dict:
                 if buyer['nazov'] in name_idx:
                     buyer['ico'] = name_idx[buyer['nazov']]
             break
+
+    # Get address fields from matched org, or fallback to name-based lookup
+    if matched_org:
+        buyer['adresa'] = matched_org.get('adresa', '')
+        buyer['psc'] = matched_org.get('psc', '')
+        buyer['mesto'] = matched_org.get('city', '')
+        buyer['telefon'] = matched_org.get('telefon', '')
+    # If address is still empty, try to find by buyer name in all orgs
+    if not buyer['adresa'] and not buyer['mesto'] and buyer['nazov']:
+        for o in orgs.values():
+            if isinstance(o, dict) and o.get('name') == buyer['nazov'] and (o.get('adresa') or o.get('city')):
+                buyer['adresa'] = o.get('adresa', '')
+                buyer['psc'] = o.get('psc', '')
+                buyer['mesto'] = o.get('city', '')
+                buyer['telefon'] = buyer['telefon'] or o.get('telefon', '')
+                break
+
+    # Extract buyer-specific fields from Container 2
+    for item in items:
+        if item.startswith('Typ kupujúceho podľa právnych predpisov:'):
+            buyer['typ_kupujuceho'] = item.split(':', 1)[1].strip()
+        elif item.startswith('Činnosť verejného obstarávateľa:'):
+            buyer['cinnost'] = item.split(':', 1)[1].strip()
+        elif item.startswith('Profil kupujúceho (URL):'):
+            buyer['profil_url'] = item.split(':', 1)[1].strip()
+            if not buyer['profil_url'].startswith('http'):
+                # Reconstruct URL if split removed protocol
+                if 'https:' in item:
+                    buyer['profil_url'] = 'https:' + item.split('https:', 1)[1].strip()
 
     return buyer
 
@@ -235,11 +288,41 @@ def extract_subject(containers: list[list[str]]) -> dict:
         'predmet': '',
         'cpv_kod': '',
         'druh': '',
+        'opis': '',
+        'nuts': '',
+        'miesto_plnenia': '',
+        'druh_postupu': '',
+        'pravny_zaklad': '',
     }
 
     subject['predmet'] = find_field(items, 'Názov:') or find_field(items, 'Názov :') or ''
     subject['cpv_kod'] = find_field(items, 'Hlavný CPV kód:') or ''
     subject['druh'] = find_field(items, 'Druh zákazky:') or ''
+
+    # Opis — from Container 3 or 4, truncated to 500 chars
+    opis = find_field(items, 'Opis:') or find_field(items, 'Opis :') or ''
+    if not opis and len(containers) > 4:
+        opis = find_field(containers[4], 'Opis:') or find_field(containers[4], 'Opis :') or ''
+    subject['opis'] = opis[:500]
+
+    # NUTS / region
+    subject['nuts'] = find_field(items, 'Nižšia územná jednotka krajiny:') or ''
+    if not subject['nuts'] and len(containers) > 4:
+        subject['nuts'] = find_field(containers[4], 'Nižšia územná jednotka krajiny:') or ''
+
+    # Miesto plnenia — combine Krajina + region
+    krajina = find_field(items, 'Krajina:') or ''
+    vymedzenie = find_field(items, 'Vymedzenie miesta plnenia:') or ''
+    if krajina and vymedzenie:
+        subject['miesto_plnenia'] = f"{krajina}, {vymedzenie}"
+    elif krajina:
+        subject['miesto_plnenia'] = krajina
+
+    # Druh postupu
+    subject['druh_postupu'] = find_field(items, 'Druh postupu:') or ''
+
+    # Právny základ
+    subject['pravny_zaklad'] = find_field(items, 'Právny základ postupu:') or ''
 
     return subject
 
@@ -255,6 +338,9 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
         'mena': 'EUR',
         'pocet_ponuk': None,
         'ucastnici': [],
+        'zmluvy': [],
+        'elektronicke_ponuky': None,
+        'subdodavatelia': '',
     }
 
     if len(containers) < 6:
@@ -278,6 +364,15 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
                     result['pocet_ponuk'] = int(m.group(1))
             break
 
+    # Electronic tenders count
+    for i, item in enumerate(items5):
+        if 'Typ prijatých ponúk: Ponuky podané elektronicky' == item.strip():
+            if i + 1 < len(items5):
+                m = re.match(r'Počet:\s*(\d+)', items5[i + 1])
+                if m:
+                    result['elektronicke_ponuky'] = int(m.group(1))
+            break
+
     # Parse tenders section (6.3 Informácie o ponukách)
     # Pattern: ID uchádzača → values → poradie
     tenders = []
@@ -289,7 +384,8 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
         if m:
             if current_tender:
                 tenders.append(current_tender)
-            current_tender = {'nazov': '', 'ico': '', 'cena': None, 'poradie': None, 'je_vitaz': False}
+            current_tender = {'nazov': '', 'ico': '', 'cena': None, 'poradie': None,
+                              'je_vitaz': False, 'velkost_podniku': '', 'subdodavatelia': ''}
             continue
 
         if current_tender is None:
@@ -313,6 +409,11 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
             current_tender['cena'] = parse_number(m.group(1))
             continue
 
+        # Subdodávatelia per tender
+        if item.startswith('Zadávanie zákaziek subdodávateľom:'):
+            current_tender['subdodavatelia'] = item.split(':', 1)[1].strip()
+            continue
+
         # "ID uchádzača: TPA-0002 (Slovenská autobusová doprava Lučenec, akciová spoločnosť) (uchádzač 2)"
         # "ID uchádzača: ORG-0003 (FEROSTA a spol., s.r.o.)"
         m = re.match(r'ID uchádzača:\s*(?:TPA|ORG)-(\d+)\s*\(([^)]+)\)', item)
@@ -325,6 +426,8 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
             org_key = f"ORG-{m.group(1)}"
             if org_key in orgs and isinstance(orgs[org_key], dict) and orgs[org_key].get('ico') and orgs[org_key]['ico'] != '31797903':
                 current_tender['ico'] = orgs[org_key]['ico']
+                # Also get velkost_podniku from org registry
+                current_tender['velkost_podniku'] = orgs[org_key].get('velkost_podniku', '')
             else:
                 name_idx = orgs.get('_name_to_ico', {})
                 if name in name_idx:
@@ -335,6 +438,11 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
                         if name in org_name or org_name in name:
                             current_tender['ico'] = ico
                             break
+                # Try to find velkost_podniku by name match
+                for o in orgs.values():
+                    if isinstance(o, dict) and o.get('name') == name and o.get('velkost_podniku'):
+                        current_tender['velkost_podniku'] = o['velkost_podniku']
+                        break
             continue
 
     if current_tender:
@@ -352,6 +460,12 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
         if t.get('poradie') == 1:
             t['je_vitaz'] = True
 
+    # Collect subdodavatelia summary from any tender
+    for t in tenders:
+        if t.get('subdodavatelia') and t['subdodavatelia'] not in ('', 'Nie'):
+            result['subdodavatelia'] = t['subdodavatelia']
+            break
+
     # Deduplicate by name (same bidder can appear in multiple lots)
     seen = {}
     for t in tenders:
@@ -366,6 +480,49 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
             seen[key] = t
 
     result['ucastnici'] = list(seen.values())
+
+    # Parse contracts section (6.4 Informácie o zmluvách)
+    zmluvy = []
+    current_zmluva = None
+    in_zmluvy_section = False
+    for item in items5:
+        if 'Zoznam zmlúv' in item:
+            in_zmluvy_section = True
+            continue
+        if not in_zmluvy_section:
+            continue
+        if item.startswith('Identifikátor zmluvy:'):
+            if current_zmluva:
+                zmluvy.append(current_zmluva)
+            current_zmluva = {'id': item.split(':', 1)[1].strip(), 'datum': '', 'nazov': '', 'url': ''}
+            continue
+        if current_zmluva is None:
+            continue
+        if item.startswith('Dátum uzavretia zmluvy:'):
+            current_zmluva['datum'] = item.split(':', 1)[1].strip()
+        elif item.startswith('Názov:') or item.startswith('Názov :'):
+            val = item.split(':', 1)[1].strip()
+            current_zmluva['nazov'] = val
+        elif item.startswith('Odkaz na zverejnenú zmluvu (URL):'):
+            url = item.split(':', 1)[1].strip()
+            if not url.startswith('http') and 'https:' in item:
+                url = 'https:' + item.split('https:', 1)[1].strip()
+            current_zmluva['url'] = url
+        elif item.startswith('Identifikátor úspešnej ponuky'):
+            # End of this contract
+            if current_zmluva:
+                zmluvy.append(current_zmluva)
+                current_zmluva = None
+        elif item.startswith('6.') or item.startswith('Celková hodnota'):
+            # Moved past contracts section
+            if current_zmluva:
+                zmluvy.append(current_zmluva)
+                current_zmluva = None
+            break
+    if current_zmluva:
+        zmluvy.append(current_zmluva)
+    result['zmluvy'] = zmluvy
+
     return result
 
 
@@ -383,6 +540,10 @@ def extract_vyhlasenie(containers: list[list[str]]) -> dict:
         'eu_fond': '',
         'ramcova_dohoda': False,
         'kriterium': '',
+        'elektronicka_aukcia': False,
+        'dns': '',
+        'trvanie_mesiace': None,
+        'trvanie_dni': None,
     }
 
     if len(containers) < 5:
@@ -433,6 +594,42 @@ def extract_vyhlasenie(containers: list[list[str]]) -> dict:
             break
         if item.startswith('Opis kritéria na vyhodnotenie ponúk:'):
             result['kriterium'] = item.split(':', 1)[1].strip()[:100]
+            break
+
+    # Elektronická aukcia
+    for item in items4:
+        if item.startswith('Použitie elektronickej aukcie'):
+            val = item.split(':', 1)[1].strip().lower() if ':' in item else ''
+            result['elektronicka_aukcia'] = 'áno' in val
+            break
+
+    # Dynamický nákupný systém
+    for item in items4:
+        if item.startswith('Dynamický nákupný systém:'):
+            result['dns'] = item.split(':', 1)[1].strip()
+            break
+
+    # Trvanie zákazky
+    for i, item in enumerate(items4):
+        m = re.match(r'Dĺžka trvania.*?\(hodnota\):\s*(\d+)', item)
+        if m:
+            hodnota = int(m.group(1))
+            # Check next item for unit
+            if i + 1 < len(items4):
+                unit_item = items4[i + 1]
+                if 'jednotka' in unit_item.lower():
+                    unit_val = unit_item.split(':', 1)[1].strip() if ':' in unit_item else ''
+                    if 'Mesiac' in unit_val:
+                        result['trvanie_mesiace'] = hodnota
+                    elif 'Deň' in unit_val or 'deň' in unit_val:
+                        result['trvanie_dni'] = hodnota
+                    else:
+                        # Default to months
+                        result['trvanie_mesiace'] = hodnota
+                else:
+                    result['trvanie_mesiace'] = hodnota
+            else:
+                result['trvanie_mesiace'] = hodnota
             break
 
     return result
@@ -555,6 +752,52 @@ def parse_number(s: str) -> Optional[float]:
 
 
 # ═══════════════════════════════════════════════════════
+# Metadata from Container 0
+# ═══════════════════════════════════════════════════════
+
+def extract_metadata(containers: list[list[str]]) -> dict:
+    """Extract metadata from Container 0."""
+    metadata = {
+        'id_zakazky': '',
+        'id_organizacie': '',
+        'typ_oznamenia': '',
+        'typ_formulara': '',
+        'verzia': '',
+        'podtyp': '',
+    }
+
+    if not containers:
+        return metadata
+
+    items0 = containers[0]
+
+    # "Zákazka: Názov zákazky (ID: XXXX)"
+    for item in items0:
+        m = re.match(r'Zákazka:.*?\(ID:\s*(\d+)\)', item)
+        if m:
+            metadata['id_zakazky'] = m.group(1)
+            break
+
+    # "Organizácia: Názov org (ID: XXXX)"
+    for item in items0:
+        m = re.match(r'Organizácia:.*?\(ID:\s*(\d+)\)', item)
+        if m:
+            metadata['id_organizacie'] = m.group(1)
+            break
+
+    metadata['typ_oznamenia'] = find_field(items0, 'Typ oznámenia:') or ''
+    metadata['typ_formulara'] = find_field(items0, 'Typ formulára:') or ''
+
+    verzia = find_field(items0, 'Verzia oznámenia') or ''
+    verzia = verzia.strip().lstrip(':').strip()
+    metadata['verzia'] = verzia
+
+    metadata['podtyp'] = find_field(items0, 'Podtyp oznámenia:') or ''
+
+    return metadata
+
+
+# ═══════════════════════════════════════════════════════
 # Main pipeline
 # ═══════════════════════════════════════════════════════
 
@@ -567,8 +810,10 @@ def parse_document(html: str, action: str) -> dict:
     orgs = parse_organizations(containers[1]) if len(containers) > 1 else {}
     buyer = extract_buyer(containers, orgs)
     subject = extract_subject(containers)
+    metadata = extract_metadata(containers)
 
     result = {
+        'metadata': metadata,
         'obstaravatel': buyer,
         'zakazka': subject,
     }
