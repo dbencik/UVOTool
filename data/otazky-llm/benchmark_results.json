@@ -1,0 +1,142 @@
+[
+  {
+    "file": "q1-1_linkcrz_0uc-qw25_7b_local",
+    "type": "klasifikácia (A-H)",
+    "chars": 788,
+    "models": {
+      "qwen2.5:7b": {
+        "time": 2.8,
+        "prompt_tokens": 281,
+        "output_tokens": 2,
+        "tok_per_sec": 113.9,
+        "response": "F"
+      },
+      "qwen2.5:32b": {
+        "time": 9.6,
+        "prompt_tokens": 281,
+        "output_tokens": 2,
+        "tok_per_sec": 29.8,
+        "response": "F"
+      },
+      "mistral-small": {
+        "time": 9.2,
+        "prompt_tokens": 391,
+        "output_tokens": 41,
+        "tok_per_sec": 22.3,
+        "response": "Na základe poskytnutého textu dokumentu, ktorý obsahuje odkaz na zmluvu, je možné určiť, že dokument patrí do kategórie:\n\nF"
+      }
+    }
+  },
+  {
+    "file": "q1-2_stavb_zapisnica_3uc-qw25_7b_local",
+    "type": "klasifikácia (A-H)",
+    "chars": 2450,
+    "models": {
+      "qwen2.5:7b": {
+        "time": 21.8,
+        "prompt_tokens": 1139,
+        "output_tokens": 2,
+        "tok_per_sec": 112.8,
+        "response": "D"
+      },
+      "qwen2.5:32b": {
+        "time": 6.6,
+        "prompt_tokens": 1139,
+        "output_tokens": 2,
+        "tok_per_sec": 29.1,
+        "response": "D"
+      },
+      "mistral-small": {
+        "time": 4.1,
+        "prompt_tokens": 1158,
+        "output_tokens": 2,
+        "tok_per_sec": 42.4,
+        "response": "D"
+      }
+    }
+  },
+  {
+    "file": "q1-5_it_2uc-qw25_7b_local",
+    "type": "klasifikácia (A-H)",
+    "chars": 8301,
+    "models": {
+      "qwen2.5:7b": {
+        "time": 5.5,
+        "prompt_tokens": 3864,
+        "output_tokens": 2,
+        "tok_per_sec": 38.8,
+        "response": "D"
+      },
+      "qwen2.5:32b": {
+        "time": 26.3,
+        "prompt_tokens": 3864,
+        "output_tokens": 2,
+        "tok_per_sec": 27.9,
+        "response": "D"
+      },
+      "mistral-small": {
+        "time": 15.5,
+        "prompt_tokens": 3463,
+        "output_tokens": 2,
+        "tok_per_sec": 40.3,
+        "response": "D"
+      }
+    }
+  },
+  {
+    "file": "q2-2_stavb_zapisnica_3uc-qw25_7b_local",
+    "type": "extrakcia účastníkov",
+    "chars": 3606,
+    "models": {
+      "qwen2.5:7b": {
+        "time": 7.2,
+        "prompt_tokens": 1513,
+        "output_tokens": 307,
+        "tok_per_sec": 61.3,
+        "response": "```json\n{\n    \"Stav\": 1,\n    \"Ucastnici\": [\n        {\n            \"ICO\": \"81222222\",\n            \"NAME\": \"Sanácie SK s. r. o.\",\n            \"COUNTRY\": \"SK\",\n            \"DoruceniePonuky\": \"YES\",\n            \"Poradie\": \"1\",\n            \"CENA\": \"79 523,57 eur s DPH\",\n            \"Excl_Flag\": \"N\"\n        },\n        {\n            \"ICO\": \"27816222\",\n            \"NAME\": \"KERASTAV, s.r.o.\",\n            \"COUNTRY\": \"SK\",\n            \"DoruceniePonuky\": \"YES\",\n            \"Poradie\": \"2\",\n            \"CENA\": \"75 029,99 eur s DPH\",\n            \"Excl_Flag\": \"N\"\n        },\n        {\n            \"ICO\": \"27816222\",\n            \"NAME\": \"GLOBALTECH SLOVAKIA s.r.o.\",\n            \"COUNTRY\": \"SK\",\n            \"DoruceniePonuky\": \"YES\",\n            \"Poradie\": \"3\",\n            \"CENA\": \"74 563,15 eur s DPH\",\n            \"Excl_Flag\": \"N\"\n        }\n    ]\n}\n```"
+      },
+      "qwen2.5:32b": {
+        "time": 29.6,
+        "prompt_tokens": 1513,
+        "output_tokens": 277,
+        "tok_per_sec": 14.6,
+        "response": "```json\n{\n  \"Stav\": 1,\n  \"Ucastnici\": [\n    {\n      \"ICO\": \"\",\n      \"NAME\": \"Sanácie SK s. r. o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"#NA\",\n      \"CENA\": \"79 523,57 eur s DPH\",\n      \"Excl_Flag\": \"?\"\n    },\n    {\n      \"ICO\": \"\",\n      \"NAME\": \"KERASTAV, s.r.o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"#NA\",\n      \"CENA\": \"75 029,99 eur s DPH\",\n      \"Excl_Flag\": \"?\"\n    },\n    {\n      \"ICO\": \"\",\n      \"NAME\": \"GLOBALTECH SLOVAKIA s.r.o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"#NA\",\n      \"CENA\": \"74 563,15 eur s DPH\",\n      \"Excl_Flag\": \"?\"\n    }\n  ]\n}\n```"
+      },
+      "mistral-small": {
+        "time": 20.2,
+        "prompt_tokens": 1487,
+        "output_tokens": 276,
+        "tok_per_sec": 20.5,
+        "response": "```json\n{\n  \"Stav\": 1,\n  \"Ucastnici\": [\n    {\n      \"ICO\": \"\",\n      \"NAME\": \"Sanácie SK s. r. o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"\",\n      \"CENA\": \"79 523,57 eur s DPH\",\n      \"Excl_Flag\": \"N\"\n    },\n    {\n      \"ICO\": \"\",\n      \"NAME\": \"KERASTAV, s.r.o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"\",\n      \"CENA\": \"75 029,99 eur s DPH\",\n      \"Excl_Flag\": \"N\"\n    },\n    {\n      \"ICO\": \"\",\n      \"NAME\": \"GLOBALTECH SLOVAKIA s.r.o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"\",\n      \"CENA\": \"74 563,15 eur s DPH\",\n      \"Excl_Flag\": \"N\"\n    }\n  ]\n}\n```"
+      }
+    }
+  },
+  {
+    "file": "q2-5_it_2uc-qw25_7b_local",
+    "type": "extrakcia účastníkov",
+    "chars": 26860,
+    "models": {
+      "qwen2.5:7b": {
+        "time": 23.6,
+        "prompt_tokens": 11955,
+        "output_tokens": 176,
+        "tok_per_sec": 51.4,
+        "response": "```json\n{\n  \"Stav\": 1,\n  \"Ucastnici\": [\n    {\n      \"ICO\": \"54629331\",\n      \"NAME\": \"Alanata a. s.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"1\",\n      \"CENA\": \"\",\n      \"Excl_Flag\": \"N\"\n    },\n    {\n      \"ICO\": \"46450424\",\n      \"NAME\": \"WDS Solutions s.r.o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"1\",\n      \"CENA\": \"\",\n      \"Excl_Flag\": \"N\"\n    }\n  ]\n}\n```"
+      },
+      "qwen2.5:32b": {
+        "time": 103.0,
+        "prompt_tokens": 11955,
+        "output_tokens": 102,
+        "tok_per_sec": 12.0,
+        "response": "```json\n{\n    \"Stav\": 1,\n    \"Ucastnici\": [\n        {\n            \"ICO\": \"54629331\",\n            \"NAME\": \"Alanata a. s.\",\n            \"COUNTRY\": \"SK\",\n            \"DoruceniePonuky\": \"YES\",\n            \"Poradie\": \"1\",\n            \"CENA\": \"#NA\",\n            \"Excl_Flag\": \"N\"\n        }\n    ]\n}\n```"
+      },
+      "mistral-small": {
+        "time": 75.5,
+        "prompt_tokens": 10606,
+        "output_tokens": 176,
+        "tok_per_sec": 14.6,
+        "response": "```json\n{\n  \"Stav\": 1,\n  \"Ucastnici\": [\n    {\n      \"ICO\": \"54629331\",\n      \"NAME\": \"Alanata a. s.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"1\",\n      \"CENA\": \"\",\n      \"Excl_Flag\": \"N\"\n    },\n    {\n      \"ICO\": \"36212466\",\n      \"NAME\": \"Datacomp s.r.o.\",\n      \"COUNTRY\": \"SK\",\n      \"DoruceniePonuky\": \"YES\",\n      \"Poradie\": \"\",\n      \"CENA\": \"\",\n      \"Excl_Flag\": \"?\"\n    }\n  ]\n}\n```"
+      }
+    }
+  }
+]

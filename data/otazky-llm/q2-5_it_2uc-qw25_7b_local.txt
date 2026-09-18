@@ -1,0 +1,210 @@
+
+                        Extrahuj z textu dokumentu informácie o účastníkoch tendra, ktorí predložili ponuku. 
+                        Nestačí, že boli oslovení obtarávateľom. Extrahuj účastníkov LEN z tu priloženého dokumentu a z ničoho iného.
+                        IČO a Názov musia byť tu uvedené. Ak IČO alebo Názov súťažiaceho nie je v texte, nechaj ho prázdne a nedohľadávaj z iných zdrojov. 
+                        Ak je účastník skupina 2 alebo viacerých firiem, vyber 1 vedúci podnik z nich.
+                        Ak je IČO alebo názov organizácie v inom kontexte ako účastník súťaže, nedávaj tú spoločnosť na výstup.
+                        Vráť odpoveď vo forme json-u (bez uvodnych oznamok, bez poznamok za json-om) v nasledujúcej štruktúre:
+
+                        - 'Stav': 1-sú tu ponuky, 2- súžať bola zrušená, 3-v dokumente žiadni uchádzači ani súťažiaci s ponukami nie sú
+                        - 'Ucastnici': Zoznam/list objektov a atributmi:
+                            - 'ICO' - ICO pravnickej osoby (typ str, aj ak je prazdny)
+                            - 'NAME' (Názov subjektu typu str)
+                            - 'COUNTRY' (Krajina registrácie subjektu, ktorý sa uchádza s ponukou, 2 znaky ISO kódu, ako SK, CZ)
+                            - 'DoruceniePonuky' (Text YES/NO/ #NA )
+                            - 'Poradie' - poradie vo výsledku súťaže (typu str)
+                            - 'CENA' - cena ponúknutá (aj s menou a info o dph)
+                            - 'Excl_Flag' = 'N'/'Y'/'?', či bol vylúčený z dôvodu nesplnenia podmienok
+                        
+                        Odpovedz len vo forme json
+
+                        ------------------------------------------------
+                        TEXT DOKUMENTU (zdroj extrakcie): 
+                        ------------------------------------------------
+                        Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+ZÁPISNICA Z VYHODNOTENIA SPLNENIA PODMIENOK ÚČASTI
+podľa § 40 ods. 14 zákona č. 343/2015 Z. z. o verejnom obstarávaní a o zmene a doplnení niektorých zákonov
+v znení neskorších predpisov (ďalej ako „zákon o verejnom obstarávaní“ v príslušnom gramatickom tvare)
+V súlade s ust. § 66 ods. 7 písm. b) zákona o verejnom obstarávaní obstarávateľ rozhodol, že vyhodnotenie
+splnenia podmienok účasti podľa § 40 zákona o verejnom obstarávaní sa uskutoční v tejto verejnej súťaži až po
+vyhodnotení ponúk na základe kritérií na vyhodnotenie ponúk a až po vyhodnotení ponúk z hľadiska splnenia
+požiadaviek na predmet zákazky podľa § 53 zákona o verejnom obstarávaní u uchádzača, ktorý sa po vyhodnotení
+ponúk na základe kritérií na vyhodnotenie ponúk umiestnil na prvom mieste v poradí, prípadne ďalšieho uchádzača
+v poradí podľa vyhodnotenia ponúk na základe kritérií na vyhodnotenie ponúk, ak dôjde k vylúčeniu ponuky
+uchádzača podľa ust. § 53 ods. 4 zákona o verejnom obstarávaní.
+Na základe skutočnosti, že uchádzač Skupina dodávateľov Alanata + WDS: Alanata a. s., so sídlom
+Krasovského 14, 851 01 Bratislava – mestská časť Petržalka, Slovenská republika, IČO: 54629331, WDS
+Solutions s.r.o., so sídlom: Mateja Bela 2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424, ktorý sa
+po vyhodnotení ponúk na základe kritérií na vyhodnotenie ponúk umiestnil na prvom mieste v poradí splnil
+požiadavky na obsah ponuky a požiadavky na predmet zákazky, členovia komisie s právom vyhodnocovať ponuky
+a splnenie podmienok účasti pristúpili k vyhodnoteniu splnenia podmienok účasti týmto uchádzačom, o čom
+vyhotovili túto Zápisnicu z vyhodnotenia splnenia podmienok účasti.
+Železnice Slovenskej republiky 1 | 21
+ Tabulka 
+[['Identifikácia\nobstarávateľa:', None, None, 'Železnice Slovenskej republiky, so sídlom: Klemensova 8, 813 61 Bratislava,\nSlovenská republika, IČO: 31 364 501\n(ďalej ako „obstarávateľ“ v príslušnom gramatickom tvare)'], ['Identifikácia predmetu\nzákazky a postupu\nzadávania zákazky:', None, None, 'zákazka pod názvom „Obnova komponentov v DC – diskové polia a SAN“\nzadávaná postupom verejnej súťaže podľa ust. § 91 zákona o verejnom\nobstarávaní, v súlade s ust. § 66 ods. 7 písm. b) zákona o verejnom obstarávaní s\nvyhodnotením ponúk z hľadiska splnenia požiadaviek na predmet zákazky podľa\n§ 53 zákona o verejnom obstarávaní a vyhodnotením splnenia podmienok účasti\npodľa § 40 zákona o verejnom obstarávaní po vyhodnotení ponúk na základe\nkritérií na vyhodnotenie ponúk, zverejnená v Úradnom vestníku Európskej únie\n. 100/2026 dňa 27.05.2026 pod značkou 358649-2026 a vo Vestníku verejného\nobstarávania č. 105/2026 zo dňa 28.05.2026 pod značkou 7377 - MST (ďalej ako\n„verejná súťaž“ v príslušnom gramatickom tvare)'], ['', 'Lehota na predkladanie', '', 'do 24.06.2026 do 10:00 hod. SEČ'], [None, 'ponúk:', None, None], ['', 'Termín otvárania ponúk:', '', '24.06.2026 o 10:01 hod. SEČ'], ['Miesto otvárania ponúk:', None, None, 'on-line sprístupnenie ponúk prostredníctvom funkcionality elektronického\nprostriedku JOSEPHINE 2.3 (ďalej ako „JOSEPHINE“)\nzasadnutie členov komisie zriadenej obstarávateľom za účelom vyhodnotenia\nponúk a vyhodnotenia splnenia podmienok účasti v procese zadávania verejnej\nsúťaže (ďalej ako „komisia“ v príslušnom gramatickom tvare) sa uskutočnilo na\nadrese Železničné telekomunikácie Bratislava, Kováčska 3, 832 06 Bratislava']]
+ Tabulka 
+[['Identifikácia'], ['obstarávateľa:']]
+ Tabulka 
+[['Identifikácia predmetu'], ['zákazky a postupu'], ['zadávania zákazky:']]
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+1. Zoznam uchádzačov, ktorí predložili ponuku v lehote na predkladanie ponúk:
+V lehote na predkladanie ponúk predložili obstarávateľovi ponuku nasledovní uchádzači:
+3. Informácia o vyhodnotení ponúk na základe kritérií na vyhodnotenie ponúk, vyhodnotení ponúk v rámci
+vyhodnotenia obsahu ponúk, vyhodnotení ponúk z hľadiska splnenia požiadaviek na predmet zákazky:
+– mestská časť Petržalka, Slovenská republika, IČO: 54629331, WDS Solutions s.r.o., so sídlom: Mateja Bela
+2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424, ktorý sa po vyhodnotení ponúk na základe kritérií
+na vyhodnotenie ponúk umiestnil na prvom mieste v poradí, z hľadiska splnenia požiadaviek na obsah ponuky
+a z hľadiska splnenia požiadaviek na predmet zákazky, sú uvedené v samostatnej Zápisnici z vyhodnotenia ponúk.
+Uchádzač splnil požiadavky na obsah ponuky a požiadavky na predmet zákazky.
+4. Predloženie dokladov v zmysle ust. § 55 ods. 1 zákona o verejnom obstarávaní:
+Uchádzač Skupina dodávateľov Alanata + WDS: Alanata a. s., so sídlom Krasovského 14, 851 01 Bratislava –
+mestská časť Petržalka, Slovenská republika, IČO: 54629331, WDS Solutions s.r.o., so sídlom: Mateja Bela
+2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424:
+Uchádzač obsahom svojej ponuky predložil v súlade s ust. § 39 zákona o verejnom obstarávaní Jednotné európske
+dokumenty zo dňa 22.06.2026, ktorými predbežne nahradil doklady preukazujúce splnenie podmienok účasti
+týkajúcich sa osobného postavenia podľa § 32 ods. 1 zákona o verejnom obstarávaní, doklady preukazujúce
+splnenie podmienok účasti týkajúcich sa finančného a ekonomického postavenia podľa § 33 ods. 1 písm. d) zákona
+o verejnom obstarávaní a doklady preukazujúce splnenie podmienok účasti týkajúcich sa technickej spôsobilosti
+alebo odbornej spôsobilosti podľa § 34 ods. 1 písm. a) zákona o verejnom obstarávaní, podľa § 34 ods. 1 písm. g)
+zákona o verejnom obstarávaní, podľa § 34 ods. 1 písm. d) zákona o verejnom obstarávaní v nadväznosti na § 35
+zákona o verejnom obstarávaní a podľa § 34 ods. 1 písm. h) zákona o verejnom obstarávaní.
+Železnice Slovenskej republiky 2 | 21
+ Tabulka 
+[['P.Č.', 'UCHÁDZAČ', None, 'DÁTUM A ČAS', ''], [None, None, None, 'PREDLOŽENIA PONUKY', None], ['1.', 'Datacomp s.r.o., so sídlom Moldavská cesta 2415/49, 040 11\n2\nKošice, Slovenská republika, IČO: 36212466', None, '3.06.2026 o 15:50:31 hod. SEČ.', None], ['2.', '', 'Skupina dodávateľov Alanata + WDS:\nAlanata a. s., so sídlom Krasovského 14, 851 01 Bratislava –\nmestská časť Petržalka, Slovenská republika, IČO: 54629331 2\nWDS Solutions s.r.o., so sídlom: Mateja Bela 2494/4, 911 08\nTrenčín, Slovenská republika, IČO: 46450424', '4.06.2026 o 09:39:56 hod. SEČ.', None]]
+ Tabulka 
+[[None, 'Zoznam vylúčených uchádzačov v rámci vyhodnotenia ponúk na základe kritérií na vyhodnotenie ponúk,'], ['zoznam vylúčených uchádzačov z dôvodu nesplnenia požiadaviek na obsah ponuky, požiadaviek na', None], ['predmet zákazky a odôvodnenie vylúčenia', None]]
+ Tabulka 
+[['Uchádzač', None], [None, 'Vylúčenie uchádzača v súlade s ust. § 53 ods. 4 písm. a) zákona o verejnom obstarávaní (uchádzač'], ['nezložil zábezpeku podľa určených podmienok). Oznámenie o vylúčení ponuky zo dňa 25.06.2026 bolo', None], ['uchádzačovi odoslané/doručené prostredníctvom funkcionality systému JOSEPHINE dňa 25.06.2026.', None]]
+ Tabulka 
+[['Podrobné informácie o vyhodnotení ponúk na základe kritérií na vyhodnotenie ponúk, vyhodnotení ponuky'], ['uchádzača']]
+ Tabulka 
+[['Žiadosť č. 1 - list zo dňa 25.06.2026 pod označením „Žiadosť o predloženie dokladov na preukázanie splnenia', None], ['podmienok účasti nahradených Jednotným európskym dokumentom“, uchádzačovi doručený prostredníctvom', None], ['funkcionality JOSEPHINE dňa', 'edloženie dokladov nahradených'], ['Jednotným európskym dokumentom', None]]
+
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+V súlade s ust. § 55 ods. 1 zákona o verejnom obstarávaní, ak nedošlo k predloženiu dokladov preukazujúcich
+splnenie podmienok účasti skôr alebo ak sa vyhodnotenie splnenia podmienok účasti uskutoční po vyhodnotení
+ponúk, obstarávateľ po vyhodnotení ponúk vyhodnotí splnenie podmienok účasti uchádzačom, ktorý sa umiestnil
+na prvom mieste v poradí.
+Uchádzač podaním č. 1 doručeným obstarávateľovi v stanovenej lehote predložil nasledovné doklady, ktoré
+predbežne nahradil Jednotnými európskymi dokumentami zo dňa 22.06.2026:
+K preukázaniu splnenia podmienok účasti týkajúcich sa finančného a ekonomického postavenia podľa § 33 ods. 1
+písm. d) zákona o verejnom obstarávaní:
+a) Prehľad o dosiahnutom obrate zo dňa 22.06.2026;
+K preukázaniu splnenia podmienok účasti týkajúcich sa technickej spôsobilosti alebo odbornej spôsobilosti podľa
+§ 34 ods. 1 písm. a) zákona o verejnom obstarávaní a podľa § 34 ods. 1 písm. g) zákona o verejnom obstarávaní:
+a) Životopis zo dňa 16.06.2026 za osobu Gabriel Šuchter;
+b) Životopis zo dňa 16.06.2026 za osobu Andrej Dubrovčák;
+c) Životopis zo dňa 17.06.2026 za osobu Branislav Mitas;
+d) Certifikát PRINCE 2 Practitioner - Project Management za osobu Andrej Dubrovčák;
+e) Certifikát CISM Certifikovaný manažér bezpečnosti informácií za osobu Branislav Mitas;
+f) Certifikát CISA Certifikovaný audítor informačných systémov za osobu Branislav Mitas;
+g) Zoznam dodávok tovaru podľa prílohy č. 15 súťažných podkladov;
+h) Zoznam kľúčových odborníkov podľa prílohy č. 16 súťažných podkladov;
+i) Referencia zo dňa 17.06.2026 od SkyToll, a.s.;
+j) Referencia zo dňa 17.06.2026 InterWay, a.s.;
+k) Certifikát ArchiMate 3 úroveň Foundation za osobu Gabriel Šuchter;
+l) Certifikát TOGAF úroveň Enterprise Architecture Foundation za osobu Gabriel Šuchter;
+m) Certifikát TOGAF úroveň Enterprise Architecture Practitioner za osobu Gabriel Šuchter.
+Preukázanie splnenia podmienok účasti týkajúcich sa osobného postavenia podľa § 32 ods. 1 zákona o verejnom
+obstarávaní uchádzač (za oboch členov skupiny dodávateľov) preukázal platnými zápismi v Zozname
+hospodárskych subjektov vedenom Úradom pre verejné obstarávanie.
+Preukázanie splnenia podmienok účasti týkajúcich sa technickej spôsobilosti alebo odbornej spôsobilosti
+podľa § 34 ods. 1 písm. d) zákona o verejnom obstarávaní v nadväznosti na § 35 zákona o verejnom obstarávaní
+a podľa § 34 ods. 1 písm. h) zákona o verejnom obstarávaní uchádzač preukázal dokladmi predloženými v rámci
+ponuky.
+Posúdenie komisiou: komisia posúdila uchádzačom predložené doklady, pričom konštatuje, že na základe
+predložených dokladov je možné konštatovať, že uchádzač preukázal splnenie podmienok účasti týkajúcich sa
+osobného postavenia podľa § 32 ods. 1 zákona o verejnom obstarávaní, týkajúcich sa finančného a ekonomického
+postavenia podľa § 33 ods. 1 písm. d) zákona o verejnom obstarávaní a splnenie podmienok účasti týkajúcich sa
+technickej spôsobilosti alebo odbornej spôsobilosti podľa § 34 ods. 1 písm. a) zákona o verejnom obstarávaní a
+podľa § 34 ods. 1 písm. g) zákona o verejnom obstarávaní definovaných obstarávateľom v Kapitole A.2
+Podmienky účasti súťažných podkladov.
+Železnice Slovenskej republiky 3 | 21
+ Tabulka 
+[['Odpoveď č. 1 - podanie doručené obstarávateľovi prostredníctvom funkcionality JOSEPHINE dňa 30.06.2026'], ['(ďalej ako „podanie č. 1“ v príslušnom gramatickom tvare):']]
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+Uchádzač Skupina dodávateľov Alanata + WDS: Alanata a. s., so sídlom Krasovského 14, 851 01 Bratislava –
+mestská časť Petržalka, Slovenská republika, IČO: 54629331, WDS Solutions s.r.o., so sídlom: Mateja Bela
+2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424: Neaplikovalo sa; uchádzač preukázal splnenie
+o verejnom obstarávaní.
+6. Vyhodnotenie splnenia podmienok účasti:
+V súlade s ust. § 66 ods. 7 písm. b) zákona o verejnom obstarávaní, komisia vyhodnocovala splnenie podmienok
+účasti podľa § 40 zákona o verejnom obstarávaní po vyhodnotení ponúk na základe kritérií na vyhodnotenie ponúk
+a po vyhodnotení ponuky z hľadiska splnenia požiadaviek na predmet zákazky podľa § 53 zákona o verejnom
+obstarávaní, a to u uchádzača, ktorý sa po vyhodnotení ponúk na základe kritérií na vyhodnotenie ponúk umiestnil
+na prvom mieste v poradí.
+Hodnotiaci hárok z vyhodnotenia splnenia podmienok účasti uchádzačom Skupina dodávateľov Alanata +
+WDS: Alanata a. s., so sídlom Krasovského 14, 851 01 Bratislava – mestská časť Petržalka, Slovenská republika,
+IČO: 54629331, WDS Solutions s.r.o., so sídlom: Mateja Bela 2494/4, 911 08 Trenčín, Slovenská republika, IČO:
+46450424 tvorí prílohu tejto Zápisnice z vyhodnotenia splnenia podmienok účasti. Uchádzač preukázal splnenie
+všetkých podmienok účasti stanovených verejným obstarávateľom.
+7. Zoznam vylúčených uchádzačov, ktorí nesplnili podmienky účasti a odôvodnenie vylúčenia:
+Uchádzač Skupina dodávateľov Alanata + WDS: Alanata a. s., so sídlom Krasovského 14, 851 01 Bratislava –
+mestská časť Petržalka, Slovenská republika, IČO: 54629331, WDS Solutions s.r.o., so sídlom: Mateja Bela
+2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424: NEAPLIKOVALO SA; uchádzač preukázal
+splnenie podmienok účasti stanovených obstarávateľom.
+8. Zoznam uchádzačov, ktorí splnili podmienky účasti:
+9. Prílohy:
+Príloha č. 1: Hodnotiaci hárok z vyhodnotenia splnenia podmienok účasti uchádzačom Skupina dodávateľov
+Alanata + WDS: Alanata a. s., so sídlom Krasovského 14, 851 01 Bratislava – mestská časť Petržalka, Slovenská
+republika, IČO: 54629331, WDS Solutions s.r.o., so sídlom: Mateja Bela 2494/4, 911 08 Trenčín, Slovenská
+republika, IČO: 46450424.
+10. Dôvody, pre ktoré člen komisie odmietol podpísať zápisnicu alebo podpísal zápisnicu s výhradou:
+Žiaden z členov komisie neodmietol podpísať Zápisnicu z vyhodnotenia splnenia podmienok účasti a zároveň
+všetci členovia komisie podpísali Zápisnicu z vyhodnotenia splnenia podmienok účasti bez výhrad.
+11. Poznámky:
+Železnice Slovenskej republiky 4 | 21
+ Tabulka 
+[['5. Žiadosti o vysvetlenie alebo doplnenie predložených dokladov preukazujúcich splnenie podmienok'], ['účasti:']]
+ Tabulka 
+[['podmienok účasti stanovených obstarávateľom a nebolo potrebné aplikovať inštitút žiadosti o vysvetlenie alebo'], ['doplnenie predložených dokladov preukazujúcich splnenie podmienok účasti podľa']]
+ Tabulka 
+[['', 'P.Č.', '', '', 'UCHÁDZAČ', ''], ['1.', None, None, 'Skupina dodávateľov Alanata + WDS: Alanata a. s., so sídlom Krasovského 14, 851 01 Bratislava\n– mestská časť Petržalka, Slovenská republika, IČO: 54629331, WDS Solutions s.r.o., so sídlom:\nMateja Bela 2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424', None, None]]
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+12. Zoznam členov komisie:
+Bratislava, dňa 22.07.2026
+Zapísal: Mgr. Patrícia Mokrá, senior konzultant, PROCESS MANAGEMENT, s.r.o.
+Železnice Slovenskej republiky 5 | 21
+ Tabulka 
+[['', 'P.Č.', '', '', 'MENO A PRIEZVISKO', '', '', 'FUNKCIA', '', 'PODPIS', ''], ['1.', None, None, 'Ing. Ján Dekány, Procesný manažér, ŽSR –\nŽelezničné telekomunikácie Bratislava', None, None, 'predseda komisie s právom\nvyhodnocovať ponuky\na splnenie podmienok účasti', None, None, '', None], ['2.', None, None, '', 'Ing. Zuzana Masaryková, Prednosta sekcie', '', '', 'člen komisie s právom', '', '', None], [None, None, None, None, 'VOJ, ŽSR - Železničné telekomunikácie', None, None, 'vyhodnocovať ponuky', None, None, None], [None, None, None, None, 'Bratislava', None, None, 'a splnenie podmienok účasti', None, None, None], ['3.', None, None, 'Ing. Róbert Kalamár, vedúci oddelenia, ŽSR -\nŽelezničné telekomunikácie Bratislava', None, None, 'člen komisie s právom\nvyhodnocovať ponuky\na splnenie podmienok účasti', None, None, '', None], ['4.', None, None, 'Mgr. Peter Varga, konateľ, PROCESS\nMANAGEMENT, s.r.o.', None, None, '', 'člen komisie bez práva', '', '', None], [None, None, None, None, None, None, None, 'vyhodnocovať ponuky', None, None, None], [None, None, None, None, None, None, None, 'a splnenie podmienok účasti', None, None, None], ['5.', None, None, 'Mgr. Patrícia Mokrá, senior konzultant,\nPROCESS MANAGEMENT, s.r.o.', None, None, 'člen komisie bez práva\nvyhodnocovať ponuky\na splnenie podmienok účasti', None, None, '', None]]
+ Tabulka 
+[['Mgr. Peter Varga, konateľ, PROCESS'], ['MANAGEMENT, s.r.o.']]
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+PRÍLOHA Č. 1
+HODNOTIACI HÁROK Z VYHODNOTENIA SPLNENIA PODMIENOK ÚČASTI
+Železnice Slovenskej republiky 6 | 21
+ Tabulka 
+[['Identifikácia predmetu\nzákazky a postupu zadávania\nzákazky:', 'zákazka pod názvom „Obnova komponentov v DC – diskové polia a SAN“ zadávaná postupom verejnej súťaže podľa ust. § 91 zákona o verejnom obstarávaní, v\nsúlade s ust. § 66 ods. 7 písm. b) zákona o verejnom obstarávaní s vyhodnotením ponúk z hľadiska splnenia požiadaviek na predmet zákazky podľa § 53 zákona o\nverejnom obstarávaní a vyhodnotením splnenia podmienok účasti podľa § 40 zákona o verejnom obstarávaní po vyhodnotení ponúk na základe kritérií na vyhodnotenie\nponúk, zverejnená v Úradnom vestníku Európskej únie . 100/2026 dňa 27.05.2026 pod značkou 358649-2026 a vo Vestníku verejného obstarávania č. 105/2026 zo\ndňa 28.05.2026 pod značkou 7377 - MST'], ['Identifikácia uchádzača:', 'Skupina dodávateľov Alanata + WDS:\nAlanata a. s., so sídlom Krasovského 14, 851 01 Bratislava – mestská časť Petržalka, Slovenská republika, IČO: 54629331\nWDS Solutions s.r.o., sosídlom: Mateja Bela 2494/4, 911 08 Trenčín, Slovenská republika, IČO: 46450424']]
+ Tabulka 
+[['Identifikácia predmetu'], ['zákazky a postupu zadávania'], ['zákazky:']]
+ Tabulka 
+[['PREDBEŽNÉ NAHRADENIE DOKLADOV\nPREUKAZUJÚCICH SPLNENIE PODMIENOK ÚČASTI', None, '', 'IDENTIFIKÁCIA PREDLOŽENÉHO DOKLADU / DOKUMENTU', None, '', 'POZNÁMKY'], [None, None, None, 'A ZÁVER POSÚDENIA ČLENMI KOMISIE S PRÁVOM', None, None, None], [None, None, None, 'VYHODNOCOVAŤ PONUKY A SPLNENIE PODMIENOK ÚČASTI', None, None, None], ['1.', 'Predbežné nahradenie dokladov preukazujúcich splnenie\npodmienok účasti Jednotným európskym dokumentom\nv súlade s ust. § 39 zákona o verejnom obstarávaní', 'Predloženie dokladu / dokumentu:', None, 'ÁNO', None, 'Uchádzač nahradil doklady požadované\nobstarávateľom za účelom preukázania\nsplnenia podmienok účasti stanovených\nobstarávateľom Jednotným európskym\ndokumentom v súlade s ust. § 39 zákona\no verejnom obstarávaní,\nInformácie k žiadosti obstarávateľa\no predloženie dokladov nahradených\nJednotnými európskymi dokumentami zo\ndňa 22.06.2026 a informácie k predloženiu\ndokladov nahradených Jednotnými\neurópskymi dokumentami zo dňa 22.06.2026\nsú uvedené v ods. 4. Zápisnice\nz vyhodnotenia splnenia podmienok účasti.'], [None, None, 'Identifikácia predloženého dokladu /\ndokumentu:', None, 'Alanata a.s.:\nJednotný európsky dokument zo dňa\n22.06.2026 podpísaný osobou Mgr.\nMartin Murgáč\nWDS Solutions s.r.o.:\nJednotný európsky dokument zo dňa\n22.06.2026 podpísaný osobou Lukáš\nBumbál', None, None], [None, None, 'Posúdenie obsahu dokladu /\ndokumentu z hľadiska splnenia\npožiadaviek na jeho obsah:', None, 'SPLNIL', None, None]]
+ Tabulka 
+[['PREDBEŽNÉ NAHRADENIE DOKLADOV'], ['PREUKAZUJÚCICH SPLNENIE PODMIENOK ÚČASTI']]
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+Železnice Slovenskej republiky 7 | 21
+ Tabulka 
+[['', 'PODMIENKY ÚČASTI TÝKAJÚCE SA OSOBNÉHO', None, None, '', '', 'IDENTIFIKÁCIA PREDLOŽENÉHO DOKLADU / DOKUMENTU', None, None, None, '', 'POZNÁMKY'], [None, 'POSTAVENIA PODĽA § 32 ZÁKONA O VEREJNOM', None, None, None, None, 'A ZÁVER POSÚDENIA ČLENMI KOMISIE S PRÁVOM', None, None, None, None, None], [None, 'OBSTARÁVANÍ', None, None, None, None, 'VYHODNOCOVAŤ PONUKY A SPLNENIE PODMIENOK ÚČASTI', None, None, None, None, None], ['1.', None, 'Zápis do zoznamu hospodárskych subjektov podľa § 152 ods.\n1 zákona o verejnom obstarávaní', None, None, 'Zápis do zoznamu hospodárskych\nsubjektov podľa § 152 ods. 1 zákona\no verejnom obstarávaní:', None, None, 'ÁNO', None, None, ''], [None, None, None, None, None, 'Identifikácia zápisu do zoznamu\nhospodárskych subjektov podľa\n§ 152 ods. 1 zákona o verejnom\nobstarávaní:', None, None, 'Alanata a.s.:\nregistračné číslo: 2025/07-PO-F9653\nplatnosť zápisu do: 09.07.2028\nWDS Solutions s.r.o.:\nregistračné číslo: 2024/3-PO-G6585\nplatnosť zápisu do: 15.03.2027', None, None, None], [None, None, None, None, None, 'Posúdenie zápisu do zoznamu\nhospodárskych subjektov podľa\n§ 152 ods. 1 zákona o verejnom\nobstarávaní:', None, None, 'Uchádzač je platne zapísaný v\nzozname hospodárskych subjektov\nvedenom Úradom pre verejné\nobstarávanie, čím uchádzač\npreukázal splnenie podmienok účasti\ntýkajúcich sa osobného postavenia\npodľa § 32 ods. 1 zákona o verejnom\nobstarávaní', None, None, None], ['2.', None, '', '§ 32 ods. 1 písm. a) zákona o verejnom obstarávaní:', '', '', 'Predloženie dokladu / dokumentu:', '', '', 'NIE', '', ''], [None, None, None, 'Výpis z registra trestov nie starší ako tri mesiace', None, '', 'Identifikácia predloženého dokladu /', '', '-', None, None, None], [None, None, None, 'preukazujúci, že nebol on, ani jeho štatutárny orgán, ani člen', None, None, None, None, None, None, None, None], [None, None, None, None, None, None, 'dokumentu:', None, None, None, None, None], [None, None, None, 'štatutárneho orgánu, ani člen dozorného orgánu, ani', None, None, None, None, None, None, None, None], [None, None, None, 'prokurista právoplatne odsúdený za trestný čin korupcie,', None, 'Posúdenie obsahu dokladu /\ndokumentu z hľadiska splnenia\npožiadaviek na jeho obsah:', None, None, 'viď ods. 1. vyššie', None, None, None], [None, None, None, 'trestný čin poškodzovania finančných záujmov Európskych', None, None, None, None, None, None, None, None], [None, None, None, 'spoločenstiev, trestný čin legalizácie príjmu z trestnej', None, None, None, None, None, None, None, None], [None, None, None, 'činnosti, trestný čin založenia, zosnovania a podporovania', None, None, None, None, None, None, None, None], [None, None, None, 'zločineckej skupiny, trestný čin založenia, zosnovania alebo', None, None, None, None, None, None, None, None]]
+ Tabulka 
+[['Posúdenie obsahu dokladu /'], ['dokumentu z hľadiska splnenia'], ['požiadaviek na jeho obsah:']]
+Železnice Slovenskej republiky
+Klemensova 8, 813 61 Bratislava, Slovenská republika
+Obnova komponentov v DC – diskové polia a SAN
+Železnice Slovenskej republiky 8 | 21
+ Tabulka 
+[['', '', 'podporovania teroristickej skupiny, trestný čin terorizmu a', '', '', None, None, '', None, None, ''], [None, None, 'niektorých foriem účasti na terorizme, trestný čin', None, None, None, None, None, None, None, None], [None, None, 'obchodovania s ľuďmi, trestný čin, ktorého skutková podstata', None, None, None, None, None, None, None, None], [None, None, 'súvisí s podnikaním alebo trestný čin machinácie pri', None, None, None, None, None, None, None, None], [None, None, 'verejnom obstarávaní a verejnej dražbe', None, None, None, None, None, None, None, None], ['3.', '§ 32 ods. 1 písm. a) zákona o verejnom obstarávaní:\nČestné vyhlásenie - doklad podľa § 32 ods. 7 zákona\no verejnom obstarávaní vo vzťahu k preukázaniu splnenia\npodmienky účasti týkajúcej sa osobného postavenia podľa\n§ 32 ods. 1 písm. a) zákona o verejnom obstarávaní osobami\nšpecifikovanými v § 32 ods. 7 a ods. 8 zákona o verejnom\nobstarávaní', None, None, '', 'Predloženie dokladu / dokumentu:', '', '', 'ÁNO', '', ''], [None, None, None, None, 'Identifikácia predloženého dokladu /\ndokumentu:', None, None, '', 'Alanata a.s.:', '', None], [None, None, None, None, None, None, None, None, 'Čestné vyhlásenie podľa § 32 ods. 7', None, None], [None, None, None, None, None, None, None, None, 'a ods. 8 zákona o verejnom', None, None], [None, None, None, None, None, None, None, None, 'obstarávaní zo dňa 23.06.2026:', None, None], [None, None, None, None, None, None, None, None, 'v spoločnosti pôsobia nasledujúce', None, None], [None, None, None, None, None, None, None, None, 'osoby špecifikované v § 32 ods. 7 a', None, None], [None, None, None, None, None, None, None, None, 'ods. 8 zákona o verejnom', None, None], [None, None, None, None, None, None, None, None, 'obstarávaní: SYNTECA a.s., IČO:', None, None], [None, None, None, None, None, None, None, None, '54534241, Ing. Peter Kotuliak, Ing.', None, None], [None, None, None, None, None, None, None, None, 'Jozef Mokrý, Ing. Štefan Petergáč,', None, None], [None, None, None, None, None, None, None, None, 'Ing. Branislav Šebo, MBA, Ing.', None, None], [None, None, None, None, None, None, None, None, 'Albert Šmajda a tieto osoby spĺňajú', None, None], [None, None, None, None, None, None, None, None, 'podmienky účasti týkajúce sa', None, None], [None, None, None, None, None, None, None, None, 'osobného postavenia podľa § 32', None, None], [None, None, None, None, None, None, None, None, 'ods. 1 písm. a) zákona o verejnom', None, None], [None, None, None, None, None, None, None, None, 'obstaráva
+                        

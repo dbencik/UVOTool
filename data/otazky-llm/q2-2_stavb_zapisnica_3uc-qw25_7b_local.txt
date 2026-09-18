@@ -1,0 +1,68 @@
+
+                        Extrahuj z textu dokumentu informácie o účastníkoch tendra, ktorí predložili ponuku. 
+                        Nestačí, že boli oslovení obtarávateľom. Extrahuj účastníkov LEN z tu priloženého dokumentu a z ničoho iného.
+                        IČO a Názov musia byť tu uvedené. Ak IČO alebo Názov súťažiaceho nie je v texte, nechaj ho prázdne a nedohľadávaj z iných zdrojov. 
+                        Ak je účastník skupina 2 alebo viacerých firiem, vyber 1 vedúci podnik z nich.
+                        Ak je IČO alebo názov organizácie v inom kontexte ako účastník súťaže, nedávaj tú spoločnosť na výstup.
+                        Vráť odpoveď vo forme json-u (bez uvodnych oznamok, bez poznamok za json-om) v nasledujúcej štruktúre:
+
+                        - 'Stav': 1-sú tu ponuky, 2- súžať bola zrušená, 3-v dokumente žiadni uchádzači ani súťažiaci s ponukami nie sú
+                        - 'Ucastnici': Zoznam/list objektov a atributmi:
+                            - 'ICO' - ICO pravnickej osoby (typ str, aj ak je prazdny)
+                            - 'NAME' (Názov subjektu typu str)
+                            - 'COUNTRY' (Krajina registrácie subjektu, ktorý sa uchádza s ponukou, 2 znaky ISO kódu, ako SK, CZ)
+                            - 'DoruceniePonuky' (Text YES/NO/ #NA )
+                            - 'Poradie' - poradie vo výsledku súťaže (typu str)
+                            - 'CENA' - cena ponúknutá (aj s menou a info o dph)
+                            - 'Excl_Flag' = 'N'/'Y'/'?', či bol vylúčený z dôvodu nesplnenia podmienok
+                        
+                        Odpovedz len vo forme json
+
+                        ------------------------------------------------
+                        TEXT DOKUMENTU (zdroj extrakcie): 
+                        ------------------------------------------------
+                        Podlimitná zákazka na uskutočnenie stavebných prác
+  
+  
+Predmet obstarávania:
+SPŠ stavebná a geodetická, Košice: Inovácie odborného vzdelávania v odbore staviteľstvo
+  
+Z á p i s n i c a    z   o t v á r a n i a    p o n ú k  
+
+  
+Identifikácia obstarávateľa:  
+Košický samosprávny kraj, Námestie Maratónu mieru 1, 042 66 Košice  
+  
+Názov zákazky: 
+SPŠ stavebná a geodetická, Košice: Inovácie odborného vzdelávania v odbore staviteľstvo
+Postup zadávania zákazky:  
+Podlimitná zákazka na uskutočnenie stavebných prác
+  
+Miesto otvárania obálok s ponukami:  
+Košický samosprávny kraj, Námestie Maratónu mieru č.1, 042 66 Košice,  Kancelária č. 355
+
+Čas otvárania obálok s ponukami:  
+Otváranie obálok s ponukami sa uskutočnilo dňa  09.01.2026 o 10,15 hod.  
+  
+Identifikácia uchádzačov, ktorých ponuky boli otvárané:  
+Boli zverejnené obchodné mená a sídla uchádzačov, ktorí predložili ponuky a návrhy na plnenia kritérií podľa výzva na predkladanie ponúk pretože otváranie ponúk bolo neverejné.
+
+Obchodný názov uchádzača	;Sídlo uchádzača
+Sanácie SK s. r. o.	;Vihorlatská 987/74, 040 01 Košice
+KERASTAV, s.r.o.	;Moyzesova 60 080 01 Prešov
+GLOBALTECH SLOVAKIA s.r.o.	;Jarmočná 3 040 01 Košice
+
+
+  
+Návrhy uchádzačov na plnenie kritérií:  
+Obchodný názov uchádzača	;Sídlo uchádzača	;Cena za predmet zákazky s DPH/celkom
+Sanácie SK s. r. o.	;Vihorlatská 987/74, 040 01 Košice	;79 523,57 eur s DPH
+KERASTAV, s.r.o.	;Moyzesova 60 080 01 Prešov	;75 029,99 eur s DPH
+GLOBALTECH SLOVAKIA s.r.o.	;Jarmočná 3 040 01 Košice	;74 563,15 eur s DPH
+
+Na otváraní ponúk sa zúčastnili zástupcovia podľa prezenčnej listiny.  
+Na otváraní ponúk neboli vznesené žiadne výhrady.  
+  
+Zápisnicu spísala:  Mgr. Lucia Matiová                           
+Košice  09.01.2026 
+                        
