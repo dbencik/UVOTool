@@ -473,6 +473,152 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   color: #e03131;
   white-space: nowrap;
 }
+
+/* ── Profil tab styles ── */
+.profil-search {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.profil-search input {
+  flex: 1;
+  min-width: 250px;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 10px 14px;
+  border: 2px solid #ced4da;
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+}
+
+.profil-search input:focus { border-color: #4dabf7; box-shadow: 0 0 0 3px rgba(77,171,247,0.15); }
+
+.profil-search select {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px 14px;
+  border: 2px solid #ced4da;
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+}
+
+.profil-search button {
+  padding: 10px 24px;
+  background: #1971c2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profil-search button:hover { background: #1864ab; }
+
+.profil-report {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.profil-report h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.profil-report .profil-ico {
+  font-size: 13px;
+  color: #868e96;
+  margin-bottom: 20px;
+}
+
+.profil-section {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.profil-section:last-child { border-bottom: none; }
+
+.profil-section h3 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #495057;
+  margin-bottom: 10px;
+}
+
+.profil-section .prose {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.profil-mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.profil-mini-table th {
+  background: #f8f9fa;
+  padding: 6px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #868e96;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.profil-mini-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.profil-mini-table .val-col { text-align: right; font-family: "SF Mono","Menlo",monospace; font-size: 12px; }
+
+.profil-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.profil-bar-name { flex: 1; font-size: 13px; color: #495057; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profil-bar-bg { flex: 0 0 100px; height: 6px; background: #f1f3f5; border-radius: 3px; overflow: hidden; }
+.profil-bar-fill { height: 100%; border-radius: 3px; background: #4dabf7; }
+.profil-bar-value { font-family: "SF Mono","Menlo",monospace; font-size: 12px; font-weight: 600; color: #1a1a1a; white-space: nowrap; min-width: 70px; text-align: right; }
+
+.profil-flags { list-style: none; }
+.profil-flags li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background: #fff5f5;
+  border-left: 3px solid #e03131;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  color: #c92a2a;
+  font-weight: 500;
+}
+
+.profil-no-flags {
+  padding: 12px;
+  background: #ebfbee;
+  border-radius: 6px;
+  color: #2b8a3e;
+  font-size: 13px;
+}
 </style>
 </head>
 <body>
@@ -491,6 +637,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div class="main-tab active" data-tab="dokumenty">Dokumenty</div>
   <div class="main-tab" data-tab="analyza">Analyza</div>
   <div class="main-tab" data-tab="graf">Graf</div>
+  <div class="main-tab" data-tab="profil">Profil</div>
 </div>
 
 <!-- ═══════════════════ DOKUMENTY TAB ═══════════════════ -->
@@ -542,6 +689,19 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 <!-- ═══════════════════ GRAF TAB ═══════════════════ -->
 <div class="main-content-section" id="section-graf">
   <div id="graf-content" class="loading">Nacitavam graf...</div>
+</div>
+
+<!-- ═══════════════════ PROFIL TAB ═══════════════════ -->
+<div class="main-content-section" id="section-profil">
+  <div class="profil-search">
+    <input type="text" id="profil-query" placeholder="Zadajte ICO alebo nazov firmy / obstaravatela...">
+    <select id="profil-type">
+      <option value="dodavatel">Dodavatel</option>
+      <option value="obstaravatel">Obstaravatel</option>
+    </select>
+    <button id="profil-btn">Vyhladat</button>
+  </div>
+  <div id="profil-result"></div>
 </div>
 
 <footer>UVO Vestnik Dashboard &mdash; data z vestnik-parser.py</footer>
@@ -1440,6 +1600,150 @@ function buildD3Graph(pagerank, topEdges, selfDealing) {
       .attr('x', d => d.x)
       .attr('y', d => d.y);
   });
+}
+
+// ══════════════════════════════════════════════════════
+//  PROFIL TAB
+// ══════════════════════════════════════════════════════
+
+function profilFmtEur(val) {
+  if (val == null || isNaN(val)) return '0 EUR';
+  return Number(val).toLocaleString('sk-SK', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + ' EUR';
+}
+
+function profilFmtEurShort(val) {
+  const n = Number(val);
+  if (isNaN(n) || n === 0) return '0 EUR';
+  if (n >= 1e6) return (n / 1e6).toLocaleString('sk-SK', {maximumFractionDigits: 1}) + ' mil. EUR';
+  if (n >= 1e3) return (n / 1e3).toLocaleString('sk-SK', {maximumFractionDigits: 0}) + ' tis. EUR';
+  return n.toLocaleString('sk-SK', {maximumFractionDigits: 0}) + ' EUR';
+}
+
+document.getElementById('profil-btn').addEventListener('click', loadProfil);
+document.getElementById('profil-query').addEventListener('keydown', (e) => { if (e.key === 'Enter') loadProfil(); });
+
+function loadProfil() {
+  const q = document.getElementById('profil-query').value.trim();
+  const t = document.getElementById('profil-type').value;
+  const container = document.getElementById('profil-result');
+  if (!q) { container.innerHTML = '<div class="error">Zadajte ICO alebo nazov.</div>'; return; }
+
+  container.innerHTML = '<div class="loading">Hladam...</div>';
+  fetch(`/api/profile?type=${t}&q=${encodeURIComponent(q)}`)
+    .then(r => r.json())
+    .then(data => {
+      if (data.error) {
+        container.innerHTML = `<div class="error">${esc(data.error)}</div>`;
+        return;
+      }
+      renderProfil(data, container);
+    })
+    .catch(err => {
+      container.innerHTML = `<div class="error">Chyba: ${err.message}</div>`;
+    });
+}
+
+function renderProfil(data, container) {
+  const typLabel = data.typ === 'dodavatel' ? 'DODAVATEL' : 'OBSTARAVATEL';
+  let html = `<div class="profil-report">
+    <h2>${esc(data.nazov)}</h2>
+    <div class="profil-ico">ICO: ${esc(data.ico)} | Typ: ${typLabel}</div>`;
+
+  for (const sekcia of (data.sekcie || [])) {
+    html += `<div class="profil-section"><h3>${esc(sekcia.nazov)}</h3>`;
+
+    // Prose text
+    if (sekcia.text) {
+      html += `<div class="prose">${esc(sekcia.text)}</div>`;
+    }
+
+    // Section-specific data rendering
+    const sn = sekcia.nazov;
+
+    if ((sn === 'Zákaznícky mix' || sn === 'Dvorní dodávatelia') && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+      const max = sekcia.data[0].zakazky || sekcia.data[0].hodnota || 1;
+      html += sekcia.data.map(d => `
+        <div class="profil-bar-row">
+          <span class="profil-bar-name" title="${esc(d.nazov)}">${esc(d.nazov)} ${d.ico ? '<span style="color:#adb5bd;font-size:11px">(' + esc(d.ico) + ')</span>' : ''}</span>
+          <div class="profil-bar-bg"><div class="profil-bar-fill" style="width:${Math.round((d.zakazky || 0) / max * 100)}%"></div></div>
+          <span class="profil-bar-value">${d.zakazky || 0}x | ${profilFmtEurShort(d.hodnota)}</span>
+        </div>
+      `).join('');
+      if (sekcia.hhi != null) {
+        const hc = sekcia.hhi > 2500 ? '#e03131' : (sekcia.hhi > 1500 ? '#e8590c' : '#2b8a3e');
+        html += `<div style="margin-top:8px;font-size:12px;color:${hc};font-weight:600">HHI index: ${sekcia.hhi} (${esc(sekcia.hhi_label)})</div>`;
+      }
+    }
+
+    if (sn === 'Sektorové zameranie' || sn === 'Štruktúra nákupov') {
+      if (Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+        html += '<table class="profil-mini-table"><thead><tr><th>CPV</th><th>Pocet</th></tr></thead><tbody>';
+        html += sekcia.data.map(d => `<tr><td>${esc(d.cpv)}</td><td>${d.pocet}</td></tr>`).join('');
+        html += '</tbody></table>';
+      }
+    }
+
+    if (sn === 'Súťažné správanie' || sn === 'Konkurenčnosť') {
+      const d = sekcia.data;
+      if (d && typeof d === 'object' && !Array.isArray(d)) {
+        html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px">';
+        if (d.win_rate != null) html += `<div class="card" style="padding:12px;min-width:120px"><div class="label">Win rate</div><div class="value" style="font-size:22px">${d.win_rate}%</div></div>`;
+        if (d.single_bidder_rate != null) {
+          const sc = d.single_bidder_rate > 50 ? 'red' : (d.single_bidder_rate > 30 ? 'orange' : 'green');
+          html += `<div class="card" style="padding:12px;min-width:120px"><div class="label">Single-bidder</div><div class="value ${sc}" style="font-size:22px">${d.single_bidder_rate}%</div></div>`;
+        }
+        if (d.avg_bids != null) html += `<div class="card" style="padding:12px;min-width:120px"><div class="label">Priem. ponuk</div><div class="value" style="font-size:22px">${d.avg_bids}</div></div>`;
+        html += '</div>';
+      }
+    }
+
+    if (sn === 'Časový vývoj' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+      html += '<table class="profil-mini-table"><thead><tr><th>Rok</th><th>Zakazky</th><th class="val-col">Hodnota</th></tr></thead><tbody>';
+      html += sekcia.data.map(d =>
+        `<tr><td>${d.rok}</td><td>${d.zakazky || d.dokumenty || 0}</td><td class="val-col">${profilFmtEur(d.hodnota)}</td></tr>`
+      ).join('');
+      html += '</tbody></table>';
+    }
+
+    if (sn === 'Sieťové väzby' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+      html += '<table class="profil-mini-table"><thead><tr><th>Firma</th><th>ICO</th><th>Spolocne tendre</th></tr></thead><tbody>';
+      html += sekcia.data.map(d =>
+        `<tr><td>${esc(d.nazov)}</td><td>${esc(d.ico)}</td><td>${d.spolocne_tendre}</td></tr>`
+      ).join('');
+      html += '</tbody></table>';
+    }
+
+    if (sn === 'Zmluvy' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+      html += '<table class="profil-mini-table"><thead><tr><th>Rok</th><th>Predmet</th><th class="val-col">Hodnota</th></tr></thead><tbody>';
+      html += sekcia.data.map(d =>
+        `<tr><td>${d.rok || ''}</td><td>${d.url ? '<a href="'+d.url+'" target="_blank">'+esc((d.predmet||'').substring(0,60))+'</a>' : esc((d.predmet||'').substring(0,60))}</td><td class="val-col">${profilFmtEur(d.hodnota)}</td></tr>`
+      ).join('');
+      html += '</tbody></table>';
+    }
+
+    if (sn === 'Dodatky k zmluvám' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+      html += '<table class="profil-mini-table"><thead><tr><th>Dodavatel</th><th class="val-col">Hodnota</th><th>Dovod</th></tr></thead><tbody>';
+      html += sekcia.data.map(d =>
+        `<tr><td>${esc(d.dodavatel)}</td><td class="val-col">${profilFmtEur(d.hodnota)}</td><td>${esc((d.dovod||'').substring(0,40))}</td></tr>`
+      ).join('');
+      html += '</tbody></table>';
+    }
+
+    if (sn === 'Rizikové indikátory') {
+      if (Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+        html += '<ul class="profil-flags">';
+        html += sekcia.data.map(f => `<li>${esc(f)}</li>`).join('');
+        html += '</ul>';
+      } else if (sekcia.text) {
+        html += `<div class="profil-no-flags">${esc(sekcia.text)}</div>`;
+      }
+    }
+
+    html += '</div>'; // end profil-section
+  }
+
+  html += '</div>'; // end profil-report
+  container.innerHTML = html;
 }
 </script>
 </body>
