@@ -187,27 +187,28 @@ def extract_buyer(containers: list[list[str]], orgs: dict) -> dict:
             name_from_id = m.group(2) or ''
             if org_id in orgs:
                 org = orgs[org_id]
+                is_uvo = org.get('ico') == '31797903'
                 # Prefer name from ID reference — org registry may have wrong ORG mapping
-                # when documents lack explicit ORG-XXXX headers
                 buyer['nazov'] = name_from_id or org['name']
-                ico = org['ico']
-                # Skip UVO's own IČO (31797903) — UVO is the platform, not the buyer
-                buyer['ico'] = ico if ico != '31797903' else ''
+                buyer['ico'] = org['ico'] if not is_uvo else ''
                 buyer['email'] = org['email']
-                # If org registry name doesn't match ID reference, look up correct org
-                if name_from_id and org['name'] != name_from_id:
-                    # ORG registry has wrong mapping — find correct org by name
-                    name_idx = orgs.get('_name_to_ico', {})
-                    if name_from_id in name_idx:
-                        buyer['ico'] = name_idx[name_from_id]
-                    # Find email from correct org
+                # If org is UVO or name doesn't match, find the real buyer org
+                if is_uvo or (name_from_id and org['name'] != name_from_id):
+                    target_name = name_from_id
+                    # Find first non-UVO org as the real buyer
                     for o in orgs.values():
-                        if isinstance(o, dict) and o.get('name') == name_from_id:
-                            if o.get('email'):
-                                buyer['email'] = o['email']
-                            if o.get('ico') and o['ico'] != '31797903':
-                                buyer['ico'] = o['ico']
-                            break
+                        if not isinstance(o, dict) or o.get('ico') == '31797903':
+                            continue
+                        if target_name and o.get('name') != target_name:
+                            continue
+                        if not target_name and not o.get('name'):
+                            continue
+                        buyer['nazov'] = o['name']
+                        if o.get('ico'):
+                            buyer['ico'] = o['ico']
+                        if o.get('email'):
+                            buyer['email'] = o['email']
+                        break
             else:
                 buyer['nazov'] = name_from_id
             # If buyer IČO is empty, look for it by name
@@ -730,20 +731,19 @@ def main():
         label = f"{doc['num']}-{doc['code']}" if doc['num'] else doc['id']
         print(f"\n[{i+1}/{len(docs)}] {label} | {doc['type'][:50] or '...'}", end=" ", flush=True)
 
-        # Load HTML — try local dir first, then vestnik191_full, then download
+        # Load HTML — try local dir first, then download
         local_path = None
         if local_dir:
             local_path = Path(local_dir) / f"{doc['id']}.html"
-        if not local_path or not local_path.exists():
-            local_path = Path(f"/tmp/vestnik191_full/{doc['id']}.html")
-        if local_path.exists():
+        if local_path and local_path.exists():
             html = local_path.read_text(encoding='utf-8', errors='ignore')
         else:
             import urllib.request
             try:
                 html = urllib.request.urlopen(doc["url"], timeout=15).read().decode('utf-8', errors='ignore')
-                local_path.parent.mkdir(parents=True, exist_ok=True)
-                local_path.write_text(html, encoding='utf-8')
+                if local_path:
+                    local_path.parent.mkdir(parents=True, exist_ok=True)
+                    local_path.write_text(html, encoding='utf-8')
             except Exception as e:
                 print(f"❌ FETCH: {e}")
                 results.append({**doc, "result": "fetch_error"})
