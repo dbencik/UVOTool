@@ -1,0 +1,26 @@
+{
+  "file": "data/results/vestnik_191_parser_results.json",
+  "stats": {
+    "total": 59,
+    "actions": {
+      "vyhlasenie": 22,
+      "vysledok": 18,
+      "zmena_zmluvy": 3,
+      "oprava": 16
+    },
+    "with_buyer": 59,
+    "with_ico": 31,
+    "with_subject": 59,
+    "fetch_errors": 0,
+    "parse_errors": 0
+  },
+  "quality_score": 100.0,
+  "errors": 0,
+  "warnings": 2,
+  "error_details": [],
+  "warning_details": [
+    "[18] 1418025 (vysledok): žiadni účastníci",
+    "[47] 1418197 (vysledok): žiadni účastníci"
+  ],
+  "status": "OK"
+}

@@ -32,6 +32,13 @@ na Slovensku (UVO Vestník). Oddelený z peppol-faktura repozitára.
 - Cron: tools/vestnik-cron.sh (Po-Pi 23:00)
 - Cieľ: /opt/vestnik/
 
+## Validácia a monitoring
+
+- **vestnik-validator.py** — automatická validácia JSON výstupov (IČO, povinné polia, číselné hodnoty)
+- **vestnik-cron.sh** — s ntfy.sh push notifikáciami (úspech/zlyhanie), log rotation (30 dní)
+- **deploy-vps.sh** — jednokrokový deploy na VPS s crontab setup
+- Monitoring: ntfy.sh topic `vestnik-uvo` (https://ntfy.sh/vestnik-uvo)
+
 ## Testované vestníky
 
 - 188, 189, 190, 191 (2026) — 229 dokumentov, 0 chýb

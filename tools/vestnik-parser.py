@@ -22,7 +22,7 @@ from collections import Counter
 from dataclasses import dataclass, field, asdict
 from typing import Optional
 
-OUT_DIR = Path(__file__).parent.parent / "data" / "CFE-Test"
+OUT_DIR = Path(__file__).parent.parent / "data" / "results"
 # Input: RSS XML, vestník listing URL, local HTML directory, or vestník number (e.g. "190/2026")
 INPUT = sys.argv[1] if len(sys.argv) > 1 else "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/rss"
 
