@@ -1,0 +1,835 @@
+{
+  "generated_at": "2026-09-19T00:58:15.192248",
+  "db_path": "/Users/dodo/UVOTool/data/vestnik.db",
+  "single_bidder": {
+    "celkovo": {
+      "total": 432,
+      "single_bidder": 157,
+      "rate_pct": 36.3
+    },
+    "top_obstaravatelia": [
+      {
+        "nazov": "Múzeum Janka Kráľa",
+        "ico": "36140473",
+        "total_tenders": 12,
+        "single_bidder": 12,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "Základná škola s materskou školou, Jatov 189",
+        "ico": "37866672",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
+        "ico": "36601284",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "Galantské osvetové stredisko",
+        "ico": "36088251",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "Základná škola, Ulica Jána Bottu 27, Trnava",
+        "ico": "36080594",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik, Povodie dolného Váhu, odštepný závod",
+        "ico": "36022047",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "Základná škola s materskou školou, Na Hôrke 30, Nitra",
+        "ico": "54054010",
+        "total_tenders": 10,
+        "single_bidder": 7,
+        "rate_pct": 70.0
+      },
+      {
+        "nazov": "Všeobecná zdravotná poisťovňa, a.s.",
+        "ico": "35937874",
+        "total_tenders": 6,
+        "single_bidder": 4,
+        "rate_pct": 66.7
+      },
+      {
+        "nazov": "Slovenská televízia a rozhlas",
+        "ico": "56398255",
+        "total_tenders": 3,
+        "single_bidder": 2,
+        "rate_pct": 66.7
+      },
+      {
+        "nazov": "Mesto Prešov",
+        "ico": "00327646",
+        "total_tenders": 3,
+        "single_bidder": 2,
+        "rate_pct": 66.7
+      }
+    ]
+  },
+  "repeated_winners": {
+    "flagged_pairs": []
+  },
+  "price_anomalies": {
+    "threshold_proximity": [
+      {
+        "threshold": 5000,
+        "label": "5 000 €",
+        "count": 30,
+        "records": [
+          {
+            "doc_id": "1281589",
+            "vestnik": "VVO 50/2024",
+            "obstaravatel": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+            "hodnota": 5247.23
+          },
+          {
+            "doc_id": "1281589",
+            "vestnik": "VVO 50/2024",
+            "obstaravatel": "Odvoz a likvidácia odpadu a.s. v skratke: OLO a.s.",
+            "hodnota": 5247.23
+          },
+          {
+            "doc_id": "1298038",
+            "vestnik": "VVO 128/2024",
+            "obstaravatel": "Nitriansky samosprávny kraj",
+            "hodnota": 5000.0
+          },
+          {
+            "doc_id": "1357517",
+            "vestnik": "VVO 131/2025",
+            "obstaravatel": "Základná škola s materskou školou, Centrum I 32, Dubnica nad Váhom",
+            "hodnota": 4922.0
+          },
+          {
+            "doc_id": "1357517",
+            "vestnik": "VVO 131/2025",
+            "obstaravatel": "Základná škola s materskou školou, Centrum I 32, Dubnica nad Váhom",
+            "hodnota": 4922.0
+          },
+          {
+            "doc_id": "489687",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Základná škola, Ulica Jána Bottu 27, Trnava",
+            "hodnota": 4932.26
+          },
+          {
+            "doc_id": "489709",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Múzeum Janka Kráľa",
+            "hodnota": 4890.0
+          },
+          {
+            "doc_id": "489709",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Múzeum Janka Kráľa",
+            "hodnota": 4890.0
+          },
+          {
+            "doc_id": "489724",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Základná škola s materskou školou",
+            "hodnota": 4890.0
+          },
+          {
+            "doc_id": "489747",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Akadémia umení v Banskej Bystrici",
+            "hodnota": 5011.77
+          },
+          {
+            "doc_id": "558695",
+            "vestnik": "",
+            "obstaravatel": "Centrum výcviku Lešť",
+            "hodnota": 4983.32
+          },
+          {
+            "doc_id": "558779",
+            "vestnik": "",
+            "obstaravatel": "Stredná odborná škola obchodu a služieb",
+            "hodnota": 5026.39
+          },
+          {
+            "doc_id": "558779",
+            "vestnik": "",
+            "obstaravatel": "Stredná odborná škola obchodu a služieb",
+            "hodnota": 5026.39
+          },
+          {
+            "doc_id": "558781",
+            "vestnik": "",
+            "obstaravatel": "Domov sociálnych služieb sv. Jána z Boha v Spišskom Podhradí, Hviezdoslavova 1",
+            "hodnota": 5000.0
+          },
+          {
+            "doc_id": "558785",
+            "vestnik": "",
+            "obstaravatel": "Zariadenie pre seniorov a domov sociálnych služieb Liptovské Sliače",
+            "hodnota": 5141.92
+          },
+          {
+            "doc_id": "558791",
+            "vestnik": "",
+            "obstaravatel": "Mestské služby Topoľčany s.r.o.",
+            "hodnota": 4750.0
+          },
+          {
+            "doc_id": "558791",
+            "vestnik": "",
+            "obstaravatel": "Mestské služby Topoľčany s.r.o.",
+            "hodnota": 4750.0
+          },
+          {
+            "doc_id": "558792",
+            "vestnik": "",
+            "obstaravatel": "Základná škola Šrobárova",
+            "hodnota": 4830.0
+          },
+          {
+            "doc_id": "558792",
+            "vestnik": "",
+            "obstaravatel": "Základná škola Šrobárova",
+            "hodnota": 4830.0
+          },
+          {
+            "doc_id": "558793",
+            "vestnik": "",
+            "obstaravatel": "Obec Veľké Teriakovce",
+            "hodnota": 5060.0
+          },
+          {
+            "doc_id": "558793",
+            "vestnik": "",
+            "obstaravatel": "Obec Veľké Teriakovce",
+            "hodnota": 5060.0
+          },
+          {
+            "doc_id": "558795",
+            "vestnik": "",
+            "obstaravatel": "Mesto Prešov",
+            "hodnota": 5217.08
+          },
+          {
+            "doc_id": "558803",
+            "vestnik": "",
+            "obstaravatel": "Centrum výcviku Lešť",
+            "hodnota": 5184.0
+          },
+          {
+            "doc_id": "558806",
+            "vestnik": "",
+            "obstaravatel": "Mesto Žiar nad Hronom",
+            "hodnota": 4951.5
+          },
+          {
+            "doc_id": "558806",
+            "vestnik": "",
+            "obstaravatel": "Mesto Žiar nad Hronom",
+            "hodnota": 4951.5
+          },
+          {
+            "doc_id": "558846",
+            "vestnik": "",
+            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
+            "hodnota": 4881.0
+          },
+          {
+            "doc_id": "558846",
+            "vestnik": "",
+            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
+            "hodnota": 4900.0
+          },
+          {
+            "doc_id": "558846",
+            "vestnik": "",
+            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
+            "hodnota": 4950.0
+          },
+          {
+            "doc_id": "558846",
+            "vestnik": "",
+            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
+            "hodnota": 4990.0
+          },
+          {
+            "doc_id": "558846",
+            "vestnik": "",
+            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
+            "hodnota": 4995.0
+          }
+        ]
+      },
+      {
+        "threshold": 70000,
+        "label": "70 000 €",
+        "count": 20,
+        "records": [
+          {
+            "doc_id": "1260923",
+            "vestnik": "VVO 240/2023",
+            "obstaravatel": "Bratislavský samosprávny kraj",
+            "hodnota": 69000.0
+          },
+          {
+            "doc_id": "1291809",
+            "vestnik": "VVO 128/2024",
+            "obstaravatel": "Železničná spoločnosť Slovensko, a.s.",
+            "hodnota": 69300.0
+          },
+          {
+            "doc_id": "1292189",
+            "vestnik": "VVO 100/2024",
+            "obstaravatel": "Slovenský pozemkový fond",
+            "hodnota": 70000.0
+          },
+          {
+            "doc_id": "1357357",
+            "vestnik": "VVO 131/2025",
+            "obstaravatel": "Mesto Šurany",
+            "hodnota": 70530.97
+          },
+          {
+            "doc_id": "1357495",
+            "vestnik": "VVO 131/2025",
+            "obstaravatel": "Centrum výcviku Lešť",
+            "hodnota": 68043.6
+          },
+          {
+            "doc_id": "1357495",
+            "vestnik": "VVO 131/2025",
+            "obstaravatel": "Centrum výcviku Lešť",
+            "hodnota": 68043.6
+          },
+          {
+            "doc_id": "1379893",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "Ministerstvo obrany Slovenskej republiky",
+            "hodnota": 69700.0
+          },
+          {
+            "doc_id": "1382365",
+            "vestnik": "VVO 2/2026",
+            "obstaravatel": "ARCUS - Špecializované zariadenie a zariadenie pre seniorov",
+            "hodnota": 67866.5
+          },
+          {
+            "doc_id": "1382510",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "„NITRAVA“, Zariadenie sociálnych služieb Nitra",
+            "hodnota": 67099.1
+          },
+          {
+            "doc_id": "1382549",
+            "vestnik": "VVO 3/2026",
+            "obstaravatel": "Technické služby mesta Trebišov",
+            "hodnota": 68850.0
+          },
+          {
+            "doc_id": "1382562",
+            "vestnik": "VVO 2/2026",
+            "obstaravatel": "Slovenská inšpekcia životného prostredia",
+            "hodnota": 73007.9
+          },
+          {
+            "doc_id": "1382562",
+            "vestnik": "VVO 2/2026",
+            "obstaravatel": "Slovenská inšpekcia životného prostredia",
+            "hodnota": 73007.9
+          },
+          {
+            "doc_id": "1382625",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "Ústav na výkon trestu odňatia slobody pre mladistvých",
+            "hodnota": 70884.2
+          },
+          {
+            "doc_id": "1382671",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "Centrum sociálnych služieb - BYSTRIČAN",
+            "hodnota": 70320.0
+          },
+          {
+            "doc_id": "1418232",
+            "vestnik": "VVO 191/2026",
+            "obstaravatel": "Stredná priemyselná škola stavebná Oskara Winklera - Winkler Oszkár Építőipari Szakközépiskola a Stredná odborná škola technická, Ulica Dukelských hrdinov 2, Lučenec",
+            "hodnota": 68500.0
+          },
+          {
+            "doc_id": "1418252",
+            "vestnik": "VVO 191/2026",
+            "obstaravatel": "Národný ústav detských chorôb",
+            "hodnota": 69866.0
+          },
+          {
+            "doc_id": "558696",
+            "vestnik": "",
+            "obstaravatel": "Národná transfúzna služba SR",
+            "hodnota": 72629.99
+          },
+          {
+            "doc_id": "558696",
+            "vestnik": "",
+            "obstaravatel": "Národná transfúzna služba SR",
+            "hodnota": 72629.99
+          },
+          {
+            "doc_id": "559017",
+            "vestnik": "",
+            "obstaravatel": "Univerzitná nemocnica Martin",
+            "hodnota": 67508.0
+          },
+          {
+            "doc_id": "559017",
+            "vestnik": "",
+            "obstaravatel": "Univerzitná nemocnica Martin",
+            "hodnota": 69575.0
+          }
+        ]
+      },
+      {
+        "threshold": 260000,
+        "label": "260 000 €",
+        "count": 20,
+        "records": [
+          {
+            "doc_id": "1292353",
+            "vestnik": "VVO 100/2024",
+            "obstaravatel": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+            "hodnota": 247753.63
+          },
+          {
+            "doc_id": "1297638",
+            "vestnik": "VVO 128/2024",
+            "obstaravatel": "Slovenská technická univerzita v Bratislave",
+            "hodnota": 248781.0
+          },
+          {
+            "doc_id": "1297745",
+            "vestnik": "VVO 128/2024",
+            "obstaravatel": "Správa štátnych hmotných rezerv Slovenskej republiky",
+            "hodnota": 268539.11
+          },
+          {
+            "doc_id": "1341269",
+            "vestnik": "VVO 50/2025",
+            "obstaravatel": "Fakultná nemocnica s poliklinikou J. A. Reimana Prešov",
+            "hodnota": 271600.0
+          },
+          {
+            "doc_id": "1361025",
+            "vestnik": "VVO 150/2025",
+            "obstaravatel": "Nitriansky samosprávny kraj",
+            "hodnota": 259515.22
+          },
+          {
+            "doc_id": "1379697",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "Mesto Košice",
+            "hodnota": 256404.0
+          },
+          {
+            "doc_id": "1379697",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "Mesto Košice",
+            "hodnota": 256404.0
+          },
+          {
+            "doc_id": "1381486",
+            "vestnik": "VVO 2/2026",
+            "obstaravatel": "Ministerstvo obrany Slovenskej republiky",
+            "hodnota": 264493.0
+          },
+          {
+            "doc_id": "1382333",
+            "vestnik": "VVO 2/2026",
+            "obstaravatel": "Správa ciest Košického samosprávneho kraja",
+            "hodnota": 265933.86
+          },
+          {
+            "doc_id": "1382653",
+            "vestnik": "VVO 4/2026",
+            "obstaravatel": "Fakultná nemocnica s poliklinikou Žilina",
+            "hodnota": 263177.04
+          },
+          {
+            "doc_id": "1415609",
+            "vestnik": "VVO 188/2026",
+            "obstaravatel": "Mesto Topoľčany",
+            "hodnota": 260932.19
+          },
+          {
+            "doc_id": "1416173",
+            "vestnik": "VVO 188/2026",
+            "obstaravatel": "Agentúra pre riadenie dlhu a likvidity",
+            "hodnota": 266211.36
+          },
+          {
+            "doc_id": "1416173",
+            "vestnik": "VVO 188/2026",
+            "obstaravatel": "Agentúra pre riadenie dlhu a likvidity",
+            "hodnota": 266211.36
+          },
+          {
+            "doc_id": "1417713",
+            "vestnik": "VVO 189/2026",
+            "obstaravatel": "Mesto Prešov",
+            "hodnota": 247000.0
+          },
+          {
+            "doc_id": "1417713",
+            "vestnik": "VVO 189/2026",
+            "obstaravatel": "Mesto Prešov",
+            "hodnota": 247000.0
+          },
+          {
+            "doc_id": "1417776",
+            "vestnik": "VVO 189/2026",
+            "obstaravatel": "Mesto Sereď",
+            "hodnota": 265623.33
+          },
+          {
+            "doc_id": "1417847",
+            "vestnik": "VVO 188/2026",
+            "obstaravatel": "Trnavský samosprávny kraj",
+            "hodnota": 250490.59
+          },
+          {
+            "doc_id": "1417854",
+            "vestnik": "VVO 189/2026",
+            "obstaravatel": "Mesto Zvolen",
+            "hodnota": 251372.33
+          },
+          {
+            "doc_id": "480701",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Rekreačné služby mesta Senica, spol. s r.o.",
+            "hodnota": 259897.82
+          },
+          {
+            "doc_id": "489441",
+            "vestnik": "VVO 50/2021",
+            "obstaravatel": "Dalno s. r. o.",
+            "hodnota": 251666.67
+          }
+        ]
+      }
+    ],
+    "price_close_to_estimate": []
+  },
+  "contract_splitting": {
+    "suspicious_groups": [
+      {
+        "obstaravatel": "Správa a údržba ciest Prešovského samosprávneho kraja",
+        "obstaravatel_ico": "37936859",
+        "cpv_kod": "Rôzne náhradné diely",
+        "count": 9,
+        "period_days": 42,
+        "total_hodnota": 1175.27,
+        "individual_values": [
+          442.92,
+          732.35
+        ],
+        "doc_ids": [
+          "1292313",
+          "1292337",
+          "1292351",
+          "1292513",
+          "1292534",
+          "1292535",
+          "1292549",
+          "1292557",
+          "1298077"
+        ],
+        "vestnik": "VVO 100/2024"
+      },
+      {
+        "obstaravatel": "Správa a údržba ciest Prešovského samosprávneho kraja",
+        "obstaravatel_ico": "37936859",
+        "cpv_kod": "Náhradné diely pre vozidlá na prepravu tovaru, pre dodávky a osobné automobily",
+        "count": 3,
+        "period_days": 42,
+        "total_hodnota": 0,
+        "individual_values": [],
+        "doc_ids": [
+          "1292539",
+          "1292393",
+          "1297900"
+        ],
+        "vestnik": "VVO 100/2024"
+      },
+      {
+        "obstaravatel": "Stredná odborná škola obchodu a služieb, Nábr. J. Kalinčiaka 1, Prievidza",
+        "obstaravatel_ico": "00158577",
+        "cpv_kod": "Potraviny, nápoje, tabak a príbuzné produkty",
+        "count": 3,
+        "period_days": 2,
+        "total_hodnota": 113021.19,
+        "individual_values": [
+          37015.83,
+          28462.11,
+          47543.25
+        ],
+        "doc_ids": [
+          "1297836",
+          "1298010",
+          "1298075"
+        ],
+        "vestnik": "VVO 128/2024"
+      }
+    ]
+  },
+  "top_stats": {
+    "hodnota_podla_roka": [
+      {
+        "rok": 2021,
+        "pocet_zakaziek": 45,
+        "celkova_hodnota": 8323153.0,
+        "priemerna_hodnota": 184959.0
+      },
+      {
+        "rok": 2022,
+        "pocet_zakaziek": 79,
+        "celkova_hodnota": 7241422.0,
+        "priemerna_hodnota": 91664.0
+      },
+      {
+        "rok": 2023,
+        "pocet_zakaziek": 4,
+        "celkova_hodnota": 11978417.0,
+        "priemerna_hodnota": 2994604.0
+      },
+      {
+        "rok": 2024,
+        "pocet_zakaziek": 16,
+        "celkova_hodnota": 3281908.0,
+        "priemerna_hodnota": 205119.0
+      },
+      {
+        "rok": 2025,
+        "pocet_zakaziek": 34,
+        "celkova_hodnota": 24098299.0,
+        "priemerna_hodnota": 708773.0
+      },
+      {
+        "rok": 2026,
+        "pocet_zakaziek": 76,
+        "celkova_hodnota": 96859806.0,
+        "priemerna_hodnota": 1274471.0
+      }
+    ],
+    "top_vitazi": [
+      {
+        "nazov": "Balcke-Dürr GmbH",
+        "ico": "DE813504480",
+        "pocet_vyher": 2,
+        "celkova_cena": 33800000.0
+      },
+      {
+        "nazov": "Plaut Slovensko, s.r.o.",
+        "ico": "35785284",
+        "pocet_vyher": 1,
+        "celkova_cena": 25858816.0
+      },
+      {
+        "nazov": "Mincovňa Kremnica, štátny podnik",
+        "ico": "00010448",
+        "pocet_vyher": 1,
+        "celkova_cena": 19598094.0
+      },
+      {
+        "nazov": "PRAGOLAB s.r.o.",
+        "ico": "31352839",
+        "pocet_vyher": 2,
+        "celkova_cena": 19103479.0
+      },
+      {
+        "nazov": "VODOHOSPODÁRSKA VÝSTAVBA, ŠTÁTNY PODNIK",
+        "ico": "00156752",
+        "pocet_vyher": 1,
+        "celkova_cena": 10397974.0
+      },
+      {
+        "nazov": "Metrostav DS a.s.",
+        "ico": "46120602",
+        "pocet_vyher": 4,
+        "celkova_cena": 9022162.0
+      },
+      {
+        "nazov": "COLAS Slovakia, a.s.",
+        "ico": "31651402",
+        "pocet_vyher": 7,
+        "celkova_cena": 8991947.0
+      },
+      {
+        "nazov": "Metrostav Slovakia a. s.",
+        "ico": "47144190",
+        "pocet_vyher": 1,
+        "celkova_cena": 8603850.0
+      },
+      {
+        "nazov": "Aricoma Systems s.r.o.",
+        "ico": "36396222",
+        "pocet_vyher": 2,
+        "celkova_cena": 8115938.0
+      },
+      {
+        "nazov": "STRABAG s.r.o.",
+        "ico": "17317282",
+        "pocet_vyher": 5,
+        "celkova_cena": 7458883.0
+      }
+    ],
+    "top_obstaravatelia": [
+      {
+        "nazov": "Slovenská pošta, a.s.",
+        "ico": "36631124",
+        "pocet_zakaziek": 1,
+        "celkovy_vydavok": 25858816.0
+      },
+      {
+        "nazov": "Slovenský hydrometeorologický ústav",
+        "ico": "00156884",
+        "pocet_zakaziek": 1,
+        "celkovy_vydavok": 19033613.0
+      },
+      {
+        "nazov": "Národná diaľničná spoločnosť, a.s.",
+        "ico": "35919001",
+        "pocet_zakaziek": 5,
+        "celkovy_vydavok": 15450930.0
+      },
+      {
+        "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
+        "ico": "00164381",
+        "pocet_zakaziek": 3,
+        "celkovy_vydavok": 11042428.0
+      },
+      {
+        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+        "ico": "36022047",
+        "pocet_zakaziek": 1,
+        "celkovy_vydavok": 10397974.0
+      },
+      {
+        "nazov": "MH Teplárenský holding, a.s.",
+        "ico": "36211541",
+        "pocet_zakaziek": 1,
+        "celkovy_vydavok": 8480063.0
+      },
+      {
+        "nazov": "Univerzita Komenského v Bratislave",
+        "ico": "00397865",
+        "pocet_zakaziek": 4,
+        "celkovy_vydavok": 7538783.0
+      },
+      {
+        "nazov": "Železnice Slovenskej republiky",
+        "ico": "31364501",
+        "pocet_zakaziek": 1,
+        "celkovy_vydavok": 7192926.0
+      },
+      {
+        "nazov": "Psychiatrická nemocnica Profesora Matulaya Kremnica",
+        "ico": "00606987",
+        "pocet_zakaziek": 1,
+        "celkovy_vydavok": 5355878.0
+      },
+      {
+        "nazov": "Univerzitná nemocnica L. Pasteura Košice",
+        "ico": "00606707",
+        "pocet_zakaziek": 5,
+        "celkovy_vydavok": 4592093.0
+      }
+    ],
+    "top_cpv": [
+      {
+        "cpv_kod": "",
+        "pocet": 278,
+        "celkova_hodnota": 749568.0
+      },
+      {
+        "cpv_kod": "Stavebné práce",
+        "pocet": 143,
+        "celkova_hodnota": 17098401.0
+      },
+      {
+        "cpv_kod": "Potraviny, nápoje, tabak a príbuzné produkty",
+        "pocet": 35,
+        "celkova_hodnota": 276597.0
+      },
+      {
+        "cpv_kod": "45000000-7",
+        "pocet": 21,
+        "celkova_hodnota": 6118332.0
+      },
+      {
+        "cpv_kod": "77211000-2",
+        "pocet": 19,
+        "celkova_hodnota": null
+      },
+      {
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "pocet": 17,
+        "celkova_hodnota": 5340615.0
+      },
+      {
+        "cpv_kod": "Elektrická energia",
+        "pocet": 13,
+        "celkova_hodnota": 372571.0
+      },
+      {
+        "cpv_kod": "Zemný plyn",
+        "pocet": 12,
+        "celkova_hodnota": 675000.0
+      },
+      {
+        "cpv_kod": "Inžinierske projektovanie",
+        "pocet": 12,
+        "celkova_hodnota": 338904.0
+      },
+      {
+        "cpv_kod": "Služby informačných technológií: konzultácie, vývoj softvéru, internet a podpora",
+        "pocet": 10,
+        "celkova_hodnota": 174180.0
+      },
+      {
+        "cpv_kod": "Rôzne náhradné diely",
+        "pocet": 10,
+        "celkova_hodnota": null
+      },
+      {
+        "cpv_kod": "Stavebné práce na objektoch nemocničných zariadení",
+        "pocet": 9,
+        "celkova_hodnota": 4761895.0
+      },
+      {
+        "cpv_kod": "Poisťovacie služby",
+        "pocet": 7,
+        "celkova_hodnota": 684735.0
+      },
+      {
+        "cpv_kod": "Opravy, údržba a súvisiace služby pre vozidlá a príbuzné vybavenie",
+        "pocet": 7,
+        "celkova_hodnota": 104860.0
+      },
+      {
+        "cpv_kod": "Stavebné práce na stavbe budov materských škôl",
+        "pocet": 6,
+        "celkova_hodnota": null
+      }
+    ]
+  }
+}

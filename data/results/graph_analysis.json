@@ -1,0 +1,916 @@
+{
+  "buyer_winner_graph": {
+    "summary": {
+      "nodes": 525,
+      "edges": 421
+    },
+    "top_20_pagerank": [
+      {
+        "ico": "17317282",
+        "name": "STRABAG s.r.o.",
+        "pagerank": 0.006063,
+        "type": "winner",
+        "total_value": 7458883.49
+      },
+      {
+        "ico": "31651402",
+        "name": "COLAS Slovakia, a.s.",
+        "pagerank": 0.005437,
+        "type": "winner",
+        "total_value": 8990426.59
+      },
+      {
+        "ico": "36526185",
+        "name": "ViOn, a.s.",
+        "pagerank": 0.004647,
+        "type": "winner",
+        "total_value": 1530084.91
+      },
+      {
+        "ico": "36473219",
+        "name": "CIMBAĽÁK s.r.o.",
+        "pagerank": 0.004521,
+        "type": "winner",
+        "total_value": 553923.62
+      },
+      {
+        "ico": "00896225",
+        "name": "Swietelsky-Slovakia spol. s r.o.",
+        "pagerank": 0.004015,
+        "type": "winner",
+        "total_value": 4966037.01
+      },
+      {
+        "ico": "44886021",
+        "name": "DAG SLOVAKIA, a. s.",
+        "pagerank": 0.004015,
+        "type": "winner",
+        "total_value": 3175989.05
+      },
+      {
+        "ico": "36019208",
+        "name": "PEKÁREŇ KELPEK s.r.o.",
+        "pagerank": 0.003722,
+        "type": "winner",
+        "total_value": 475642.91
+      },
+      {
+        "ico": "37212931",
+        "name": "Henrich Sonnenschein - ITSK",
+        "pagerank": 0.003638,
+        "type": "winner",
+        "total_value": 418141.84
+      },
+      {
+        "ico": "36052981",
+        "name": "REDOX, s.r.o.",
+        "pagerank": 0.003554,
+        "type": "winner",
+        "total_value": 773060.0
+      },
+      {
+        "ico": "53684141",
+        "name": "Yunex, s. r. o.",
+        "pagerank": 0.003383,
+        "type": "winner",
+        "total_value": 6426187.78
+      },
+      {
+        "ico": "50060872",
+        "name": "MVM CEEnergy Slovakia s.r.o.",
+        "pagerank": 0.003383,
+        "type": "winner",
+        "total_value": 86260.25
+      },
+      {
+        "ico": "48282235",
+        "name": "FEROSTA a spol., s.r.o.",
+        "pagerank": 0.003383,
+        "type": "winner",
+        "total_value": 1800426.7
+      },
+      {
+        "ico": "36320854",
+        "name": "mmcité sk s.r.o.",
+        "pagerank": 0.003339,
+        "type": "winner",
+        "total_value": 320009.02
+      },
+      {
+        "ico": "31398294",
+        "name": "KVANT spol. s r.o.",
+        "pagerank": 0.003173,
+        "type": "winner",
+        "total_value": 698732.67
+      },
+      {
+        "ico": "55314554",
+        "name": "Ivana Kužmová",
+        "pagerank": 0.003173,
+        "type": "winner",
+        "total_value": 65000.0
+      },
+      {
+        "ico": "31352839",
+        "name": "PRAGOLAB s.r.o.",
+        "pagerank": 0.002932,
+        "type": "winner",
+        "total_value": 19103479.0
+      },
+      {
+        "ico": "34099514",
+        "name": "INMEDIA, spol. s r.o.",
+        "pagerank": 0.002781,
+        "type": "winner",
+        "total_value": 273958.28
+      },
+      {
+        "ico": "17321450",
+        "name": "exe, a.s.",
+        "pagerank": 0.002751,
+        "type": "winner",
+        "total_value": 88200.0
+      },
+      {
+        "ico": "36388980",
+        "name": "Fagus SK, s.r.o.",
+        "pagerank": 0.002751,
+        "type": "winner",
+        "total_value": 482811.1
+      },
+      {
+        "ico": "DE813504480",
+        "name": "Balcke-Dürr GmbH",
+        "pagerank": 0.002751,
+        "type": "winner",
+        "total_value": 33800000.0
+      }
+    ],
+    "top_20_edges": [
+      {
+        "buyer_ico": "00309745",
+        "buyer_name": "Mesto Myjava",
+        "winner_ico": "36268071",
+        "winner_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "contracts": 7,
+        "total_value": 19698.33
+      },
+      {
+        "buyer_ico": "00188000",
+        "buyer_name": "Centrum voľného času ADAM",
+        "winner_ico": "44291809",
+        "winner_name": "innogy Slovensko s. r. o.",
+        "contracts": 3,
+        "total_value": 4931.83
+      },
+      {
+        "buyer_ico": "00151866",
+        "buyer_name": "Ministerstvo vnútra Slovenskej republiky",
+        "winner_ico": "45868212",
+        "winner_name": "EXIMA, spol. s r.o.",
+        "contracts": 3,
+        "total_value": 729688.0
+      },
+      {
+        "buyer_ico": "00035777",
+        "buyer_name": "LUMEN - Špecializované zariadenie, zariadenie pre seniorov a domov sociálnych služieb",
+        "winner_ico": "36019208",
+        "winner_name": "PEKÁREŇ KELPEK s.r.o.",
+        "contracts": 3,
+        "total_value": 124597.66
+      },
+      {
+        "buyer_ico": "42399769",
+        "buyer_name": "Základná škola s materskou školou, J. Mudrocha 1343/19, Senica",
+        "winner_ico": "11838132",
+        "winner_name": "Ing. Peter Švec - ATIS",
+        "contracts": 3,
+        "total_value": 7411.16
+      },
+      {
+        "buyer_ico": "00312037",
+        "buyer_name": "Mesto Trenčín",
+        "winner_ico": "31651402",
+        "winner_name": "COLAS Slovakia, a.s.",
+        "contracts": 2,
+        "total_value": 89771.47
+      },
+      {
+        "buyer_ico": "17078423",
+        "buyer_name": "Stredná odborná škola Gemerská 1, Košice",
+        "winner_ico": "47488867",
+        "winner_name": "MINIBUSEUROPA s.r.o.",
+        "contracts": 2,
+        "total_value": 7870.0
+      },
+      {
+        "buyer_ico": "17078423",
+        "buyer_name": "Stredná odborná škola Gemerská 1, Košice",
+        "winner_ico": "5481607007",
+        "winner_name": "Lexicon+Aldona Kuk",
+        "contracts": 2,
+        "total_value": 13830.0
+      },
+      {
+        "buyer_ico": "17078423",
+        "buyer_name": "Stredná odborná škola Gemerská 1, Košice",
+        "winner_ico": "60311302",
+        "winner_name": "Cacao d.o.o.",
+        "contracts": 2,
+        "total_value": 8808.54
+      },
+      {
+        "buyer_ico": "52473732",
+        "buyer_name": "MEPOS SNV s.r.o.",
+        "winner_ico": "53483707",
+        "winner_name": "STOLÁRSTVO DM, s.r.o.",
+        "contracts": 2,
+        "total_value": 5463.0
+      },
+      {
+        "buyer_ico": "52473732",
+        "buyer_name": "MEPOS SNV s.r.o.",
+        "winner_ico": "31689612",
+        "winner_name": "GIZI spol. s.r.o.",
+        "contracts": 2,
+        "total_value": 3694.58
+      },
+      {
+        "buyer_ico": "52473732",
+        "buyer_name": "MEPOS SNV s.r.o.",
+        "winner_ico": "36216054",
+        "winner_name": "EUROMAR spol. s r.o.",
+        "contracts": 2,
+        "total_value": 2662.2
+      },
+      {
+        "buyer_ico": "52473732",
+        "buyer_name": "MEPOS SNV s.r.o.",
+        "winner_ico": "52961443",
+        "winner_name": "PADAX, s.r.o.",
+        "contracts": 2,
+        "total_value": 2439.02
+      },
+      {
+        "buyer_ico": "00891860",
+        "buyer_name": "Stredná odborná škola drevárska, Pílska 7, Topoľčany",
+        "winner_ico": "36385972",
+        "winner_name": "Jarabina s.r.o.",
+        "contracts": 2,
+        "total_value": 3356.67
+      },
+      {
+        "buyer_ico": "36513458",
+        "buyer_name": "Nemocnica Poprad a. s.",
+        "winner_ico": "46378979",
+        "winner_name": "Messer Medical Home Care Slovakia, s. r. o.",
+        "contracts": 2,
+        "total_value": 1897.56
+      },
+      {
+        "buyer_ico": "36513458",
+        "buyer_name": "Nemocnica Poprad a. s.",
+        "winner_ico": "46730702",
+        "winner_name": "SIKERS SVIT, s.r.o.",
+        "contracts": 2,
+        "total_value": 2845.33
+      },
+      {
+        "buyer_ico": "36513458",
+        "buyer_name": "Nemocnica Poprad a. s.",
+        "winner_ico": "48146676",
+        "winner_name": "Siemens Healthcare s. r. o.",
+        "contracts": 2,
+        "total_value": 1776.8
+      },
+      {
+        "buyer_ico": "36513458",
+        "buyer_name": "Nemocnica Poprad a. s.",
+        "winner_ico": "04387601",
+        "winner_name": "EKONA COR s.r.o.",
+        "contracts": 2,
+        "total_value": 5775.0
+      },
+      {
+        "buyer_ico": "35829052",
+        "buyer_name": "Slovenské elektrárne, a.s.",
+        "winner_ico": "DE813504480",
+        "winner_name": "Balcke-Dürr GmbH",
+        "contracts": 2,
+        "total_value": 33800000.0
+      },
+      {
+        "buyer_ico": "35919001",
+        "buyer_name": "Národná diaľničná spoločnosť, a.s.",
+        "winner_ico": "46120602",
+        "winner_name": "Metrostav DS a.s.",
+        "contracts": 2,
+        "total_value": 4863831.99
+      }
+    ],
+    "components": {
+      "count": 120,
+      "largest_size": 132,
+      "sizes": [
+        132,
+        20,
+        17,
+        15,
+        14,
+        13,
+        11,
+        10,
+        9,
+        8
+      ]
+    },
+    "self_dealing_risk": [
+      {
+        "ico": "00151866",
+        "name": "Ministerstvo vnútra Slovenskej republiky",
+        "total_value": 9584990.38,
+        "buyer_contracts": 1,
+        "winner_contracts": 8
+      },
+      {
+        "ico": "00165336",
+        "name": "Národný onkologický ústav v Bratislave",
+        "total_value": 5243299.54,
+        "buyer_contracts": 1,
+        "winner_contracts": 5
+      },
+      {
+        "ico": "36038351",
+        "name": "LESY Slovenskej republiky, štátny podnik",
+        "total_value": 4437547.11,
+        "buyer_contracts": 1,
+        "winner_contracts": 8
+      },
+      {
+        "ico": "35914939",
+        "name": "Železničná spoločnosť Slovensko, a.s.",
+        "total_value": 4350268.0,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "00316181",
+        "name": "Mesto Lučenec",
+        "total_value": 2036771.4,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "00365327",
+        "name": "Univerzitná nemocnica Martin",
+        "total_value": 765318.92,
+        "buyer_contracts": 1,
+        "winner_contracts": 5
+      },
+      {
+        "ico": "00603481",
+        "name": "Hlavné mesto SR Bratislava",
+        "total_value": 752263.0,
+        "buyer_contracts": 1,
+        "winner_contracts": 7
+      },
+      {
+        "ico": "48484342",
+        "name": "Domov dôchodcov Šaľa",
+        "total_value": 482673.24,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "36057029",
+        "name": "Technické služby Detva s.r.o.",
+        "total_value": 468764.49,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "00188433",
+        "name": "Technické služby mesta Trebišov",
+        "total_value": 424395.0,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "00351768",
+        "name": "„NITRAVA“, Zariadenie sociálnych služieb Nitra",
+        "total_value": 366942.29,
+        "buyer_contracts": 1,
+        "winner_contracts": 5
+      },
+      {
+        "ico": "00632350",
+        "name": "Centrum sociálnych služieb - BYSTRIČAN",
+        "total_value": 353301.97,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "00738328",
+        "name": "Ústav na výkon trestu odňatia slobody",
+        "total_value": 309930.47,
+        "buyer_contracts": 1,
+        "winner_contracts": 3
+      },
+      {
+        "ico": "52473732",
+        "name": "MEPOS SNV s.r.o.",
+        "total_value": 19211.67,
+        "buyer_contracts": 1,
+        "winner_contracts": 7
+      }
+    ]
+  },
+  "cobidding_graph": {
+    "summary": {
+      "nodes": 170,
+      "edges": 645
+    },
+    "community_method": "connected_components (install python-louvain for Louvain)",
+    "communities": {
+      "count": 34,
+      "largest_size": 21,
+      "top_communities": [
+        {
+          "size": 21,
+          "members": [
+            {
+              "ico": "00351768",
+              "name": "„NITRAVA“, Zariadenie sociálnych služieb Nitra"
+            },
+            {
+              "ico": "46103325",
+              "name": "NITRAZDROJ, a.s."
+            },
+            {
+              "ico": "46887423",
+              "name": "Klas veľkoobchod s.r.o."
+            },
+            {
+              "ico": "31412408",
+              "name": "QUALITED s.r.o."
+            },
+            {
+              "ico": "34099514",
+              "name": "INMEDIA, spol. s r.o."
+            },
+            {
+              "ico": "36172073",
+              "name": "Goron, s.r.o."
+            },
+            {
+              "ico": "00738328",
+              "name": "Ústav na výkon trestu odňatia slobody"
+            },
+            {
+              "ico": "47544783",
+              "name": "YURONES s.r.o."
+            },
+            {
+              "ico": "36730866",
+              "name": "PODVIHORLATSKÉ PEKÁRNE A CUKRÁRNE a.s."
+            },
+            {
+              "ico": "36582115",
+              "name": "Paciga s.r.o."
+            }
+          ]
+        },
+        {
+          "size": 19,
+          "members": [
+            {
+              "ico": "31425933",
+              "name": "STAVEBNINY spol. s.r.o."
+            },
+            {
+              "ico": "45719331",
+              "name": "EMPE Sport"
+            },
+            {
+              "ico": "36409669",
+              "name": "FEMINA SLOVAKIA s.r.o."
+            },
+            {
+              "ico": "17621992",
+              "name": "Jozef Merašický nábytok"
+            },
+            {
+              "ico": "11740221",
+              "name": "Ivan Krcho BLESKOSPOL-INTERLUX"
+            },
+            {
+              "ico": "50757318",
+              "name": "ŠvajlenBus s.r.o."
+            },
+            {
+              "ico": "36305073",
+              "name": "DECODOM, spol. s.r.o."
+            },
+            {
+              "ico": "43734731",
+              "name": "Ida Gábrišová - KANCEL Topoľčany"
+            },
+            {
+              "ico": "40797180",
+              "name": "TOBRA- Branislav Marko"
+            },
+            {
+              "ico": "36385972",
+              "name": "Jarabina s.r.o."
+            }
+          ]
+        },
+        {
+          "size": 19,
+          "members": [
+            {
+              "ico": "36507628",
+              "name": "ELTON POPRAD spol. s.r.o"
+            },
+            {
+              "ico": "36244848",
+              "name": "Lavaton s.r.o."
+            },
+            {
+              "ico": "47630990",
+              "name": "KEYmax s.r.o."
+            },
+            {
+              "ico": "41012461",
+              "name": "Dušan Šabľa"
+            },
+            {
+              "ico": "31320911",
+              "name": "PHARMA GROUP, a.s."
+            },
+            {
+              "ico": "46730702",
+              "name": "SIKERS SVIT, s.r.o."
+            },
+            {
+              "ico": "31340954",
+              "name": "TRIGON PLUS s.r.o."
+            },
+            {
+              "ico": "48146676",
+              "name": "Siemens Healthcare s. r. o."
+            },
+            {
+              "ico": "46378979",
+              "name": "Messer Medical Home Care Slovakia, s. r. o."
+            },
+            {
+              "ico": "41880692",
+              "name": "MK-TELMONT Kuľka Miroslav"
+            }
+          ]
+        },
+        {
+          "size": 12,
+          "members": [
+            {
+              "ico": "355986675",
+              "name": "Chal-Tec GmbH"
+            },
+            {
+              "ico": "52391990",
+              "name": "Unikor trade s.r.o."
+            },
+            {
+              "ico": "51184605",
+              "name": "RUDYMAX s.r.o"
+            },
+            {
+              "ico": "47078839",
+              "name": "INSGRAF s.r.o."
+            },
+            {
+              "ico": "36553859",
+              "name": "ALEX kovový a školský nábytok s.r.o."
+            },
+            {
+              "ico": "36320439",
+              "name": "Daffer spol. s r.o."
+            },
+            {
+              "ico": "33952264",
+              "name": "Mária Kapallová - KAPAP"
+            },
+            {
+              "ico": "31396763",
+              "name": "ŠKOLEX, spol. s r.o."
+            },
+            {
+              "ico": "47871440",
+              "name": "Ing. Olách Peter"
+            },
+            {
+              "ico": "43864074",
+              "name": "SIKO KÚPEĽNE a. s."
+            }
+          ]
+        },
+        {
+          "size": 9,
+          "members": [
+            {
+              "ico": "53935519",
+              "name": "Marek Janečka"
+            },
+            {
+              "ico": "36793981",
+              "name": "PROFI-MONT SK s.r.o."
+            },
+            {
+              "ico": "36562939",
+              "name": "Alza.sk s. r. o."
+            },
+            {
+              "ico": "52473732",
+              "name": "MEPOS SNV s.r.o."
+            },
+            {
+              "ico": "44291809",
+              "name": "innogy Slovensko s. r. o."
+            },
+            {
+              "ico": "51231735",
+              "name": "Merkury shop, s.r.o."
+            },
+            {
+              "ico": "54120527",
+              "name": "PROGRESS TRADE SK s.r.o."
+            },
+            {
+              "ico": "45629102",
+              "name": "Point A s.r.o."
+            },
+            {
+              "ico": "53841948",
+              "name": "Róbert Jenčák"
+            }
+          ]
+        }
+      ]
+    },
+    "bid_rigging_signals": [
+      {
+        "co_bids": 2,
+        "consistent_winner_ico": "34099514",
+        "consistent_winner_name": "INMEDIA, spol. s r.o.",
+        "consistent_loser_ico": "31412408",
+        "consistent_loser_name": "QUALITED s.r.o.",
+        "winner_wins": 2,
+        "loser_wins": 0
+      },
+      {
+        "co_bids": 2,
+        "consistent_winner_ico": "34099514",
+        "consistent_winner_name": "INMEDIA, spol. s r.o.",
+        "consistent_loser_ico": "36019208",
+        "consistent_loser_name": "PEKÁREŇ KELPEK s.r.o.",
+        "winner_wins": 2,
+        "loser_wins": 0
+      },
+      {
+        "co_bids": 2,
+        "consistent_winner_ico": "34099514",
+        "consistent_winner_name": "INMEDIA, spol. s r.o.",
+        "consistent_loser_ico": "36638528",
+        "consistent_loser_name": "PPM LOGISTIC s. r. o.",
+        "winner_wins": 2,
+        "loser_wins": 0
+      },
+      {
+        "co_bids": 2,
+        "consistent_winner_ico": "46658181",
+        "consistent_winner_name": "Kysucké pekárne, a.s.",
+        "consistent_loser_ico": "31412408",
+        "consistent_loser_name": "QUALITED s.r.o.",
+        "winner_wins": 2,
+        "loser_wins": 0
+      },
+      {
+        "co_bids": 2,
+        "consistent_winner_ico": "46658181",
+        "consistent_winner_name": "Kysucké pekárne, a.s.",
+        "consistent_loser_ico": "36638528",
+        "consistent_loser_name": "PPM LOGISTIC s. r. o.",
+        "winner_wins": 2,
+        "loser_wins": 0
+      },
+      {
+        "co_bids": 2,
+        "consistent_winner_ico": "46658181",
+        "consistent_winner_name": "Kysucké pekárne, a.s.",
+        "consistent_loser_ico": "36473219",
+        "consistent_loser_name": "CIMBAĽÁK s.r.o.",
+        "winner_wins": 2,
+        "loser_wins": 0
+      }
+    ],
+    "top_20_cobidding_pairs": [
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "36268071",
+        "company_b_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "co_bids": 21,
+        "a_wins": 21,
+        "b_wins": 21
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "36964166",
+        "company_b_name": "Marián Sabo - MAS",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "30703093",
+        "company_b_name": "ARGUS Ing. Igor Ševčík",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "18040446",
+        "company_b_name": "Ing. Michal Garaj Geodézia Myjava",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "50232029",
+        "company_b_name": "Peter Komár",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "50806882",
+        "company_b_name": "MA Trubač Vladimír",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "36669563",
+        "company_b_name": "GEOLA s.r.o.",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "32725949",
+        "company_b_name": "Patrik Vajaš - IVA",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36268071",
+        "company_a_name": "Správa majetku Mesta Myjava, s.r.o.",
+        "company_b_ico": "51682265",
+        "company_b_name": "PERRY SOFT a. s.",
+        "co_bids": 7,
+        "a_wins": 7,
+        "b_wins": 7
+      },
+      {
+        "company_a_ico": "36019208",
+        "company_a_name": "PEKÁREŇ KELPEK s.r.o.",
+        "company_b_ico": "45952671",
+        "company_b_name": "CIMBAĽÁK s.r.o.",
+        "co_bids": 6,
+        "a_wins": 6,
+        "b_wins": 6
+      },
+      {
+        "company_a_ico": "36019208",
+        "company_a_name": "PEKÁREŇ KELPEK s.r.o.",
+        "company_b_ico": "46658181",
+        "company_b_name": "Kysucké pekárne, a.s.",
+        "co_bids": 6,
+        "a_wins": 6,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "36019208",
+        "company_a_name": "PEKÁREŇ KELPEK s.r.o.",
+        "company_b_ico": "36473219",
+        "company_b_name": "CIMBAĽÁK s.r.o.",
+        "co_bids": 6,
+        "a_wins": 6,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "36019208",
+        "company_a_name": "PEKÁREŇ KELPEK s.r.o.",
+        "company_b_ico": "36019208",
+        "company_b_name": "PEKÁREŇ KELPEK s.r.o.",
+        "co_bids": 5,
+        "a_wins": 5,
+        "b_wins": 5
+      },
+      {
+        "company_a_ico": "47488867",
+        "company_a_name": "MINIBUSEUROPA s.r.o.",
+        "company_b_ico": "5481607007",
+        "company_b_name": "Lexicon+Aldona Kuk",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "47488867",
+        "company_a_name": "MINIBUSEUROPA s.r.o.",
+        "company_b_ico": "60311302",
+        "company_b_name": "Cacao d.o.o.",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "5481607007",
+        "company_a_name": "Lexicon+Aldona Kuk",
+        "company_b_ico": "60311302",
+        "company_b_name": "Cacao d.o.o.",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "53483707",
+        "company_a_name": "STOLÁRSTVO DM, s.r.o.",
+        "company_b_ico": "31689612",
+        "company_b_name": "GIZI spol. s.r.o.",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "53483707",
+        "company_a_name": "STOLÁRSTVO DM, s.r.o.",
+        "company_b_ico": "36216054",
+        "company_b_name": "EUROMAR spol. s r.o.",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "53483707",
+        "company_a_name": "STOLÁRSTVO DM, s.r.o.",
+        "company_b_ico": "52961443",
+        "company_b_name": "PADAX, s.r.o.",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      },
+      {
+        "company_a_ico": "31689612",
+        "company_a_name": "GIZI spol. s.r.o.",
+        "company_b_ico": "36216054",
+        "company_b_name": "EUROMAR spol. s r.o.",
+        "co_bids": 4,
+        "a_wins": 4,
+        "b_wins": 4
+      }
+    ]
+  },
+  "geographic_analysis": {
+    "total_buyer_winner_pairs": 106,
+    "unique_buyer_cities": 37,
+    "loyal_buyer_cities": [],
+    "region_distribution": {
+      "Košický kraj": 26,
+      "Bratislavský kraj": 15,
+      "Nitriansky kraj": 12,
+      "Žilinský kraj": 10,
+      "Trenčiansky kraj": 9,
+      "Banskobystrický kraj": 7,
+      "Trnavský kraj": 5,
+      "Prešovský kraj": 4,
+      "Extra-Regio NUTS 3": 1
+    }
+  }
+}
