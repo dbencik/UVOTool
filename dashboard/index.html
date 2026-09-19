@@ -1146,7 +1146,17 @@ function showDetail(row) {
       let rozpocetDoc = null;
       for (const vh of vyhlasenia) {
         const pr = (vh.extraction || {}).prilezitost || {};
-        if (pr.hodnota != null) { rozpocet = pr.hodnota; rozpocetDoc = vh; break; }
+        if (pr.hodnota != null) {
+          rozpocet = pr.hodnota;
+          rozpocetDoc = vh;
+          // If multi-lot: vyhlásenie hodnota may be per-lot, adjust
+          const vhPocetCasti = (vh.extraction || {}).zakazka?.pocet_casti || 1;
+          const docPocetCasti = zak.pocet_casti || 1;
+          if (docPocetCasti > 1 && vhPocetCasti <= 1) {
+            rozpocet = rozpocet * docPocetCasti;
+          }
+          break;
+        }
       }
 
       // Get winning price
@@ -1396,9 +1406,17 @@ fetch('/api/data')
       const related = window.ZAKAZKA_INDEX[zid];
       for (const rd of related) {
         if (rd.action === 'vyhlasenie' || rd.action === 'oprava') {
-          const rozpocet = (rd.extraction || {}).prilezitost?.hodnota;
+          let rozpocet = (rd.extraction || {}).prilezitost?.hodnota;
           if (rozpocet != null && rozpocet > 0) {
+            // If multi-lot: vyhlásenie hodnota may be per-lot, výsledok celková is sum
+            // Multiply rozpočet by počet častí to get comparable total
+            const pocetCasti = row.pocet_casti || 1;
+            const rdPocetCasti = (rd.extraction || {}).zakazka?.pocet_casti || 1;
+            if (pocetCasti > 1 && rdPocetCasti <= 1) {
+              rozpocet = rozpocet * pocetCasti;
+            }
             row._cenovy_pomer = row.hodnota / rozpocet * 100;
+            row._rozpocet_adjusted = rozpocet;
             break;
           }
         }
