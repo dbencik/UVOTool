@@ -1007,6 +1007,11 @@ function showDetail(row) {
     </div>`;
 
     const ucastnici = vys.ucastnici || [];
+    if (vys.pocet_ponuk && ucastnici.length < vys.pocet_ponuk) {
+      html += `<div style="padding:6px 10px;background:#fff3bf;border-radius:4px;font-size:12px;color:#e67700;margin-bottom:16px">UVO zverejnilo ${ucastnici.length} z ${vys.pocet_ponuk} uchadzacov — porazeni uchadzaci nie su menovaní.</div>`;
+    }
+
+    const ucastnici = vys.ucastnici || [];
     if (ucastnici.length > 0) {
       html += `<div class="detail-section"><h3>Ucastnici (${ucastnici.length})</h3>`;
       ucastnici.forEach(u => {
