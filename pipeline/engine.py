@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -338,24 +339,22 @@ class PipelineEngine:
             elif module_id == "rpvs" and ico:
                 rows = db.execute("SELECT * FROM rpvs WHERE ico = ?", (ico,)).fetchall()
                 if rows:
-                    ubos = []
-                    seen = set()
+                    ubo_map = {}
                     for r in rows:
                         if r["ubo_meno"]:
                             key = (r["ubo_meno"], r["ubo_priezvisko"])
-                            if key in seen:
-                                continue
-                            seen.add(key)
                             dob = r["ubo_datum_narodenia"] or ""
                             if dob and "T" in dob:
                                 m = re.match(r"(\d{4})-(\d{2})-(\d{2})", dob)
                                 if m:
                                     dob = f"{m.group(3)}.{m.group(2)}.{m.group(1)}"
-                            ubos.append({
-                                "meno": r["ubo_meno"],
-                                "priezvisko": r["ubo_priezvisko"],
-                                "datum_narodenia": dob,
-                            })
+                            if key not in ubo_map or (dob and not ubo_map[key]["datum_narodenia"]):
+                                ubo_map[key] = {
+                                    "meno": r["ubo_meno"],
+                                    "priezvisko": r["ubo_priezvisko"],
+                                    "datum_narodenia": dob,
+                                }
+                    ubos = list(ubo_map.values())
                     return {
                         "is_registered": bool(ubos),
                         "ubos": ubos,
@@ -381,8 +380,8 @@ class PipelineEngine:
                 path = BASE_DIR / "data" / "results" / "graph_analysis.json"
                 if path.exists():
                     return json.loads(path.read_text())
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"[Pipeline] _read_module_result error for {module_id}/{ico}: {e}", flush=True)
         finally:
             db.close()
 
