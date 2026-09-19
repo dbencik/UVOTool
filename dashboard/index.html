@@ -3276,17 +3276,17 @@ function renderProfil(data, container) {
 
     if (sn === 'DPH odpočty' && sekcia.data) {
       var od = sekcia.data;
-      // Summary cards
-      html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;margin-bottom:12px">';
-      if (od.posledny_odpocet != null) html += '<div class="card" style="padding:12px;min-width:140px"><div class="label">Posledny odpocet</div><div class="value" style="font-size:18px">' + profilFmtEurShort(od.posledny_odpocet) + '</div></div>';
-      if (od.celkovy != null) html += '<div class="card" style="padding:12px;min-width:140px"><div class="label">Celkovy</div><div class="value" style="font-size:18px">' + profilFmtEurShort(od.celkovy) + '</div></div>';
-      if (od.pocet_obdobi != null) html += '<div class="card" style="padding:12px;min-width:140px"><div class="label">Pocet obdobi</div><div class="value" style="font-size:18px">' + od.pocet_obdobi + '</div></div>';
+      html += '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;margin-bottom:12px">';
+      html += '<div class="card" style="padding:12px;min-width:130px"><div class="label">Nadmerny odpocet</div><div class="value" style="font-size:16px">' + profilFmtEurShort(od.posledny_odpocet || 0) + '</div></div>';
+      html += '<div class="card" style="padding:12px;min-width:130px"><div class="label">Vlastna dan</div><div class="value" style="font-size:16px">' + profilFmtEurShort(od.posledna_dan || 0) + '</div></div>';
+      html += '<div class="card" style="padding:12px;min-width:130px"><div class="label">Celkovy odpocet</div><div class="value" style="font-size:16px">' + profilFmtEurShort(od.celkovy_odpocet || 0) + '</div></div>';
+      html += '<div class="card" style="padding:12px;min-width:130px"><div class="label">Celkova dan</div><div class="value" style="font-size:16px">' + profilFmtEurShort(od.celkova_dan || 0) + '</div></div>';
+      if (od.pocet_obdobi) html += '<div class="card" style="padding:12px;min-width:100px"><div class="label">Obdobi</div><div class="value" style="font-size:16px">' + od.pocet_obdobi + '</div></div>';
       html += '</div>';
-      // Trend table
-      if (Array.isArray(od.obdobia) && od.obdobia.length > 0) {
-        html += '<table class="profil-mini-table"><thead><tr><th>Obdobie</th><th class="val-col">Odpocet</th></tr></thead><tbody>';
-        od.obdobia.forEach(function(o) {
-          html += '<tr><td>' + esc(o.obdobie || '') + '</td><td class="val-col">' + profilFmtEur(o.suma) + '</td></tr>';
+      if (Array.isArray(od.trend) && od.trend.length > 0) {
+        html += '<table class="profil-mini-table"><thead><tr><th>Rok</th><th class="val-col">Nadmerny odpocet</th><th class="val-col">Vlastna dan</th></tr></thead><tbody>';
+        od.trend.forEach(function(t) {
+          html += '<tr><td>' + esc(t.obdobie || '') + '</td><td class="val-col">' + profilFmtEur(t.odpocet || 0) + '</td><td class="val-col">' + profilFmtEur(t.dan || 0) + '</td></tr>';
         });
         html += '</tbody></table>';
       }
@@ -3387,27 +3387,79 @@ document.getElementById('tdd-enrich-btn').addEventListener('click', function() {
 });
 
 document.getElementById('tdd-xml-btn').addEventListener('click', function() {
-  var xml = document.getElementById('tdd-xml').value.trim();
-  if (!xml) return;
+  // Removed — XML textarea replaced by file upload
+});
+
+// TDD XML file upload — single file
+document.getElementById('tdd-xml-file').addEventListener('change', function(e) {
+  var file = e.target.files[0];
+  if (!file) return;
   var level = document.getElementById('tdd-level').value;
-  document.getElementById('tdd-results').style.display = 'block';
-  document.getElementById('tdd-supplier-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
-  document.getElementById('tdd-customer-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
-  fetch('/api/v1/enrich-tdd?level=' + level, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/xml'},
-    body: xml
-  }).then(function(r) { return r.json(); }).then(function(data) {
-    if (data.error) {
-      document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(data.error) + '</div>';
-      return;
-    }
-    renderTddParty(data.supplier, document.getElementById('tdd-supplier-data'));
-    renderTddParty(data.customer, document.getElementById('tdd-customer-data'));
-    renderTddInvoice(data.invoice, document.getElementById('tdd-invoice-info'));
-  }).catch(function(err) {
-    document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    var xml = ev.target.result;
+    document.getElementById('tdd-file-status').textContent = file.name + ' (' + (xml.length/1024).toFixed(0) + ' KB)';
+    document.getElementById('tdd-results').style.display = 'block';
+    document.getElementById('tdd-supplier-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
+    document.getElementById('tdd-customer-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
+    fetch('/api/v1/enrich-tdd?level=' + level, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/xml'},
+      body: xml
+    }).then(function(r) { return r.json(); }).then(function(data) {
+      if (data.error) {
+        document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(data.error) + '</div>';
+        return;
+      }
+      renderTddParty(data.supplier, document.getElementById('tdd-supplier-data'));
+      renderTddParty(data.customer, document.getElementById('tdd-customer-data'));
+      renderTddInvoice(data.invoice, document.getElementById('tdd-invoice-info'));
+    }).catch(function(err) {
+      document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+    });
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
+// TDD batch XML files
+document.getElementById('tdd-xml-batch').addEventListener('change', function(e) {
+  var files = Array.from(e.target.files);
+  if (!files.length) return;
+  document.getElementById('tdd-file-status').textContent = files.length + ' suborov...';
+  var level = document.getElementById('tdd-level').value;
+  var promises = files.map(function(f) {
+    return new Promise(function(resolve) {
+      var reader = new FileReader();
+      reader.onload = function(ev) { resolve(ev.target.result); };
+      reader.readAsText(f);
+    });
   });
+  Promise.all(promises).then(function(xmls) {
+    fetch('/api/v1/enrich-tdd/batch?level=' + level, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({tdds: xmls})
+    }).then(function(r) { return r.json(); }).then(function(data) {
+      document.getElementById('tdd-file-status').textContent = files.length + ' suborov spracovanych';
+      // Show results in batch table
+      var el = document.getElementById('tdd-batch-results');
+      if (!el) return;
+      if (!data.results || !data.results.length) { el.innerHTML = '<div class="error">Ziadne vysledky</div>'; return; }
+      var h = '<table class="analyza-table"><thead><tr><th>Dodavatel</th><th>Spolahliv.</th><th>Dlznik</th><th>Odberatel</th><th>Spolahliv.</th><th>Dlznik</th><th>Suma</th></tr></thead><tbody>';
+      data.results.forEach(function(r) {
+        var s = r.supplier || {};
+        var c = r.customer || {};
+        var inv = r.invoice || {};
+        h += '<tr><td>' + esc(s.nazov || s.ic_dph || '?') + '</td><td>' + tddSpolahlBadge(s.spolahliv) + '</td><td>' + tddDlznikBadge(s.je_dlznik) + '</td>';
+        h += '<td>' + esc(c.nazov || c.ic_dph || '?') + '</td><td>' + tddSpolahlBadge(c.spolahliv) + '</td><td>' + tddDlznikBadge(c.je_dlznik) + '</td>';
+        h += '<td class="val-col">' + (inv && inv.amount ? formatEurShort(inv.amount) : '') + '</td></tr>';
+      });
+      h += '</tbody></table>';
+      el.innerHTML = h;
+    });
+  });
+  e.target.value = '';
 });
 
 document.getElementById('tdd-batch-btn').addEventListener('click', function() {

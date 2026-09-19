@@ -597,9 +597,11 @@ def _profile_dodavatel(db, query, is_ico):
             "text": "",
             "data": {
                 "posledny_odpocet": frsr_odpocty.get("posledny_odpocet"),
-                "celkovy": frsr_odpocty.get("celkovy"),
+                "posledna_dan": frsr_odpocty.get("posledna_dan"),
+                "celkovy_odpocet": frsr_odpocty.get("celkovy_odpocet", 0),
+                "celkova_dan": frsr_odpocty.get("celkova_dan", 0),
                 "pocet_obdobi": frsr_odpocty.get("pocet_obdobi"),
-                "obdobia": frsr_odpocty.get("obdobia", []),
+                "trend": frsr_odpocty.get("trend", []),
             }
         })
 
