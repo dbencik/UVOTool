@@ -3398,21 +3398,41 @@ function renderTddParty(party, el) {
     var velkostLabels = {'00':'bez zam.','01':'bez zam.','02':'bez zam.','11':'0 zam.','12':'1-9','21':'10-19','22':'20-49','31':'50-99','32':'100-249','33':'250-999','34':'1000+'};
     var eurFields = /trzby|zisk|odpocet|dan$|suma|hodnota/;
 
+    // Fixed field order per module — ensures both sides align line-by-line
+    var modFieldOrder = {
+      orsf: ['nace','datum_vzniku','datum_zaniku','adresa','mesto','psc','velkost','dic','icdph','rok_zavierky','pocet_aktivit'],
+      ruz: ['trzby_posledne','trzby_predosle','zisk_posledne','zisk_predosle','rok_zavierky'],
+      rpvs: ['is_registered','ubos','obchodne_meno'],
+      frsr_dph: ['ic_dph','iban_list','datum_registracie','druh_registracie','je_zruseny','datum_zrusenia','je_vymazany','datum_vymazu'],
+      frsr_dane: ['dic','je_registrovany','je_dlznik','dlh_suma'],
+      frsr_dph_odpocty: ['ma_odpocty','posledne_obdobie','posledny_odpocet','posledna_dan','celkovy_odpocet','celkova_dan','pocet_obdobi'],
+      frsr_spolahliv: ['ids_status'],
+      uvo: ['ucasti_celkom','vyhry','celkova_hodnota_vyhier','zakazky'],
+    };
+
     var allModIds = modOrder.concat(Object.keys(party.profile).filter(function(m){ return modOrder.indexOf(m) < 0; }));
     allModIds.forEach(function(modId) {
       var modData = party.profile[modId];
-      if (!modData || Object.keys(modData).length === 0) return;
+      if (!modData) modData = {};
       var skipList = skipInModule[modId] || [];
       var label = modLabels[modId] || modId;
       var color = modColors[modId] || '#868e96';
+      var fieldOrder = modFieldOrder[modId] || Object.keys(modData);
+      // Merge any extra fields not in order
+      Object.keys(modData).forEach(function(k) { if (fieldOrder.indexOf(k) < 0 && skipList.indexOf(k) < 0) fieldOrder.push(k); });
+
       html += '<div style="margin-top:10px;border-left:3px solid ' + color + ';padding-left:10px">';
       html += '<div style="font-size:11px;font-weight:600;color:' + color + ';text-transform:uppercase;margin-bottom:4px">' + esc(label) + '</div>';
       html += '<table style="width:100%;font-size:12px;border-collapse:collapse">';
-      Object.keys(modData).forEach(function(k) {
+      fieldOrder.forEach(function(k) {
         if (skipList.indexOf(k) >= 0) return;
         var v = modData[k];
-        if (v === null || v === undefined || v === '') return;
         var fieldLabel = fieldLabels[k] || k;
+        // Missing value — show dash
+        if (v === null || v === undefined || v === '') {
+          html += '<tr><td style="padding:2px 0;color:#868e96;width:100px">' + esc(fieldLabel) + '</td><td style="padding:2px 0;color:#ced4da">—</td></tr>';
+          return;
+        }
         if (Array.isArray(v)) {
           if (v.length === 0) return;
           // UBO list — array of objects with meno/priezvisko
