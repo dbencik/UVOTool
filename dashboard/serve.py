@@ -809,6 +809,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 self.run_pipeline_api_post(pipeline_id)
             else:
                 self.save_pipeline_api()
+        elif parsed.path == "/api/v1/batch":
+            self.batch_company_api()
         else:
             self.send_response(404)
             self.end_headers()
@@ -967,24 +969,42 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         return PipelineEngine()
 
     def send_company_api(self, parsed):
-        """Public API: GET /api/v1/company/{ico}?modules=orsf,ruz,rpvs,uvo
+        """Public REST API for company data.
 
-        Returns flat JSON with data from selected modules.
-        If no modules specified, returns all available.
+        Endpoints:
+          GET /api/v1/company/{ico}                    → all modules
+          GET /api/v1/company/{ico}?modules=orsf,rpvs  → selected modules
 
-        Examples:
-          /api/v1/company/46884769
-          /api/v1/company/46884769?modules=orsf,rpvs
-          /api/v1/company/46884769?modules=orsf,ruz,rpvs,fs_dlznici,sp_dlznici,uvo
+        Available modules: orsf, ruz, rpvs, fs_dlznici, sp_dlznici, uvo, ted
         """
         parts = parsed.path.rstrip("/").split("/")
-        if len(parts) < 5:
-            self.send_json({"error": "Usage: /api/v1/company/{ico}?modules=orsf,ruz,rpvs"})
+
+        # /api/v1/company → docs
+        if len(parts) < 5 or not parts[4]:
+            self.send_json({
+                "api": "UVOTool Public API v1",
+                "usage": "GET /api/v1/company/{ico}?modules=orsf,ruz,rpvs,fs_dlznici,sp_dlznici,uvo,ted",
+                "available_modules": {
+                    "orsf": "Obchodný register — názov, status, právna forma, NACE, adresa, veľkosť, DIČ",
+                    "ruz": "Register účtovných závierok — tržby, zisk (aktuálny + predchádzajúci rok)",
+                    "rpvs": "Register partnerov VS — koneční užívatelia výhod (UBO), oprávnené osoby",
+                    "fs_dlznici": "Finančná správa — kontrola daňových dlhov",
+                    "sp_dlznici": "Sociálna poisťovňa — kontrola dlhov na sociálnom poistení",
+                    "uvo": "UVO Vestník — účasť vo verejných zákazkách (víťazstvá, poradie)",
+                    "ted": "TED eForms — účasť v nadlimitných EU zákazkách",
+                },
+                "examples": [
+                    "/api/v1/company/46884769",
+                    "/api/v1/company/46884769?modules=orsf,rpvs",
+                    "/api/v1/company/36038351?modules=orsf,ruz,uvo",
+                ],
+                "batch": "POST /api/v1/batch with body: {\"icos\": [\"12345678\", ...], \"modules\": \"orsf,rpvs\"}",
+            })
             return
 
         ico = parts[4]
-        if not ico or len(ico) < 6:
-            self.send_json({"error": "Invalid IČO"})
+        if not ico.isdigit() or len(ico) < 6 or len(ico) > 8:
+            self.send_json({"error": "Neplatné IČO. Musí byť 6-8 číslic.", "ico": ico})
             return
 
         params = parse_qs(parsed.query)
@@ -996,54 +1016,108 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         else:
             modules = available
 
+        result = self._run_company_lookup(ico, modules)
+        self.send_json(result)
+
+    def _run_company_lookup(self, ico, modules):
+        """Run selected modules for a single IČO and return structured result."""
+        from datetime import datetime
         try:
             engine = self._get_pipeline_engine()
         except Exception as e:
-            self.send_json({"error": f"Engine not available: {e}"})
-            return
+            return {"error": f"Engine not available: {e}"}
 
-        result = {"ico": ico, "modules": {}, "errors": [], "timestamp": None}
+        INTERNAL_KEYS = {"enriched_at", "checked_at", "fetched_at", "generated_at", "db_path", "_index", "_status"}
 
-        from datetime import datetime
-        result["timestamp"] = datetime.now().isoformat()
+        result = {
+            "ico": ico,
+            "timestamp": datetime.now().isoformat(),
+            "modules": {},
+            "errors": [],
+        }
 
         for mod_id in modules:
             try:
                 mod_result = engine._run_module(mod_id, {"ico": ico})
                 if mod_result.get("status") == "success":
                     data = mod_result.get("data", {})
-                    # Flatten: remove internal keys
-                    clean = {}
-                    for k, v in data.items():
-                        if k.startswith("_") or k in ("enriched_at", "checked_at", "fetched_at"):
-                            continue
-                        clean[k] = v
+                    clean = {k: v for k, v in data.items() if k not in INTERNAL_KEYS and not k.startswith("_")}
                     result["modules"][mod_id] = {
                         "status": "ok",
                         "data": clean,
-                        "duration_ms": mod_result.get("duration_ms", 0),
                         "cached": mod_result.get("cached", False),
                     }
                 else:
-                    result["modules"][mod_id] = {
-                        "status": mod_result.get("status", "error"),
-                        "message": mod_result.get("message", ""),
-                    }
+                    result["modules"][mod_id] = {"status": "error", "message": mod_result.get("message", "")}
                     result["errors"].append(mod_id)
             except Exception as e:
                 result["modules"][mod_id] = {"status": "error", "message": str(e)}
                 result["errors"].append(mod_id)
 
-        # Also provide a flat summary
+        # Flat summary — scalars + key arrays summarized
         flat = {"ico": ico}
         for mod_id, mod_data in result["modules"].items():
-            if mod_data.get("status") == "ok":
-                for k, v in mod_data.get("data", {}).items():
-                    if not isinstance(v, (list, dict)):
-                        flat[f"{mod_id}.{k}"] = v
-
+            if mod_data.get("status") != "ok":
+                continue
+            data = mod_data.get("data", {})
+            for k, v in data.items():
+                if k in INTERNAL_KEYS:
+                    continue
+                prefix = f"{mod_id}.{k}"
+                if isinstance(v, list):
+                    flat[prefix + "_count"] = len(v)
+                elif isinstance(v, dict):
+                    continue
+                else:
+                    flat[prefix] = v
         result["flat"] = flat
-        self.send_json(result)
+
+        return result
+
+    def batch_company_api(self):
+        """POST /api/v1/batch — batch lookup for multiple IČOs.
+        Body: {"icos": ["12345678", "87654321", ...], "modules": "orsf,rpvs"}
+        """
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            data = json.loads(body.decode("utf-8")) if body else {}
+        except Exception as e:
+            self.send_json({"error": f"Invalid JSON: {e}"})
+            return
+
+        icos = data.get("icos", [])
+        if not icos:
+            self.send_json({"error": "Chýba pole 'icos' v requeste"})
+            return
+        if len(icos) > 500:
+            self.send_json({"error": "Maximum 500 IČO na jeden request"})
+            return
+
+        requested = data.get("modules", "")
+        available = ["orsf", "ruz", "rpvs", "fs_dlznici", "sp_dlznici", "uvo", "ted"]
+        if requested:
+            modules = [m.strip() for m in requested.split(",") if m.strip() in available]
+        else:
+            modules = available
+
+        from datetime import datetime
+        results = []
+        for ico in icos:
+            ico = str(ico).strip()
+            if not ico.isdigit() or len(ico) < 6:
+                results.append({"ico": ico, "error": "Neplatné IČO"})
+                continue
+            r = self._run_company_lookup(ico, modules)
+            results.append(r)
+
+        self.send_json({
+            "total": len(icos),
+            "processed": len(results),
+            "modules_used": modules,
+            "timestamp": datetime.now().isoformat(),
+            "results": results,
+        })
 
     def send_modules(self):
         try:
