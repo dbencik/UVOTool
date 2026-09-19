@@ -451,8 +451,10 @@ def _profile_dodavatel(db, query, is_ico):
     contract_list = [{"rok": c["rok"], "hodnota": c["cena"] or 0, "predmet": c["predmet"] or "",
                       "url": c["url"] or "", "je_vitaz": bool(c["je_vitaz"]), "poradie": c["poradie"],
                       "obstaravatel": c["obstaravatel"] or ""} for c in contracts]
+    wins_in_list = sum(1 for c in contract_list if c.get("je_vitaz"))
     result["sekcie"].append({
         "nazov": "Zmluvy",
+        "text": f"Celkom {len(contract_list)} účastí v tendroch" + (f", z toho {wins_in_list} výhier." if wins_in_list else " (žiadna výhra).") if contract_list else "Žiadne záznamy o účasti v tendroch.",
         "data": contract_list
     })
 

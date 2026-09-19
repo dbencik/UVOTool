@@ -198,6 +198,19 @@ class PipelineEngine:
         if module_id in ("input", "output"):
             return {"status": "success", "data": dict(params), "duration_ms": 0, "cached": False}
 
+        # UVO/TED: read from DB when queried by IČO (not from parser)
+        ico = params.get("ico", "")
+        if module_id in ("uvo", "ted") and ico:
+            data = self._read_uvo_ted_from_db(module_id, ico)
+            elapsed = (time.time() - start) * 1000
+            return {"status": "success", "data": data, "duration_ms": round(elapsed), "cached": True}
+
+        # Analyze/Graph: read existing results, don't re-run
+        if module_id in ("analyze", "graph"):
+            data = self._read_module_result(module_id, ico)
+            elapsed = (time.time() - start) * 1000
+            return {"status": "success", "data": data, "duration_ms": round(elapsed), "cached": True}
+
         module = self.modules[module_id]
         script_map = {
             "orsf": "company-enrichment.py",
@@ -253,6 +266,49 @@ class PipelineEngine:
             return {"status": "timeout", "data": {}, "duration_ms": 60000}
         except Exception as e:
             return {"status": "error", "message": str(e), "data": {}}
+
+    def _read_uvo_ted_from_db(self, module_id: str, ico: str) -> dict:
+        """Read UVO/TED participation data for an IČO from DB."""
+        import sqlite3
+        if not DB_PATH.exists():
+            return {"zakazky": 0}
+        db = sqlite3.connect(str(DB_PATH))
+        db.row_factory = sqlite3.Row
+        try:
+            # Get all tenders where this IČO participated
+            rows = db.execute("""
+                SELECT u.nazov, u.cena, u.je_vitaz, u.poradie, z.predmet, z.cpv_kod, z.druh,
+                       o.nazov as obstaravatel, o.ico as obst_ico, d.rok, d.url, d.action
+                FROM ucastnici u
+                JOIN dokumenty d ON u.doc_id = d.id
+                JOIN zakazky z ON u.doc_id = z.doc_id
+                LEFT JOIN obstaravatelia o ON u.doc_id = o.doc_id
+                WHERE u.ico = ?
+                ORDER BY d.rok DESC, u.cena DESC LIMIT 50
+            """, (ico,)).fetchall()
+
+            zakazky = []
+            for r in rows:
+                zakazky.append({
+                    "predmet": r["predmet"] or "", "obstaravatel": r["obstaravatel"] or "",
+                    "hodnota": r["cena"], "je_vitaz": bool(r["je_vitaz"]),
+                    "poradie": r["poradie"], "rok": r["rok"], "cpv": r["cpv_kod"] or "",
+                    "url": r["url"] or ""
+                })
+
+            wins = sum(1 for z in zakazky if z["je_vitaz"])
+            total_val = sum(z["hodnota"] or 0 for z in zakazky if z["je_vitaz"])
+
+            return {
+                "ucasti_celkom": len(zakazky),
+                "vyhry": wins,
+                "celkova_hodnota_vyhier": total_val,
+                "zakazky": zakazky
+            }
+        except Exception:
+            return {"zakazky": 0}
+        finally:
+            db.close()
 
     def _read_module_result(self, module_id: str, ico: str) -> dict:
         """Read module output from DB after execution."""
