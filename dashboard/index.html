@@ -3664,7 +3664,17 @@ function renderPipeResults(result) {
   var html = '<div style="font-size:14px;font-weight:600;margin-bottom:12px">Vysledky pipeline: ' + esc(result.pipeline || '') + ' (ICO: ' + esc((result.params && result.params.ico) || '') + ')</div>';
 
   var nodeResults = result.results || {};
-  Object.keys(nodeResults).forEach(function(nodeId) {
+  // Sort results by pipeline node order
+  var orderedNodeIds = pipeConfig.nodes.map(function(n) { return n.id; });
+  var sortedKeys = Object.keys(nodeResults).sort(function(a, b) {
+    var ia = orderedNodeIds.indexOf(a);
+    var ib = orderedNodeIds.indexOf(b);
+    if (ia < 0) ia = 999;
+    if (ib < 0) ib = 999;
+    return ia - ib;
+  });
+
+  sortedKeys.forEach(function(nodeId) {
     var res = nodeResults[nodeId];
     var node = pipeConfig.nodes.find(function(n) { return n.id === nodeId; });
     var mod = node ? pipeModules.find(function(m) { return m.id === node.module; }) : null;
