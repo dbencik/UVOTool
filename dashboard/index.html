@@ -1194,8 +1194,8 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
       <div>
         <div style="font-size:11px;color:#868e96;margin-bottom:4px">Level</div>
         <select id="tdd-level" style="padding:8px 12px;border:1px solid #ced4da;border-radius:6px;font-size:13px">
-          <option value="fast">Rychly (fast)</option>
           <option value="full">Kompletny (full)</option>
+          <option value="fast">Rychly (fast)</option>
         </select>
       </div>
       <button id="tdd-enrich-btn" style="padding:8px 20px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;height:36px">Obohatit</button>
@@ -3330,20 +3330,44 @@ function tddDlznikBadge(val) {
 
 function renderTddParty(party, el) {
   if (!party) { el.innerHTML = '<div style="color:#868e96;font-size:13px">Ziadne data</div>'; return; }
-  var html = '<table style="width:100%;font-size:13px;border-collapse:collapse">';
-  if (party.ic_dph) html += '<tr><td style="color:#868e96;padding:3px 0;width:120px">IC DPH</td><td style="font-weight:500;font-family:monospace">' + esc(party.ic_dph) + '</td></tr>';
-  if (party.ico) html += '<tr><td style="color:#868e96;padding:3px 0">ICO</td><td style="font-weight:500;font-family:monospace">' + esc(party.ico) + '</td></tr>';
-  if (party.nazov) html += '<tr><td style="color:#868e96;padding:3px 0">Nazov</td><td style="font-weight:500">' + esc(party.nazov) + '</td></tr>';
-  if (party.dic) html += '<tr><td style="color:#868e96;padding:3px 0">DIC</td><td style="font-weight:500">' + esc(party.dic) + '</td></tr>';
-  html += '<tr><td style="color:#868e96;padding:3px 0">Spolahliv.</td><td>' + tddSpolahlBadge(party.spolahliv || party.ids_status) + '</td></tr>';
-  html += '<tr><td style="color:#868e96;padding:3px 0">Dlznik FS</td><td>' + tddDlznikBadge(party.je_dlznik) + '</td></tr>';
-  if (party.je_dlznik_sp !== undefined) html += '<tr><td style="color:#868e96;padding:3px 0">Dlznik SP</td><td>' + tddDlznikBadge(party.je_dlznik_sp) + '</td></tr>';
-  // Full level fields
-  if (party.trzby != null) html += '<tr><td style="color:#868e96;padding:3px 0">Trzby</td><td style="font-weight:500">' + profilFmtEurShort(party.trzby) + '</td></tr>';
-  if (party.zisk != null) html += '<tr><td style="color:#868e96;padding:3px 0">Zisk</td><td style="font-weight:500">' + profilFmtEurShort(party.zisk) + '</td></tr>';
-  if (party.pravna_forma) html += '<tr><td style="color:#868e96;padding:3px 0">Pravna forma</td><td style="font-weight:500">' + esc(party.pravna_forma) + '</td></tr>';
-  if (party.status) html += '<tr><td style="color:#868e96;padding:3px 0">Status</td><td style="font-weight:500">' + esc(party.status) + '</td></tr>';
+  var html = '';
+
+  // Company name + status
+  html += '<div style="font-size:16px;font-weight:700;margin-bottom:4px">' + esc(party.nazov || 'Neznamy') + '</div>';
+  if (party.status) {
+    var stColor = party.status === 'aktívna' ? '#2b8a3e' : '#e03131';
+    html += '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600;background:' + (party.status === 'aktívna' ? '#ebfbee' : '#fff5f5') + ';color:' + stColor + ';margin-bottom:8px">' + esc(party.status) + '</span> ';
+  }
+  if (party.pravna_forma) html += '<span style="font-size:12px;color:#868e96">' + esc(party.pravna_forma) + '</span>';
+
+  // IDs row
+  html += '<table style="width:100%;font-size:12px;border-collapse:collapse;margin-top:10px">';
+  html += '<tr><td style="color:#868e96;padding:3px 0;width:80px">IC DPH</td><td style="font-family:monospace;font-weight:500">' + esc(party.ic_dph || '') + '</td></tr>';
+  html += '<tr><td style="color:#868e96;padding:3px 0">ICO</td><td style="font-family:monospace;font-weight:500">' + esc(party.ico || '') + '</td></tr>';
+  html += '<tr><td style="color:#868e96;padding:3px 0">DIC</td><td style="font-family:monospace;font-weight:500">' + esc(party.dic || '') + '</td></tr>';
+  if (party.country) html += '<tr><td style="color:#868e96;padding:3px 0">Krajina</td><td style="font-weight:500">' + esc(party.country) + '</td></tr>';
   html += '</table>';
+
+  // Badges row
+  html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">';
+  html += tddSpolahlBadge(party.spolahliv || party.ids_status);
+  html += '<span style="display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;background:' + (party.je_dlznik_fs ? '#fff5f5' : '#ebfbee') + ';color:' + (party.je_dlznik_fs ? '#e03131' : '#2b8a3e') + '">FS: ' + (party.je_dlznik_fs ? 'DLZNIK' : 'OK') + '</span>';
+  html += '<span style="display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;background:' + (party.je_dlznik_sp ? '#fff5f5' : '#ebfbee') + ';color:' + (party.je_dlznik_sp ? '#e03131' : '#2b8a3e') + '">SP: ' + (party.je_dlznik_sp ? 'DLZNIK' : 'OK') + '</span>';
+  html += '</div>';
+
+  // Financial info (full level)
+  if (party.trzby != null || party.zisk != null) {
+    html += '<div style="display:flex;gap:10px;margin-top:10px">';
+    if (party.trzby != null) {
+      html += '<div style="background:#f8f9fa;border-radius:6px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#868e96;text-transform:uppercase">Trzby</div><div style="font-size:16px;font-weight:700">' + profilFmtEurShort(party.trzby) + '</div></div>';
+    }
+    if (party.zisk != null) {
+      var zColor = party.zisk >= 0 ? '#2b8a3e' : '#e03131';
+      html += '<div style="background:#f8f9fa;border-radius:6px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#868e96;text-transform:uppercase">Zisk</div><div style="font-size:16px;font-weight:700;color:' + zColor + '">' + profilFmtEurShort(party.zisk) + '</div></div>';
+    }
+    html += '</div>';
+  }
+
   el.innerHTML = html;
 }
 
@@ -3353,11 +3377,13 @@ function renderTddInvoice(inv, el) {
     return;
   }
   el.style.display = 'block';
-  var html = '<table style="width:100%;font-size:13px;border-collapse:collapse">';
-  if (inv.uuid) html += '<tr><td style="color:#868e96;padding:3px 0;width:120px">UUID</td><td style="font-weight:500;font-family:monospace">' + esc(inv.uuid) + '</td></tr>';
-  if (inv.issue_date) html += '<tr><td style="color:#868e96;padding:3px 0">Datum</td><td style="font-weight:500">' + esc(inv.issue_date) + '</td></tr>';
-  if (inv.payable_amount != null) html += '<tr><td style="color:#868e96;padding:3px 0">Suma</td><td style="font-weight:500">' + profilFmtEur(inv.payable_amount) + ' ' + esc(inv.currency || 'EUR') + '</td></tr>';
-  html += '</table>';
+  var html = '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">';
+  if (inv.document_id) html += '<div style="font-weight:700;font-size:14px">' + esc(inv.document_id) + '</div>';
+  if (inv.payable_amount != null) html += '<div style="font-size:20px;font-weight:700;color:#1971c2">' + profilFmtEur(inv.payable_amount) + ' ' + esc(inv.currency || 'EUR') + '</div>';
+  if (inv.issue_date) html += '<div style="color:#868e96;font-size:13px">' + esc(fmtDate(inv.issue_date)) + '</div>';
+  if (inv.document_type_code) html += '<div style="color:#868e96;font-size:12px">Typ: ' + esc(inv.document_type_code) + '</div>';
+  html += '</div>';
+  if (inv.uuid) html += '<div style="font-size:11px;color:#ced4da;margin-top:4px;font-family:monospace">' + esc(inv.uuid) + '</div>';
   document.getElementById('tdd-invoice-data').innerHTML = html;
 }
 
