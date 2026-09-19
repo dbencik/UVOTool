@@ -1606,7 +1606,7 @@ function showDetail(row) {
 
       // List related documents
       html += `<h3 style="margin-top:16px">Suvisiace dokumenty (zakazka ${esc(metaZid)})</h3>`;
-      const allRelated = [doc, ...related].sort((a, b) => (a.id || '').localeCompare(b.id || ''));
+      const allRelated = [doc, ...related].sort((a, b) => (b.id || '').localeCompare(a.id || ''));
       allRelated.forEach(rd => {
         const isCurrent = rd.id === doc.id;
         const rdExt = rd.extraction || {};
