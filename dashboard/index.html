@@ -1611,10 +1611,21 @@ function showDetail(row) {
         const isCurrent = rd.id === doc.id;
         const rdExt = rd.extraction || {};
         const rdZak = rdExt.zakazka || {};
+        const rdPril = rdExt.prilezitost || {};
         const rdLabel = ACTION_LABELS[rd.action] || rd.action;
+        // Get relevant date for this doc type
+        let rdDate = '';
+        if (rd.action === 'vyhlasenie' || rd.action === 'oprava') {
+          rdDate = fmtDate(rdPril.lehota_datum || '');
+        }
+        const rdVys = rdExt.vysledok || {};
+        if (rd.action === 'vysledok' && rdVys.zmluvy && rdVys.zmluvy.length > 0) {
+          rdDate = fmtDate(rdVys.zmluvy[0].datum || '');
+        }
         html += `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f5;${isCurrent ? 'font-weight:600' : ''}">
           <span class="badge badge-${rd.action}" style="flex-shrink:0">${rdLabel}</span>
           <a href="${rd.url || '#'}" target="_blank" style="font-size:12px;font-family:monospace;flex-shrink:0">${esc(rd.id || '')}</a>
+          ${rdDate ? '<span style="font-size:11px;color:#868e96;flex-shrink:0">' + esc(rdDate) + '</span>' : ''}
           <span style="font-size:13px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(rdZak.predmet || rd.type || '')}</span>
           ${isCurrent ? '<span style="font-size:10px;color:#868e96">(aktuálny)</span>' : ''}
         </div>`;
