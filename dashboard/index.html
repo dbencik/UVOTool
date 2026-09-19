@@ -3712,14 +3712,27 @@ function renderPipeResults(result) {
               (u.datum_narodenia ? ' <span style="color:#868e96;font-size:11px">(*' + esc(u.datum_narodenia) + ')</span>' : '') + '</td></tr>';
           });
         }
+        // Skip internal fields
+        else if (typeof displayVal === 'object' && displayVal !== null && !Array.isArray(displayVal)) {
+          // Skip nested objects (like analysis sub-sections)
+        }
         // Normal scalar
         else {
+          // Skip internal keys
+          if (['checked_at','fetched_at','enriched_at','generated_at','db_path'].indexOf(key) >= 0) return;
           var displayStr = (displayVal === null || displayVal === undefined) ? '\u2014'
             : Array.isArray(displayVal) ? displayVal.length + ' poloziek'
             : typeof displayVal === 'boolean' ? (displayVal ? 'Ano' : 'Nie')
+            : displayVal === 0 && (key.indexOf('dlznik') >= 0 || key.indexOf('je_') >= 0) ? 'Nie'
+            : displayVal === 1 && (key.indexOf('dlznik') >= 0 || key.indexOf('je_') >= 0) ? 'Ano'
             : typeof displayVal === 'number' ? (displayVal > 10000 ? formatEurShort(displayVal) : String(displayVal))
             : String(displayVal);
-          html += '<tr><td style="padding:3px 6px;color:#868e96;width:160px">' + esc(String(label)) + '</td><td style="padding:3px 6px;font-weight:500">' + esc(displayStr.substring(0, 120)) + '</td></tr>';
+          // Color for dlžník status
+          var tdStyle = 'padding:3px 6px;font-weight:500;';
+          if (key.indexOf('dlznik') >= 0 || key.indexOf('je_') >= 0) {
+            tdStyle += displayVal ? 'color:#e03131;' : 'color:#2b8a3e;';
+          }
+          html += '<tr><td style="padding:3px 6px;color:#868e96;width:160px">' + esc(String(label)) + '</td><td style="' + tdStyle + '">' + esc(displayStr.substring(0, 120)) + '</td></tr>';
         }
       });
       html += '</table>';
