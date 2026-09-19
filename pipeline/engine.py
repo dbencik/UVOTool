@@ -339,12 +339,22 @@ class PipelineEngine:
                 rows = db.execute("SELECT * FROM rpvs WHERE ico = ?", (ico,)).fetchall()
                 if rows:
                     ubos = []
+                    seen = set()
                     for r in rows:
                         if r["ubo_meno"]:
+                            key = (r["ubo_meno"], r["ubo_priezvisko"])
+                            if key in seen:
+                                continue
+                            seen.add(key)
+                            dob = r["ubo_datum_narodenia"] or ""
+                            if dob and "T" in dob:
+                                m = re.match(r"(\d{4})-(\d{2})-(\d{2})", dob)
+                                if m:
+                                    dob = f"{m.group(3)}.{m.group(2)}.{m.group(1)}"
                             ubos.append({
                                 "meno": r["ubo_meno"],
                                 "priezvisko": r["ubo_priezvisko"],
-                                "datum_narodenia": r["ubo_datum_narodenia"] or "",
+                                "datum_narodenia": dob,
                             })
                     return {
                         "is_registered": bool(ubos),

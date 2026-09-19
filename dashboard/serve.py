@@ -117,13 +117,21 @@ def _fetch_rpvs_data(ico):
         opravnene_osoby = set()
         for rec in records:
             if rec.get("ubo_meno"):
-                key = (rec["ubo_meno"], rec["ubo_priezvisko"], rec.get("ubo_datum_narodenia", ""))
+                # Dedup by name only (ignore date differences/nulls)
+                key = (rec["ubo_meno"], rec["ubo_priezvisko"])
                 if key not in seen_ubos:
                     seen_ubos.add(key)
+                    # Convert ISO date to DD.MM.YYYY
+                    dob = rec.get("ubo_datum_narodenia") or ""
+                    if dob and "T" in dob:
+                        import re
+                        m = re.match(r"(\d{4})-(\d{2})-(\d{2})", dob)
+                        if m:
+                            dob = f"{m.group(3)}.{m.group(2)}.{m.group(1)}"
                     ubos.append({
                         "meno": rec["ubo_meno"],
                         "priezvisko": rec["ubo_priezvisko"],
-                        "datum_narodenia": rec.get("ubo_datum_narodenia", ""),
+                        "datum_narodenia": dob,
                         "je_verejny_cinitel": bool(rec.get("ubo_je_verejny_cinitel")),
                         "adresa": rec.get("ubo_adresa", ""),
                         "statna_prislusnost": rec.get("ubo_statna_prislusnost", ""),
