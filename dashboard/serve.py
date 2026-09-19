@@ -410,6 +410,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_json_file("analysis_report.json")
         elif parsed.path == "/api/graph":
             self.send_json_file("graph_analysis.json")
+        elif parsed.path == "/api/latest":
+            self.send_latest()
         elif parsed.path == "/api/profile":
             self.send_profile(parsed)
         elif parsed.path == "/api/watchlist":
@@ -433,6 +435,78 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
+
+    def send_latest(self):
+        """Return latest UVO vestník + latest TED data, grouped by source."""
+        import os as _os
+        result = {"uvo": [], "ted": [], "uvo_vestnik": "", "ted_label": ""}
+
+        # Latest UVO file by mtime
+        uvo_files = sorted(
+            glob.glob(os.path.join(DATA_DIR, "vestnik_*_2026_parser_results.json")) +
+            glob.glob(os.path.join(DATA_DIR, "vestnik_*_2025_parser_results.json")),
+            key=_os.path.getmtime, reverse=True
+        )
+        if uvo_files:
+            with open(uvo_files[0], "r", encoding="utf-8") as f:
+                docs = json.load(f)
+            result["uvo_vestnik"] = docs[0].get("vestnik", "") if docs else ""
+            for d in docs:
+                ext = d.get("extraction", {})
+                if "error" in ext:
+                    continue
+                obst = ext.get("obstaravatel", {})
+                zak = ext.get("zakazka", {})
+                vys = ext.get("vysledok", {})
+                pril = ext.get("prilezitost", {})
+                zm = ext.get("zmena_zmluvy", {})
+                hodnota = vys.get("celkova_hodnota") or pril.get("hodnota") or zm.get("hodnota_po_zmene")
+                vitaz = ""
+                if d.get("action") == "vysledok":
+                    winners = [u for u in vys.get("ucastnici", []) if u.get("je_vitaz")]
+                    vitaz = ", ".join(w.get("nazov", "") for w in winners)
+                elif d.get("action") == "vyhlasenie":
+                    vitaz = f"Lehota: {pril.get('lehota_datum', '')}" if pril.get("lehota_datum") else ""
+                result["uvo"].append({
+                    "id": d.get("id", ""), "action": d.get("action", ""),
+                    "url": d.get("url", ""), "obstaravatel": obst.get("nazov", ""),
+                    "ico": obst.get("ico", ""), "predmet": zak.get("predmet", ""),
+                    "hodnota": hodnota, "vitaz": vitaz, "cpv": zak.get("cpv_kod", ""),
+                })
+
+        # Latest TED — last 30 days
+        ted_files = sorted(glob.glob(os.path.join(DATA_DIR, "ted_*_results.json")),
+                           key=_os.path.getmtime, reverse=True)
+        if ted_files:
+            with open(ted_files[0], "r", encoding="utf-8") as f:
+                docs = json.load(f)
+            result["ted_label"] = f"TED ({len(docs)} dokumentov)"
+            # Take last 100 by ID (newest)
+            docs_sorted = sorted(docs, key=lambda x: x.get("id", ""), reverse=True)[:100]
+            for d in docs_sorted:
+                ext = d.get("extraction", {})
+                if "error" in ext:
+                    continue
+                obst = ext.get("obstaravatel", {})
+                zak = ext.get("zakazka", {})
+                vys = ext.get("vysledok", {})
+                pril = ext.get("prilezitost", {})
+                zm = ext.get("zmena_zmluvy", {})
+                hodnota = vys.get("celkova_hodnota") or pril.get("hodnota") or zm.get("hodnota_po_zmene")
+                vitaz = ""
+                if d.get("action") == "vysledok":
+                    winners = [u for u in vys.get("ucastnici", []) if u.get("je_vitaz")]
+                    vitaz = ", ".join(w.get("nazov", "") for w in winners)
+                elif d.get("action") == "vyhlasenie":
+                    vitaz = f"Lehota: {pril.get('lehota_datum', '')}" if pril.get("lehota_datum") else ""
+                result["ted"].append({
+                    "id": d.get("id", ""), "action": d.get("action", ""),
+                    "url": d.get("url", ""), "obstaravatel": obst.get("nazov", ""),
+                    "ico": obst.get("ico", ""), "predmet": zak.get("predmet", ""),
+                    "hodnota": hodnota, "vitaz": vitaz, "cpv": zak.get("cpv_kod", ""),
+                })
+
+        self.send_json(result)
 
     def send_watchlist(self):
         if not os.path.exists(WATCHLIST_PATH):

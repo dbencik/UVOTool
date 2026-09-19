@@ -900,6 +900,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div class="main-tab active" data-tab="dokumenty">Dokumenty</div>
   <div class="main-tab" data-tab="analyza">Analyza</div>
   <div class="main-tab" data-tab="graf">Graf</div>
+  <div class="main-tab" data-tab="aktualny">Aktualny vestnik</div>
   <div class="main-tab" data-tab="profil">Profil</div>
   <div class="main-tab" data-tab="monitoring">Monitoring</div>
 </div>
@@ -958,6 +959,11 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 <!-- ═══════════════════ GRAF TAB ═══════════════════ -->
 <div class="main-content-section" id="section-graf">
   <div id="graf-content" class="loading">Nacitavam graf...</div>
+</div>
+
+<!-- ═══════════════════ AKTUALNY VESTNIK TAB ═══════════════════ -->
+<div class="main-content-section" id="section-aktualny">
+  <div id="aktualny-content" class="loading">Nacitavam aktualny vestnik...</div>
 </div>
 
 <!-- ═══════════════════ PROFIL TAB ═══════════════════ -->
@@ -2352,6 +2358,75 @@ function buildD3Graph(pagerank, topEdges, selfDealing) {
 }
 
 // ══════════════════════════════════════════════════════
+//  AKTUALNY VESTNIK TAB
+// ══════════════════════════════════════════════════════
+
+let aktualnyLoaded = false;
+
+function loadAktualny() {
+  fetch('/api/latest')
+    .then(r => r.json())
+    .then(data => {
+      aktualnyLoaded = true;
+      renderAktualny(data);
+    })
+    .catch(err => {
+      document.getElementById('aktualny-content').innerHTML =
+        `<div class="error">Chyba: ${err.message}</div>`;
+    });
+}
+
+function renderAktualny(data) {
+  const ACTION_LABELS_AK = { vysledok: 'Vysledok', vyhlasenie: 'Vyhlasenie', zmena_zmluvy: 'Zmena zmluvy', oprava: 'Oprava' };
+
+  function renderGroup(title, badge, docs) {
+    if (!docs || docs.length === 0) return `<div class="analyza-section"><h3>${title}</h3><div class="no-results">Ziadne dokumenty</div></div>`;
+
+    let html = `<div class="analyza-section">
+      <h3>${title} <span style="font-size:13px;font-weight:400;color:#868e96">(${docs.length} dokumentov)</span></h3>
+      <table class="analyza-table"><thead><tr>
+        <th>Typ</th><th>Obstaravatel</th><th>Predmet zakazky</th><th>Hodnota</th><th>Vitaz / Lehota</th>
+      </tr></thead><tbody>`;
+
+    docs.forEach(d => {
+      const label = ACTION_LABELS_AK[d.action] || d.action;
+      const hodnotaStr = d.hodnota != null ? formatEur(d.hodnota) : '<span style="color:#ced4da">—</span>';
+      html += `<tr style="cursor:pointer" data-aktualny-id="${esc(d.id)}" data-aktualny-url="${esc(d.url || '')}">
+        <td><span class="badge badge-${d.action}">${label}</span></td>
+        <td>${esc(d.obstaravatel)}${d.ico ? ' <span style="color:#adb5bd;font-size:11px">(' + esc(d.ico) + ')</span>' : ''}</td>
+        <td class="predmet-col">${esc(d.predmet || '')}</td>
+        <td class="val-col">${hodnotaStr}</td>
+        <td>${esc(d.vitaz || '')}</td>
+      </tr>`;
+    });
+
+    html += '</tbody></table></div>';
+    return html;
+  }
+
+  let html = '';
+  html += renderGroup(`UVO — ${esc(data.uvo_vestnik || 'Posledny vestnik')}`, 'UVO', data.uvo);
+  html += renderGroup(esc(data.ted_label || 'TED'), 'TED', data.ted);
+
+  document.getElementById('aktualny-content').innerHTML = html;
+
+  // Click handler — open detail or URL
+  document.getElementById('aktualny-content').querySelectorAll('tr[data-aktualny-id]').forEach(tr => {
+    tr.addEventListener('click', e => {
+      if (e.target.tagName === 'A') return;
+      const docId = tr.dataset.aktualnyId;
+      const row = DATA.find(r => r.id === docId);
+      if (row) {
+        showDetail(row);
+      } else {
+        const url = tr.dataset.aktualnyUrl;
+        if (url) window.open(url, '_blank');
+      }
+    });
+  });
+}
+
+// ══════════════════════════════════════════════════════
 //  PROFIL TAB
 // ══════════════════════════════════════════════════════
 
@@ -2507,6 +2582,9 @@ document.querySelectorAll('.main-tab').forEach(function(tab) {
   tab.addEventListener('click', function() {
     if (tab.dataset.tab === 'monitoring' && !monitoringLoaded) {
       loadMonitoring();
+    }
+    if (tab.dataset.tab === 'aktualny' && !aktualnyLoaded) {
+      loadAktualny();
     }
   });
 });
