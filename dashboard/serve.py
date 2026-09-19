@@ -786,6 +786,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_watchdog_matches()
         elif parsed.path == "/api/modules":
             self.send_modules()
+        elif parsed.path.startswith("/api/v1/company/"):
+            self.send_company_api(parsed)
         elif parsed.path.startswith("/api/pipelines/") and "/run" in parsed.path:
             pipeline_id = parsed.path.split("/")[3]
             self.run_pipeline_api_post(pipeline_id)
@@ -963,6 +965,85 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             sys.path.insert(0, BASE_DIR)
         from pipeline import PipelineEngine
         return PipelineEngine()
+
+    def send_company_api(self, parsed):
+        """Public API: GET /api/v1/company/{ico}?modules=orsf,ruz,rpvs,uvo
+
+        Returns flat JSON with data from selected modules.
+        If no modules specified, returns all available.
+
+        Examples:
+          /api/v1/company/46884769
+          /api/v1/company/46884769?modules=orsf,rpvs
+          /api/v1/company/46884769?modules=orsf,ruz,rpvs,fs_dlznici,sp_dlznici,uvo
+        """
+        parts = parsed.path.rstrip("/").split("/")
+        if len(parts) < 5:
+            self.send_json({"error": "Usage: /api/v1/company/{ico}?modules=orsf,ruz,rpvs"})
+            return
+
+        ico = parts[4]
+        if not ico or len(ico) < 6:
+            self.send_json({"error": "Invalid IČO"})
+            return
+
+        params = parse_qs(parsed.query)
+        requested = params.get("modules", [""])[0]
+        available = ["orsf", "ruz", "rpvs", "fs_dlznici", "sp_dlznici", "uvo", "ted"]
+
+        if requested:
+            modules = [m.strip() for m in requested.split(",") if m.strip() in available]
+        else:
+            modules = available
+
+        try:
+            engine = self._get_pipeline_engine()
+        except Exception as e:
+            self.send_json({"error": f"Engine not available: {e}"})
+            return
+
+        result = {"ico": ico, "modules": {}, "errors": [], "timestamp": None}
+
+        from datetime import datetime
+        result["timestamp"] = datetime.now().isoformat()
+
+        for mod_id in modules:
+            try:
+                mod_result = engine._run_module(mod_id, {"ico": ico})
+                if mod_result.get("status") == "success":
+                    data = mod_result.get("data", {})
+                    # Flatten: remove internal keys
+                    clean = {}
+                    for k, v in data.items():
+                        if k.startswith("_") or k in ("enriched_at", "checked_at", "fetched_at"):
+                            continue
+                        clean[k] = v
+                    result["modules"][mod_id] = {
+                        "status": "ok",
+                        "data": clean,
+                        "duration_ms": mod_result.get("duration_ms", 0),
+                        "cached": mod_result.get("cached", False),
+                    }
+                else:
+                    result["modules"][mod_id] = {
+                        "status": mod_result.get("status", "error"),
+                        "message": mod_result.get("message", ""),
+                    }
+                    result["errors"].append(mod_id)
+            except Exception as e:
+                result["modules"][mod_id] = {"status": "error", "message": str(e)}
+                result["errors"].append(mod_id)
+
+        # Also provide a flat summary
+        flat = {"ico": ico}
+        for mod_id, mod_data in result["modules"].items():
+            if mod_data.get("status") == "ok":
+                for k, v in mod_data.get("data", {}).items():
+                    if not isinstance(v, (list, dict)):
+                        flat[f"{mod_id}.{k}"] = v
+
+        result["flat"] = flat
+        self.send_json(result)
 
     def send_modules(self):
         try:
