@@ -1029,6 +1029,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
     <label style="padding:8px 16px;background:#e7f5ff;color:#1971c2;border:1px solid #a5d8ff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">
       CSV Upload <input type="file" id="pipe-csv-input" accept=".csv,.txt" style="display:none">
     </label>
+    <button id="pipe-api-test-btn" style="padding:8px 16px;background:#f8f0ff;color:#7048e8;border:1px solid #d0bfff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">API Test</button>
   </div>
 
   <!-- Main layout: sidebar + canvas + settings -->
@@ -1052,6 +1053,36 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   </div>
   <!-- Hidden canvas for JS compatibility -->
   <div id="pipe-canvas" style="display:none"><svg id="pipe-svg"></svg></div>
+
+  <!-- API Test Panel (hidden by default) -->
+  <div id="api-test-panel" style="display:none;background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px;margin-top:16px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <h3 style="margin:0;font-size:16px;color:#7048e8">API Test</h3>
+      <button id="api-test-close" style="background:none;border:none;font-size:20px;cursor:pointer;color:#868e96">&times;</button>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;align-items:end">
+      <div>
+        <div style="font-size:11px;color:#868e96;margin-bottom:4px">IČO</div>
+        <input type="text" id="api-test-ico" placeholder="46884769" style="padding:8px 12px;border:1px solid #ced4da;border-radius:6px;font-size:14px;width:140px;font-family:monospace">
+      </div>
+      <div style="flex:1;min-width:200px">
+        <div style="font-size:11px;color:#868e96;margin-bottom:4px">Moduly</div>
+        <div id="api-test-modules" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+      </div>
+      <button id="api-test-send" style="padding:8px 20px;background:#7048e8;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;height:36px">Odoslat</button>
+    </div>
+    <div style="margin-bottom:8px">
+      <div style="font-size:11px;color:#868e96;margin-bottom:4px">URL</div>
+      <div id="api-test-url" style="font-family:monospace;font-size:12px;color:#495057;padding:6px 10px;background:#f8f9fa;border-radius:4px;word-break:break-all"></div>
+    </div>
+    <div id="api-test-result" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <div style="font-size:11px;color:#868e96">Response</div>
+        <div id="api-test-status" style="font-size:12px"></div>
+      </div>
+      <pre id="api-test-json" style="background:#1a1a1a;color:#51cf66;padding:14px;border-radius:6px;font-size:12px;overflow-x:auto;max-height:400px;overflow-y:auto;margin:0;white-space:pre-wrap"></pre>
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════ PROFIL TAB ═══════════════════ -->
@@ -2599,6 +2630,81 @@ function renderAktualny(data) {
 
 // ══════════════════════════════════════════════════════
 // Batch results renderer
+// ══════════════════════════════════════════════════════
+//  API TEST PANEL
+// ══════════════════════════════════════════════════════
+
+var apiTestModules = ['orsf','ruz','rpvs','fs_dlznici','sp_dlznici','uvo','ted'];
+var apiTestSelected = new Set(apiTestModules);
+
+document.getElementById('pipe-api-test-btn').addEventListener('click', function() {
+  var panel = document.getElementById('api-test-panel');
+  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  if (panel.style.display === 'block') initApiTest();
+});
+document.getElementById('api-test-close').addEventListener('click', function() {
+  document.getElementById('api-test-panel').style.display = 'none';
+});
+
+function initApiTest() {
+  var container = document.getElementById('api-test-modules');
+  container.innerHTML = apiTestModules.map(function(m) {
+    var checked = apiTestSelected.has(m);
+    return '<label style="display:flex;align-items:center;gap:3px;font-size:12px;cursor:pointer;padding:3px 8px;background:' + (checked ? '#e7f5ff' : '#f1f3f5') + ';border-radius:4px;border:1px solid ' + (checked ? '#a5d8ff' : '#e9ecef') + '">' +
+      '<input type="checkbox" ' + (checked ? 'checked' : '') + ' data-mod="' + m + '" class="api-mod-cb" style="margin:0"> ' + m + '</label>';
+  }).join('');
+
+  container.querySelectorAll('.api-mod-cb').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      if (cb.checked) apiTestSelected.add(cb.dataset.mod);
+      else apiTestSelected.delete(cb.dataset.mod);
+      updateApiUrl();
+      initApiTest();
+    });
+  });
+  updateApiUrl();
+}
+
+function updateApiUrl() {
+  var ico = document.getElementById('api-test-ico').value.trim() || '{ico}';
+  var mods = Array.from(apiTestSelected);
+  var url = '/api/v1/company/' + ico;
+  if (mods.length < apiTestModules.length) url += '?modules=' + mods.join(',');
+  document.getElementById('api-test-url').textContent = url;
+}
+
+document.getElementById('api-test-ico').addEventListener('input', updateApiUrl);
+
+document.getElementById('api-test-send').addEventListener('click', function() {
+  var ico = document.getElementById('api-test-ico').value.trim();
+  if (!ico) { alert('Zadajte ICO'); return; }
+  var mods = Array.from(apiTestSelected);
+  var url = '/api/v1/company/' + ico;
+  if (mods.length < apiTestModules.length) url += '?modules=' + mods.join(',');
+
+  document.getElementById('api-test-url').textContent = url;
+  document.getElementById('api-test-result').style.display = 'block';
+  document.getElementById('api-test-json').textContent = 'Nacitavam...';
+  document.getElementById('api-test-status').textContent = '';
+
+  var startTime = Date.now();
+  fetch(url)
+    .then(function(r) {
+      var elapsed = Date.now() - startTime;
+      document.getElementById('api-test-status').innerHTML =
+        '<span style="color:' + (r.ok ? '#2b8a3e' : '#e03131') + ';font-weight:600">' + r.status + '</span> ' +
+        '<span style="color:#868e96">' + elapsed + 'ms</span>';
+      return r.json();
+    })
+    .then(function(data) {
+      document.getElementById('api-test-json').textContent = JSON.stringify(data, null, 2);
+    })
+    .catch(function(err) {
+      document.getElementById('api-test-json').textContent = 'Error: ' + err.message;
+      document.getElementById('api-test-status').innerHTML = '<span style="color:#e03131">CHYBA</span>';
+    });
+});
+
 function renderPipeBatchResults(result) {
   var el = document.getElementById('pipe-results');
   if (result.error) {
