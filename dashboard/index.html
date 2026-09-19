@@ -937,12 +937,13 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
         <th data-col="obstaravatel">Obstaravatel <span class="sort-arrow"></span></th>
         <th data-col="predmet">Predmet zakazky <span class="sort-arrow"></span></th>
         <th data-col="hodnota">Hodnota (EUR) <span class="sort-arrow"></span></th>
-        <th data-col="vitaz">Vitaz / Lehota <span class="sort-arrow"></span></th>
+        <th data-col="vitaz">Vitaz <span class="sort-arrow"></span></th>
+        <th data-col="lehota">Lehota <span class="sort-arrow"></span></th>
         <th data-col="vestnik">Vestnik <span class="sort-arrow"></span></th>
       </tr>
     </thead>
     <tbody id="table-body">
-      <tr><td colspan="7" class="loading">Nacitavam data...</td></tr>
+      <tr><td colspan="8" class="loading">Nacitavam data...</td></tr>
     </tbody>
   </table>
 </div>
@@ -1187,7 +1188,7 @@ function extractRow(doc) {
     vitaz = winners.map(w => w.nazov).join(', ') || '';
   } else if (doc.action === 'vyhlasenie') {
     hodnota = pril.hodnota;
-    vitaz = pril.lehota_datum ? ('Lehota: ' + fmtDate(pril.lehota_datum)) : '';
+    vitaz = '';
   } else if (doc.action === 'zmena_zmluvy') {
     hodnota = zm.hodnota_po_zmene;
     vitaz = zm.dodavatel ? zm.dodavatel.nazov : '';
@@ -1203,6 +1204,7 @@ function extractRow(doc) {
     pocet_casti: zak.pocet_casti || 1,
     hodnota: hodnota,
     vitaz: vitaz,
+    lehota: fmtDate(pril.lehota_datum || ''),
     vestnik: doc.vestnik || '',
     zdroj: (doc.vestnik || '').startsWith('TED') || (doc.url || '').includes('ted.europa') ? 'TED' : 'UVO',
     year: extractYear(doc.vestnik || ''),
@@ -1266,6 +1268,7 @@ function renderTableRow(r, i) {
       <td class="predmet-col">${r.pocet_casti > 1 ? '<span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;background:#e7f5ff;color:#1971c2;margin-right:4px">' + r.pocet_casti + ' lotov</span>' : ''}${esc(r.predmet)}</td>
       <td class="val-col">${r._cenovy_pomer != null ? `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${r._cenovy_pomer > 95 ? '#e03131' : (r._cenovy_pomer > 85 ? '#e8590c' : '#2b8a3e')}" title="Pomer cena/rozpocet: ${r._cenovy_pomer.toFixed(1)}%"></span>` : ''}${r.hodnota != null ? formatEur(r.hodnota) : '<span style="color:#ced4da">-</span>'}</td>
       <td>${esc(r.vitaz)}</td>
+      <td style="white-space:nowrap;font-size:12px">${r.lehota || '<span style="color:#ced4da">—</span>'}</td>
       <td style="white-space:nowrap;font-size:12px;color:#868e96"><span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;margin-right:4px;${r.zdroj === 'TED' ? 'background:#e7f5ff;color:#1971c2' : 'background:#f1f3f5;color:#868e96'}">${r.zdroj}</span>${esc(r.vestnik)}</td>
     </tr>`;
 }
@@ -1276,7 +1279,7 @@ function renderTable(rows) {
   currentPage = 0;
 
   if (rows.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" class="no-results">Ziadne vysledky</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="8" class="no-results">Ziadne vysledky</td></tr>';
     return;
   }
 
@@ -1285,7 +1288,7 @@ function renderTable(rows) {
 
   // Show more button
   if (rows.length > PAGE_SIZE) {
-    tbody.innerHTML += `<tr id="load-more-row"><td colspan="7" style="text-align:center;padding:12px">
+    tbody.innerHTML += `<tr id="load-more-row"><td colspan="8" style="text-align:center;padding:12px">
       <button id="load-more-btn" style="padding:8px 24px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer">
         Zobrazit dalsich ${Math.min(PAGE_SIZE, rows.length - PAGE_SIZE)} z ${rows.length} dokumentov
       </button></td></tr>`;
@@ -1315,7 +1318,7 @@ function loadMore() {
     const remaining = currentFilteredRows.length - end;
     const tr = document.createElement('tr');
     tr.id = 'load-more-row';
-    tr.innerHTML = `<td colspan="7" style="text-align:center;padding:12px">
+    tr.innerHTML = `<td colspan="8" style="text-align:center;padding:12px">
       <button id="load-more-btn" style="padding:8px 24px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer">
         Zobrazit dalsich ${Math.min(PAGE_SIZE, remaining)} z ${currentFilteredRows.length} dokumentov
       </button></td>`;
@@ -1836,7 +1839,7 @@ fetch('/api/data')
   .catch(err => {
     console.error('Dashboard load error:', err);
     const tb = document.getElementById('table-body');
-    if (tb) tb.innerHTML = '<tr><td colspan="7" class="error">Chyba pri nacitani dat: ' + err.message + '</td></tr>';
+    if (tb) tb.innerHTML = '<tr><td colspan="8" class="error">Chyba pri nacitani dat: ' + err.message + '</td></tr>';
   });
 
 // ══════════════════════════════════════════════════════════════
@@ -2385,7 +2388,7 @@ function renderAktualny(data) {
     let html = `<div class="analyza-section">
       <h3>${title} <span style="font-size:13px;font-weight:400;color:#868e96">(${docs.length} dokumentov)</span></h3>
       <table class="analyza-table"><thead><tr>
-        <th>Typ</th><th>Obstaravatel</th><th>Predmet zakazky</th><th>Hodnota</th><th>Vitaz / Lehota</th>
+        <th>Typ</th><th>Obstaravatel</th><th>Predmet zakazky</th><th>Hodnota</th><th>Vitaz</th><th>Lehota</th>
       </tr></thead><tbody>`;
 
     docs.forEach(d => {
@@ -2397,6 +2400,7 @@ function renderAktualny(data) {
         <td class="predmet-col">${esc(d.predmet || '')}</td>
         <td class="val-col">${hodnotaStr}</td>
         <td>${esc(d.vitaz || '')}</td>
+        <td style="white-space:nowrap">${d.lehota ? esc(fmtDate(d.lehota)) : '<span style="color:#ced4da">—</span>'}</td>
       </tr>`;
     });
 
@@ -2769,7 +2773,7 @@ function renderMatches(matches) {
       return db.localeCompare(da);
     });
 
-    html += '<tr style="background:#f1f3f5"><td colspan="7" style="padding:10px 12px;font-weight:700;font-size:14px">';
+    html += '<tr style="background:#f1f3f5"><td colspan="8" style="padding:10px 12px;font-weight:700;font-size:14px">';
     html += esc(g.nazov);
     if (g.ico) html += ' <span style="color:#868e96;font-size:12px;font-weight:400">(ICO: ' + esc(g.ico) + ')</span>';
     html += ' <span style="color:#1971c2;font-size:12px;font-weight:500;margin-left:8px">' + g.items.length + ' zakaziek</span>';

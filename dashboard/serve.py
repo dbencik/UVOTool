@@ -469,19 +469,19 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 zm = ext.get("zmena_zmluvy", {})
                 hodnota = vys.get("celkova_hodnota") or pril.get("hodnota") or zm.get("hodnota_po_zmene")
                 vitaz = ""
+                lehota = pril.get("lehota_datum", "")
                 if d.get("action") == "vysledok":
                     winners = [u for u in vys.get("ucastnici", []) if u.get("je_vitaz")]
                     vitaz = ", ".join(w.get("nazov", "") for w in winners)
-                elif d.get("action") == "vyhlasenie":
-                    vitaz = f"Lehota: {pril.get('lehota_datum', '')}" if pril.get("lehota_datum") else ""
                 result["uvo"].append({
                     "id": d.get("id", ""), "action": d.get("action", ""),
                     "url": d.get("url", ""), "obstaravatel": obst.get("nazov", ""),
                     "ico": obst.get("ico", ""), "predmet": zak.get("predmet", ""),
-                    "hodnota": hodnota, "vitaz": vitaz, "cpv": zak.get("cpv_kod", ""),
+                    "hodnota": hodnota, "vitaz": vitaz, "lehota": lehota,
+                    "cpv": zak.get("cpv_kod", ""),
                 })
 
-        # Latest TED — last 30 days
+        # Latest TED
         ted_files = sorted(glob.glob(os.path.join(DATA_DIR, "ted_*_results.json")),
                            key=_os.path.getmtime, reverse=True)
         if ted_files:
@@ -501,16 +501,16 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 zm = ext.get("zmena_zmluvy", {})
                 hodnota = vys.get("celkova_hodnota") or pril.get("hodnota") or zm.get("hodnota_po_zmene")
                 vitaz = ""
+                lehota = pril.get("lehota_datum", "")
                 if d.get("action") == "vysledok":
                     winners = [u for u in vys.get("ucastnici", []) if u.get("je_vitaz")]
                     vitaz = ", ".join(w.get("nazov", "") for w in winners)
-                elif d.get("action") == "vyhlasenie":
-                    vitaz = f"Lehota: {pril.get('lehota_datum', '')}" if pril.get("lehota_datum") else ""
                 result["ted"].append({
                     "id": d.get("id", ""), "action": d.get("action", ""),
                     "url": d.get("url", ""), "obstaravatel": obst.get("nazov", ""),
                     "ico": obst.get("ico", ""), "predmet": zak.get("predmet", ""),
-                    "hodnota": hodnota, "vitaz": vitaz, "cpv": zak.get("cpv_kod", ""),
+                    "hodnota": hodnota, "vitaz": vitaz, "lehota": lehota,
+                    "cpv": zak.get("cpv_kod", ""),
                 })
 
         self.send_json(result)
