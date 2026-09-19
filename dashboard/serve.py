@@ -40,18 +40,33 @@ def query_profile(query: str, profile_type: str) -> dict:
 
 
 def _find_entity(db, query, is_ico, table, name_col="nazov", ico_col="ico"):
-    """Find entity by IČO or fuzzy name."""
+    """Find entity by IČO or fuzzy name. Falls back to FR SR registers."""
     if is_ico:
         row = db.execute(f"SELECT {name_col}, {ico_col} FROM {table} WHERE {ico_col} = ? LIMIT 1", (query,)).fetchone()
         if row:
             return row[name_col], row[ico_col]
-    # Fuzzy name search
+    # Fuzzy name search in primary table
     rows = db.execute(
         f"SELECT {name_col}, {ico_col}, COUNT(*) as cnt FROM {table} WHERE {name_col} LIKE ? AND {ico_col} != '' GROUP BY {ico_col} ORDER BY cnt DESC LIMIT 1",
         (f"%{query}%",)
     ).fetchone()
     if rows:
         return rows[name_col], rows[ico_col]
+    # Fallback: search in FR SR registers (1.3M firms)
+    try:
+        if is_ico:
+            row = db.execute("SELECT NAZOV_DS, ICO FROM frsr_dsrdp WHERE ICO = ? LIMIT 1", (query,)).fetchone()
+            if row:
+                return row["NAZOV_DS"], row["ICO"]
+        else:
+            row = db.execute(
+                "SELECT NAZOV_DS, ICO FROM frsr_dsrdp WHERE NAZOV_DS LIKE ? AND ICO != '' LIMIT 1",
+                (f"%{query}%",)
+            ).fetchone()
+            if row:
+                return row["NAZOV_DS"], row["ICO"]
+    except Exception:
+        pass
     return None, None
 
 
