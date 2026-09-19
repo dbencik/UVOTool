@@ -279,12 +279,12 @@ class TDDEnricher:
         result["issue_date"] = _find_text(root, "cbc:IssueDate")
 
         # Reporting party DIC
-        rp = root.find("pxs:ReportingParty", NS)
+        rp = _find_el(root, "pxs:ReportingParty")
         if rp is not None:
             result["reporting_party_dic"] = _find_text(rp, "cbc:EndpointID")
 
         # ReportedDocument (inside ReportedTransaction)
-        rd = root.find(".//pxs:ReportedDocument", NS)
+        rd = _find_el(root, ".//pxs:ReportedDocument")
         if rd is None:
             result["error"] = "No ReportedDocument found"
             return result
@@ -296,27 +296,29 @@ class TDDEnricher:
         result["document_currency"] = _find_text(rd, "cbc:DocumentCurrencyCode")
 
         # Supplier IC DPH
-        supplier = rd.find(".//cac:AccountingSupplierParty//cac:PartyTaxScheme/cbc:CompanyID", NS)
+        supplier = _find_el(rd, ".//cac:AccountingSupplierParty//cac:PartyTaxScheme/cbc:CompanyID")
         result["supplier_ic_dph"] = supplier.text.strip() if supplier is not None and supplier.text else ""
 
         # Supplier country
-        supplier_country = rd.find(".//cac:AccountingSupplierParty//cac:Country/cbc:IdentificationCode", NS)
+        supplier_country = _find_el(rd, ".//cac:AccountingSupplierParty//cac:Country/cbc:IdentificationCode")
         result["supplier_country"] = supplier_country.text.strip() if supplier_country is not None and supplier_country.text else ""
 
         # Customer IC DPH
-        customer = rd.find(".//cac:AccountingCustomerParty//cac:PartyTaxScheme/cbc:CompanyID", NS)
+        customer = _find_el(rd, ".//cac:AccountingCustomerParty//cac:PartyTaxScheme/cbc:CompanyID")
         result["customer_ic_dph"] = customer.text.strip() if customer is not None and customer.text else ""
 
         # Customer country
-        customer_country = rd.find(".//cac:AccountingCustomerParty//cac:Country/cbc:IdentificationCode", NS)
+        customer_country = _find_el(rd, ".//cac:AccountingCustomerParty//cac:Country/cbc:IdentificationCode")
         result["customer_country"] = customer_country.text.strip() if customer_country is not None and customer_country.text else ""
 
         # Customer registration name
-        customer_name = rd.find(".//cac:AccountingCustomerParty//cac:PartyLegalEntity/cbc:RegistrationName", NS)
+        customer_name = _find_el(rd, ".//cac:AccountingCustomerParty//cac:PartyLegalEntity/cbc:RegistrationName")
         result["customer_name"] = customer_name.text.strip() if customer_name is not None and customer_name.text else ""
 
-        # Payable amount
-        payable = rd.find(".//pxs:MonetaryTotal/cbc:PayableAmount", NS)
+        # Payable amount — try multiple paths
+        payable = _find_el(rd, ".//pxs:MonetaryTotal/cbc:PayableAmount")
+        if payable is None:
+            payable = _find_el(rd, ".//cac:LegalMonetaryTotal/cbc:PayableAmount")
         if payable is not None and payable.text:
             try:
                 result["payable_amount"] = float(payable.text.strip())
@@ -327,7 +329,7 @@ class TDDEnricher:
             result["payable_amount"] = None
 
         # Tax amount
-        tax_amount = rd.find(".//cac:TaxTotal/cbc:TaxAmount", NS)
+        tax_amount = _find_el(rd, ".//cac:TaxTotal/cbc:TaxAmount")
         if tax_amount is not None and tax_amount.text:
             try:
                 result["tax_amount"] = float(tax_amount.text.strip())
@@ -428,9 +430,34 @@ class TDDEnricher:
 
 # ─── XML helpers ─────────────────────────────────────────────────────────────
 
-def _find_text(element, path: str) -> str:
-    """Find element by namespaced path and return its text, or empty string."""
+def _find_el(element, path: str):
+    """Find element by namespaced path, fallback to plain tag."""
     el = element.find(path, NS)
+    if el is not None:
+        return el
+    # Fallback: strip namespaces from path
+    import re as _re
+    plain = _re.sub(r'\w+:', '', path)
+    el = element.find(plain)
+    if el is not None:
+        return el
+    el = element.find(".//" + plain.lstrip("./"))
+    return el
+
+
+def _find_text(element, path: str) -> str:
+    """Find element by namespaced path and return its text, or empty string.
+    Falls back to plain tag name (no namespace) if not found."""
+    el = element.find(path, NS)
+    if el is not None and el.text:
+        return el.text.strip()
+    # Fallback: try without namespace (plain XML)
+    plain = path.split(":")[-1] if ":" in path else path
+    el = element.find(plain)
+    if el is not None and el.text:
+        return el.text.strip()
+    # Try with .// prefix
+    el = element.find(".//" + plain)
     if el is not None and el.text:
         return el.text.strip()
     return ""
