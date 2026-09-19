@@ -3434,7 +3434,10 @@ function renderTddParty(party, el) {
           return;
         }
         if (Array.isArray(v)) {
-          if (v.length === 0) return;
+          if (v.length === 0) {
+            html += '<tr><td style="padding:2px 0;color:#868e96;width:100px">' + esc(fieldLabel) + '</td><td style="padding:2px 0;color:#ced4da">—</td></tr>';
+            return;
+          }
           // UBO list — array of objects with meno/priezvisko
           if (k === 'ubos' && typeof v[0] === 'object' && (v[0].meno || v[0].priezvisko)) {
             html += '<tr><td style="padding:2px 0;color:#868e96;width:100px;vertical-align:top">' + esc(fieldLabel) + '</td><td style="padding:2px 0">';
