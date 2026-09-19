@@ -3693,7 +3693,7 @@ function renderPipeResults(result) {
         if (Array.isArray(displayVal) && displayVal.length > 0 && displayVal[0].predmet) {
           html += '<tr><td colspan="2" style="padding:6px;font-weight:600;color:#495057">' + esc(String(label)) + ' (' + displayVal.length + ')</td></tr>';
           displayVal.forEach(function(z) {
-            var badge = z.je_vitaz ? '<span style="color:#2b8a3e;font-weight:700">VITAZ</span>' : (z.poradie ? '#' + z.poradie : '');
+            var badge = z.je_vitaz ? '<span style="background:#d3f9d8;color:#2b8a3e;padding:1px 6px;border-radius:3px;font-size:11px;font-weight:700">VITAZ</span>' : (z.poradie ? '<span style="color:#868e96;font-size:11px">' + z.poradie + '. miesto</span>' : '<span style="color:#ced4da;font-size:11px">ucast</span>');
             html += '<tr style="border-bottom:1px solid #f1f3f5"><td style="padding:3px 6px;color:#868e96;width:60px">' + badge + '</td>' +
               '<td style="padding:3px 6px"><a href="' + esc(z.url || '') + '" target="_blank" style="font-weight:500">' + esc((z.predmet || '').substring(0, 60)) + '</a>' +
               '<div style="font-size:11px;color:#868e96">' + esc(z.obstaravatel || '') + (z.hodnota ? ' | ' + formatEurShort(z.hodnota) : '') + (z.vestnik ? ' | ' + esc(z.vestnik) : (z.rok ? ' | ' + z.rok : '')) + '</div></td></tr>';
