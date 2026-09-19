@@ -2850,10 +2850,12 @@ function renderProfil(data, container) {
     }
 
     if (sn === 'Zmluvy' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
-      html += '<table class="profil-mini-table"><thead><tr><th>Rok</th><th>Predmet</th><th class="val-col">Hodnota</th></tr></thead><tbody>';
-      html += sekcia.data.map(d =>
-        `<tr><td>${d.rok || ''}</td><td>${d.url ? '<a href="'+d.url+'" target="_blank">'+esc((d.predmet||'').substring(0,60))+'</a>' : esc((d.predmet||'').substring(0,60))}</td><td class="val-col">${profilFmtEur(d.hodnota)}</td></tr>`
-      ).join('');
+      html += '<table class="profil-mini-table"><thead><tr><th>Rok</th><th></th><th>Obstaravatel</th><th>Predmet</th><th class="val-col">Hodnota</th></tr></thead><tbody>';
+      html += sekcia.data.map(d => {
+        const badge = d.je_vitaz ? '<span style="color:#2b8a3e;font-weight:700;font-size:11px">VITAZ</span>'
+          : (d.poradie ? '<span style="color:#868e96;font-size:11px">#' + d.poradie + '</span>' : '<span style="color:#868e96;font-size:11px">ucast</span>');
+        return `<tr><td>${d.rok || ''}</td><td>${badge}</td><td style="font-size:12px">${esc((d.obstaravatel||'').substring(0,40))}</td><td>${d.url ? '<a href="'+d.url+'" target="_blank">'+esc((d.predmet||'').substring(0,50))+'</a>' : esc((d.predmet||'').substring(0,50))}</td><td class="val-col">${profilFmtEur(d.hodnota)}</td></tr>`;
+      }).join('');
       html += '</tbody></table>';
     }
 

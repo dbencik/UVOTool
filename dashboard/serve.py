@@ -294,7 +294,7 @@ def _profile_dodavatel(db, query, is_ico):
             }
         })
 
-    # 1. Overall stats
+    # 1. Overall stats — include ALL participations (not just wins)
     stats = db.execute("""
         SELECT COUNT(*) as wins, SUM(cena) as total, MIN(cena) as min_val, MAX(cena) as max_val, AVG(cena) as avg_val
         FROM ucastnici WHERE ico = ? AND je_vitaz = 1 AND cena IS NOT NULL AND cena > 0
@@ -305,10 +305,10 @@ def _profile_dodavatel(db, query, is_ico):
 
     years = db.execute("""
         SELECT MIN(d.rok) as min_y, MAX(d.rok) as max_y
-        FROM ucastnici u JOIN dokumenty d ON u.doc_id = d.id WHERE u.ico = ? AND u.je_vitaz = 1
+        FROM ucastnici u JOIN dokumenty d ON u.doc_id = d.id WHERE u.ico = ?
     """, (ico,)).fetchone()
 
-    # Biggest contract
+    # Biggest contract (won)
     biggest = db.execute("""
         SELECT u.cena, z.predmet FROM ucastnici u
         JOIN zakazky z ON u.doc_id = z.doc_id
@@ -316,40 +316,48 @@ def _profile_dodavatel(db, query, is_ico):
         ORDER BY u.cena DESC LIMIT 1
     """, (ico,)).fetchone()
 
+    text_parts = [f"Firma {name} (IČO: {ico}) sa zúčastnila {total_bids} tendrov"]
+    if years['min_y']:
+        text_parts[0] += f" od roku {years['min_y']} do roku {years['max_y']}"
+    text_parts[0] += "."
+    if wins_all > 0:
+        text_parts.append(f"Zvíťazila v {wins_all} z nich v hodnote {_fmt_eur(stats['total'])}.")
+        if biggest and biggest['predmet']:
+            text_parts.append(f"Najväčšia zákazka: {_fmt_eur(stats['max_val'])} za \"{biggest['predmet'][:80]}\".")
+    elif total_bids > 0:
+        text_parts.append(f"Zatiaľ bez výhry — firma sa objavila ako uchádzač.")
+
     result["sekcie"].append({
         "nazov": "Celkový profil",
-        "text": f"Firma {name} (IČO: {ico}) získala od roku {years['min_y'] or '?'} do roku {years['max_y'] or '?'} "
-                f"celkovo {wins_all} zákaziek v hodnote {_fmt_eur(stats['total'])}. "
-                f"Priemerná zákazka mala hodnotu {_fmt_eur(stats['avg_val'])}, "
-                f"najmenšia {_fmt_eur(stats['min_val'])}, najväčšia {_fmt_eur(stats['max_val'])}"
-                + (f" za \"{biggest['predmet'][:80]}\"." if biggest and biggest['predmet'] else "."),
+        "text": " ".join(text_parts),
         "data": {
-            "zakazky": wins_all, "celkova_hodnota": stats['total'] or 0,
+            "zakazky_vyhrane": wins_all, "ucasti_celkom": total_bids,
+            "celkova_hodnota": stats['total'] or 0,
             "priemer": stats['avg_val'] or 0, "min": stats['min_val'] or 0, "max": stats['max_val'] or 0,
             "win_rate": round(wins_all / max(total_bids, 1) * 100, 1),
-            "total_bids": total_bids,
         }
     })
 
-    # 2. Customer mix
+    # 2. Customer mix — ALL participations (not just wins)
     customers = db.execute("""
-        SELECT o.nazov, o.ico, COUNT(*) as cnt, SUM(u.cena) as total
+        SELECT o.nazov, o.ico, COUNT(*) as cnt, SUM(u.cena) as total,
+               SUM(CASE WHEN u.je_vitaz = 1 THEN 1 ELSE 0 END) as wins
         FROM ucastnici u
         JOIN obstaravatelia o ON u.doc_id = o.doc_id
-        WHERE u.ico = ? AND u.je_vitaz = 1
+        WHERE u.ico = ?
         GROUP BY o.ico ORDER BY cnt DESC LIMIT 10
     """, (ico,)).fetchall()
 
     cust_list = [{"nazov": c["nazov"], "ico": c["ico"], "zakazky": c["cnt"],
-                  "hodnota": c["total"] or 0,
-                  "podiel": round(c["cnt"] / max(wins_all, 1) * 100, 1)} for c in customers]
+                  "hodnota": c["total"] or 0, "vyhry": c["wins"] or 0,
+                  "podiel": round(c["cnt"] / max(total_bids, 1) * 100, 1)} for c in customers]
 
     top_cust = cust_list[0] if cust_list else None
     result["sekcie"].append({
         "nazov": "Zákaznícky mix",
-        "text": (f"Najvýznamnejším zákazníkom firmy {name} je {top_cust['nazov']} "
-                 f"s {top_cust['zakazky']} zákazkami v hodnote {_fmt_eur(top_cust['hodnota'])}, "
-                 f"čo predstavuje {top_cust['podiel']}% zákaziek." if top_cust else "Žiadni zákazníci."),
+        "text": (f"Firma sa zúčastnila tendrov u {len(cust_list)} obstarávateľov. "
+                 f"Najčastejší: {top_cust['nazov']} ({top_cust['zakazky']} tendrov, "
+                 f"z toho {top_cust['vyhry']} výhier)." if top_cust else "Žiadne účasti v tendroch."),
         "data": cust_list
     })
 
@@ -429,17 +437,20 @@ def _profile_dodavatel(db, query, is_ico):
         "data": cobid_list
     })
 
-    # 7. Contracts
+    # 7. Contracts — ALL participations, mark wins
     contracts = db.execute("""
-        SELECT d.rok, u.cena, z.predmet, d.url
+        SELECT d.rok, u.cena, u.je_vitaz, u.poradie, z.predmet, d.url, o.nazov as obstaravatel
         FROM ucastnici u
         JOIN dokumenty d ON u.doc_id = d.id
         JOIN zakazky z ON u.doc_id = z.doc_id
-        WHERE u.ico = ? AND u.je_vitaz = 1
-        ORDER BY u.cena DESC LIMIT 20
+        LEFT JOIN obstaravatelia o ON u.doc_id = o.doc_id
+        WHERE u.ico = ?
+        ORDER BY d.rok DESC, u.cena DESC LIMIT 30
     """, (ico,)).fetchall()
 
-    contract_list = [{"rok": c["rok"], "hodnota": c["cena"] or 0, "predmet": c["predmet"] or "", "url": c["url"] or ""} for c in contracts]
+    contract_list = [{"rok": c["rok"], "hodnota": c["cena"] or 0, "predmet": c["predmet"] or "",
+                      "url": c["url"] or "", "je_vitaz": bool(c["je_vitaz"]), "poradie": c["poradie"],
+                      "obstaravatel": c["obstaravatel"] or ""} for c in contracts]
     result["sekcie"].append({
         "nazov": "Zmluvy",
         "data": contract_list
