@@ -815,17 +815,62 @@ def parse_notice(xml_str: str, pub_number: str, notice_type: str = '') -> Option
 # CLI Input Parsing
 # ═══════════════════════════════════════════════════════
 
-def build_query(args: list[str]) -> tuple[str, str]:
-    """Build TED API query from CLI arguments. Returns (query, label)."""
-    base = 'buyer-country=SVK'
+COUNTRY_CODES = {
+    'SK': 'SVK', 'SVK': 'SVK',
+    'CZ': 'CZE', 'CZE': 'CZE',
+    'HU': 'HUN', 'HUN': 'HUN',
+    'PL': 'POL', 'POL': 'POL',
+    'SI': 'SVN', 'SVN': 'SVN',
+    'HR': 'HRV', 'HRV': 'HRV',
+    'AT': 'AUT', 'AUT': 'AUT',
+    'RO': 'ROU', 'ROU': 'ROU',
+    'GR': 'GRC', 'GRC': 'GRC',
+    'RS': 'SRB', 'SRB': 'SRB',
+}
 
-    if not args:
+
+def build_query(args: list[str]) -> tuple[str, str]:
+    """Build TED API query from CLI arguments. Returns (query, label).
+
+    Usage:
+      ted-parser.py                          # SK, last 30 days
+      ted-parser.py 2025                     # SK, year 2025
+      ted-parser.py --country CZ 2025        # CZ, year 2025
+      ted-parser.py --country CZ,HU,PL 2026  # multiple countries
+      ted-parser.py 1477-2024                # single notice
+      ted-parser.py 2025-01-01 2025-06-30    # date range
+    """
+    # Parse --country flag
+    countries = ['SVK']
+    filtered_args = []
+    i = 0
+    while i < len(args):
+        if args[i] == '--country' and i + 1 < len(args):
+            raw = args[i + 1].upper().replace(' ', '')
+            countries = []
+            for c in raw.split(','):
+                code = COUNTRY_CODES.get(c, c)
+                if code:
+                    countries.append(code)
+            i += 2
+        else:
+            filtered_args.append(args[i])
+            i += 1
+
+    if len(countries) == 1:
+        base = f'buyer-country={countries[0]}'
+        country_label = countries[0].lower()
+    else:
+        base = '(' + ' OR '.join(f'buyer-country={c}' for c in countries) + ')'
+        country_label = '_'.join(c.lower() for c in countries)
+
+    if not filtered_args:
         # Last 30 days
         date_from = (datetime.now() - timedelta(days=30)).strftime('%Y%m%d')
-        return f"{base} AND publication-date>{date_from}", "last-30d"
+        return f"{base} AND publication-date>{date_from}", f"ted_{country_label}_last30d"
 
-    if len(args) == 1:
-        arg = args[0]
+    if len(filtered_args) == 1:
+        arg = filtered_args[0]
 
         # Specific notice: e.g. "1477-2024"
         if re.match(r'^\d+-\d{4}$', arg):
@@ -836,20 +881,20 @@ def build_query(args: list[str]) -> tuple[str, str]:
             year = arg
             date_from = f"{year}0101"
             date_to = f"{year}1231"
-            return f"{base} AND publication-date>={date_from} AND publication-date<={date_to}", f"ted_{year}"
+            return f"{base} AND publication-date>={date_from} AND publication-date<={date_to}", f"ted_{country_label}_{year}"
 
         # Date: e.g. "2025-01-01"
         if re.match(r'^\d{4}-\d{2}-\d{2}$', arg):
             date_from = arg.replace('-', '')
-            return f"{base} AND publication-date>={date_from}", f"ted_from_{arg}"
+            return f"{base} AND publication-date>={date_from}", f"ted_{country_label}_from_{arg}"
 
-    if len(args) == 2:
+    if len(filtered_args) == 2:
         # Date range: "2025-01-01 2025-06-30"
-        date_from = args[0].replace('-', '')
-        date_to = args[1].replace('-', '')
-        return f"{base} AND publication-date>={date_from} AND publication-date<={date_to}", f"ted_{args[0]}_{args[1]}"
+        date_from = filtered_args[0].replace('-', '')
+        date_to = filtered_args[1].replace('-', '')
+        return f"{base} AND publication-date>={date_from} AND publication-date<={date_to}", f"ted_{country_label}_{filtered_args[0]}_{filtered_args[1]}"
 
-    return f"{base}", "ted_all"
+    return f"{base}", f"ted_{country_label}_all"
 
 
 # ═══════════════════════════════════════════════════════
@@ -857,14 +902,21 @@ def build_query(args: list[str]) -> tuple[str, str]:
 # ═══════════════════════════════════════════════════════
 
 def main():
-    print("=" * 60)
-    print("TED PARSER — eForms XML (Slovenské zákazky)")
-    print("=" * 60)
-
     args = sys.argv[1:]
     max_docs = int(os.environ.get("MAX_DOCS", "0"))
 
     query, label = build_query(args)
+
+    # Extract country info for display
+    countries_display = 'SVK'
+    for i, a in enumerate(args):
+        if a == '--country' and i + 1 < len(args):
+            countries_display = args[i + 1].upper()
+            break
+
+    print("=" * 60)
+    print(f"TED PARSER — eForms XML (krajiny: {countries_display})")
+    print("=" * 60)
 
     # Special case: single notice by publication number
     if query is None:

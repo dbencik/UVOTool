@@ -1,0 +1,208 @@
+[
+  {
+    "num": "12-2026",
+    "code": "can-standard",
+    "type": "ContractAwardNotice",
+    "action": "vysledok",
+    "url": "https://ted.europa.eu/en/notice/12-2026/xml",
+    "id": "12-2026",
+    "vestnik": "TED",
+    "extraction": {
+      "metadata": {
+        "zdroj": "TED",
+        "publication_number": "12-2026",
+        "notice_type": "can-standard",
+        "publication_date": "2026-01-02+01:00",
+        "sdk_version": "eforms-sdk-1.13",
+        "language": "CES"
+      },
+      "obstaravatel": {
+        "nazov": "Nemocnice Pardubického kraje, a.s.",
+        "ico": "27520536",
+        "email": "verejne.zakazky@nempk.cz",
+        "adresa": "Kyjevská 44",
+        "psc": "53003",
+        "mesto": "Pardubice - Pardubičky",
+        "telefon": "+420 466011169",
+        "typ_kupujuceho": "body-pl-cga",
+        "cinnost": "health",
+        "profil_url": "https://zakazky.pardubickykraj.cz/profile_display_1965.html"
+      },
+      "zakazka": {
+        "predmet": "Pořízení softwarových produktů firmy Microsoft znovuvyhlášení",
+        "cpv_kod": "48300000",
+        "druh": "supplies",
+        "opis": "Předmětem plnění veřejné zakázky je pořízení softwarových produktů firmy Microsoft v určeném rozsahu licencí. Softwarové licence pro produkt Microsoft SQL Server 2022 Standard pro 2 jádra musí být dodány tak, aby umožňovali nasazení na určený počet serverů v počtu licencí na jádro pro daný server dle potřeb zadavatele.",
+        "nuts": "CZ053",
+        "miesto_plnenia": "CZE",
+        "druh_postupu": "open",
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 9070992.0,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "DATRON, a.s.",
+            "ico": "43227520",
+            "cena": 9070992.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "",
+            "subdodavatelia": "",
+            "lot_id": "LOT-0001"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "smlouva Datron - pořízení softwarových produktů Microsoft",
+            "datum": "19.12.2025",
+            "nazov": "smlouva - pořízení softwarových produktů Microsoft",
+            "url": "https://smlouvy.gov.cz/smlouva/36154465"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "13-2026",
+    "code": "cn-standard",
+    "type": "ContractNotice",
+    "action": "vyhlasenie",
+    "url": "https://ted.europa.eu/en/notice/13-2026/xml",
+    "id": "13-2026",
+    "vestnik": "TED",
+    "extraction": {
+      "metadata": {
+        "zdroj": "TED",
+        "publication_number": "13-2026",
+        "notice_type": "cn-standard",
+        "publication_date": "2026-01-02+01:00",
+        "sdk_version": "eforms-sdk-1.13",
+        "language": "CES"
+      },
+      "obstaravatel": {
+        "nazov": "Město Úvaly",
+        "ico": "00240931",
+        "email": "marketa.rydvalova@mestouvaly.cz",
+        "adresa": "Arnošta z Pardubic 95",
+        "psc": "25082",
+        "mesto": "Úvaly",
+        "telefon": "+420 739693596",
+        "typ_kupujuceho": "la",
+        "cinnost": "gen-pub",
+        "profil_url": "https://www.vhodne-uverejneni.cz/profil/00240931"
+      },
+      "zakazka": {
+        "predmet": "Poskytovatel IT služeb",
+        "cpv_kod": "72000000",
+        "druh": "services",
+        "opis": "Předmětem plnění Zakázky popsané v této zadávací dokumentaci je podpora a řešení služeb v oblastech:\n- REAKTIVNÍ PODPORA – řešení incidentů na lokální i vzdálené úrovni;\n- HOT-LINE PODPORA – telefonické poradenství a další služby po telefonu;\n- PROAKTIVNÍ PODPORA – změnové a rozvojové požadavky;\n- STRATEGICKÁ A PROCESNÍ PODPORA pro oblasti: Strategie ICT, Bezpečnost, Procesní podpora zajišťující kontinuální provoz ICT systémů.\nBližší specifikace předmětu plnění Zakázky je uvedena přílohách ZD, k",
+        "nuts": "CZ020",
+        "miesto_plnenia": "CZE",
+        "druh_postupu": "open",
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 6000000.0,
+        "mena": "EUR",
+        "lehota_datum": "19.01.2026",
+        "lehota_cas": "14:00:00+01:00",
+        "eu_fond": "Nie",
+        "ramcova_dohoda": false,
+        "kriterium": "",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null,
+        "druh_postupu": "open"
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "164-2026",
+    "code": "can-standard",
+    "type": "ContractAwardNotice",
+    "action": "vysledok",
+    "url": "https://ted.europa.eu/en/notice/164-2026/xml",
+    "id": "164-2026",
+    "vestnik": "TED",
+    "extraction": {
+      "metadata": {
+        "zdroj": "TED",
+        "publication_number": "164-2026",
+        "notice_type": "can-standard",
+        "publication_date": "2026-01-02+01:00",
+        "sdk_version": "eforms-sdk-1.13",
+        "language": "CES"
+      },
+      "obstaravatel": {
+        "nazov": "Statutární město Brno",
+        "ico": "44992785",
+        "email": "mtlbrno@mt-legal.com",
+        "adresa": "Dominikánské náměstí 196/1",
+        "psc": "60200",
+        "mesto": "Brno - Brno-město",
+        "telefon": "+420 542210351",
+        "typ_kupujuceho": "la",
+        "cinnost": "gen-pub",
+        "profil_url": "https://ezak.brno.cz/"
+      },
+      "zakazka": {
+        "predmet": "Sběr a zpracování dat pro osobní doklady",
+        "cpv_kod": "30236200",
+        "druh": "supplies",
+        "opis": "Předmětem veřejné zakázky je pořízení (pronájem) technických zařízení pro sběr a zpracování dat za účelem pořizování žádostí o vydání občanských průkazů a cestovních pasů, jakož i jejich předávání občanům, a to 2 ks KS-O kombi, 2 ks Fotokabina, 5 ks KS-O kombi 2, 2 ks KS-O výdej, 1 ks KS-O-M, 3 ks čtečky dokladů a 1 ks LCD žadatele. \nSoučástí služby bude mj. nezbytné programové vybavení, zaškolení uživatelů zadavatele, poskytování služby Hotline CDBP, servisní a jiné služby a zajištění spotřební",
+        "nuts": "CZ064",
+        "miesto_plnenia": "CZE",
+        "druh_postupu": "neg-wo-call",
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 9876934.0,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "Státní tiskárna cenin, s. p.",
+            "ico": "00001279",
+            "cena": 9876934.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "",
+            "subdodavatelia": "",
+            "lot_id": "LOT-0001"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Smlouva - STC",
+            "datum": "23.12.2025",
+            "nazov": "Smlouva o umístění technického zařízení na sběr a další zpracování dat pro osobní doklady vydávané v působnosti Ministerstva vnitra",
+            "url": "https://smlouvy.gov.cz/smlouva/36209553"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  }
+]
