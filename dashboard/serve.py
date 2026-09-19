@@ -60,12 +60,91 @@ def _fmt_eur(val):
     return f"{val:,.2f} EUR".replace(",", " ").replace(".", ",")
 
 
+def _enrich_if_needed(db, ico):
+    """Lazy enrichment — fetch from ORSF+RUZ if not cached within 30 days."""
+    row = db.execute("SELECT enriched_at FROM firmy WHERE ico = ?", (ico,)).fetchone()
+    if row:
+        from datetime import datetime, timedelta
+        try:
+            enriched = datetime.fromisoformat(row[0])
+            if datetime.now() - enriched < timedelta(days=30):
+                return  # still fresh
+        except:
+            pass
+    # Run enrichment
+    import subprocess
+    subprocess.run(
+        [sys.executable, os.path.join(BASE_DIR, "tools", "company-enrichment.py"), ico],
+        capture_output=True, timeout=30
+    )
+
+
+def _get_company_info(db, ico):
+    """Get enriched company data from firmy table."""
+    try:
+        row = db.execute("SELECT * FROM firmy WHERE ico = ?", (ico,)).fetchone()
+        if not row:
+            return None
+        return dict(row)
+    except:
+        return None
+
+
 def _profile_dodavatel(db, query, is_ico):
     name, ico = _find_entity(db, query, is_ico, "ucastnici")
     if not ico:
         return {"error": f"Dodávateľ '{query}' nebol nájdený."}
 
+    # Lazy enrichment from ORSF + RUZ
+    try:
+        _enrich_if_needed(db, ico)
+        db.close()
+        db = sqlite3.connect(DB_PATH)
+        db.row_factory = sqlite3.Row
+    except:
+        pass
+
+    company = _get_company_info(db, ico)
     result = {"typ": "dodavatel", "nazov": name, "ico": ico, "sekcie": []}
+
+    # 0. Company info from registers (if enriched)
+    if company:
+        size_labels = {"11": "0 zam.", "12": "1-9 zam.", "21": "10-19 zam.", "22": "20-49 zam.",
+                       "31": "50-99 zam.", "32": "100-249 zam.", "33": "250-999 zam.", "34": "1000+ zam."}
+        velkost = size_labels.get(company.get("velkost", ""), company.get("velkost", ""))
+        text_parts = [f"{company.get('nazov', name)} | {company.get('pravna_forma', '')} | {company.get('status', '')}"]
+        if company.get("datum_vzniku"):
+            text_parts[0] += f" od {company['datum_vzniku'][:10]}"
+        if company.get("mesto"):
+            text_parts.append(f"Sídlo: {company.get('adresa', '')}, {company.get('psc', '')} {company['mesto']}")
+        if company.get("nace"):
+            text_parts.append(f"NACE: {company['nace']} | Veľkosť: {velkost}")
+        if company.get("trzby_posledne"):
+            text_parts.append(f"Tržby {company.get('rok_zavierky', '?')}: {_fmt_eur(company['trzby_posledne'])}")
+            if company.get("trzby_predosle"):
+                text_parts[-1] += f" (predchádzajúci rok: {_fmt_eur(company['trzby_predosle'])})"
+        if company.get("zisk_posledne") is not None:
+            zisk = company["zisk_posledne"]
+            text_parts.append(f"Zisk {company.get('rok_zavierky', '?')}: {_fmt_eur(zisk)}")
+
+        result["sekcie"].append({
+            "nazov": "Registre SR",
+            "text": ". ".join(text_parts) + ".",
+            "data": {
+                "status": company.get("status", ""),
+                "pravna_forma": company.get("pravna_forma", ""),
+                "nace": company.get("nace", ""),
+                "velkost": velkost,
+                "datum_vzniku": company.get("datum_vzniku", ""),
+                "mesto": company.get("mesto", ""),
+                "dic": company.get("dic", ""),
+                "trzby": company.get("trzby_posledne"),
+                "trzby_predosle": company.get("trzby_predosle"),
+                "zisk": company.get("zisk_posledne"),
+                "zisk_predosle": company.get("zisk_predosle"),
+                "rok": company.get("rok_zavierky"),
+            }
+        })
 
     # 1. Overall stats
     stats = db.execute("""
@@ -218,12 +297,51 @@ def _profile_dodavatel(db, query, is_ico):
         "data": contract_list
     })
 
+    # 7b. Contract value vs revenue
+    if company and company.get("trzby_posledne") and stats["total"]:
+        trzby = company["trzby_posledne"]
+        rok = company.get("rok_zavierky", "?")
+        # Per-year contract values
+        yearly_data = db.execute("""
+            SELECT d.rok, SUM(u.cena) as total FROM ucastnici u
+            JOIN dokumenty d ON u.doc_id = d.id
+            WHERE u.ico = ? AND u.je_vitaz = 1 AND u.cena > 0 AND d.rok IS NOT NULL
+            GROUP BY d.rok ORDER BY d.rok
+        """, (ico,)).fetchall()
+
+        comparisons = []
+        for y in yearly_data:
+            yr, total_won = y["rok"], y["total"]
+            if total_won and trzby > 0:
+                pomer = total_won / trzby * 100
+                comparisons.append({"rok": yr, "zakazky_hodnota": total_won, "trzby": trzby, "pomer": round(pomer, 1)})
+
+        if comparisons:
+            text_parts = []
+            for c in comparisons:
+                text_parts.append(f"V roku {c['rok']} firma získala verejné zákazky za {_fmt_eur(c['zakazky_hodnota'])}, "
+                                  f"čo predstavuje {c['pomer']}% jej tržieb ({_fmt_eur(c['trzby'])} v roku {rok}).")
+            result["sekcie"].append({
+                "nazov": "Zákazky vs obrat",
+                "text": " ".join(text_parts),
+                "data": comparisons
+            })
+
     # 8. Risk flags
     flags = []
     if sb_rate > 50:
         flags.append(f"Vysoký podiel zákaziek bez súťaže: {sb_rate}% single-bidder rate")
     if top_cust and top_cust["podiel"] > 70:
         flags.append(f"Vysoká závislosť na jednom zákazníkovi: {top_cust['nazov']} = {top_cust['podiel']}%")
+    if company:
+        if company.get("status") and company["status"] != "aktívna":
+            flags.append(f"Firma nie je aktívna: status = {company['status']}")
+        if company.get("velkost") in ("11",):
+            flags.append(f"Firma nemá zamestnancov (veľkosť: 0)")
+        if company.get("trzby_posledne") and stats["total"]:
+            biggest_val = stats["max_val"] or 0
+            if biggest_val > company["trzby_posledne"] * 0.5 and company["trzby_posledne"] > 0:
+                flags.append(f"Najväčšia zákazka ({_fmt_eur(biggest_val)}) presahuje 50% tržieb ({_fmt_eur(company['trzby_posledne'])})")
 
     result["sekcie"].append({
         "nazov": "Rizikové indikátory",

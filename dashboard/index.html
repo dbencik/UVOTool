@@ -2565,6 +2565,32 @@ function renderProfil(data, container) {
     // Section-specific data rendering
     const sn = sekcia.nazov;
 
+    if (sn === 'Registre SR' && sekcia.data) {
+      const d = sekcia.data;
+      html += '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px">';
+      if (d.status) {
+        const sc = d.status === 'aktívna' ? '#2b8a3e' : '#e03131';
+        html += `<div class="card" style="padding:10px;min-width:100px"><div class="label">Status</div><div class="value" style="font-size:14px;color:${sc}">${esc(d.status)}</div></div>`;
+      }
+      if (d.pravna_forma) html += `<div class="card" style="padding:10px;min-width:100px"><div class="label">Právna forma</div><div class="value" style="font-size:14px">${esc(d.pravna_forma)}</div></div>`;
+      if (d.velkost) html += `<div class="card" style="padding:10px;min-width:100px"><div class="label">Veľkosť</div><div class="value" style="font-size:14px">${esc(d.velkost)}</div></div>`;
+      if (d.trzby != null) html += `<div class="card" style="padding:10px;min-width:120px"><div class="label">Tržby ${d.rok||''}</div><div class="value" style="font-size:14px">${profilFmtEurShort(d.trzby)}</div></div>`;
+      if (d.zisk != null) {
+        const zc = d.zisk >= 0 ? '#2b8a3e' : '#e03131';
+        html += `<div class="card" style="padding:10px;min-width:120px"><div class="label">Zisk ${d.rok||''}</div><div class="value" style="font-size:14px;color:${zc}">${profilFmtEurShort(d.zisk)}</div></div>`;
+      }
+      html += '</div>';
+    }
+
+    if (sn === 'Zákazky vs obrat' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
+      html += '<table class="profil-mini-table"><thead><tr><th>Rok</th><th class="val-col">Zákazky</th><th class="val-col">Tržby</th><th class="val-col">Podiel</th></tr></thead><tbody>';
+      sekcia.data.forEach(c => {
+        const pc = c.pomer > 50 ? '#e03131' : (c.pomer > 20 ? '#e8590c' : '#495057');
+        html += `<tr><td>${c.rok}</td><td class="val-col">${profilFmtEur(c.zakazky_hodnota)}</td><td class="val-col">${profilFmtEur(c.trzby)}</td><td class="val-col" style="color:${pc};font-weight:600">${c.pomer}%</td></tr>`;
+      });
+      html += '</tbody></table>';
+    }
+
     if ((sn === 'Zákaznícky mix' || sn === 'Dvorní dodávatelia') && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
       const max = sekcia.data[0].zakazky || sekcia.data[0].hodnota || 1;
       html += sekcia.data.map(d => `
