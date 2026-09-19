@@ -1106,6 +1106,14 @@ function formatEurShort(val) {
   return n.toLocaleString('sk-SK', { maximumFractionDigits: 0 }) + ' EUR';
 }
 
+function fmtDate(s) {
+  if (!s) return '';
+  // Convert YYYY-MM-DD or YYYY-MM-DD+01:00 to DD.MM.YYYY
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (m) return m[3] + '.' + m[2] + '.' + m[1];
+  return s;
+}
+
 function formatNum(val) {
   if (val == null) return '-';
   return Number(val).toLocaleString('sk-SK');
@@ -1173,7 +1181,7 @@ function extractRow(doc) {
     vitaz = winners.map(w => w.nazov).join(', ') || '';
   } else if (doc.action === 'vyhlasenie') {
     hodnota = pril.hodnota;
-    vitaz = pril.lehota_datum ? ('Lehota: ' + pril.lehota_datum) : '';
+    vitaz = pril.lehota_datum ? ('Lehota: ' + fmtDate(pril.lehota_datum)) : '';
   } else if (doc.action === 'zmena_zmluvy') {
     hodnota = zm.hodnota_po_zmene;
     vitaz = zm.dodavatel ? zm.dodavatel.nazov : '';
@@ -1405,7 +1413,7 @@ function showDetail(row) {
       html += `<div class="detail-section"><h3>Zmluvy (${zmluvy.length})</h3>`;
       zmluvy.forEach(z => {
         html += `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f1f3f5;font-size:13px">
-          <span style="color:#868e96;font-size:12px">${esc(z.datum || '')}</span>
+          <span style="color:#868e96;font-size:12px">${esc(fmtDate(z.datum) || '')}</span>
           <a href="${z.url || '#'}" target="_blank" style="flex:1">${esc(z.id || z.url || 'Zmluva')}</a>
         </div>`;
       });
@@ -1418,7 +1426,7 @@ function showDetail(row) {
       <h3>Prilezitost</h3>
       <div class="detail-row"><span class="detail-label">Hodnota</span><span class="detail-value">${pril.hodnota != null ? formatEur(pril.hodnota) : '-'}</span></div>
       <div class="detail-row"><span class="detail-label">Mena</span><span class="detail-value">${esc(pril.mena || 'EUR')}</span></div>
-      <div class="detail-row"><span class="detail-label">Lehota datum</span><span class="detail-value">${esc(pril.lehota_datum || '-')}</span></div>
+      <div class="detail-row"><span class="detail-label">Lehota datum</span><span class="detail-value">${esc(fmtDate(pril.lehota_datum) || '-')}</span></div>
       <div class="detail-row"><span class="detail-label">Lehota cas</span><span class="detail-value">${esc(pril.lehota_cas || '-')}</span></div>
       ${pril.eu_fond ? `<div class="detail-row"><span class="detail-label">EU fond</span><span class="detail-value">${esc(pril.eu_fond)}</span></div>` : ''}
       ${pril.ramcova_dohoda ? `<div class="detail-row"><span class="detail-label">Ramcova dohoda</span><span class="detail-value">Ano</span></div>` : ''}
@@ -2680,7 +2688,7 @@ function renderMatches(matches) {
 
     g.items.forEach(function(m) {
       var hodnotaStr = m.hodnota != null ? formatEurShort(m.hodnota) : '<span style="color:#ced4da">—</span>';
-      var lehotaStr = m.lehota ? esc(m.lehota.substring(0, 10)) : '<span style="color:#ced4da">—</span>';
+      var lehotaStr = m.lehota ? esc(fmtDate(m.lehota.substring(0, 10))) : '<span style="color:#ced4da">—</span>';
       var pravidlaStr = (m.pravidla || []).map(function(pr) {
         return '<span class="match-rule-badge">' + esc(pr) + '</span>';
       }).join(' ');

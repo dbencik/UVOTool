@@ -36,18 +36,12 @@
         "nuts": "SK022",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Nákup koľajových vozidiel a špeciálnych železničných dopravných prostriedkov",
-          "opis": "Zabezpečenie dodania motorového koľajového vozidla a špeciálnych železničných dopravných prostriedkov na zabezpečovanie údržby priestorov železničnej trate a prevoz materiálu, zaškolenie obsluhy (vodičov) vrátane dopravy do miesta plnenia v sortimente podľa technickej špecifikácie a podrobného vymed",
-          "druh": "supplies",
-          "cpv_kod": "34621200",
-          "predpokladana_hodnota": 906125.0
-        }
-      ],
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 889000.0,
         "mena": "EUR",
@@ -67,7 +61,7 @@
         "zmluvy": [
           {
             "id": "Kúpna zmluva č. 2025/246",
-            "datum": "2025-12-29+01:00",
+            "datum": "29.12.2025",
             "nazov": "Kúpna zmluva č. 2025/246",
             "url": "https://www.crz.gov.sk/zmluva/11813603/?csrt=11719349299287852614"
           }
@@ -76,7 +70,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 1.0
+    "time_ms": 2.3
   },
   {
     "num": "307-2026",
@@ -115,22 +109,16 @@
         "nuts": "SK010",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Lepšie využívanie údajov MF SR",
-          "opis": "Predmetom zákazky je oblasť dátového manažmentu, t. j. riadenia kvality údajov, transformácie údajov, správy kmeňových dát a číselníkov a dátovej integrácie v rámci vybudovania platformy manažmentu údajov MF SR, a to z pohľadu implementačného a aj metodického. Predmet zákazky pokrýva oblasť evidenci",
-          "druh": "services",
-          "cpv_kod": "72000000",
-          "predpokladana_hodnota": 3674662.4
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 3674662.4,
         "mena": "EUR",
-        "lehota_datum": "2026-02-16+01:00",
+        "lehota_datum": "16.02.2026",
         "lehota_cas": "09:00:00+01:00",
         "eu_fond": "ERDF_2021",
         "ramcova_dohoda": false,
@@ -142,7 +130,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.8
+    "time_ms": 1.5
   },
   {
     "num": "452-2026",
@@ -181,18 +169,12 @@
         "nuts": "SK032",
         "miesto_plnenia": "SVK",
         "druh_postupu": "",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Nákup a dodávka potravín - DNS (2022-2025)",
-          "opis": "Predmet zákazky : Nákup a dodávka čerstvého mäsa a mäsových výrobkov, uchádzač musí predložiť ponuku na celý sortiment na celý predmet zákazky.",
-          "druh": "supplies",
-          "cpv_kod": "15110000",
-          "predpokladana_hodnota": null
-        }
-      ],
+      "casti": [],
       "zmena_zmluvy": {
         "dodavatel": {
           "nazov": "Jakub Ilavský, s. r. o.",
@@ -201,7 +183,7 @@
         "hodnota_po_zmene": null,
         "mena": "EUR",
         "zmluva_id": "CV-10-56/2022",
-        "zmluva_datum": "2022-07-08+02:00",
+        "zmluva_datum": "08.07.2022",
         "zmluva_url": "https://www.crz.gov.sk/zmluva/6662970/",
         "dovod_zmeny": "mod-cir",
         "odovodnenie": "Centrum výcviku Lešť ako verejný obstarávateľ má od mája 2022 zriadený dynamický nákupný systém na obstaranie potravín. Na základe Uznesenia NR SR č. 1408 z mája 2022 bola schválená prítomnosť 3 000 príslušníkov ozbrojených síl členských krajín NATO na území SR z dôvodu zhoršenej bezpečnostnej situá",
@@ -209,7 +191,7 @@
         "eu_fond": ""
       }
     },
-    "time_ms": 0.6
+    "time_ms": 1.1
   },
   {
     "num": "689-2026",
@@ -248,22 +230,16 @@
         "nuts": "SK032",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Služby rozvoja IS VREF (Vat Refund) a služby podpory prevádzky a replikačného mechanizmu NSXX na obdobie 48 mesiacov",
-          "opis": "Predmetom zákazky sú služby rozvoja IS VREF (Vat Refund) a služby podpory prevádzky a replikačného mechanizmu NSXX na obdobie 48 mesiacov.\nPredmet zákazky sa skladá z:\n1.\tBezpečnostného projektu\n2.\tRozvojového rámca pre vývoj po dobu 48 mesiacov\n3.\tSlužby podpory prevádzky pre IS VREF a replikačného",
-          "druh": "services",
-          "cpv_kod": "72000000",
-          "predpokladana_hodnota": 1932000.0
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 1932000.0,
         "mena": "EUR",
-        "lehota_datum": "2026-01-02+01:00",
+        "lehota_datum": "02.01.2026",
         "lehota_cas": "09:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": false,
@@ -275,7 +251,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.8
+    "time_ms": 1.6
   },
   {
     "num": "747-2026",
@@ -314,22 +290,16 @@
         "nuts": "SK010",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Pavilón geriatrie / UNB akad. L. Dérera /",
-          "opis": "Predmetom zákazky sú stavebné práce na objekte Pavilón geriatrie / UNB akad. L. Dérera / v rozsahu prác a dodávok podľa projektovej dokumencie na realizáciu diela Rekonštrukcia obvodového plášťa Pavilón geriatrie / UNB akad. L. Dérera (ďalej aj „Rekonštrukcia obvodového plášťa“) v areáli UNB Nemocni",
-          "druh": "works",
-          "cpv_kod": "45000000",
-          "predpokladana_hodnota": 3943500.0
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 3943500.0,
         "mena": "EUR",
-        "lehota_datum": "2026-02-13+01:00",
+        "lehota_datum": "13.02.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "RRF",
         "ramcova_dohoda": false,
@@ -341,7 +311,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.9
+    "time_ms": 1.7
   },
   {
     "num": "751-2026",
@@ -380,18 +350,12 @@
         "nuts": "SK042",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Optická pinzeta s konfokálnou detekciou",
-          "opis": "Systém optickej pinzety navrhnutý na presné merania síl v rozsahu 10 pN a 10 nm vzdialenosti, v kombinácii s plne korelovaným konfokálnym fluorescenčným zobrazovaním a automatizovaným mikrofluidným systémom pre biofyzikálne experimenty. Zariadenie umožňuje zvýšenú presnosť pri meraní krátkych biomol",
-          "druh": "supplies",
-          "cpv_kod": "38300000",
-          "predpokladana_hodnota": 1005675.0
-        }
-      ],
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 925685.0,
         "mena": "EUR",
@@ -411,7 +375,7 @@
         "zmluvy": [
           {
             "id": "UPJŠ - 1010/2025",
-            "datum": "2025-12-19+01:00",
+            "datum": "19.12.2025",
             "nazov": "Kúpna zmluva - Optická pinzeta s konfokálnou detekciou",
             "url": "https://crz.gov.sk/zmluva/11779652/?csrt=11615603119246226590"
           }
@@ -420,7 +384,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 0.6
+    "time_ms": 1.0
   },
   {
     "num": "761-2026",
@@ -459,38 +423,44 @@
         "nuts": "SK042",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 3,
+        "max_casti_ponuka": 3,
+        "max_casti_zadanie": 3
       },
-      "loty": [
+      "casti": [
         {
-          "id": "LOT-0001",
+          "cislo": 1,
+          "lot_id": "LOT-0001",
           "nazov": "Servis a opravy posypových nadstavieb Acometis",
           "opis": "Predmetom zákazky je vykonávanie servisných úkonov a opráv nadstavieb, v rozsahu podľa opisu a špecifikácie, definovanej v prílohách rámcovej zmluvy.",
-          "druh": "services",
           "cpv_kod": "50116000",
-          "predpokladana_hodnota": 180952.0
+          "hodnota": 180952.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0002",
+          "cislo": 2,
+          "lot_id": "LOT-0002",
           "nazov": "Servis a opravy posypových nadstavieb VSV a SK",
           "opis": "Predmetom zákazky je vykonávanie servisných úkonov a opráv nadstavieb, v rozsahu podľa opisu a špecifikácie, definovanej v prílohách rámcovej zmluvy.",
-          "druh": "services",
           "cpv_kod": "50116000",
-          "predpokladana_hodnota": 151652.0
+          "hodnota": 151652.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0003",
+          "cislo": 3,
+          "lot_id": "LOT-0003",
           "nazov": "Servis a opravy posypových nadstavieb Boschung",
           "opis": "Predmetom zákazky je vykonávanie servisných úkonov a opráv nadstavieb, v rozsahu podľa opisu a špecifikácie, definovanej v prílohách rámcovej zmluvy.",
-          "druh": "services",
           "cpv_kod": "50116000",
-          "predpokladana_hodnota": 131797.0
+          "hodnota": 131797.0,
+          "mena": "EUR"
         }
       ],
       "prilezitost": {
         "hodnota": 464401.0,
         "mena": "EUR",
-        "lehota_datum": "2026-02-02+01:00",
+        "lehota_datum": "02.02.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": true,
@@ -502,7 +472,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 1.0
+    "time_ms": 1.7
   },
   {
     "num": "772-2026",
@@ -541,64 +511,74 @@
         "nuts": "SK042",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 7,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
+      "casti": [
         {
-          "id": "LOT-0001",
+          "cislo": 1,
+          "lot_id": "LOT-0001",
           "nazov": "Hydina, ryby a mrazené výrobky",
           "opis": "Predmetom zákazky je nákup hydinového mäsa, rýb a mrazených výrobkov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky súťažných podkl",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 36450.64
+          "hodnota": 36450.64,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0002",
+          "cislo": 2,
+          "lot_id": "LOT-0002",
           "nazov": "Mlieko a mliečne výrobky",
           "opis": "Predmetom zákazky je nákup mlieka, mliečnych výrobkov, syrárskych výrobkov a vajec, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky s",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 70694.61
+          "hodnota": 70694.61,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0003",
+          "cislo": 3,
+          "lot_id": "LOT-0003",
           "nazov": "Rôzne potravinárske výrobky",
           "opis": "Predmetom zákazky je nákup rôznych potravinárskych výrobkov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 71276.83
+          "hodnota": 71276.83,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0004",
+          "cislo": 4,
+          "lot_id": "LOT-0004",
           "nazov": "Mäso bravčové a hovädzie, mäsové výrobky",
           "opis": "Predmetom zákazky je nákup bravčového a hovädzieho mäsa a mäsových výrobkov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky súťažnýc",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 67083.93
+          "hodnota": 67083.93,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0005",
+          "cislo": 5,
+          "lot_id": "LOT-0005",
           "nazov": "Ovocie a zelenina",
           "opis": "Predmetom zákazky je nákup ovocia a zeleniny, dodanie tovaru do miesta dodania a vyloženie tovaru vmieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 57085.85
+          "hodnota": 57085.85,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0006",
+          "cislo": 6,
+          "lot_id": "LOT-0006",
           "nazov": "Pekárenský tovar",
           "opis": "Predmetom zákazky je nákup chleba, pečiva a pekárenských výrobkov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky.",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 42683.38
+          "hodnota": 42683.38,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0007",
+          "cislo": 7,
+          "lot_id": "LOT-0007",
           "nazov": "Zákusky",
           "opis": "Predmetom zákazky je nákup zákuskov a koláčov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Podrobné vymedzenie predmetu zákazky je uvedené v časti B. Opis predmetu zákazky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 3361.83
+          "hodnota": 3361.83,
+          "mena": "EUR"
         }
       ],
       "vysledok": {
@@ -660,43 +640,43 @@
         "zmluvy": [
           {
             "id": "43/2025",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Rámcová dohoda č. 43/2025",
             "url": "https://www.crz.gov.sk/zmluva/11771883/?csrt=9583824497021767343&undefined=undefined"
           },
           {
             "id": "44/2025",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Rámcová dohoda č. 44/2025",
             "url": "https://www.crz.gov.sk/zmluva/11772038/?csrt=9583824497021767343&undefined=undefined"
           },
           {
             "id": "45/2025",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Rámcová dohoda č. 45/2025",
             "url": "https://www.crz.gov.sk/zmluva/11772246/?csrt=9583824497021767343&undefined=undefined"
           },
           {
             "id": "46/2025",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Rámcová dohoda č. 46/2025",
             "url": "https://www.crz.gov.sk/zmluva/11772401/?csrt=9583824497021767343&undefined=undefined"
           },
           {
             "id": "58/2025",
-            "datum": "2025-12-29+01:00",
+            "datum": "29.12.2025",
             "nazov": "Rámcová dohoda č. 58/2025",
             "url": "https://www.crz.gov.sk/zmluva/11805879/?csrt=9583824497021767343&undefined=undefined"
           },
           {
             "id": "47/2025",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Rámcová dohoda č. 47/2025",
             "url": "https://www.crz.gov.sk/zmluva/11772581/?csrt=9583824497021767343&undefined=undefined"
           },
           {
             "id": "48/2025",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Rámcová dohoda č. 48/2025",
             "url": "https://www.crz.gov.sk/zmluva/11772670/?csrt=9583824497021767343&undefined=undefined"
           }
@@ -705,7 +685,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 2.7
+    "time_ms": 3.9
   },
   {
     "num": "817-2026",
@@ -744,22 +724,16 @@
         "nuts": "",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Náhradné diely do osobných motorových vozidiel",
-          "opis": "Uzavretie rámcovej dohody, ktorej predmetom bude určenie podmienok zadávania zákaziek na kúpu a dodanie náhradných dielov do osobných motorových vozidiel továrenských značiek Audi, BMW, Citroën, Ford, Hyundai, KIA, Land  Rover, Mercedes- Benz,  Mitsubishi, Nissan, Opel, Peugeot, Škoda, Toyota a Volk",
-          "druh": "supplies",
-          "cpv_kod": "34300000",
-          "predpokladana_hodnota": 3096785.0
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 3096785.0,
         "mena": "EUR",
-        "lehota_datum": "2026-02-03+01:00",
+        "lehota_datum": "03.02.2026",
         "lehota_cas": "09:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": true,
@@ -771,7 +745,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.8
+    "time_ms": 1.1
   },
   {
     "num": "824-2026",
@@ -810,18 +784,12 @@
         "nuts": "",
         "miesto_plnenia": "SVK",
         "druh_postupu": "restricted",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Potraviny na zabezpečenie stravovania – DNS",
-          "opis": "Predmetom zákazky je dodávka potravín a nápojov určených na prípravu teplej a studenej stravy pre profesionálnych vojakov a zamestnancov v stravovacích zariadeniach a útvaroch MO SR",
-          "druh": "supplies",
-          "cpv_kod": "15000000",
-          "predpokladana_hodnota": 13166370.0
-        }
-      ],
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -841,7 +809,7 @@
         "zmluvy": [
           {
             "id": "Rámcová dohoda č. 12.mpr-4-OSE-9",
-            "datum": "2025-12-30+01:00",
+            "datum": "30.12.2025",
             "nazov": "Rámcová dohoda č. 12.mpr-4-OSE-9 - Chlieb, pekárenské výrobky a zákusky",
             "url": "https://www.crz.gov.sk/zmluva/11809146/?csrt=3261955093825027059"
           }
@@ -850,7 +818,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 0.7
+    "time_ms": 1.1
   },
   {
     "num": "858-2026",
@@ -889,22 +857,16 @@
         "nuts": "SK042",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "„Opravy ciest realizáciou mikrokobercov“",
-          "opis": "Predmetom zákazky sú stavebné práce – oprava vrchnej stavby ciest II. a III. triedy v správe Správy ciest KSK súvislou údržbou vozovky emulznými technológiami s cieľom zlepšenia povrchových vlastností vozovky, predĺženia ich životnosti a zabránenia vplyvu porúch na nižšie položené vrstvy vozovky (ďa",
-          "druh": "works",
-          "cpv_kod": "45233140",
-          "predpokladana_hodnota": 16682900.0
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 16682900.0,
         "mena": "EUR",
-        "lehota_datum": "2026-02-02+01:00",
+        "lehota_datum": "02.02.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": true,
@@ -916,7 +878,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.5
+    "time_ms": 0.8
   },
   {
     "num": "1047-2026",
@@ -955,62 +917,71 @@
         "nuts": "SK041",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 6,
+        "max_casti_ponuka": 6,
+        "max_casti_zadanie": 6
       },
-      "loty": [
+      "casti": [
         {
-          "id": "LOT-0001",
+          "cislo": 1,
+          "lot_id": "LOT-0001",
           "nazov": "1. časť: Atypické vybavenie",
           "opis": "1. časť:\tAtypické vybavenie:\nSO.12.2.1_Atypický nábytok\nSO.12.2.3.1_Priestorová akustika\nDodávané interiérové prvky musia byť  v súlade s projektovou dokumentáciu - Príloha č. 5 Opis predmetu zákazky a Prílohou č. 6 súťažných podkladov. \nBližšie informácie sú uvedené v súťažných podkladoch a ich prí",
-          "druh": "supplies",
           "cpv_kod": "39200000",
-          "predpokladana_hodnota": 520916.24
+          "hodnota": 520916.24,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0002",
+          "cislo": 2,
+          "lot_id": "LOT-0002",
           "nazov": "2. časť: Typizované vybavenie",
           "opis": "2. časť:\tTypizované vybavenie:\nSO.12.2.0_Typizovaný nábytok\nSO.12.2.2_Kúpeľňové vybavenie\nSO.12.2.3.0_Ostatné vybavenie\nSO.12.2.4_Informačno-technologické vybavenie\nSO.12.2.7_ Svietidlá\nDodávané interiérové prvky musia byť  v súlade s projektovou dokumentáciu - Príloha č. 5 Opis predmetu zákazky a P",
-          "druh": "supplies",
           "cpv_kod": "39200000",
-          "predpokladana_hodnota": 199468.13
+          "hodnota": 199468.13,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0003",
+          "cislo": 3,
+          "lot_id": "LOT-0003",
           "nazov": "3. časť: Komplexné vybavenie športových objektov",
           "opis": "3. časť:\tKomplexné vybavenie športových objektov:\nSO.12.2.3.2.1_Komplexné vybavenie športových objektov\nDodávané interiérové prvky musia byť  v súlade s projektovou dokumentáciu - Príloha č. 5 Opis predmetu zákazky a Prílohou č. 6 súťažných podkladov. \nBližšie informácie sú uvedené v súťažných podkl",
-          "druh": "supplies",
           "cpv_kod": "39200000",
-          "predpokladana_hodnota": 61826.5
+          "hodnota": 61826.5,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0004",
+          "cislo": 4,
+          "lot_id": "LOT-0004",
           "nazov": "4. časť: Vybavenie výdaj jedla (kuchyňa)",
           "opis": "4. časť:\tVybavenie výdaj jedla (kuchyňa):\nSO.12.2.3.3_Vybavenie výdaj jedla (kuchyňa)\nDodávané interiérové prvky musia byť  v súlade s projektovou dokumentáciu - Príloha č. 5 Opis predmetu zákazky a Prílohou č. 6 súťažných podkladov. \nBližšie informácie sú uvedené v súťažných podkladoch a ich príloh",
-          "druh": "supplies",
           "cpv_kod": "39200000",
-          "predpokladana_hodnota": 71152.85
+          "hodnota": 71152.85,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0005",
+          "cislo": 5,
+          "lot_id": "LOT-0005",
           "nazov": "5. časť: Riešenie interiérových rastlín",
           "opis": "5. časť:\tRiešenie interiérových rastlín:\nSO.12.2.5_Riešenie interiérových rastlín\nDodávané interiérové prvky musia byť  v súlade s projektovou dokumentáciu - Príloha č. 5 Opis predmetu zákazky a Prílohou č. 6 súťažných podkladov. \nBližšie informácie sú uvedené v súťažných podkladoch a ich prílohách.",
-          "druh": "supplies",
           "cpv_kod": "39200000",
-          "predpokladana_hodnota": 25862.38
+          "hodnota": 25862.38,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0006",
+          "cislo": 6,
+          "lot_id": "LOT-0006",
           "nazov": "6. časť: Grafika - polepy",
           "opis": "6. časť:\tGrafika - polepy:\nSO.12.2.6_ Grafika - polepy\nDodávané interiérové prvky musia byť  v súlade s projektovou dokumentáciu - Príloha č. 5 Opis predmetu zákazky a Prílohou č. 6 súťažných podkladov. \nBližšie informácie sú uvedené v súťažných podkladoch a ich prílohách.",
-          "druh": "supplies",
           "cpv_kod": "39200000",
-          "predpokladana_hodnota": 9839.07
+          "hodnota": 9839.07,
+          "mena": "EUR"
         }
       ],
       "prilezitost": {
         "hodnota": 889065.17,
         "mena": "EUR",
-        "lehota_datum": "2026-01-12+01:00",
+        "lehota_datum": "12.01.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": false,
@@ -1022,7 +993,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 2.6
+    "time_ms": 3.3
   },
   {
     "num": "1288-2026",
@@ -1061,22 +1032,16 @@
         "nuts": "SK010",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Hodnotenie a monitorovanie SP SPP SR 2023-2027",
-          "opis": "Predmetom zákazky je poskytnutie komplexných služieb pri realizácii Plánu hodnotenia a výkone analytických činnosti na podporu implementácie Strategického plánu spoločnej poľnohospodárskej politiky (ďalej len „SP SPP“) 2023-2027 v zmysle Nariadenia EÚ 2021/2115. Zabezpečenie analytických a evaluačný",
-          "druh": "services",
-          "cpv_kod": "71241000",
-          "predpokladana_hodnota": 10491333.3
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 10491333.3,
         "mena": "EUR",
-        "lehota_datum": "2026-02-02+01:00",
+        "lehota_datum": "02.02.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "EAFRD_2021",
         "ramcova_dohoda": true,
@@ -1088,7 +1053,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.7
+    "time_ms": 0.9
   },
   {
     "num": "1551-2026",
@@ -1127,22 +1092,16 @@
         "nuts": "SK010",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Časť č. 1",
-          "opis": "Predmetom zákazky je obstaranie prístrojového vybavenia centra eliminačných metód v NÚDCH.",
-          "druh": "supplies",
-          "cpv_kod": "33181520",
-          "predpokladana_hodnota": null
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": null,
         "mena": "EUR",
-        "lehota_datum": "2026-02-03+01:00",
+        "lehota_datum": "03.02.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": true,
@@ -1154,7 +1113,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.5
+    "time_ms": 0.7
   },
   {
     "num": "1576-2026",
@@ -1193,64 +1152,74 @@
         "nuts": "SK042",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 7,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
+      "casti": [
         {
-          "id": "LOT-0001",
+          "cislo": 1,
+          "lot_id": "LOT-0001",
           "nazov": "Časť 1. Mäso bravčové a hovädzie, mäsové výrobky",
           "opis": "Predmetom zákazky je nákup mäsa a mäsových výrobkov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania v súlade s príslušnými legislatívnymi a hygienickými predpismi. Rôzne druhy čerstvého bravčového mäsa, rôzne druhy čerstvého hovädzieho mäsa, pečeň bravčová držky hovädzie, rôzne",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 85000.0
+          "hodnota": 85000.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0002",
+          "cislo": 2,
+          "lot_id": "LOT-0002",
           "nazov": "Časť 2.Hydina, ryby a mrazené výrobky",
           "opis": "Predmetom zákazky je nákup hydinového mäsa, rýb a mrazených výrobkov, vrátane služieb spojených s ich dodávkou na miesto dodania, v súlade s príslušnými legislatívnymi a hygienickými predpismi. Kuracie a sliepky(rôzne typy mäsa, vrátane vnútornosti a mrazeného),; morčacie (rôzne typy mäsa, vrátane m",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 55000.0
+          "hodnota": 55000.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0003",
+          "cislo": 3,
+          "lot_id": "LOT-0003",
           "nazov": "Časť 3.Spracované a konzervované ovocie, zelenina a šťavy",
           "opis": "Predmetom zákazky je nákup konzervovaného ovocia a zeleniny, ovocných a zeleninových štiav, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania v súlade s príslušnými legislatívnymi a hygienickými predpismi.\nBližší opis predmetu zákazky je uvedený v súťažných podkladoch v časti B1 O",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 37000.0
+          "hodnota": 37000.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0004",
+          "cislo": 4,
+          "lot_id": "LOT-0004",
           "nazov": "Časť 4.Mlieko a mliečne výrobky",
           "opis": "Predmetom zákazky je nákup mlieka a mliečnych výrobkov, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania v súlade s príslušnými legislatívnymi a hygienickými predpismi. Predmet zákazky predstavuje najmä: rôzne druhy mlieka a smotany l, maslo, rôzne druhy jogurtov, kyslomliečnych ",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 140000.0
+          "hodnota": 140000.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0005",
+          "cislo": 5,
+          "lot_id": "LOT-0005",
           "nazov": "Časť 5.Ovocie a zelenina",
           "opis": "Predmetom zákazky je nákup rôznych druhov ovocia, zeleniny, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania v súlade s príslušnými legislatívnymi a hygienickými predpismi. \nBližší opis predmetu zákazky je uvedený v súťažných podkladoch v časti B1 Opis predmetu zákazky. Množstvá ",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 104000.0
+          "hodnota": 104000.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0006",
+          "cislo": 6,
+          "lot_id": "LOT-0006",
           "nazov": "Časť 6.Pekárenské výrobky",
           "opis": "Predmetom zákazky je nákup pekárenského tovaru, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania v súlade s príslušnými legislatívnymi a hygienickými predpismi. zákazky predstavuje najmä: chlieb rôzneho druhu, pečivo rôzneho druhu, raňajkové pečivo a zákusky.\nBližší opis predmetu",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 60000.0
+          "hodnota": 60000.0,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0007",
+          "cislo": 7,
+          "lot_id": "LOT-0007",
           "nazov": "Časť 7.Rôzne potravinárske výrobky, vajcia",
           "opis": "Predmetom zákazky je nákup pekárenského tovaru, dodanie tovaru do miesta dodania a vyloženie tovaru v mieste dodania v súlade s príslušnými legislatívnymi a hygienickými predpismi. zákazky predstavuje najmä: chlieb rôzneho druhu, pečivo rôzneho druhu, raňajkové pečivo a zákusky.\nBližší opis predmetu",
-          "druh": "supplies",
           "cpv_kod": "15000000",
-          "predpokladana_hodnota": 108000.0
+          "hodnota": 108000.0,
+          "mena": "EUR"
         }
       ],
       "vysledok": {
@@ -1312,43 +1281,43 @@
         "zmluvy": [
           {
             "id": "RD č 1/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11802210/"
           },
           {
             "id": "RD č. 2/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11802329/"
           },
           {
             "id": "RD č. 3/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11802438/"
           },
           {
             "id": "RD č. 4/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11802637/"
           },
           {
             "id": "RD č. 5/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11802765/"
           },
           {
             "id": "RD č. 6/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11802814/"
           },
           {
             "id": "RD č. 7/2026",
-            "datum": "2025-12-22+01:00",
+            "datum": "22.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/10231442/"
           }
@@ -1357,7 +1326,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 2.4
+    "time_ms": 2.7
   },
   {
     "num": "1577-2026",
@@ -1396,22 +1365,16 @@
         "nuts": "",
         "miesto_plnenia": "",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Poistenie majetku a poistenie zodpovednosti za škodu",
-          "opis": "Predmetom zákazky je poskytnutie služieb – poistenie majetku Mesta Prešov a organizácií v jeho zriaďovateľskej pôsobnosti, konkrétne poistenie majetku proti živelným rizikám, odcudzeniu a vandalizmu, poistenie strojov, strojových zariadení a elektroniky, poistenie skla a poistenie všeobecnej zodpove",
-          "druh": "services",
-          "cpv_kod": "66510000",
-          "predpokladana_hodnota": 914337.13
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 914337.13,
         "mena": "EUR",
-        "lehota_datum": "2026-01-08+01:00",
+        "lehota_datum": "08.01.2026",
         "lehota_cas": "09:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": true,
@@ -1423,7 +1386,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 0.6
+    "time_ms": 0.7
   },
   {
     "num": "1733-2026",
@@ -1462,18 +1425,12 @@
         "nuts": "SK022",
         "miesto_plnenia": "SVK",
         "druh_postupu": "restricted",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Nákup informačnej a telekomunikačnej techniky",
-          "opis": "Dodávka vybraného sortimentu osobných počítačov, prenosných počítačov, serverov, sieťových prvkov, softvéru,\nsnímačov, skenerov, tlačiarní, periférnych zariadení a príslušenstva, ktoré sú bežne dostupné na trhu.",
-          "druh": "supplies",
-          "cpv_kod": "30200000",
-          "predpokladana_hodnota": null
-        }
-      ],
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 264493.0,
         "mena": "EUR",
@@ -1493,7 +1450,7 @@
         "zmluvy": [
           {
             "id": "Ve82.bsp-788/2025-7",
-            "datum": "2025-12-18+01:00",
+            "datum": "18.12.2025",
             "nazov": "Ve82.bsp-788/2025-7",
             "url": "https://www.crz.gov.sk/zmluva/11767500/?csrt=15205831737778154821"
           }
@@ -1502,7 +1459,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 0.6
+    "time_ms": 0.8
   },
   {
     "num": "1742-2026",
@@ -1541,118 +1498,134 @@
         "nuts": "SK042",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 13,
+        "max_casti_ponuka": 13,
+        "max_casti_zadanie": 13
       },
-      "loty": [
+      "casti": [
         {
-          "id": "LOT-0001",
+          "cislo": 1,
+          "lot_id": "LOT-0001",
           "nazov": "Časť 1 - Asfaltový betón - Čaňa",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 265933.86
+          "hodnota": 265933.86,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0002",
+          "cislo": 2,
+          "lot_id": "LOT-0002",
           "nazov": "Časť 2 - Asfaltový betón - Košický Klečenov",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 57702.63
+          "hodnota": 57702.63,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0003",
+          "cislo": 3,
+          "lot_id": "LOT-0003",
           "nazov": "Časť 3 - Asfaltový betón - Moldava nad Bodvou",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 260916.24
+          "hodnota": 260916.24,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0004",
+          "cislo": 4,
+          "lot_id": "LOT-0004",
           "nazov": "Časť 4 - Asfaltový betón - Trebišov",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 398399.03
+          "hodnota": 398399.03,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0005",
+          "cislo": 5,
+          "lot_id": "LOT-0005",
           "nazov": "Časť 5 - Asfaltový betón - Kráľovský Chlmec",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 889122.26
+          "hodnota": 889122.26,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0006",
+          "cislo": 6,
+          "lot_id": "LOT-0006",
           "nazov": "Časť 6 - Asfaltový betón - Michalovce",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 205722.42
+          "hodnota": 205722.42,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0007",
+          "cislo": 7,
+          "lot_id": "LOT-0007",
           "nazov": "Časť 7 - Asfaltový betón - Sobrance",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 787766.34
+          "hodnota": 787766.34,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0008",
+          "cislo": 8,
+          "lot_id": "LOT-0008",
           "nazov": "Časť 8 - Asfaltový betón - Veľké Kapušany",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 219771.76
+          "hodnota": 219771.76,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0009",
+          "cislo": 9,
+          "lot_id": "LOT-0009",
           "nazov": "Časť 9 - Asfaltový betón - Spišská Nová Ves",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 160563.84
+          "hodnota": 160563.84,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0010",
+          "cislo": 10,
+          "lot_id": "LOT-0010",
           "nazov": "Časť 10 - Asfaltový betón - Krompachy",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 220775.28
+          "hodnota": 220775.28,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0011",
+          "cislo": 11,
+          "lot_id": "LOT-0011",
           "nazov": "Časť 11 - Asfaltový betón - Mníšek nad Hnilcom",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 111391.16
+          "hodnota": 111391.16,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0012",
+          "cislo": 12,
+          "lot_id": "LOT-0012",
           "nazov": "Časť 12 - Asfaltový betón - Rožňava",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 50176.2
+          "hodnota": 50176.2,
+          "mena": "EUR"
         },
         {
-          "id": "LOT-0013",
+          "cislo": 13,
+          "lot_id": "LOT-0013",
           "nazov": "Časť 13 - Asfaltový betón - Štítnik",
           "opis": "Opis danej časti predmetu zákazky je bližšie upresnený v prílohe č. C.1 Cenová tabuľka a prehľad prevzatia/určenia predmetu zákazky a v súťažných podkladoch, najmä v časti B. Opis predmetu zákazky a E. Obchodné podmienky súťažných podkladov.",
-          "druh": "supplies",
           "cpv_kod": "44113310",
-          "predpokladana_hodnota": 448575.23
+          "hodnota": 448575.23,
+          "mena": "EUR"
         }
       ],
       "prilezitost": {
         "hodnota": 4076816.25,
         "mena": "EUR",
-        "lehota_datum": "2026-02-02+01:00",
+        "lehota_datum": "02.02.2026",
         "lehota_cas": "11:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": true,
@@ -1664,7 +1637,7 @@
         "druh_postupu": "open"
       }
     },
-    "time_ms": 3.7
+    "time_ms": 4.4
   },
   {
     "num": "1761-2026",
@@ -1703,22 +1676,16 @@
         "nuts": "SK010",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0001",
-          "nazov": "Rekonštrukcia fasády a výmena výplňových konštrukcií Hotela Bôrik",
-          "opis": "Predmetom zákazky je rekonštrukcia fasády a zateplenie Hotela Bôrik za účelom zlepšenia technického stavu objektu a zlepšenia tepelno-izolačných vlastností fasády a výplňových konštrukcií.",
-          "druh": "works",
-          "cpv_kod": "45000000",
-          "predpokladana_hodnota": 4600584.45
-        }
-      ],
+      "casti": [],
       "prilezitost": {
         "hodnota": 4600584.45,
         "mena": "EUR",
-        "lehota_datum": "2026-02-09+01:00",
+        "lehota_datum": "09.02.2026",
         "lehota_cas": "10:00:00+01:00",
         "eu_fond": "Nie",
         "ramcova_dohoda": false,
@@ -1769,18 +1736,12 @@
         "nuts": "",
         "miesto_plnenia": "SVK",
         "druh_postupu": "open",
-        "pravny_zaklad": "32014L0024"
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
-      "loty": [
-        {
-          "id": "LOT-0002",
-          "nazov": "Časť 2: Ťažbový proces NASTAZ",
-          "opis": "Predmetom zákazky je realizácia služieb v ťažbovom procese. Lesnícke služby predstavujú proces zahrňujúci výrub stromov, sústreďovanie dreva na odvozné miesto a manipuláciu drevnej hmoty na odvoznom mieste ich označenie, vloženie údajov elektronicky do systému PSPD a poťažbová úprava pracoviska, . I",
-          "druh": "services",
-          "cpv_kod": "77211000",
-          "predpokladana_hodnota": 2983695.52
-        }
-      ],
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -1800,7 +1761,7 @@
         "zmluvy": [
           {
             "id": "7500/2025/LSR",
-            "datum": "2025-12-19+01:00",
+            "datum": "19.12.2025",
             "nazov": "Rámcová dohoda",
             "url": "https://www.crz.gov.sk/zmluva/11799614/?csrt=6829202414622076619"
           }
@@ -1809,6 +1770,6 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 0.6
+    "time_ms": 0.7
   }
 ]

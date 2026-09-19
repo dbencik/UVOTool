@@ -163,6 +163,16 @@ def text_first(el, path: str, default: str = '') -> str:
     return (node.text or '').strip()
 
 
+def iso_to_sk_date(s: str) -> str:
+    """Convert ISO date (2026-01-02+01:00) to DD.MM.YYYY."""
+    if not s:
+        return s
+    m = re.match(r'(\d{4})-(\d{2})-(\d{2})', s)
+    if m:
+        return f"{m.group(3)}.{m.group(2)}.{m.group(1)}"
+    return s
+
+
 def parse_organizations(root) -> dict:
     """Parse all organizations from eForms XML."""
     orgs = {}
@@ -490,7 +500,7 @@ def extract_vysledok(root, orgs: dict) -> dict:
             continue
         zmluva = {
             'id': text_first(sc, 'efac:ContractReference/cbc:ID') or sc_id,
-            'datum': text_first(sc, 'cbc:IssueDate'),
+            'datum': iso_to_sk_date(text_first(sc, 'cbc:IssueDate')),
             'nazov': text(sc, 'cbc:Title'),
             'url': text_first(sc, 'cbc:URI'),
         }
@@ -545,7 +555,7 @@ def extract_vyhlasenie(root) -> dict:
     for tp in root.findall('.//cac:TenderingProcess', NS):
         dl = tp.find('cac:TenderSubmissionDeadlinePeriod', NS)
         if dl is not None:
-            result['lehota_datum'] = text_first(dl, 'cbc:EndDate')
+            result['lehota_datum'] = iso_to_sk_date(text_first(dl, 'cbc:EndDate'))
             result['lehota_cas'] = text_first(dl, 'cbc:EndTime')
             break
 
@@ -660,7 +670,7 @@ def extract_zmena_zmluvy(root, orgs: dict) -> dict:
         for sc in nr.findall('efac:SettledContract', NS):
             if sc.find('cbc:IssueDate', NS) is not None or sc.find('cbc:Title', NS) is not None:
                 result['zmluva_id'] = text_first(sc, 'efac:ContractReference/cbc:ID')
-                result['zmluva_datum'] = text_first(sc, 'cbc:IssueDate')
+                result['zmluva_datum'] = iso_to_sk_date(text_first(sc, 'cbc:IssueDate'))
                 result['zmluva_url'] = text_first(sc, 'cbc:URI')
                 break
 
