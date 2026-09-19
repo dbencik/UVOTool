@@ -988,7 +988,19 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             body = self.rfile.read(length)
             params = json.loads(body.decode("utf-8")) if body else {}
             engine = self._get_pipeline_engine()
-            result = engine.run_pipeline(pipeline_id, params)
+
+            # Batch mode: if params has "ico_list", run batch
+            if "ico_list" in params:
+                ico_list = params["ico_list"]
+                if isinstance(ico_list, str):
+                    # CSV string — split by newlines and commas
+                    ico_list = [x.strip() for line in ico_list.split("\n") for x in line.split(",") if x.strip()]
+                    # Filter: keep only things that look like IČO (6-8 digits)
+                    import re
+                    ico_list = [x for x in ico_list if re.match(r'^\d{6,8}$', x)]
+                result = engine.run_batch(pipeline_id, ico_list)
+            else:
+                result = engine.run_pipeline(pipeline_id, params)
             self.send_json(result)
         except Exception as e:
             self.send_json({"error": f"Failed to run pipeline: {e}"})

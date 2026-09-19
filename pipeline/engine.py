@@ -130,9 +130,73 @@ class PipelineEngine:
             "timestamp": datetime.now().isoformat(),
         }
 
+    def run_batch(self, pipeline_id: str, ico_list: list[str]) -> dict:
+        """Run pipeline for each IČO in the list. Returns tabular results."""
+        config = self.get_pipeline(pipeline_id)
+        if not config:
+            return {"error": f"Pipeline '{pipeline_id}' not found"}
+
+        rows = []
+        total = len(ico_list)
+
+        for i, ico in enumerate(ico_list):
+            ico = ico.strip()
+            if not ico:
+                continue
+
+            result = self.run_pipeline(pipeline_id, {"ico": ico})
+
+            # Flatten results from all nodes into one row
+            row = {"ico": ico, "_index": i + 1, "_status": "success"}
+            for node_id, node_result in result.get("results", {}).items():
+                if node_result.get("status") == "error":
+                    row["_status"] = "error"
+                    continue
+                data = node_result.get("data", {})
+                if isinstance(data, dict):
+                    for key, val in data.items():
+                        if key.startswith("_") or key in ("enriched_at", "checked_at", "fetched_at"):
+                            continue
+                        # Prefix with module id to avoid collisions
+                        node = next((n for n in config["nodes"] if n["id"] == node_id), None)
+                        mod_id = node["module"] if node else node_id
+                        if mod_id in ("input", "output"):
+                            continue
+                        # Use custom label from settings if available
+                        settings = (node or {}).get("settings", {}).get("outputs", {})
+                        setting = settings.get(key, {})
+                        if setting.get("enabled") is False:
+                            continue
+                        col_name = f"{mod_id}.{key}"
+                        row[col_name] = val
+
+            rows.append(row)
+
+        # Build column list from all rows
+        columns = ["ico"]
+        seen = {"ico"}
+        for row in rows:
+            for key in row:
+                if key not in seen and not key.startswith("_"):
+                    columns.append(key)
+                    seen.add(key)
+
+        return {
+            "pipeline": pipeline_id,
+            "total": total,
+            "processed": len(rows),
+            "columns": columns,
+            "rows": rows,
+            "timestamp": datetime.now().isoformat(),
+        }
+
     def _run_module(self, module_id: str, params: dict) -> dict:
         """Run a single module. Returns {status, data, cached, duration_ms}."""
         start = time.time()
+
+        # Input/Output modules just pass through params
+        if module_id in ("input", "output"):
+            return {"status": "success", "data": dict(params), "duration_ms": 0, "cached": False}
 
         module = self.modules[module_id]
         script_map = {

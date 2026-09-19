@@ -1026,6 +1026,9 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
     <input type="text" id="pipe-name" placeholder="Nazov pipeline" style="padding:8px 12px;border:1px solid #e9ecef;border-radius:6px;font-size:13px;min-width:180px">
     <button id="pipe-save-btn" style="padding:8px 20px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Ulozit</button>
     <button id="pipe-run-btn" style="padding:8px 20px;background:#2b8a3e;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Spustit</button>
+    <label style="padding:8px 16px;background:#e7f5ff;color:#1971c2;border:1px solid #a5d8ff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">
+      CSV Upload <input type="file" id="pipe-csv-input" accept=".csv,.txt" style="display:none">
+    </label>
   </div>
 
   <!-- Main layout: sidebar + canvas + settings -->
@@ -2595,6 +2598,76 @@ function renderAktualny(data) {
 }
 
 // ══════════════════════════════════════════════════════
+// Batch results renderer
+function renderPipeBatchResults(result) {
+  var el = document.getElementById('pipe-results');
+  if (result.error) {
+    el.innerHTML = '<div class="pipe-result-card error"><strong>Chyba:</strong> ' + esc(result.error) + '</div>';
+    return;
+  }
+
+  var columns = result.columns || [];
+  var rows = result.rows || [];
+
+  var html = '<div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<div style="font-size:14px;font-weight:600">Vysledky: ' + rows.length + ' zaznamov</div>';
+  html += '<button id="pipe-export-csv" style="padding:6px 16px;background:#e7f5ff;color:#1971c2;border:1px solid #a5d8ff;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer">Export CSV</button>';
+  html += '</div>';
+
+  html += '<div style="overflow-x:auto;background:#fff;border:1px solid #e9ecef;border-radius:8px">';
+  html += '<table style="width:100%;border-collapse:collapse;font-size:12px;white-space:nowrap">';
+  html += '<thead><tr>';
+  html += '<th style="padding:8px 10px;background:#f8f9fa;border-bottom:2px solid #e9ecef;text-align:left;font-size:11px;text-transform:uppercase;color:#868e96;position:sticky;top:0">#</th>';
+  columns.forEach(function(col) {
+    var label = col.split('.').pop();
+    html += '<th style="padding:8px 10px;background:#f8f9fa;border-bottom:2px solid #e9ecef;text-align:left;font-size:11px;text-transform:uppercase;color:#868e96;position:sticky;top:0">' + esc(label) + '</th>';
+  });
+  html += '</tr></thead><tbody>';
+
+  rows.forEach(function(row, i) {
+    var statusColor = row._status === 'error' ? '#fff5f5' : (i % 2 === 0 ? '#fff' : '#f8f9fa');
+    html += '<tr style="background:' + statusColor + '">';
+    html += '<td style="padding:6px 10px;border-bottom:1px solid #f1f3f5;color:#868e96">' + (i + 1) + '</td>';
+    columns.forEach(function(col) {
+      var val = row[col];
+      var display = val === null || val === undefined ? '—'
+        : typeof val === 'boolean' ? (val ? 'Ano' : 'Nie')
+        : Array.isArray(val) ? val.length + ' pol.'
+        : typeof val === 'object' ? JSON.stringify(val).substring(0, 50)
+        : String(val).substring(0, 60);
+      var style = 'padding:6px 10px;border-bottom:1px solid #f1f3f5;';
+      if (typeof val === 'number') style += 'text-align:right;font-family:monospace;';
+      if (col.includes('je_dlznik') && val === true) style += 'color:#e03131;font-weight:700;';
+      if (col.includes('je_dlznik') && val === false) style += 'color:#2b8a3e;';
+      html += '<td style="' + style + '">' + esc(display) + '</td>';
+    });
+    html += '</tr>';
+  });
+
+  html += '</tbody></table></div>';
+  el.innerHTML = html;
+
+  // Export CSV handler
+  document.getElementById('pipe-export-csv').addEventListener('click', function() {
+    var csvContent = columns.join(';') + '\n';
+    rows.forEach(function(row) {
+      csvContent += columns.map(function(col) {
+        var val = row[col];
+        if (val === null || val === undefined) return '';
+        if (typeof val === 'object') return JSON.stringify(val);
+        return String(val).replace(/;/g, ',');
+      }).join(';') + '\n';
+    });
+    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'pipeline_results.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+}
+
 //  PROFIL TAB
 // ══════════════════════════════════════════════════════
 
@@ -3447,16 +3520,54 @@ document.getElementById('pipe-template').addEventListener('change', function() {
 // Run pipeline
 document.getElementById('pipe-run-btn').addEventListener('click', function() {
   if (pipeConfig.nodes.length === 0) { alert('Pridajte aspon jeden modul'); return; }
-  var ico = prompt('Zadajte ICO pre spustenie pipeline:');
-  if (!ico) return;
 
+  // Show input dialog: single IČO, list, or CSV upload
+  var input = prompt('Zadajte IČO (jedno, alebo viac oddelených čiarkou).\n\nPre CSV subor pousite tlacidlo "CSV Upload" vedla.');
+  if (!input) return;
+
+  runPipelineWithInput(input.split(',').map(function(s) { return s.trim(); }).filter(Boolean));
+});
+
+// CSV upload handler
+var csvInput = document.getElementById('pipe-csv-input');
+if (csvInput) {
+  csvInput.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    if (!file) return;
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var text = ev.target.result;
+      // Parse CSV: find IČO column or use first column
+      var lines = text.split('\n').filter(Boolean);
+      var header = lines[0].split(/[,;\t]/);
+      var icoCol = header.findIndex(function(h) { return h.trim().toLowerCase().replace(/[^a-z0-9]/g,'') === 'ico'; });
+      if (icoCol < 0) icoCol = 0;
+      var icos = [];
+      for (var i = 1; i < lines.length; i++) {
+        var cols = lines[i].split(/[,;\t]/);
+        var v = (cols[icoCol] || '').trim().replace(/[^0-9]/g, '');
+        if (v.length >= 6 && v.length <= 8) icos.push(v);
+      }
+      if (icos.length === 0) { alert('Ziadne ICO najdene v CSV'); return; }
+      if (!confirm('Najdených ' + icos.length + ' IČO v CSV. Spustiť pipeline pre všetky?')) return;
+      runPipelineWithInput(icos);
+    };
+    reader.readAsText(file);
+    e.target.value = ''; // reset
+  });
+}
+
+function runPipelineWithInput(icoList) {
   var resultsEl = document.getElementById('pipe-results');
-  resultsEl.innerHTML = '<div class="loading">Spustam pipeline...</div>';
+  resultsEl.innerHTML = '<div class="loading">Spustam pipeline pre ' + icoList.length + ' ICO...</div>';
 
   if (!pipeConfig.id) {
     pipeConfig.id = 'temp-' + Date.now();
     pipeConfig.name = document.getElementById('pipe-name').value || 'Temp pipeline';
   }
+
+  var isBatch = icoList.length > 1;
+  var body = isBatch ? { ico_list: icoList } : { ico: icoList[0] };
 
   fetch('/api/pipelines', {
     method: 'POST',
@@ -3466,14 +3577,18 @@ document.getElementById('pipe-run-btn').addEventListener('click', function() {
     return fetch('/api/pipelines/' + pipeConfig.id + '/run', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ico: ico })
+      body: JSON.stringify(body)
     });
   }).then(function(r) { return r.json(); }).then(function(result) {
-    renderPipeResults(result);
+    if (result.rows) {
+      renderPipeBatchResults(result);
+    } else {
+      renderPipeResults(result);
+    }
   }).catch(function(err) {
     resultsEl.innerHTML = '<div class="pipe-result-card error"><strong>Chyba:</strong> ' + esc(err.message) + '</div>';
   });
-});
+}
 
 function renderPipeResults(result) {
   var el = document.getElementById('pipe-results');

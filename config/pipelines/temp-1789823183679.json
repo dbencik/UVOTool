@@ -1,0 +1,173 @@
+{
+  "id": "temp-1789823183679",
+  "name": "Temp pipeline",
+  "nodes": [
+    {
+      "id": "n1",
+      "module": "orsf",
+      "x": 88,
+      "y": 114,
+      "settings": {
+        "outputs": {
+          "nazov": {
+            "enabled": true,
+            "label": "Názov firmy"
+          },
+          "status": {
+            "enabled": true,
+            "label": "Stav subjektu"
+          },
+          "pravna_forma": {
+            "enabled": true,
+            "label": "Právna forma"
+          },
+          "nace": {
+            "enabled": true,
+            "label": "NACE kód"
+          },
+          "datum_vzniku": {
+            "enabled": true,
+            "label": "Dátum vzniku"
+          },
+          "datum_zaniku": {
+            "enabled": true,
+            "label": "Dátum zániku"
+          },
+          "adresa": {
+            "enabled": true,
+            "label": "Adresa sídla"
+          },
+          "mesto": {
+            "enabled": true,
+            "label": "Mesto"
+          },
+          "psc": {
+            "enabled": true,
+            "label": "PSČ"
+          },
+          "velkost": {
+            "enabled": true,
+            "label": "Veľkostná kategória"
+          },
+          "dic": {
+            "enabled": true,
+            "label": "DIČ"
+          },
+          "icdph": {
+            "enabled": true,
+            "label": "IČ DPH"
+          },
+          "pocet_aktivit": {
+            "enabled": true,
+            "label": "Počet NACE aktivít"
+          }
+        }
+      }
+    },
+    {
+      "id": "n2",
+      "module": "fs_dlznici",
+      "x": 222,
+      "y": 273,
+      "settings": {
+        "outputs": {
+          "je_dlznik": {
+            "enabled": true,
+            "label": "Je dlžník"
+          },
+          "dlh_suma": {
+            "enabled": true,
+            "label": "Suma dlhu"
+          },
+          "typ_dlhu": {
+            "enabled": true,
+            "label": "Typ dlhu"
+          }
+        }
+      }
+    },
+    {
+      "id": "n3",
+      "module": "rpvs",
+      "x": 265,
+      "y": 426,
+      "settings": {
+        "outputs": {
+          "is_registered": {
+            "enabled": true,
+            "label": "Je registrovaný"
+          },
+          "obchodne_meno": {
+            "enabled": true,
+            "label": "Obchodné meno"
+          },
+          "ubos": {
+            "enabled": true,
+            "label": "Koneční užívatelia výhod"
+          },
+          "opravnene_osoby": {
+            "enabled": true,
+            "label": "Oprávnené osoby"
+          },
+          "platnost_od": {
+            "enabled": true,
+            "label": "Platnosť od"
+          },
+          "platnost_do": {
+            "enabled": true,
+            "label": "Platnosť do"
+          }
+        }
+      }
+    },
+    {
+      "id": "n4",
+      "module": "analyze",
+      "x": 655,
+      "y": 638,
+      "settings": {
+        "outputs": {
+          "single_bidder_rate": {
+            "enabled": true,
+            "label": "Miera jedného uchádzača"
+          },
+          "top_vitazi": {
+            "enabled": true,
+            "label": "Top víťazi"
+          },
+          "top_obstaravatelia": {
+            "enabled": true,
+            "label": "Top obstarávatelia"
+          },
+          "cenove_anomalie": {
+            "enabled": true,
+            "label": "Cenové anomálie"
+          }
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "n1",
+      "to": "n2",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n2",
+      "to": "n3",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n3",
+      "to": "n4",
+      "mapping": {
+        "ico": "ico"
+      }
+    }
+  ]
+}

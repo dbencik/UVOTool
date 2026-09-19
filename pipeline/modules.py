@@ -218,7 +218,42 @@ WATCHDOG = DataModule(
 # Registry
 # ---------------------------------------------------------------------------
 
+INPUT = DataModule(
+    id="input",
+    name="Vstup",
+    description="Vstupné dáta — jedno IČO, zoznam IČO, alebo CSV súbor s IČO stĺpcom",
+    color="#495057",
+    primary_key="ico",
+    inputs=[],
+    outputs=[
+        ModuleOutput("ico", "IČO", "string"),
+        ModuleOutput("nazov", "Názov firmy", "string"),
+        ModuleOutput("rok", "Rok", "number"),
+        ModuleOutput("cpv", "CPV kód", "string"),
+        ModuleOutput("vestnik", "Číslo vestníka", "string"),
+        ModuleOutput("country", "Krajina (TED)", "string"),
+    ],
+    source_url="manuálny vstup / CSV upload",
+    rate_limit=0,
+    cache_ttl=0,
+)
+
+OUTPUT = DataModule(
+    id="output",
+    name="Výstup",
+    description="Výstup pipeline — zobrazenie výsledkov, export, notifikácia",
+    color="#1a1a1a",
+    primary_key="",
+    inputs=[
+        ModuleInput("data", "Dáta", "object", required=True),
+    ],
+    outputs=[],
+    source_url="dashboard / export",
+    rate_limit=0,
+    cache_ttl=0,
+)
+
 MODULE_REGISTRY: dict[str, DataModule] = {
     m.id: m
-    for m in [ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED, ANALYZE, GRAPH, WATCHDOG]
+    for m in [INPUT, ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED, ANALYZE, GRAPH, WATCHDOG, OUTPUT]
 }
