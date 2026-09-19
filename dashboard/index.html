@@ -2332,7 +2332,9 @@ function renderAnalysis(data) {
     </div>
   </div>`;
 
-  document.getElementById('analyza-content').innerHTML = html;
+  var anaEl = document.getElementById('analyza-content');
+  anaEl.className = '';
+  anaEl.innerHTML = html;
 
   // Click handlers: filter Dokumenty tab by name
   document.querySelectorAll('[data-filter-obst]').forEach(el => {
@@ -2498,7 +2500,9 @@ function renderGraph(data) {
     </table>
   </div>`;
 
-  document.getElementById('graf-content').innerHTML = html;
+  var grafEl = document.getElementById('graf-content');
+  grafEl.className = '';
+  grafEl.innerHTML = html;
 
   // Now build D3 force graph
   buildD3Graph(pagerank, topEdges, selfDealing);
