@@ -444,6 +444,14 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             os.makedirs(CONFIG_DIR, exist_ok=True)
             with open(WATCHLIST_PATH, "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
+            # Clear old matches and state when rules change
+            if os.path.exists(WATCHDOG_MATCHES_PATH):
+                with open(WATCHDOG_MATCHES_PATH, "w") as f:
+                    json.dump([], f)
+            state_path = os.path.join(BASE_DIR, "data", "watchdog_state.json")
+            if os.path.exists(state_path):
+                with open(state_path, "w") as f:
+                    json.dump({"scanned_files": [], "last_run": None}, f)
             self.send_json({"ok": True})
         except Exception as e:
             self.send_response(400)

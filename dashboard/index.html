@@ -1783,10 +1783,8 @@ function render() {
     const col = th.dataset.col;
     th.classList.toggle('sorted', col === sortCol);
     const arrow = th.querySelector('.sort-arrow');
-    if (col === sortCol) {
-      arrow.textContent = sortAsc ? ' \u25B2' : ' \u25BC';
-    } else {
-      arrow.textContent = '';
+    if (arrow) {
+      arrow.textContent = (col === sortCol) ? (sortAsc ? ' \u25B2' : ' \u25BC') : '';
     }
   });
 }
@@ -1853,8 +1851,9 @@ fetch('/api/data')
     render();
   })
   .catch(err => {
-    document.getElementById('table-body').innerHTML =
-      '<tr><td colspan="7" class="error">Chyba pri nacitani dat: ' + err.message + '</td></tr>';
+    console.error('Dashboard load error:', err);
+    const tb = document.getElementById('table-body');
+    if (tb) tb.innerHTML = '<tr><td colspan="7" class="error">Chyba pri nacitani dat: ' + err.message + '</td></tr>';
   });
 
 // ══════════════════════════════════════════════════════════════
