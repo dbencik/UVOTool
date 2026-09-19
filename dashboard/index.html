@@ -2697,7 +2697,7 @@ function renderMatches(matches) {
         : (m.doc_id ? esc(m.doc_id) : '—');
       var actionBadge = '<span class="badge badge-' + (m.action || '') + '">' + esc(m.action || '?') + '</span>';
 
-      html += '<tr data-match="1">' +
+      html += '<tr data-match-id="' + esc(m.doc_id || '') + '" style="cursor:pointer" title="Zobrazit detail zakazky">' +
         '<td>' + actionBadge + '</td>' +
         '<td class="predmet-col">' + esc(m.predmet || '—') + '</td>' +
         '<td class="val-col">' + hodnotaStr + '</td>' +
@@ -2709,6 +2709,26 @@ function renderMatches(matches) {
   });
 
   container.innerHTML = html;
+
+  // Click on match row → open in Dokumenty tab with detail
+  container.querySelectorAll('tr[data-match-id]').forEach(function(tr) {
+    tr.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') return;
+      var docId = tr.dataset.matchId;
+      if (!docId) return;
+      var row = DATA.find(function(r) { return r.id === docId; });
+      if (row) {
+        document.querySelectorAll('.main-tab').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelector('[data-tab="dokumenty"]').classList.add('active');
+        document.querySelectorAll('.main-content-section').forEach(function(s) { s.classList.remove('active'); });
+        document.getElementById('section-dokumenty').classList.add('active');
+        showDetail(row);
+      } else {
+        var url = tr.querySelector('a');
+        if (url) window.open(url.href, '_blank');
+      }
+    });
+  });
 }
 </script>
 </body>
