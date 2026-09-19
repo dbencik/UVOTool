@@ -1032,30 +1032,25 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   </div>
 
   <!-- Main layout: sidebar + canvas + settings -->
-  <div style="display:grid;grid-template-columns:180px 320px 1fr;gap:12px;min-height:500px">
+  <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;min-height:500px">
 
     <!-- Left: Module palette -->
     <div id="pipe-palette" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:12px;overflow-y:auto">
       <div style="color:#868e96;text-align:center;padding:20px 10px;font-size:13px">Nacitavam moduly...</div>
     </div>
 
-    <!-- Center: Canvas -->
-    <div id="pipe-canvas" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;position:relative;overflow:hidden">
-      <svg id="pipe-svg" width="100%" height="100%"></svg>
-    </div>
-
-    <!-- Right: Settings panel -->
-    <!-- Right: Settings + Results -->
-    <div id="pipe-right-panel" style="overflow-y:auto;max-height:600px">
-      <div id="pipe-settings" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:16px;margin-bottom:12px">
-        <div style="color:#868e96;text-align:center;padding:40px 10px">Kliknite na modul pre zobrazenie nastaveni</div>
-      </div>
+    <!-- Right: Active pipeline + Settings + Results -->
+    <div id="pipe-right-panel" style="overflow-y:auto">
+      <!-- Active modules as mini cards -->
+      <div id="pipe-active-list" style="margin-bottom:16px"></div>
+      <!-- Settings for selected module -->
+      <div id="pipe-settings" style="display:none;background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:16px;margin-bottom:12px"></div>
+      <!-- Results after run -->
       <div id="pipe-results"></div>
     </div>
   </div>
-
-  <!-- Bottom: Results -->
-  <!-- results moved to right panel -->
+  <!-- Hidden canvas for JS compatibility -->
+  <div id="pipe-canvas" style="display:none"><svg id="pipe-svg"></svg></div>
 </div>
 
 <!-- ═══════════════════ PROFIL TAB ═══════════════════ -->
@@ -3381,78 +3376,44 @@ function addPipeNode(moduleId, x, y) {
 }
 
 function renderPipeCanvas() {
-  var canvas = document.getElementById('pipe-canvas');
-  canvas.querySelectorAll('.pipe-node').forEach(function(n) { n.remove(); });
+  // Render active modules as a simple top-down flow in pipe-active-list
+  var el = document.getElementById('pipe-active-list');
+  if (!el) return;
+  if (pipeConfig.nodes.length === 0) {
+    el.innerHTML = '<div style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:30px;text-align:center;color:#868e96">Zapnite moduly v lavom paneli</div>';
+    return;
+  }
 
-  var svg = document.getElementById('pipe-svg');
-  svg.innerHTML = '<defs><marker id="pipe-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ced4da"/></marker></defs>';
+  var html = '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:8px">Aktivna pipeline (' + pipeConfig.nodes.length + ' modulov)</div>';
 
-  pipeConfig.edges.forEach(function(edge) {
-    var fromNode = pipeConfig.nodes.find(function(n) { return n.id === edge.from; });
-    var toNode = pipeConfig.nodes.find(function(n) { return n.id === edge.to; });
-    if (fromNode && toNode) {
-      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      line.setAttribute('x1', fromNode.x + 70);
-      line.setAttribute('y1', fromNode.y + 52);
-      line.setAttribute('x2', toNode.x + 70);
-      line.setAttribute('y2', toNode.y);
-      line.setAttribute('stroke', '#ced4da');
-      line.setAttribute('stroke-width', '2');
-      line.setAttribute('marker-end', 'url(#pipe-arrow)');
-      svg.appendChild(line);
-    }
-  });
-
-  pipeConfig.nodes.forEach(function(node) {
+  pipeConfig.nodes.forEach(function(node, i) {
     var mod = pipeModules.find(function(m) { return m.id === node.module; });
     if (!mod) return;
     var outputs = node.settings.outputs || {};
     var enabledCount = Object.values(outputs).filter(function(o) { return o.enabled !== false; }).length;
     var totalOutputs = (mod.outputs || []).length;
+    var isSelected = pipeSelectedNode === node.id;
 
-    var div = document.createElement('div');
-    div.className = 'pipe-node' + (pipeSelectedNode === node.id ? ' selected' : '');
-    div.style.left = node.x + 'px';
-    div.style.top = node.y + 'px';
-    div.style.borderLeftColor = mod.color || '#868e96';
-    div.style.borderLeftWidth = '4px';
-    div.dataset.nodeId = node.id;
-    div.innerHTML =
-      '<div class="node-dot input"></div>' +
-      '<div class="node-title">' + esc(mod.name) + '</div>' +
-      '<div class="node-outputs">' + enabledCount + '/' + totalOutputs + ' atributov</div>' +
-      '<div class="node-dot output" style="background:' + (mod.color || '#868e96') + '"></div>';
+    // Arrow between modules
+    if (i > 0) {
+      html += '<div style="text-align:center;color:#ced4da;font-size:18px;line-height:1;margin:2px 0">▼</div>';
+    }
 
-    div.addEventListener('mousedown', function(e) {
-      if (e.target.classList.contains('node-dot')) return;
-      selectPipeNode(node.id);
-      pipeDragging = { nodeId: node.id, startX: e.clientX - node.x, startY: e.clientY - node.y };
+    html += '<div class="pipe-flow-card' + (isSelected ? ' selected' : '') + '" data-node-id="' + node.id + '" ' +
+      'style="background:#fff;border:1px solid ' + (isSelected ? '#1971c2' : '#e9ecef') + ';border-left:4px solid ' + (mod.color || '#868e96') + ';border-radius:8px;padding:10px 14px;cursor:pointer;' + (isSelected ? 'box-shadow:0 0 0 2px rgba(25,113,194,0.15);' : '') + '">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center">' +
+      '<div style="font-weight:700;font-size:13px">' + esc(mod.name) + '</div>' +
+      '<div style="font-size:11px;color:#868e96">' + enabledCount + '/' + totalOutputs + ' atributov</div>' +
+      '</div></div>';
+  });
+
+  el.innerHTML = html;
+
+  // Click to select
+  el.querySelectorAll('.pipe-flow-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      selectPipeNode(card.dataset.nodeId);
     });
-
-    // Drag from output dot to create connection
-    div.querySelector('.node-dot.output').addEventListener('mousedown', function(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      pipeConnecting = { fromNodeId: node.id, startX: node.x + 70, startY: node.y + 52 };
-    });
-
-    // Drop on input dot to complete connection
-    div.querySelector('.node-dot.input').addEventListener('mouseup', function(e) {
-      e.stopPropagation();
-      if (pipeConnecting && pipeConnecting.fromNodeId !== node.id) {
-        var exists = pipeConfig.edges.some(function(edge) {
-          return edge.from === pipeConnecting.fromNodeId && edge.to === node.id;
-        });
-        if (!exists) {
-          pipeConfig.edges.push({ from: pipeConnecting.fromNodeId, to: node.id, mapping: { ico: 'ico' } });
-        }
-        pipeConnecting = null;
-        removePipeTempLine();
-        renderPipeCanvas();
-      }
-    });
-
-    canvas.appendChild(div);
   });
 }
 
@@ -3502,9 +3463,15 @@ function removePipeTempLine() {
 }
 
 function selectPipeNode(nodeId) {
-  pipeSelectedNode = nodeId;
+  pipeSelectedNode = (pipeSelectedNode === nodeId) ? null : nodeId; // toggle
   renderPipeCanvas();
-  renderPipeSettings(nodeId);
+  var settingsEl = document.getElementById('pipe-settings');
+  if (pipeSelectedNode) {
+    settingsEl.style.display = 'block';
+    renderPipeSettings(pipeSelectedNode);
+  } else {
+    settingsEl.style.display = 'none';
+  }
 }
 
 function renderPipeSettings(nodeId) {
