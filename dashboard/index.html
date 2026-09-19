@@ -901,7 +901,7 @@ function renderTable(rows) {
       <td><span class="badge badge-${r.action}">${r.type_label}</span></td>
       <td>${esc(r.obstaravatel)}${r.ico ? ' <span style="color:#adb5bd;font-size:11px">(' + r.ico + ')</span>' : ''}</td>
       <td class="predmet-col">${r.pocet_casti > 1 ? '<span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;background:#e7f5ff;color:#1971c2;margin-right:4px">' + r.pocet_casti + ' lotov</span>' : ''}${esc(r.predmet)}</td>
-      <td class="val-col">${r.hodnota != null ? formatEur(r.hodnota) : '<span style="color:#ced4da">-</span>'}</td>
+      <td class="val-col">${r._cenovy_pomer != null ? `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${r._cenovy_pomer > 95 ? '#e03131' : (r._cenovy_pomer > 85 ? '#e8590c' : '#2b8a3e')}" title="Pomer cena/rozpocet: ${r._cenovy_pomer.toFixed(1)}%"></span>` : ''}${r.hodnota != null ? formatEur(r.hodnota) : '<span style="color:#ced4da">-</span>'}</td>
       <td>${esc(r.vitaz)}</td>
       <td style="white-space:nowrap;font-size:12px;color:#868e96"><span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;margin-right:4px;${r.zdroj === 'TED' ? 'background:#e7f5ff;color:#1971c2' : 'background:#f1f3f5;color:#868e96'}">${r.zdroj}</span>${esc(r.vestnik)}</td>
     </tr>
@@ -1289,6 +1289,22 @@ fetch('/api/data')
       if (zid) {
         if (!window.ZAKAZKA_INDEX[zid]) window.ZAKAZKA_INDEX[zid] = [];
         window.ZAKAZKA_INDEX[zid].push(d);
+      }
+    });
+    // Pre-compute price ratio for výsledok docs
+    DATA.forEach(row => {
+      if (row.action !== 'vysledok' || row.hodnota == null) return;
+      const zid = (row._raw.extraction || {}).metadata?.id_zakazky;
+      if (!zid || !window.ZAKAZKA_INDEX[zid]) return;
+      const related = window.ZAKAZKA_INDEX[zid];
+      for (const rd of related) {
+        if (rd.action === 'vyhlasenie' || rd.action === 'oprava') {
+          const rozpocet = (rd.extraction || {}).prilezitost?.hodnota;
+          if (rozpocet != null && rozpocet > 0) {
+            row._cenovy_pomer = row.hodnota / rozpocet * 100;
+            break;
+          }
+        }
       }
     });
     const vestniks = [...new Set(docs.map(d => d.vestnik).filter(Boolean))].sort();
