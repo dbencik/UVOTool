@@ -239,7 +239,13 @@ def _profile_obstaravatel(db, query, is_ico):
     if not ico:
         return {"error": f"Obstarávateľ '{query}' nebol nájdený."}
 
-    result = {"typ": "obstaravatel", "nazov": name, "ico": ico, "sekcie": []}
+    # Get profil URL
+    profil_row = db.execute(
+        "SELECT profil_url FROM obstaravatelia WHERE ico = ? AND profil_url != '' LIMIT 1", (ico,)
+    ).fetchone()
+    profil_url = profil_row[0] if profil_row else ""
+
+    result = {"typ": "obstaravatel", "nazov": name, "ico": ico, "profil_url": profil_url, "sekcie": []}
 
     # Overall stats
     total_docs = db.execute("SELECT COUNT(*) FROM obstaravatelia WHERE ico = ?", (ico,)).fetchone()[0]

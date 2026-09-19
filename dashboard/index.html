@@ -2385,7 +2385,7 @@ function renderProfil(data, container) {
   const typLabel = data.typ === 'dodavatel' ? 'DODAVATEL' : 'OBSTARAVATEL';
   let html = `<div class="profil-report">
     <h2>${esc(data.nazov)}</h2>
-    <div class="profil-ico">ICO: ${esc(data.ico)} | Typ: ${typLabel}</div>`;
+    <div class="profil-ico">ICO: ${esc(data.ico)} | Typ: ${typLabel}${data.profil_url ? ' | <a href="' + esc(data.profil_url) + '" target="_blank" style="color:#1971c2;font-weight:600">Profil na UVO →</a>' : ''}</div>`;
 
   for (const sekcia of (data.sekcie || [])) {
     html += `<div class="profil-section"><h3>${esc(sekcia.nazov)}</h3>`;
