@@ -888,15 +888,12 @@ function renderCards(rows) {
   `;
 }
 
-function renderTable(rows) {
-  const tbody = document.getElementById('table-body');
-  if (rows.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" class="no-results">Ziadne vysledky</td></tr>';
-    return;
-  }
+const PAGE_SIZE = 100;
+let currentPage = 0;
+let currentFilteredRows = [];
 
-  tbody.innerHTML = rows.map((r, i) => `
-    <tr data-idx="${i}">
+function renderTableRow(r, i) {
+  return `<tr data-idx="${i}">
       <td class="num-col"><a href="${r.url}" target="_blank" title="Otvorit na UVO">${r.num}</a></td>
       <td><span class="badge badge-${r.action}">${r.type_label}</span></td>
       <td>${esc(r.obstaravatel)}${r.ico ? ' <span style="color:#adb5bd;font-size:11px">(' + r.ico + ')</span>' : ''}</td>
@@ -904,10 +901,69 @@ function renderTable(rows) {
       <td class="val-col">${r._cenovy_pomer != null ? `<span style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${r._cenovy_pomer > 95 ? '#e03131' : (r._cenovy_pomer > 85 ? '#e8590c' : '#2b8a3e')}" title="Pomer cena/rozpocet: ${r._cenovy_pomer.toFixed(1)}%"></span>` : ''}${r.hodnota != null ? formatEur(r.hodnota) : '<span style="color:#ced4da">-</span>'}</td>
       <td>${esc(r.vitaz)}</td>
       <td style="white-space:nowrap;font-size:12px;color:#868e96"><span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;margin-right:4px;${r.zdroj === 'TED' ? 'background:#e7f5ff;color:#1971c2' : 'background:#f1f3f5;color:#868e96'}">${r.zdroj}</span>${esc(r.vestnik)}</td>
-    </tr>
-  `).join('');
+    </tr>`;
+}
 
+function renderTable(rows) {
+  const tbody = document.getElementById('table-body');
+  currentFilteredRows = rows;
+  currentPage = 0;
+
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="no-results">Ziadne vysledky</td></tr>';
+    return;
+  }
+
+  const pageRows = rows.slice(0, PAGE_SIZE);
+  tbody.innerHTML = pageRows.map((r, i) => renderTableRow(r, i)).join('');
+
+  // Show more button
+  if (rows.length > PAGE_SIZE) {
+    tbody.innerHTML += `<tr id="load-more-row"><td colspan="7" style="text-align:center;padding:12px">
+      <button id="load-more-btn" style="padding:8px 24px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer">
+        Zobrazit dalsich ${Math.min(PAGE_SIZE, rows.length - PAGE_SIZE)} z ${rows.length} dokumentov
+      </button></td></tr>`;
+    document.getElementById('load-more-btn').addEventListener('click', loadMore);
+  }
+
+  attachRowClicks(tbody, rows);
+}
+
+function loadMore() {
+  currentPage++;
+  const start = currentPage * PAGE_SIZE;
+  const end = Math.min(start + PAGE_SIZE, currentFilteredRows.length);
+  const tbody = document.getElementById('table-body');
+
+  // Remove load-more row
+  const lmr = document.getElementById('load-more-row');
+  if (lmr) lmr.remove();
+
+  // Append new rows
+  const fragment = document.createElement('tbody');
+  fragment.innerHTML = currentFilteredRows.slice(start, end).map((r, i) => renderTableRow(r, start + i)).join('');
+  while (fragment.firstChild) tbody.appendChild(fragment.firstChild);
+
+  // Add new load-more if needed
+  if (end < currentFilteredRows.length) {
+    const remaining = currentFilteredRows.length - end;
+    const tr = document.createElement('tr');
+    tr.id = 'load-more-row';
+    tr.innerHTML = `<td colspan="7" style="text-align:center;padding:12px">
+      <button id="load-more-btn" style="padding:8px 24px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer">
+        Zobrazit dalsich ${Math.min(PAGE_SIZE, remaining)} z ${currentFilteredRows.length} dokumentov
+      </button></td>`;
+    tbody.appendChild(tr);
+    document.getElementById('load-more-btn').addEventListener('click', loadMore);
+  }
+
+  attachRowClicks(tbody, currentFilteredRows);
+}
+
+function attachRowClicks(tbody, rows) {
   tbody.querySelectorAll('tr[data-idx]').forEach(tr => {
+    if (tr._clickBound) return;
+    tr._clickBound = true;
     tr.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') return;
       const idx = parseInt(tr.dataset.idx);
