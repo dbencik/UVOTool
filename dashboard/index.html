@@ -3584,17 +3584,7 @@ document.getElementById('tdd-xml-batch').addEventListener('change', function(e) 
       var el = document.getElementById('tdd-batch-results');
       if (!el) return;
       if (!data.results || !data.results.length) { el.innerHTML = '<div class="error">Ziadne vysledky</div>'; return; }
-      var h = '<table class="analyza-table"><thead><tr><th>Dodavatel</th><th>Spolahliv.</th><th>Dlznik</th><th>Odberatel</th><th>Spolahliv.</th><th>Dlznik</th><th>Suma</th></tr></thead><tbody>';
-      data.results.forEach(function(r) {
-        var s = r.supplier || {};
-        var c = r.customer || {};
-        var inv = r.invoice || {};
-        h += '<tr><td>' + esc(s.nazov || s.ic_dph || '?') + '</td><td>' + tddSpolahlBadge(s.spolahliv) + '</td><td>' + tddDlznikBadge(s.je_dlznik) + '</td>';
-        h += '<td>' + esc(c.nazov || c.ic_dph || '?') + '</td><td>' + tddSpolahlBadge(c.spolahliv) + '</td><td>' + tddDlznikBadge(c.je_dlznik) + '</td>';
-        h += '<td class="val-col">' + (inv && inv.amount ? formatEurShort(inv.amount) : '') + '</td></tr>';
-      });
-      h += '</tbody></table>';
-      el.innerHTML = h;
+      el.innerHTML = renderTddBatchTable(data.results);
     });
   });
   e.target.value = '';
@@ -3617,31 +3607,46 @@ document.getElementById('tdd-batch-btn').addEventListener('click', function() {
     body: JSON.stringify({pairs: pairs})
   }).then(function(r) { return r.json(); }).then(function(data) {
     if (data.error) { el.innerHTML = '<div class="error">' + esc(data.error) + '</div>'; return; }
-    var results = data.results || [];
-    var html = '<table class="profil-mini-table" style="font-size:12px"><thead><tr>';
-    html += '<th>Dodavatel IC DPH</th><th>Dodavatel</th><th>Spolahliv.</th><th>Dlznik</th>';
-    html += '<th>Odberatel IC DPH</th><th>Odberatel</th><th>Spolahliv.</th><th>Dlznik</th>';
-    html += '</tr></thead><tbody>';
-    results.forEach(function(r) {
-      var s = r.supplier || {};
-      var c = r.customer || {};
-      html += '<tr>';
-      html += '<td style="font-family:monospace">' + esc(s.ic_dph || '') + '</td>';
-      html += '<td>' + esc(s.nazov || '') + '</td>';
-      html += '<td>' + tddSpolahlBadge(s.spolahliv || s.ids_status) + '</td>';
-      html += '<td>' + tddDlznikBadge(s.je_dlznik) + '</td>';
-      html += '<td style="font-family:monospace">' + esc(c.ic_dph || '') + '</td>';
-      html += '<td>' + esc(c.nazov || '') + '</td>';
-      html += '<td>' + tddSpolahlBadge(c.spolahliv || c.ids_status) + '</td>';
-      html += '<td>' + tddDlznikBadge(c.je_dlznik) + '</td>';
-      html += '</tr>';
-    });
-    html += '</tbody></table>';
-    el.innerHTML = html;
+    el.innerHTML = renderTddBatchTable(data.results || []);
   }).catch(function(err) {
     el.innerHTML = '<div class="error">' + esc(err.message) + '</div>';
   });
 });
+
+function renderTddBatchTable(results) {
+  if (!results.length) return '<div class="error">Ziadne vysledky</div>';
+  var h = '<div style="font-size:13px;font-weight:600;margin-bottom:8px">' + results.length + ' výsledkov</div>';
+  h += '<div style="overflow-x:auto"><table class="analyza-table" style="font-size:12px;white-space:nowrap"><thead><tr>';
+  h += '<th>Dodávateľ</th><th>IČO</th><th>Spoľahliv.</th><th>FS</th><th>SP</th><th>Tržby</th><th>Zisk</th>';
+  h += '<th>Odberateľ</th><th>IČO</th><th>Spoľahliv.</th><th>FS</th><th>SP</th><th>Tržby</th><th>Zisk</th>';
+  h += '<th>Suma</th><th>Dátum</th>';
+  h += '</tr></thead><tbody>';
+  results.forEach(function(r) {
+    var s = r.supplier || {};
+    var c = r.customer || {};
+    var inv = r.invoice || {};
+    h += '<tr>';
+    h += '<td style="font-weight:500">' + esc(s.nazov || s.ic_dph || '?') + '</td>';
+    h += '<td style="font-family:monospace;font-size:11px">' + esc(s.ico || '') + '</td>';
+    h += '<td>' + tddSpolahlBadge(s.spolahliv) + '</td>';
+    h += '<td>' + tddDlznikBadge(s.je_dlznik_fs) + '</td>';
+    h += '<td>' + tddDlznikBadge(s.je_dlznik_sp) + '</td>';
+    h += '<td class="val-col">' + (s.trzby != null ? formatEurShort(s.trzby) : '—') + '</td>';
+    h += '<td class="val-col" style="color:' + ((s.zisk||0) >= 0 ? '#2b8a3e' : '#e03131') + '">' + (s.zisk != null ? formatEurShort(s.zisk) : '—') + '</td>';
+    h += '<td style="font-weight:500">' + esc(c.nazov || c.ic_dph || '?') + '</td>';
+    h += '<td style="font-family:monospace;font-size:11px">' + esc(c.ico || '') + '</td>';
+    h += '<td>' + tddSpolahlBadge(c.spolahliv) + '</td>';
+    h += '<td>' + tddDlznikBadge(c.je_dlznik_fs) + '</td>';
+    h += '<td>' + tddDlznikBadge(c.je_dlznik_sp) + '</td>';
+    h += '<td class="val-col">' + (c.trzby != null ? formatEurShort(c.trzby) : '—') + '</td>';
+    h += '<td class="val-col" style="color:' + ((c.zisk||0) >= 0 ? '#2b8a3e' : '#e03131') + '">' + (c.zisk != null ? formatEurShort(c.zisk) : '—') + '</td>';
+    h += '<td class="val-col" style="font-weight:700">' + (inv.payable_amount != null ? formatEur(inv.payable_amount) : (inv.amount != null ? formatEur(inv.amount) : '')) + '</td>';
+    h += '<td style="color:#868e96;font-size:11px">' + esc(fmtDate(inv.issue_date || inv.date || '')) + '</td>';
+    h += '</tr>';
+  });
+  h += '</tbody></table></div>';
+  return h;
+}
 
 // ══════════════════════════════════════════════════════════════
 // MONITORING TAB
