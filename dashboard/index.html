@@ -3355,17 +3355,56 @@ function renderTddParty(party, el) {
   html += '<span style="display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:600;background:' + (party.je_dlznik_sp ? '#fff5f5' : '#ebfbee') + ';color:' + (party.je_dlznik_sp ? '#e03131' : '#2b8a3e') + '">SP: ' + (party.je_dlznik_sp ? 'DLZNIK' : 'OK') + '</span>';
   html += '</div>';
 
-  // Financial info (full level)
+  // Financial info
   if (party.trzby != null || party.zisk != null) {
     html += '<div style="display:flex;gap:10px;margin-top:10px">';
-    if (party.trzby != null) {
-      html += '<div style="background:#f8f9fa;border-radius:6px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#868e96;text-transform:uppercase">Trzby</div><div style="font-size:16px;font-weight:700">' + profilFmtEurShort(party.trzby) + '</div></div>';
-    }
+    if (party.trzby != null) html += '<div style="background:#f8f9fa;border-radius:6px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#868e96;text-transform:uppercase">Trzby</div><div style="font-size:16px;font-weight:700">' + profilFmtEurShort(party.trzby) + '</div></div>';
     if (party.zisk != null) {
       var zColor = party.zisk >= 0 ? '#2b8a3e' : '#e03131';
       html += '<div style="background:#f8f9fa;border-radius:6px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#868e96;text-transform:uppercase">Zisk</div><div style="font-size:16px;font-weight:700;color:' + zColor + '">' + profilFmtEurShort(party.zisk) + '</div></div>';
     }
     html += '</div>';
+  }
+
+  // Full profile data from all modules
+  if (party.profile) {
+    var modLabels = {orsf:'Obchodny register',ruz:'Uctovne zavierky',rpvs:'RPVS (vlastnici)',frsr_dph:'DPH registracia',frsr_dane:'Danovy profil',frsr_dph_odpocty:'DPH odpocty',frsr_spolahliv:'Spolahliv. danovnika',uvo:'Verejne obstaravanie'};
+    var modColors = {orsf:'#1971c2',ruz:'#2b8a3e',rpvs:'#e8590c',frsr_dph:'#d6336c',frsr_dane:'#c2255c',frsr_dph_odpocty:'#ae3ec9',frsr_spolahliv:'#862e9c',uvo:'#495057'};
+    Object.keys(party.profile).forEach(function(modId) {
+      var modData = party.profile[modId];
+      if (!modData || Object.keys(modData).length === 0) return;
+      var label = modLabels[modId] || modId;
+      var color = modColors[modId] || '#868e96';
+      html += '<div style="margin-top:10px;border-left:3px solid ' + color + ';padding-left:10px">';
+      html += '<div style="font-size:11px;font-weight:600;color:' + color + ';text-transform:uppercase;margin-bottom:4px">' + esc(label) + '</div>';
+      html += '<table style="width:100%;font-size:12px;border-collapse:collapse">';
+      Object.keys(modData).forEach(function(k) {
+        var v = modData[k];
+        if (v === null || v === undefined || v === '') return;
+        if (Array.isArray(v)) {
+          if (v.length === 0) return;
+          if (v[0] && typeof v[0] === 'object' && v[0].predmet) {
+            // zákazky
+            v.forEach(function(z) {
+              html += '<tr><td style="padding:2px 0;color:#868e96;width:80px;font-size:11px">' + (z.je_vitaz ? 'VITAZ' : (z.poradie || '')) + '</td><td style="padding:2px 0;font-size:12px">' + esc((z.predmet||'').substring(0,50)) + ' <span style="color:#868e96">| ' + (z.obstaravatel||'').substring(0,30) + '</span></td></tr>';
+            });
+            return;
+          }
+          if (typeof v[0] === 'string') {
+            html += '<tr><td style="padding:2px 0;color:#868e96;width:80px">' + esc(k) + '</td><td style="padding:2px 0;font-family:monospace;font-size:11px">' + v.map(function(i){return esc(i)}).join(', ') + '</td></tr>';
+            return;
+          }
+          html += '<tr><td style="padding:2px 0;color:#868e96">' + esc(k) + '</td><td style="padding:2px 0">' + v.length + ' poloziek</td></tr>';
+          return;
+        }
+        if (typeof v === 'object') return;
+        var display = typeof v === 'boolean' ? (v ? 'Ano' : 'Nie') : typeof v === 'number' ? (v > 10000 ? formatEurShort(v) : String(v)) : String(v);
+        var tdStyle = 'padding:2px 0;font-weight:500;';
+        if (k.indexOf('dlznik') >= 0 || k.indexOf('je_') >= 0) tdStyle += v ? 'color:#e03131;' : 'color:#2b8a3e;';
+        html += '<tr><td style="padding:2px 0;color:#868e96;width:80px">' + esc(k) + '</td><td style="' + tdStyle + '">' + esc(display.substring(0,80)) + '</td></tr>';
+      });
+      html += '</table></div>';
+    });
   }
 
   el.innerHTML = html;

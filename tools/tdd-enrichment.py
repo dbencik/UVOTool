@@ -198,57 +198,53 @@ class TDDEnricher:
         return result
 
     def _enrich_party_full(self, ic_dph: str) -> dict:
-        """Full enrichment: fast + ORSF/RUZ data from firmy table."""
+        """Full enrichment: fast data + all pipeline modules (same as profile)."""
         result = self._enrich_party_fast(ic_dph)
         ico = result.get("ico")
         if not ico:
             return result
 
-        # Query firmy table for ORSF+RUZ cached data
+        # Run all pipeline modules for this IČO
         try:
-            con = sqlite3.connect(self.db_path)
-            con.row_factory = sqlite3.Row
-            row = con.execute("SELECT * FROM firmy WHERE ico = ?", (ico,)).fetchone()
-            con.close()
+            import sys
+            sys.path.insert(0, str(SCRIPT_DIR.parent))
+            from pipeline.engine import PipelineEngine
+            engine = PipelineEngine()
 
-            if row:
-                row = dict(row)
-                result["trzby"] = row.get("trzby_posledne")
-                result["trzby_predosle"] = row.get("trzby_predosle")
-                result["zisk"] = row.get("zisk_posledne")
-                result["zisk_predosle"] = row.get("zisk_predosle")
-                result["rok_zavierky"] = row.get("rok_zavierky")
-                result["status"] = row.get("status", "")
-                result["pravna_forma"] = row.get("pravna_forma", "")
-                result["nace"] = row.get("nace", "")
-                result["velkost"] = row.get("velkost", "")
-                result["mesto"] = row.get("mesto", "")
-                result["adresa"] = row.get("adresa", "")
-            else:
-                # Trigger enrichment via company-enrichment.py (lazy)
+            INTERNAL = {"enriched_at", "checked_at", "fetched_at", "generated_at", "db_path", "ico"}
+            modules_to_run = ["orsf", "ruz", "rpvs", "frsr_dph", "frsr_dane", "frsr_dph_odpocty", "frsr_spolahliv", "uvo"]
+
+            profile = {}
+            for mod_id in modules_to_run:
                 try:
-                    import subprocess
-                    enrichment_script = str(SCRIPT_DIR / "company-enrichment.py")
-                    if os.path.exists(enrichment_script):
-                        subprocess.run(
-                            [sys.executable, enrichment_script, ico],
-                            capture_output=True, timeout=30
-                        )
-                        # Re-read
-                        con = sqlite3.connect(self.db_path)
-                        con.row_factory = sqlite3.Row
-                        row = con.execute("SELECT * FROM firmy WHERE ico = ?", (ico,)).fetchone()
-                        con.close()
-                        if row:
-                            row = dict(row)
-                            result["trzby"] = row.get("trzby_posledne")
-                            result["zisk"] = row.get("zisk_posledne")
-                            result["status"] = row.get("status", "")
-                            result["pravna_forma"] = row.get("pravna_forma", "")
+                    mod_result = engine._run_module(mod_id, {"ico": ico})
+                    if mod_result.get("status") == "success":
+                        data = mod_result.get("data", {})
+                        clean = {k: v for k, v in data.items() if k not in INTERNAL and not k.startswith("_")}
+                        if clean:
+                            profile[mod_id] = clean
                 except Exception:
                     pass
-        except Exception:
-            pass
+
+            result["profile"] = profile
+
+            # Also flatten key fields into top level for convenience
+            orsf = profile.get("orsf", {})
+            ruz = profile.get("ruz", profile.get("orsf", {}))
+            result["status"] = orsf.get("status", "")
+            result["pravna_forma"] = orsf.get("pravna_forma", "")
+            result["nace"] = orsf.get("nace", "")
+            result["velkost"] = orsf.get("velkost", "")
+            result["mesto"] = orsf.get("mesto", "")
+            result["adresa"] = orsf.get("adresa", "")
+            result["trzby"] = orsf.get("trzby_posledne") or ruz.get("trzby_posledne")
+            result["trzby_predosle"] = orsf.get("trzby_predosle") or ruz.get("trzby_predosle")
+            result["zisk"] = orsf.get("zisk_posledne") or ruz.get("zisk_posledne")
+            result["zisk_predosle"] = orsf.get("zisk_predosle") or ruz.get("zisk_predosle")
+            result["rok_zavierky"] = orsf.get("rok_zavierky") or ruz.get("rok_zavierky")
+
+        except Exception as e:
+            result["_enrichment_error"] = str(e)
 
         return result
 
