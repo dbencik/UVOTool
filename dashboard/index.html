@@ -3368,40 +3368,94 @@ function renderTddParty(party, el) {
 
   // Full profile data from all modules
   if (party.profile) {
-    var modLabels = {orsf:'Obchodny register',ruz:'Uctovne zavierky',rpvs:'RPVS (vlastnici)',frsr_dph:'DPH registracia',frsr_dane:'Danovy profil',frsr_dph_odpocty:'DPH odpocty',frsr_spolahliv:'Spolahliv. danovnika',uvo:'Verejne obstaravanie'};
+    var modLabels = {orsf:'Obchodný register',ruz:'Účtovné závierky',rpvs:'RPVS (vlastníci)',frsr_dph:'DPH registrácia',frsr_dane:'Daňový profil',frsr_dph_odpocty:'DPH odpočty',frsr_spolahliv:'Spoľahliv. daňovníka',uvo:'Verejné obstarávanie'};
     var modColors = {orsf:'#1971c2',ruz:'#2b8a3e',rpvs:'#e8590c',frsr_dph:'#d6336c',frsr_dane:'#c2255c',frsr_dph_odpocty:'#ae3ec9',frsr_spolahliv:'#862e9c',uvo:'#495057'};
-    Object.keys(party.profile).forEach(function(modId) {
+    var modOrder = ['orsf','ruz','rpvs','frsr_dph','frsr_dane','frsr_dph_odpocty','frsr_spolahliv','uvo'];
+    var skipInModule = {orsf:['nazov','status','pravna_forma','ico','trzby_posledne','trzby_predosle','zisk_posledne','zisk_predosle']};
+    var fieldLabels = {
+      'nazov':'Názov','status':'Stav','pravna_forma':'Právna forma',
+      'nace':'NACE kód','datum_vzniku':'Dátum vzniku','datum_zaniku':'Dátum zániku',
+      'adresa':'Adresa','mesto':'Mesto','psc':'PSČ','velkost':'Veľkosť',
+      'dic':'DIČ','icdph':'IČ DPH','pocet_aktivit':'Počet aktivít',
+      'trzby_posledne':'Tržby (posledné)','trzby_predosle':'Tržby (predošlé)',
+      'zisk_posledne':'Zisk (posledný)','zisk_predosle':'Zisk (predošlý)',
+      'rok_zavierky':'Rok závierky',
+      'ic_dph':'IČ DPH','iban_list':'IBAN účty',
+      'datum_registracie':'Dátum registrácie','druh_registracie':'Druh registrácie',
+      'je_zruseny':'Zrušená registrácia','datum_zrusenia':'Dátum zrušenia',
+      'je_vymazany':'Vymazaný z DPH','datum_vymazu':'Dátum výmazu',
+      'je_registrovany':'Registrovaný','je_dlznik':'Daňový dlžník',
+      'dlh_suma':'Suma dlhu','dlznik_nazov_match':'Spôsob matchovania',
+      'ma_odpocty':'Má odpočty','posledne_obdobie':'Posledné obdobie',
+      'posledny_odpocet':'Posledný odpočet','posledna_dan':'Posledná daň',
+      'celkovy_odpocet':'Celkový odpočet','celkova_dan':'Celková daň',
+      'pocet_obdobi':'Počet období',
+      'ids_status':'Spoľahlivosť','is_registered':'Registrovaný v RPVS',
+      'obchodne_meno':'Obchodné meno',
+      'ucasti_celkom':'Účasti v tendroch','vyhry':'Výhry',
+      'celkova_hodnota_vyhier':'Celková hodnota výhier'
+    };
+    var velkostLabels = {'00':'bez zam.','01':'bez zam.','02':'bez zam.','11':'0 zam.','12':'1-9','21':'10-19','22':'20-49','31':'50-99','32':'100-249','33':'250-999','34':'1000+'};
+    var eurFields = /trzby|zisk|odpocet|dan$|suma|hodnota/;
+
+    var allModIds = modOrder.concat(Object.keys(party.profile).filter(function(m){ return modOrder.indexOf(m) < 0; }));
+    allModIds.forEach(function(modId) {
       var modData = party.profile[modId];
       if (!modData || Object.keys(modData).length === 0) return;
+      var skipList = skipInModule[modId] || [];
       var label = modLabels[modId] || modId;
       var color = modColors[modId] || '#868e96';
       html += '<div style="margin-top:10px;border-left:3px solid ' + color + ';padding-left:10px">';
       html += '<div style="font-size:11px;font-weight:600;color:' + color + ';text-transform:uppercase;margin-bottom:4px">' + esc(label) + '</div>';
       html += '<table style="width:100%;font-size:12px;border-collapse:collapse">';
       Object.keys(modData).forEach(function(k) {
+        if (skipList.indexOf(k) >= 0) return;
         var v = modData[k];
         if (v === null || v === undefined || v === '') return;
+        var fieldLabel = fieldLabels[k] || k;
         if (Array.isArray(v)) {
           if (v.length === 0) return;
+          // UBO list — array of objects with meno/priezvisko
+          if (k === 'ubos' && typeof v[0] === 'object' && (v[0].meno || v[0].priezvisko)) {
+            html += '<tr><td style="padding:2px 0;color:#868e96;width:100px;vertical-align:top">' + esc(fieldLabel) + '</td><td style="padding:2px 0">';
+            v.forEach(function(ubo) {
+              var name = [(ubo.meno||''), (ubo.priezvisko||'')].join(' ').trim();
+              var birth = ubo.datum_narodenia ? ' <span style="color:#868e96;font-size:11px">(*' + esc(ubo.datum_narodenia) + ')</span>' : '';
+              html += '<div>' + esc(name) + birth + '</div>';
+            });
+            html += '</td></tr>';
+            return;
+          }
           if (v[0] && typeof v[0] === 'object' && v[0].predmet) {
             // zákazky
             v.forEach(function(z) {
-              html += '<tr><td style="padding:2px 0;color:#868e96;width:80px;font-size:11px">' + (z.je_vitaz ? 'VITAZ' : (z.poradie || '')) + '</td><td style="padding:2px 0;font-size:12px">' + esc((z.predmet||'').substring(0,50)) + ' <span style="color:#868e96">| ' + (z.obstaravatel||'').substring(0,30) + '</span></td></tr>';
+              html += '<tr><td style="padding:2px 0;color:#868e96;width:100px;font-size:11px">' + (z.je_vitaz ? 'VÍŤAZ' : (z.poradie || '')) + '</td><td style="padding:2px 0;font-size:12px">' + esc((z.predmet||'').substring(0,50)) + ' <span style="color:#868e96">| ' + esc((z.obstaravatel||'').substring(0,30)) + '</span></td></tr>';
             });
             return;
           }
           if (typeof v[0] === 'string') {
-            html += '<tr><td style="padding:2px 0;color:#868e96;width:80px">' + esc(k) + '</td><td style="padding:2px 0;font-family:monospace;font-size:11px">' + v.map(function(i){return esc(i)}).join(', ') + '</td></tr>';
+            html += '<tr><td style="padding:2px 0;color:#868e96;width:100px">' + esc(fieldLabel) + '</td><td style="padding:2px 0;font-family:monospace;font-size:11px">' + v.map(function(i){return esc(i);}).join(', ') + '</td></tr>';
             return;
           }
-          html += '<tr><td style="padding:2px 0;color:#868e96">' + esc(k) + '</td><td style="padding:2px 0">' + v.length + ' poloziek</td></tr>';
+          html += '<tr><td style="padding:2px 0;color:#868e96;width:100px">' + esc(fieldLabel) + '</td><td style="padding:2px 0">' + v.length + ' položiek</td></tr>';
           return;
         }
         if (typeof v === 'object') return;
-        var display = typeof v === 'boolean' ? (v ? 'Ano' : 'Nie') : typeof v === 'number' ? (v > 10000 ? formatEurShort(v) : String(v)) : String(v);
+        var display;
+        if (typeof v === 'boolean') {
+          display = v ? 'Áno' : 'Nie';
+        } else if (k === 'velkost') {
+          display = (velkostLabels[String(v)] || String(v));
+        } else if (typeof v === 'number' && eurFields.test(k)) {
+          display = formatEurShort(v);
+        } else if (typeof v === 'number' && v > 10000) {
+          display = formatEurShort(v);
+        } else {
+          display = String(v);
+        }
         var tdStyle = 'padding:2px 0;font-weight:500;';
         if (k.indexOf('dlznik') >= 0 || k.indexOf('je_') >= 0) tdStyle += v ? 'color:#e03131;' : 'color:#2b8a3e;';
-        html += '<tr><td style="padding:2px 0;color:#868e96;width:80px">' + esc(k) + '</td><td style="' + tdStyle + '">' + esc(display.substring(0,80)) + '</td></tr>';
+        html += '<tr><td style="padding:2px 0;color:#868e96;width:100px">' + esc(fieldLabel) + '</td><td style="' + tdStyle + '">' + esc(display.substring(0,80)) + '</td></tr>';
       });
       html += '</table></div>';
     });
