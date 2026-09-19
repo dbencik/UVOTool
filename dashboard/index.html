@@ -1032,21 +1032,22 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   </div>
 
   <!-- Main layout: sidebar + canvas + settings -->
-  <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;min-height:500px">
+  <div style="display:grid;grid-template-columns:180px 1fr 300px;gap:12px;min-height:500px">
 
     <!-- Left: Module palette -->
     <div id="pipe-palette" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:12px;overflow-y:auto">
       <div style="color:#868e96;text-align:center;padding:20px 10px;font-size:13px">Nacitavam moduly...</div>
     </div>
 
-    <!-- Right: Active pipeline + Settings + Results -->
-    <div id="pipe-right-panel" style="overflow-y:auto">
-      <!-- Active modules as mini cards -->
+    <!-- Center: Active pipeline flow + Results -->
+    <div style="overflow-y:auto;max-height:700px">
       <div id="pipe-active-list" style="margin-bottom:16px"></div>
-      <!-- Settings for selected module -->
-      <div id="pipe-settings" style="display:none;background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:16px;margin-bottom:12px"></div>
-      <!-- Results after run -->
       <div id="pipe-results"></div>
+    </div>
+
+    <!-- Right: Settings for selected module -->
+    <div id="pipe-settings" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:16px;overflow-y:auto;max-height:700px">
+      <div style="color:#868e96;text-align:center;padding:40px 10px">Kliknite na modul pre zobrazenie nastaveni</div>
     </div>
   </div>
   <!-- Hidden canvas for JS compatibility -->
@@ -3465,12 +3466,10 @@ function removePipeTempLine() {
 function selectPipeNode(nodeId) {
   pipeSelectedNode = (pipeSelectedNode === nodeId) ? null : nodeId; // toggle
   renderPipeCanvas();
-  var settingsEl = document.getElementById('pipe-settings');
   if (pipeSelectedNode) {
-    settingsEl.style.display = 'block';
     renderPipeSettings(pipeSelectedNode);
   } else {
-    settingsEl.style.display = 'none';
+    document.getElementById('pipe-settings').innerHTML = '<div style="color:#868e96;text-align:center;padding:40px 10px">Kliknite na modul pre zobrazenie nastaveni</div>';
   }
 }
 
