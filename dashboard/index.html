@@ -656,6 +656,11 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
     <option value="zmena_zmluvy">Zmeny zmluv</option>
     <option value="oprava">Opravy</option>
   </select>
+  <select id="source-filter">
+    <option value="">Vsetky zdroje</option>
+    <option value="UVO">UVO</option>
+    <option value="TED">TED</option>
+  </select>
 </div>
 
 <div class="table-wrap">
@@ -832,6 +837,7 @@ function extractRow(doc) {
     hodnota: hodnota,
     vitaz: vitaz,
     vestnik: doc.vestnik || '',
+    zdroj: (doc.vestnik || '').startsWith('TED') || (doc.url || '').includes('ted.europa') ? 'TED' : 'UVO',
     year: extractYear(doc.vestnik || ''),
     url: doc.url || '',
     id: doc.id || '',
@@ -896,7 +902,7 @@ function renderTable(rows) {
       <td class="predmet-col">${esc(r.predmet)}</td>
       <td class="val-col">${r.hodnota != null ? formatEur(r.hodnota) : '<span style="color:#ced4da">-</span>'}</td>
       <td>${esc(r.vitaz)}</td>
-      <td style="white-space:nowrap;font-size:12px;color:#868e96">${esc(r.vestnik)}</td>
+      <td style="white-space:nowrap;font-size:12px;color:#868e96"><span style="display:inline-block;padding:1px 5px;border-radius:3px;font-size:10px;font-weight:700;margin-right:4px;${r.zdroj === 'TED' ? 'background:#e7f5ff;color:#1971c2' : 'background:#f1f3f5;color:#868e96'}">${r.zdroj}</span>${esc(r.vestnik)}</td>
     </tr>
   `).join('');
 
@@ -1062,6 +1068,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDetai
 function getFiltered() {
   const search = document.getElementById('search').value.toLowerCase().trim();
   const typeFilter = document.getElementById('type-filter').value;
+  const sourceFilter = document.getElementById('source-filter').value;
   let rows = DATA;
 
   if (activeYear) {
@@ -1069,6 +1076,9 @@ function getFiltered() {
   }
   if (typeFilter) {
     rows = rows.filter(r => r.action === typeFilter);
+  }
+  if (sourceFilter) {
+    rows = rows.filter(r => r.zdroj === sourceFilter);
   }
   if (search) {
     rows = rows.filter(r =>
@@ -1134,6 +1144,7 @@ document.querySelectorAll('thead th').forEach(th => {
 
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('type-filter').addEventListener('change', render);
+document.getElementById('source-filter').addEventListener('change', render);
 
 // Load Dokumenty data
 fetch('/api/data')
