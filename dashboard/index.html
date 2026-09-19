@@ -1039,6 +1039,10 @@ function showDetail(row) {
     <div class="detail-row"><span class="detail-label">Vestnik</span><span class="detail-value">${esc(row.vestnik)}</span></div>
     ${doc.code ? `<div class="detail-row"><span class="detail-label">Kod</span><span class="detail-value">${esc(doc.code)}</span></div>` : ''}
     ${doc.type ? `<div class="detail-row"><span class="detail-label">Typ formulara</span><span class="detail-value">${esc(doc.type)}</span></div>` : ''}
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <a href="${row.url}" target="_blank" style="display:inline-block;padding:5px 12px;background:#1971c2;color:#fff;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none">Originalny dokument</a>
+      ${obst.profil_url ? `<a href="${obst.profil_url}" target="_blank" style="display:inline-block;padding:5px 12px;background:#e9ecef;color:#495057;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none">Profil obstaravatela</a>` : ''}
+    </div>
   </div>`;
 
   html += `<div class="detail-section">
@@ -1077,6 +1081,19 @@ function showDetail(row) {
             ${u.cena != null ? 'Cena: ' + formatEur(u.cena) : ''}
             ${u.poradie ? ' | Poradie: ' + u.poradie : ''}
           </div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+
+    // Zmluvy links
+    const zmluvy = vys.zmluvy || [];
+    if (zmluvy.length > 0) {
+      html += `<div class="detail-section"><h3>Zmluvy (${zmluvy.length})</h3>`;
+      zmluvy.forEach(z => {
+        html += `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f1f3f5;font-size:13px">
+          <span style="color:#868e96;font-size:12px">${esc(z.datum || '')}</span>
+          <a href="${z.url || '#'}" target="_blank" style="flex:1">${esc(z.id || z.url || 'Zmluva')}</a>
         </div>`;
       });
       html += `</div>`;
