@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UVO Vestnik Dashboard</title>
+<title>UVOTool</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -39,7 +39,7 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
 }
 
 .main-tab {
-  padding: 10px 24px;
+  padding: 10px 20px;
   border: 1px solid transparent;
   border-bottom: none;
   border-radius: 6px 6px 0 0;
@@ -48,12 +48,13 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
   font-size: 14px;
   font-weight: 600;
   color: #868e96;
-  transition: all 0.15s;
+  transition: all 0.2s;
   position: relative;
   bottom: -2px;
+  white-space: nowrap;
 }
 
-.main-tab:hover { color: #495057; background: #f1f3f5; }
+.main-tab:hover { color: #495057; background: #f1f3f5; transition: all 0.2s; }
 .main-tab.active {
   background: #fff;
   color: #1971c2;
@@ -78,10 +79,19 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
   border-radius: 8px;
   padding: 20px;
   text-align: center;
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+  border-color: #dee2e6;
 }
 
 .card .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #868e96; margin-bottom: 4px; }
 .card .value { font-size: 28px; font-weight: 700; color: #1a1a1a; }
+.card.card-hodnota .value { font-size: 32px; }
 .card .value.green { color: #2b8a3e; }
 .card .value.blue { color: #1971c2; }
 .card .value.purple { color: #7048e8; }
@@ -97,15 +107,15 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
 }
 
 .year-tab {
-  padding: 6px 16px;
+  padding: 4px 12px;
   border: 1px solid #ced4da;
-  border-radius: 6px;
+  border-radius: 5px;
   background: #fff;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   color: #495057;
-  transition: all 0.15s;
+  transition: all 0.2s;
 }
 
 .year-tab:hover { border-color: #4dabf7; color: #1971c2; }
@@ -130,10 +140,41 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
   background: #fff;
   color: #1a1a1a;
   outline: none;
+  transition: all 0.2s;
 }
 
 .filters input:focus, .filters select:focus { border-color: #4dabf7; box-shadow: 0 0 0 2px rgba(77,171,247,0.15); }
 .filters input { flex: 1; min-width: 250px; }
+
+/* Search wrapper with clear button */
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+}
+.search-wrapper input {
+  width: 100%;
+  min-width: 0;
+  flex: none;
+  padding-right: 32px;
+}
+.search-clear-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: #adb5bd;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  display: none;
+  transition: color 0.2s;
+}
+.search-clear-btn:hover { color: #495057; }
+.search-clear-btn.visible { display: block; }
 
 /* Table */
 .table-wrap {
@@ -141,12 +182,17 @@ header .meta { font-size: 13px; color: #868e96; text-align: right; }
   border: 1px solid #e9ecef;
   border-radius: 8px;
   overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
   margin-bottom: 32px;
 }
 
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 
 thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   background: #f8f9fa;
   border-bottom: 2px solid #e9ecef;
   padding: 10px 12px;
@@ -159,14 +205,16 @@ thead th {
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
+  transition: color 0.2s;
 }
 
 thead th:hover { color: #1a1a1a; }
 thead th .sort-arrow { font-size: 10px; margin-left: 4px; color: #adb5bd; }
 thead th.sorted .sort-arrow { color: #1971c2; }
 
-tbody tr { border-bottom: 1px solid #f1f3f5; cursor: pointer; }
-tbody tr:hover { background: #f8f9fa; }
+tbody tr { border-bottom: 1px solid #f1f3f5; cursor: pointer; transition: background 0.15s; }
+tbody tr:nth-child(even) { background: #fafbfc; }
+tbody tr:hover { background: #e9f5ff !important; }
 tbody td { padding: 8px 12px; vertical-align: top; }
 
 td a { color: #1971c2; text-decoration: none; }
@@ -214,23 +262,37 @@ td a:hover { text-decoration: underline; }
   overflow-y: auto;
   padding: 24px;
   transform: translateX(100%);
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.detail-panel.open { transform: translateX(0); }
+.detail-panel.open {
+  transform: translateX(0);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.2);
+}
 
 .detail-panel .close-btn {
   position: absolute;
-  top: 16px; right: 16px;
-  background: none;
-  border: none;
-  font-size: 24px;
+  top: 14px; right: 14px;
+  background: #f1f3f5;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  color: #868e96;
+  color: #495057;
   line-height: 1;
+  transition: all 0.2s;
 }
 
-.detail-panel .close-btn:hover { color: #1a1a1a; }
+.detail-panel .close-btn:hover {
+  background: #e9ecef;
+  color: #1a1a1a;
+  border-color: #ced4da;
+}
 
 .detail-panel h2 { font-size: 18px; margin-bottom: 16px; padding-right: 40px; }
 
@@ -322,7 +384,26 @@ td a:hover { text-decoration: underline; }
 }
 .bar-fill { height: 100%; border-radius: 3px; background: #4dabf7; }
 
-.loading { text-align: center; padding: 80px 20px; color: #868e96; font-size: 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse-bg { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+.loading {
+  text-align: center;
+  padding: 80px 20px;
+  color: #868e96;
+  font-size: 15px;
+}
+.loading::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e9ecef;
+  border-top-color: #4dabf7;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto 16px;
+}
 .error { text-align: center; padding: 40px; color: #e03131; }
 
 footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
@@ -519,9 +600,10 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
-.profil-search button:hover { background: #1864ab; }
+.profil-search button:hover { background: #1864ab; box-shadow: 0 2px 6px rgba(25,113,194,0.3); }
 
 .profil-report {
   background: #fff;
@@ -754,9 +836,10 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s;
 }
 
-.btn-primary:hover { background: #1864ab; }
+.btn-primary:hover { background: #1864ab; box-shadow: 0 2px 6px rgba(25,113,194,0.3); }
 
 .btn-danger {
   padding: 4px 10px;
@@ -768,6 +851,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s;
 }
 
 .btn-danger:hover { background: #ffe3e3; }
@@ -784,7 +868,9 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   border: 1px solid #e9ecef;
   border-radius: 8px;
   padding: 14px 16px;
+  transition: all 0.2s;
 }
+.watchlist-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); border-color: #dee2e6; }
 
 .watchlist-card-header {
   display: flex;
@@ -937,41 +1023,44 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 
 <header>
   <div>
-    <h1>UVO Vestnik Dashboard</h1>
-    <div class="subtitle">Verejne obstaravanie -- prehlad dokumentov</div>
+    <h1>UVOTool</h1>
+    <div class="subtitle">Analýza verejného obstarávania SR</div>
   </div>
   <div class="meta" id="header-meta"></div>
 </header>
 
 <!-- Main navigation tabs -->
 <div class="main-tabs">
-  <div class="main-tab active" data-tab="dokumenty">Dokumenty</div>
-  <div class="main-tab" data-tab="analyza">Analyza</div>
-  <div class="main-tab" data-tab="graf">Graf</div>
-  <div class="main-tab" data-tab="aktualny">Aktualny vestnik</div>
-  <div class="main-tab" data-tab="pipeline">Pipeline</div>
-  <div class="main-tab" data-tab="profil">Profil</div>
-  <div class="main-tab" data-tab="monitoring">Monitoring</div>
+  <div class="main-tab active" data-tab="aktualny">📰 Aktuálny vestník</div>
+  <div class="main-tab" data-tab="dokumenty">🔍 Dokumenty</div>
+  <div class="main-tab" data-tab="analyza">📊 Analýza</div>
+  <div class="main-tab" data-tab="graf">🕸 Graf</div>
+  <div class="main-tab" data-tab="profil">🏢 Profil</div>
+  <div class="main-tab" data-tab="pipeline">⚙ Pipeline</div>
+  <div class="main-tab" data-tab="monitoring">👁 Monitoring</div>
 </div>
 
 <!-- ═══════════════════ DOKUMENTY TAB ═══════════════════ -->
-<div class="main-content-section active" id="section-dokumenty">
+<div class="main-content-section" id="section-dokumenty">
 
 <div class="cards" id="cards"></div>
 
 <div class="year-tabs" id="year-tabs"></div>
 
 <div class="filters">
-  <input type="text" id="search" placeholder="Hladat (cislo, obstaravatel, predmet, vitaz...)">
+  <div class="search-wrapper">
+    <input type="text" id="search" placeholder="Hľadať (číslo, obstarávateľ, predmet, víťaz...)">
+    <button class="search-clear-btn" id="search-clear" title="Vymazať">&times;</button>
+  </div>
   <select id="type-filter">
-    <option value="">Vsetky typy</option>
-    <option value="vysledok">Vysledky</option>
-    <option value="vyhlasenie">Vyhlasenia</option>
-    <option value="zmena_zmluvy">Zmeny zmluv</option>
+    <option value="">Všetky typy</option>
+    <option value="vysledok">Výsledky</option>
+    <option value="vyhlasenie">Vyhlásenia</option>
+    <option value="zmena_zmluvy">Zmeny zmlúv</option>
     <option value="oprava">Opravy</option>
   </select>
   <select id="source-filter">
-    <option value="">Vsetky zdroje</option>
+    <option value="">Všetky zdroje</option>
     <option value="UVO">UVO</option>
     <option value="TED">TED</option>
   </select>
@@ -1012,7 +1101,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 </div>
 
 <!-- ═══════════════════ AKTUALNY VESTNIK TAB ═══════════════════ -->
-<div class="main-content-section" id="section-aktualny">
+<div class="main-content-section active" id="section-aktualny">
   <div id="aktualny-content" class="loading">Nacitavam aktualny vestnik...</div>
 </div>
 
@@ -1188,7 +1277,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 
 </div><!-- end section-monitoring -->
 
-<footer>UVO Vestnik Dashboard &mdash; data z vestnik-parser.py</footer>
+<footer>UVOTool v1.0 &mdash; 15&nbsp;000+ dokumentov z UVO a TED</footer>
 
 </div>
 
@@ -1371,11 +1460,11 @@ function renderCards(rows) {
 
   document.getElementById('cards').innerHTML = `
     <div class="card"><div class="label">Dokumenty celkom</div><div class="value">${total}</div></div>
-    <div class="card"><div class="label">Vysledky</div><div class="value green">${counts.vysledok}</div></div>
-    <div class="card"><div class="label">Vyhlasenia</div><div class="value blue">${counts.vyhlasenie}</div></div>
-    <div class="card"><div class="label">Zmeny zmluv</div><div class="value purple">${counts.zmena_zmluvy}</div></div>
+    <div class="card"><div class="label">Výsledky</div><div class="value green">${counts.vysledok}</div></div>
+    <div class="card"><div class="label">Vyhlásenia</div><div class="value blue">${counts.vyhlasenie}</div></div>
+    <div class="card"><div class="label">Zmeny zmlúv</div><div class="value purple">${counts.zmena_zmluvy}</div></div>
     <div class="card"><div class="label">Opravy</div><div class="value orange">${counts.oprava}</div></div>
-    <div class="card"><div class="label">Celkova hodnota</div><div class="value">${formatEurShort(totalValue)}</div></div>
+    <div class="card card-hodnota"><div class="label">Celková hodnota</div><div class="value">${formatEurShort(totalValue)}</div></div>
   `;
 }
 
@@ -1988,7 +2077,20 @@ document.querySelectorAll('thead th').forEach(th => {
   });
 });
 
-document.getElementById('search').addEventListener('input', render);
+const searchInput = document.getElementById('search');
+const searchClearBtn = document.getElementById('search-clear');
+
+searchInput.addEventListener('input', () => {
+  searchClearBtn.classList.toggle('visible', searchInput.value.length > 0);
+  render();
+});
+
+searchClearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  searchClearBtn.classList.remove('visible');
+  render();
+});
+
 document.getElementById('type-filter').addEventListener('change', render);
 document.getElementById('source-filter').addEventListener('change', render);
 
@@ -2234,7 +2336,9 @@ function renderAnalysis(data) {
   // Click handlers: filter Dokumenty tab by name
   document.querySelectorAll('[data-filter-obst]').forEach(el => {
     el.addEventListener('click', () => {
-      document.getElementById('search').value = el.dataset.filterObst;
+      const si = document.getElementById('search');
+      si.value = el.dataset.filterObst;
+      if (typeof searchClearBtn !== 'undefined') searchClearBtn.classList.toggle('visible', si.value.length > 0);
       document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
       document.querySelector('[data-tab="dokumenty"]').classList.add('active');
       document.querySelectorAll('.main-content-section').forEach(s => s.classList.remove('active'));
@@ -2244,7 +2348,9 @@ function renderAnalysis(data) {
   });
   document.querySelectorAll('[data-filter-vitaz]').forEach(el => {
     el.addEventListener('click', () => {
-      document.getElementById('search').value = el.dataset.filterVitaz;
+      const si = document.getElementById('search');
+      si.value = el.dataset.filterVitaz;
+      if (typeof searchClearBtn !== 'undefined') searchClearBtn.classList.toggle('visible', si.value.length > 0);
       document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
       document.querySelector('[data-tab="dokumenty"]').classList.add('active');
       document.querySelectorAll('.main-content-section').forEach(s => s.classList.remove('active'));
@@ -2565,6 +2671,9 @@ function buildD3Graph(pagerank, topEdges, selfDealing) {
 // ══════════════════════════════════════════════════════
 
 let aktualnyLoaded = false;
+
+// Load aktualny on page start since it's the default active tab
+loadAktualny();
 
 function loadAktualny() {
   fetch('/api/latest')
