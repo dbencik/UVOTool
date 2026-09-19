@@ -36,8 +36,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": null,
         "mena": "EUR",
@@ -52,7 +56,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 5.2
+    "time_ms": 4.5
   },
   {
     "num": "",
@@ -91,8 +95,12 @@
         "nuts": "",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 990.0,
         "mena": "EUR",
@@ -126,7 +134,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 3.2
+    "time_ms": 3.1
   },
   {
     "num": "",
@@ -165,8 +173,31 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 2,
+        "max_casti_ponuka": 2,
+        "max_casti_zadanie": 2
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Prostriedky na skladovanie pohonných látok v poli",
+          "opis": "Zabezpečenie dodania 4 ks malých pružných vakov na skladovanie pohonných látok a 2 ks veľkých pružných vakov na skladovanie pohonných látok.",
+          "cpv_kod": "Skladovacie cisterny",
+          "hodnota": 159275.94,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Veľkoobjemové prostriedky na zachytávanie nebezpečných látok",
+          "opis": "Zabezpečenie dodania 6 ks malých váň skladacích záchytných s kovovým rámom a 2 ks veľkých váň skladacích záchytných s kovovým rámom.",
+          "cpv_kod": "Skladovacie cisterny",
+          "hodnota": 71370.0,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 159275.94,
         "mena": "EUR",
@@ -181,7 +212,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 2.0
+    "time_ms": 2.3
   },
   {
     "num": "",
@@ -220,8 +251,12 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 1152768.01,
         "mena": "EUR",
@@ -236,7 +271,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.7
+    "time_ms": 1.8
   },
   {
     "num": "",
@@ -275,8 +310,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 1500000.0,
         "mena": "EUR",
@@ -330,8 +369,31 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 2,
+        "max_casti_ponuka": 2,
+        "max_casti_zadanie": 2
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Poskytovanie služieb RAD vo verejnom záujme na území okresu Dunajská Streda",
+          "opis": "Predmetom zákazky je poskytovanie služieb regionálnej autobusovej dopravy vo verejnom záujme na území dopravného regiónu Dunajská Streda, okres Dunajská Streda. Predmet zákazky zahŕňa najmä zabezpečenie dopravnej obslužnosti podľa schválených cestovných poriadkov a Prepravného poriadku technicky spô",
+          "cpv_kod": "Služby verejnej cestnej dopravy",
+          "hodnota": 93367000.0,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Poskytovanie služieb RAD vo verejnom záujme na území okresu Galanta",
+          "opis": "Predmetom zákazky je poskytovanie služieb regionálnej autobusovej dopravy vo verejnom záujme na území dopravného regiónu Dunajská Streda, okres Galanta. Predmet zákazky zahŕňa najmä zabezpečenie dopravnej obslužnosti podľa schválených cestovných poriadkov a Prepravného poriadku technicky spôsobilými",
+          "cpv_kod": "Služby verejnej cestnej dopravy",
+          "hodnota": 60284000.0,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 93367000.0,
         "mena": "EUR",
@@ -346,7 +408,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.6
+    "time_ms": 1.8
   },
   {
     "num": "",
@@ -385,8 +447,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 80546.0,
         "mena": "EUR",
@@ -453,8 +519,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 89395.0,
         "mena": "EUR",
@@ -521,8 +591,12 @@
         "nuts": "Žilinský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -589,8 +663,12 @@
         "nuts": "Žilinský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 155918.83,
         "mena": "EUR",
@@ -644,8 +722,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 8256460.0,
         "mena": "EUR",
@@ -660,7 +742,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 2.2
+    "time_ms": 2.4
   },
   {
     "num": "",
@@ -699,8 +781,40 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 3,
+        "max_casti_ponuka": 3,
+        "max_casti_zadanie": 3
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Časť č. 1 - Poistenie majetku a zodpovednosti za škodu",
+          "opis": "Predmetom zákazky je poskytovanie poisťovaích služieb a to: Poistenie majetku a poistenie zodpovednosti za škodu. Podrobný opis, špecifikácia a rozsah plnenia danej časti predmetu zákazky je uvedený v súťažných podkladoch a v návrhu Rámcovej dohody pre danú časť predmetu zákazky.",
+          "cpv_kod": "Poistenie majetku",
+          "hodnota": 600013.62,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Časť č. 2 - Poistenie motorových vozidiel",
+          "opis": "Predmetom zákazky je poskytovanie poisťovaícha služieb a to: Poistenie motorvých vozidiel. Podrobný opis, špecifikácia a rozsah plnenia danej časti predmetu zákazky je uvedený v súťažných podkladoch a v návrhu Rámcovej dohody pre danú časť predmetu zákazky.",
+          "cpv_kod": "Poistenie zodpovednosti za škodu spôsobenú prevádzkou motorového vozidla",
+          "hodnota": 109965.8,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 3,
+          "lot_id": "LOT-0003",
+          "nazov": "Časť č. 3 - Cestovné poistenie",
+          "opis": "Predmetom zákazky je poskytovanie poisťovaícha služieb a to: Cestovné poistenie. Podrobný opis, špecifikácia a rozsah plnenia danej časti predmetu zákazky je uvedený v súťažných podkladoch a v návrhu Rámcovej dohody pre danú časť predmetu zákazky.",
+          "cpv_kod": "Úrazové a nemocenské poistenie",
+          "hodnota": 57700.0,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 600013.62,
         "mena": "EUR",
@@ -715,7 +829,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 2.2
+    "time_ms": 3.2
   },
   {
     "num": "",
@@ -754,8 +868,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 902060.0,
         "mena": "EUR",
@@ -770,7 +888,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.2
+    "time_ms": 1.6
   },
   {
     "num": "",
@@ -809,8 +927,12 @@
         "nuts": "Prešovský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": null,
         "mena": "EUR",
@@ -825,7 +947,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 0.8
+    "time_ms": 1.1
   },
   {
     "num": "",
@@ -864,8 +986,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": null,
         "mena": "EUR",
@@ -880,7 +1006,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 0.6
+    "time_ms": 0.7
   },
   {
     "num": "",
@@ -919,8 +1045,12 @@
         "nuts": "Prešovský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 843538.68,
         "mena": "EUR",
@@ -935,7 +1065,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.5
+    "time_ms": 1.8
   },
   {
     "num": "",
@@ -974,8 +1104,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "zmena_zmluvy": {
         "dodavatel": {
           "nazov": "YUCON, s.r.o.",
@@ -992,7 +1126,7 @@
         "eu_fond": "Európsky fond regionálneho rozvoja (EFRR) (2014/2020)"
       }
     },
-    "time_ms": 1.0
+    "time_ms": 1.1
   },
   {
     "num": "",
@@ -1031,8 +1165,12 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -1043,7 +1181,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 0.7
+    "time_ms": 0.8
   },
   {
     "num": "",
@@ -1082,8 +1220,12 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 8876988.5,
         "mena": "EUR",
@@ -1098,7 +1240,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 0.9
+    "time_ms": 1.1
   },
   {
     "num": "",
@@ -1137,8 +1279,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -1166,7 +1312,7 @@
         "subdodavatelia": ""
       }
     },
-    "time_ms": 1.0
+    "time_ms": 1.1
   },
   {
     "num": "",
@@ -1205,8 +1351,12 @@
         "nuts": "Žilinský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 26333.33,
         "mena": "EUR",
@@ -1221,7 +1371,7 @@
         "trvanie_dni": 120
       }
     },
-    "time_ms": 0.8
+    "time_ms": 0.9
   },
   {
     "num": "",
@@ -1260,8 +1410,12 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -1328,8 +1482,58 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/25/EÚ"
+        "pravny_zaklad": "Smernica 2014/25/EÚ",
+        "pocet_casti": 5,
+        "max_casti_ponuka": 5,
+        "max_casti_zadanie": 5
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá - región Bratislava",
+          "opis": "Predmetom zákazky s názvom Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá (ďalej aj „ŽKV“) pre región BRATISLAVA je vykonávanie servisných prehliadok, údržby a opráv klimatizačných zariadení inštalovaných v ŽKV obstarávateľa. Servisné prehliadky, údržba a opravy budú vykonáv",
+          "cpv_kod": "Opravy, údržba a súvisiace služby týkajúce sa železníc a iných zariadení",
+          "hodnota": 2196694.21,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá - región Nové Zámky",
+          "opis": "Predmetom zákazky s názvom Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá (ďalej aj „ŽKV“) pre región NOVÉ ZÁMKY je vykonávanie servisných prehliadok, údržby a opráv klimatizačných zariadení inštalovaných v ŽKV obstarávateľa. Servisné prehliadky, údržba a opravy budú vykonáv",
+          "cpv_kod": "Opravy, údržba a súvisiace služby týkajúce sa železníc a iných zariadení",
+          "hodnota": 1387794.11,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 3,
+          "lot_id": "LOT-0003",
+          "nazov": "Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá - región Žilina",
+          "opis": "Predmetom zákazky s názvom Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá (ďalej aj „ŽKV“) pre región ŽILINA je vykonávanie servisných prehliadok, údržby a opráv klimatizačných zariadení inštalovaných v ŽKV obstarávateľa. Servisné prehliadky, údržba a opravy budú vykonávané ",
+          "cpv_kod": "Opravy, údržba a súvisiace služby týkajúce sa železníc a iných zariadení",
+          "hodnota": 1720682.06,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 4,
+          "lot_id": "LOT-0004",
+          "nazov": "Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá - región Zvolen",
+          "opis": "Predmetom zákazky s názvom Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá (ďalej aj „ŽKV“) pre región ZVOLEN je vykonávanie servisných prehliadok, údržby a opráv klimatizačných zariadení inštalovaných v ŽKV obstarávateľa. Servisné prehliadky, údržba a opravy budú vykonávané ",
+          "cpv_kod": "Opravy, údržba a súvisiace služby týkajúce sa železníc a iných zariadení",
+          "hodnota": 925043.01,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 5,
+          "lot_id": "LOT-0005",
+          "nazov": "Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá - región Košice",
+          "opis": "Predmetom zákazky s názvom Servis a oprava klimatizačných jednotiek na železničné koľajové vozidlá (ďalej aj „ŽKV“) pre región KOŠICE je vykonávanie servisných prehliadok, údržby a opráv klimatizačných zariadení inštalovaných v ŽKV obstarávateľa. Servisné prehliadky, údržba a opravy budú vykonávané ",
+          "cpv_kod": "Opravy, údržba a súvisiace služby týkajúce sa železníc a iných zariadení",
+          "hodnota": 2136816.34,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 2196694.21,
         "mena": "EUR",
@@ -1344,7 +1548,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 2.8
+    "time_ms": 3.4
   },
   {
     "num": "",
@@ -1383,8 +1587,12 @@
         "nuts": "Nitriansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "",
-        "pravny_zaklad": "Smernica 2014/25/EÚ"
+        "pravny_zaklad": "Smernica 2014/25/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "zmena_zmluvy": {
         "dodavatel": {
           "nazov": "SAM INDUSTRIES a. s.",
@@ -1401,7 +1609,7 @@
         "eu_fond": ""
       }
     },
-    "time_ms": 0.9
+    "time_ms": 0.8
   },
   {
     "num": "",
@@ -1440,8 +1648,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 18921.9,
         "mena": "EUR",
@@ -1508,8 +1720,12 @@
         "nuts": "",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 550341.46,
         "mena": "EUR",
@@ -1537,7 +1753,7 @@
         "subdodavatelia": "Áno"
       }
     },
-    "time_ms": 1.1
+    "time_ms": 1.0
   },
   {
     "num": "",
@@ -1576,8 +1792,12 @@
         "nuts": "Prešovský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 496802.16,
         "mena": "EUR",
@@ -1631,8 +1851,12 @@
         "nuts": "",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Užšia súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": 469990.0,
         "mena": "EUR",
@@ -1699,8 +1923,31 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 2,
+        "max_casti_ponuka": 2,
+        "max_casti_zadanie": 2
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Časť č.1 - Pravidelná údržba a servis CT DEFINTION Edge",
+          "opis": "Predmetom zákazky je poskytovanie komplexnej servisnej služby počítačového tomografu (CT) značky Siemens Definition Edge a serveru Syngo.via XL, spočívajúcej v pravidelnej preventívnej údržbe a zabezpečení pozáručného servisu v zmysle odporúčaní výrobcu. Služba bude poskytovaná v pravidelných časový",
+          "cpv_kod": "Opravy a údržba lekárskych zariadení",
+          "hodnota": 530952.0,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Časť č.2 - Pravidelná údržba a servis MR MAGNETOM Vida",
+          "opis": "Predmetom zákazky je poskytovanie komplexnej servisnej služby magnetickej rezonancie (MR) značky Siemens MAGNETOM Vida, spočívajúcej v pravidelnej preventívnej údržbe a zabezpečení pozáručného servisu v zmysle odporúčaní výrobcu. Služba bude poskytovaná v pravidelných časových intervaloch a/alebo na",
+          "cpv_kod": "Opravy a údržba lekárskych zariadení",
+          "hodnota": 212760.0,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 530952.0,
         "mena": "EUR",
@@ -1715,7 +1962,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.3
+    "time_ms": 1.6
   },
   {
     "num": "",
@@ -1754,8 +2001,12 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 162524578.0,
         "mena": "EUR",
@@ -1809,8 +2060,40 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 3,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Časť č.1 USG DKAIM A",
+          "opis": "Predmetom zákazky je dodanie ultrazvukových prístrojov pre kliniky Národného ústavu detských chorôb.",
+          "cpv_kod": "Diagnostické ultrazvukové prístroje",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Časť č.2 USG DKAIM B",
+          "opis": "Predmetom zákazky je dodanie ultrazvukových prístrojov pre kliniky Národného ústavu detských chorôb.",
+          "cpv_kod": "Diagnostické ultrazvukové prístroje",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 3,
+          "lot_id": "LOT-0003",
+          "nazov": "Časť č.3 USG ECHOKARDIO",
+          "opis": "Predmetom zákazky je dodanie ultrazvukových prístrojov pre kliniky Národného ústavu detských chorôb.",
+          "cpv_kod": "Diagnostické ultrazvukové prístroje",
+          "hodnota": null,
+          "mena": "EUR"
+        }
+      ],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -1898,8 +2181,12 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 283377.88,
         "mena": "EUR",
@@ -1914,7 +2201,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.0
+    "time_ms": 1.1
   },
   {
     "num": "",
@@ -1953,8 +2240,12 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "zmena_zmluvy": {
         "dodavatel": {
           "nazov": "COLAS Slovakia, a.s.",
@@ -2010,8 +2301,31 @@
         "nuts": "Prešovský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 2,
+        "max_casti_ponuka": 2,
+        "max_casti_zadanie": 2
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Časť č. 1: Stavebné práce na objekte školskej kuchyne a školskej jedálne",
+          "opis": "Predmetom zákazky je výber dodávateľa stavebných prác pre projekt: „Zvýšenie kvality školskej infraštruktúry v obci Víťaz“ Cieľom je komplexná modernizácia vybraných objektov školskej infraštruktúry obce Víťaz, konkrétne školského klubu detí, školskej kuchyne a školskej jedálne, vrátane súvisiacich ",
+          "cpv_kod": "Stavebné práce",
+          "hodnota": 134152.29,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Časť č. 2: Stavebné práce na objekte školského klubu detí, herná zóna a fotovoltika na objekte ZŠ a objekte školského klubu detí",
+          "opis": "Predmetom zákazky je výber dodávateľa stavebných prác pre projekt: „Zvýšenie kvality školskej infraštruktúry v obci Víťaz“ Cieľom je komplexná modernizácia vybraných objektov školskej infraštruktúry obce Víťaz, konkrétne školského klubu detí, školskej kuchyne a školskej jedálne, vrátane súvisiacich ",
+          "cpv_kod": "Stavebné práce",
+          "hodnota": 383695.01,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 134152.29,
         "mena": "EUR",
@@ -2026,7 +2340,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.5
+    "time_ms": 1.6
   },
   {
     "num": "",
@@ -2065,8 +2379,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 1182790.42,
         "mena": "EUR",
@@ -2081,7 +2399,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.9
+    "time_ms": 2.0
   },
   {
     "num": "",
@@ -2120,8 +2438,12 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 137000.0,
         "mena": "EUR",
@@ -2175,8 +2497,12 @@
         "nuts": "",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -2243,8 +2569,31 @@
         "nuts": "",
         "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 2,
+        "max_casti_ponuka": 2,
+        "max_casti_zadanie": 2
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Časť č. 1 zákazky – Sanitné vozidlá",
+          "opis": "Stručný opis predmetu zákazky: Predmetom zákazky je dodať Sanitné a Zásahové vozidlá, ktoré: - Majú byť nové, nepoužité, - Majú byť podľa technickej špecifikácie/opisu predmetu zákazky a grafického prevedenia - Majú spĺňať všetky požiadavky stanovené príslušnými právnymi predpismi a platnými technic",
+          "cpv_kod": "Sanitky",
+          "hodnota": 2968000.0,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Časť č. 2 zákazky – Zásahové vozidlá",
+          "opis": "Stručný opis predmetu zákazky: Predmetom zákazky je dodať Sanitné a Zásahové vozidlá, ktoré: - Majú byť nové, nepoužité, - Majú byť podľa technickej špecifikácie/opisu predmetu zákazky a grafického prevedenia - Majú spĺňať všetky požiadavky stanovené príslušnými právnymi predpismi a platnými technic",
+          "cpv_kod": "Motorové vozidlá",
+          "hodnota": 268100.0,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 2968000.0,
         "mena": "EUR",
@@ -2259,7 +2608,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 1.2
+    "time_ms": 1.4
   },
   {
     "num": "",
@@ -2298,8 +2647,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/24/EÚ"
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 9920888.75,
         "mena": "EUR",
@@ -2353,8 +2706,31 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Verejná súťaž",
-        "pravny_zaklad": "Smernica 2014/25/EÚ"
+        "pravny_zaklad": "Smernica 2014/25/EÚ",
+        "pocet_casti": 2,
+        "max_casti_ponuka": 2,
+        "max_casti_zadanie": 2
       },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Časť 1 - ČOV Petržalka – Výstavba fotovoltickej elektrárne",
+          "opis": "1. Predmetom zákazky Časti 1 predmetu zákazky je dodávka a realizácia fotovoltickej elektrárne na prevádzke Čistiarne odpadových vôd Petržalka vrátane inštalácie fotovoltických panelov na všetky vhodné a technicky dostupné strešné plochy objektov v areáli. Súčasťou realizácie bude aj úprava a zosúla",
+          "cpv_kod": "Výstavba elektrární",
+          "hodnota": 766482.26,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Časť 2 - ČOV Senica – Výstavba fotovoltickej elektrárne",
+          "opis": "1. Predmetom Časti 2 tejto zákazky je dodávka a realizácia fotovoltickej elektrárne na prevádzke Čistiarne odpadových vôd Senica vrátane inštalácie fotovoltických panelov na strechu budovy kotolne (KPaEH), na krytú skládku mechanicky odvodneného kalu, ako aj na vybranú trávnatú plochu v areáli prevá",
+          "cpv_kod": "Výstavba elektrární",
+          "hodnota": 729382.7,
+          "mena": "EUR"
+        }
+      ],
       "prilezitost": {
         "hodnota": 766482.26,
         "mena": "EUR",
@@ -2369,7 +2745,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 2.4
+    "time_ms": 2.6
   },
   {
     "num": "",
@@ -2408,8 +2784,12 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 2511403.19,
         "mena": "EUR",
@@ -2463,8 +2843,12 @@
         "nuts": "Prešovský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -2531,8 +2915,12 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": null,
         "mena": "EUR",
@@ -2547,7 +2935,7 @@
         "trvanie_dni": null
       }
     },
-    "time_ms": 0.8
+    "time_ms": 0.9
   },
   {
     "num": "",
@@ -2586,8 +2974,12 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 2237787.42,
         "mena": "EUR",
@@ -2641,8 +3033,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 223594.49,
         "mena": "EUR",
@@ -2696,8 +3092,12 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko, Kdekoľvek",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 462978.0,
         "mena": "EUR",
@@ -2751,8 +3151,12 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -2802,8 +3206,12 @@
         "nuts": "Žilinský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -2870,8 +3278,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko, Kdekoľvek",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 110560.0,
         "mena": "EUR",
@@ -2925,8 +3337,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 68500.0,
         "mena": "EUR",
@@ -2980,8 +3396,12 @@
         "nuts": "Nitriansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 709880.29,
         "mena": "EUR",
@@ -3035,8 +3455,12 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 1425047.44,
         "mena": "EUR",
@@ -3090,8 +3514,12 @@
         "nuts": "Trenčiansky kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -3158,8 +3586,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -3226,8 +3658,12 @@
         "nuts": "Trnavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 222958.02,
         "mena": "EUR",
@@ -3281,8 +3717,12 @@
         "nuts": "Bratislavský kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "vysledok": {
         "celkova_hodnota": null,
         "mena": "EUR",
@@ -3349,8 +3789,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 1424490.37,
         "mena": "EUR",
@@ -3365,7 +3809,7 @@
         "trvanie_dni": 360
       }
     },
-    "time_ms": 0.7
+    "time_ms": 0.8
   },
   {
     "num": "",
@@ -3404,8 +3848,12 @@
         "nuts": "Košický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 189675.0,
         "mena": "EUR",
@@ -3459,8 +3907,12 @@
         "nuts": "Banskobystrický kraj",
         "miesto_plnenia": "Slovensko",
         "druh_postupu": "Iný jednofázový postup",
-        "pravny_zaklad": ""
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
       },
+      "casti": [],
       "prilezitost": {
         "hodnota": 36000.0,
         "mena": "EUR",

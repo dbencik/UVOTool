@@ -282,7 +282,25 @@ def extract_subject(root) -> dict:
         'miesto_plnenia': '',
         'druh_postupu': '',
         'pravny_zaklad': '',
+        'pocet_casti': 1,
+        'max_casti_ponuka': None,
+        'max_casti_zadanie': None,
     }
+
+    # Count lots
+    lot_count = len(root.findall('.//cac:ProcurementProjectLot', NS))
+    if lot_count > 0:
+        subject['pocet_casti'] = lot_count
+
+    # Lot policy from LotDistribution
+    lot_dist = root.find('.//cac:LotDistribution', NS)
+    if lot_dist is not None:
+        max_sub = text_first(lot_dist, 'cbc:MaximumLotsSubmittedNumeric')
+        if max_sub and max_sub.isdigit():
+            subject['max_casti_ponuka'] = int(max_sub)
+        max_awd = text_first(lot_dist, 'cbc:MaximumLotsAwardedNumeric')
+        if max_awd and max_awd.isdigit():
+            subject['max_casti_zadanie'] = int(max_awd)
 
     pp = root.find('.//cac:ProcurementProject', NS)
     if pp is None:
@@ -315,29 +333,37 @@ def extract_subject(root) -> dict:
 # ═══════════════════════════════════════════════════════
 
 def extract_lots(root) -> list[dict]:
-    """Extract lot information."""
+    """Extract lot information. Returns empty list if only 1 lot."""
+    lot_els = root.findall('.//cac:ProcurementProjectLot', NS)
+    if len(lot_els) <= 1:
+        return []
+
     lots = []
-    for lot_el in root.findall('.//cac:ProcurementProjectLot', NS):
-        lot_id = text_first(lot_el, 'cbc:ID')
-        if not lot_id:
-            continue
+    for i, lot_el in enumerate(lot_els):
+        lot_id = text_first(lot_el, 'cbc:ID') or f'LOT-{i+1:04d}'
 
         pp = lot_el.find('cac:ProcurementProject', NS)
         lot_name = text(pp, 'cbc:Name') if pp is not None else ''
         lot_desc = text(pp, 'cbc:Description') if pp is not None else ''
-        lot_type = text_first(pp, 'cbc:ProcurementTypeCode') if pp is not None else ''
         lot_cpv = text_first(pp, 'cac:MainCommodityClassification/cbc:ItemClassificationCode') if pp is not None else ''
 
         # Estimated value — try at lot level first
         est_amount = text_first(lot_el, './/cbc:EstimatedOverallContractAmount')
 
+        # Extract lot number from ID (LOT-0001 → 1)
+        cislo = i + 1
+        m_num = re.match(r'LOT-0*(\d+)', lot_id)
+        if m_num:
+            cislo = int(m_num.group(1))
+
         lots.append({
-            'id': lot_id,
+            'cislo': cislo,
+            'lot_id': lot_id,
             'nazov': lot_name,
             'opis': lot_desc[:300],
-            'druh': lot_type,
             'cpv_kod': lot_cpv,
-            'predpokladana_hodnota': parse_number(est_amount),
+            'hodnota': parse_number(est_amount),
+            'mena': 'EUR',
         })
 
     return lots
@@ -739,8 +765,7 @@ def parse_notice(xml_str: str, pub_number: str, notice_type: str = '') -> Option
         'zakazka': subject,
     }
 
-    if lots:
-        extraction['loty'] = lots
+    extraction['casti'] = lots
 
     # Type-specific sections
     if action in ('vysledok',):

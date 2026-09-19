@@ -273,11 +273,66 @@ def extract_buyer(sections: dict) -> dict:
 # Subject extraction (ODDIEL II)
 # ═══════════════════════════════════════════════════════
 
+def extract_lots(sections: dict) -> list[dict]:
+    """Best-effort extraction of lots from ODDIEL II in legacy format.
+    Returns empty list if only 1 lot (data already in zakazka)."""
+    sec_ii = sections.get('II', '')
+    if not sec_ii:
+        return []
+
+    # Look for repeated II.2 subsection patterns (II.2.1, II.2.2, etc.)
+    # Each lot has an ordercomponent (title), textArea (description), selectList (CPV)
+    lot_matches = list(re.finditer(
+        r'II\.2(?:\.(\d+))?.*?<div class="ordercomponent_[^"]*">\s*(.*?)\s*</div>',
+        sec_ii, re.DOTALL))
+
+    if len(lot_matches) <= 1:
+        return []  # Single lot or no lot subsections
+
+    lots = []
+    for i, m in enumerate(lot_matches):
+        lot_num = int(m.group(1)) if m.group(1) else i + 1
+        title = strip_html(m.group(2)).strip()
+
+        # Try to find description and CPV after this match, before next match
+        end_pos = lot_matches[i + 1].start() if i + 1 < len(lot_matches) else len(sec_ii)
+        block = sec_ii[m.start():end_pos]
+
+        # Description from textArea
+        opis = ''
+        dm = re.search(r'Stručný opis.*?<div class="textArea">\s*<span>.*?</span>\s*<span>(.*?)</span>',
+                        block, re.DOTALL)
+        if dm:
+            opis = strip_html(dm.group(1)).strip()[:300]
+
+        # CPV from selectList
+        cpv = ''
+        cm = re.search(r'<div class="selectList">.*?<span>(\d{8}-\d)</span>', block, re.DOTALL)
+        if cm:
+            cpv = cm.group(1)
+
+        # Value
+        hodnota = find_value(block, r'(?:Celková odhadovaná hodnota|Odhadovaná hodnota|Predpokladaná hodnota)')
+
+        lots.append({
+            'cislo': lot_num,
+            'lot_id': f'LOT-{lot_num:04d}',
+            'nazov': title,
+            'opis': opis,
+            'cpv_kod': cpv,
+            'hodnota': hodnota,
+            'mena': 'EUR',
+        })
+
+    return lots
+
+
 def extract_subject(sections: dict, html: str) -> dict:
     """Extract subject from ODDIEL II."""
     sec = sections.get('II', '')
     subject = {'predmet': '', 'cpv_kod': '', 'druh': '',
-               'opis': '', 'nuts': '', 'miesto_plnenia': '', 'druh_postupu': ''}
+               'opis': '', 'nuts': '', 'miesto_plnenia': '', 'druh_postupu': '',
+               'pocet_casti': 1, 'max_casti_ponuka': None, 'max_casti_zadanie': None}
 
     # Subject: ordercomponent div
     m = re.search(r'<div class="ordercomponent_[^"]*">\s*(.*?)\s*</div>', sec, re.DOTALL)
@@ -320,6 +375,21 @@ def extract_subject(sections: dict, html: str) -> dict:
         m = re.search(r'Druh postupu.*?<div class="dropdownlist_[^"]*">\s*<span>\s*(.*?)\s*</span>', sec_iv, re.DOTALL)
         if m:
             subject['druh_postupu'] = strip_html(m.group(1)).strip()
+
+    # Count lots from II.2 subsections
+    if sec:
+        lot_matches = re.findall(r'II\.2(?:\.\d+)?.*?<div class="ordercomponent_', sec, re.DOTALL)
+        if len(lot_matches) > 1:
+            subject['pocet_casti'] = len(lot_matches)
+
+    # Max lots: look for "Maximálny počet" text patterns in ODDIEL II
+    if sec:
+        m = re.search(r'maximálny počet častí.*?predložiť ponuku.*?<span>\s*(\d+)', sec, re.DOTALL | re.IGNORECASE)
+        if m:
+            subject['max_casti_ponuka'] = int(m.group(1))
+        m = re.search(r'maximálny počet.*?zadaných jednému.*?<span>\s*(\d+)', sec, re.DOTALL | re.IGNORECASE)
+        if m:
+            subject['max_casti_zadanie'] = int(m.group(1))
 
     return subject
 
@@ -578,11 +648,13 @@ def parse_document(html: str) -> dict:
     buyer = extract_buyer(sections)
     subject = extract_subject(sections, html)
     metadata = extract_metadata(html)
+    lots = extract_lots(sections)
 
     result = {
         'metadata': metadata,
         'obstaravatel': buyer,
         'zakazka': subject,
+        'casti': lots,
     }
 
     if action in ('vysledok', 'suhrn'):

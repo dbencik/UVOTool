@@ -293,7 +293,27 @@ def extract_subject(containers: list[list[str]]) -> dict:
         'miesto_plnenia': '',
         'druh_postupu': '',
         'pravny_zaklad': '',
+        'pocet_casti': 1,
+        'max_casti_ponuka': None,
+        'max_casti_zadanie': None,
     }
+
+    # Lot policy from Container 3
+    for item in items:
+        if item.startswith('Maximálny počet častí, pre ktoré môže jeden uchádzač predložiť ponuku'):
+            val = item.rsplit(':', 1)[-1].strip() if ':' in item else ''
+            if val and val.isdigit():
+                subject['max_casti_ponuka'] = int(val)
+        elif item.startswith('Maximálny počet častí zadaných jednému uchádzačovi'):
+            val = item.rsplit(':', 1)[-1].strip() if ':' in item else ''
+            if val and val.isdigit():
+                subject['max_casti_zadanie'] = int(val)
+
+    # Count lots from Container 4 (index 4) — use "5.1.N Časť" headers
+    if len(containers) > 4:
+        lot_count = sum(1 for item in containers[4] if re.match(r'^5\.1\.\d+ Časť$', item))
+        if lot_count > 0:
+            subject['pocet_casti'] = lot_count
 
     subject['predmet'] = find_field(items, 'Názov:') or find_field(items, 'Názov :') or ''
     subject['cpv_kod'] = find_field(items, 'Hlavný CPV kód:') or ''
@@ -325,6 +345,97 @@ def extract_subject(containers: list[list[str]]) -> dict:
     subject['pravny_zaklad'] = find_field(items, 'Právny základ postupu:') or ''
 
     return subject
+
+
+# ═══════════════════════════════════════════════════════
+# LOTS: Extract individual lots from Container 4
+# ═══════════════════════════════════════════════════════
+
+def extract_lots(containers: list[list[str]]) -> list[dict]:
+    """Extract individual lot details from Container 4 (index 4).
+    Returns empty list if only 1 lot (data already in zakazka)."""
+    if len(containers) < 5:
+        return []
+
+    items = containers[4]
+
+    # Split items into lot blocks by "5.1.N Časť" headers
+    lot_blocks = []
+    current_block = []
+    for item in items:
+        if re.match(r'^5\.1\.\d+ Časť$', item):
+            if current_block:
+                lot_blocks.append(current_block)
+            current_block = [item]
+        else:
+            current_block.append(item)
+
+    if current_block and lot_blocks:
+        lot_blocks.append(current_block)
+
+    # First block may be a preamble before the first "5.1.N Časť" — skip it
+    if lot_blocks and not re.match(r'^5\.1\.\d+ Časť$', lot_blocks[0][0]):
+        lot_blocks = lot_blocks[1:]
+
+    if len(lot_blocks) <= 1:
+        return []  # Single lot or no lots
+
+    lots = []
+    for block in lot_blocks:
+        lot = {
+            'cislo': None,
+            'lot_id': '',
+            'nazov': '',
+            'opis': '',
+            'cpv_kod': '',
+            'hodnota': None,
+            'mena': 'EUR',
+        }
+
+        for bitem in block:
+            # Lot number from "Číslo časti: N"
+            if bitem.startswith('Číslo časti:'):
+                val = bitem.split(':', 1)[1].strip()
+                if val.isdigit():
+                    lot['cislo'] = int(val)
+                    lot['lot_id'] = f"LOT-{int(val):04d}"
+
+            # Lot title — prefer "Názov :" (with space before colon) from "Opis časti" subsection
+            # Skip non-lot Názov fields
+            if bitem.startswith('Názov :'):
+                val = bitem.split(':', 1)[1].strip()
+                if val:
+                    lot['nazov'] = val
+            elif bitem.startswith('Názov:') and not lot['nazov'] and \
+                 not bitem.startswith('Názov kritéria') and not bitem.startswith('Názov programu') and \
+                 not bitem.startswith('Názov elektronického'):
+                val = bitem.split(':', 1)[1].strip()
+                if val:
+                    lot['nazov'] = val
+
+            # Description
+            if bitem.startswith('Opis:') and not bitem.startswith('Opis časti'):
+                val = bitem.split(':', 1)[1].strip()
+                if val:
+                    lot['opis'] = val[:300]
+
+            # CPV
+            if bitem.startswith('Hlavný CPV kód:'):
+                lot['cpv_kod'] = bitem.split(':', 1)[1].strip()
+
+            # Value
+            m = re.match(r'Predpokladaná hodnota \(BT-27-Lot\) \(hodnota\):\s*([\d\s,.]+)', bitem)
+            if m:
+                lot['hodnota'] = parse_number(m.group(1))
+
+        # Assign sequential number if not found via "Číslo časti:"
+        if lot['cislo'] is None:
+            lot['cislo'] = len(lots) + 1
+            lot['lot_id'] = f"LOT-{lot['cislo']:04d}"
+
+        lots.append(lot)
+
+    return lots
 
 
 # ═══════════════════════════════════════════════════════
@@ -812,10 +923,13 @@ def parse_document(html: str, action: str) -> dict:
     subject = extract_subject(containers)
     metadata = extract_metadata(containers)
 
+    lots = extract_lots(containers)
+
     result = {
         'metadata': metadata,
         'obstaravatel': buyer,
         'zakazka': subject,
+        'casti': lots,
     }
 
     if action in ('vysledok', 'suhrn'):
