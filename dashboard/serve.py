@@ -268,24 +268,10 @@ def _profile_dodavatel(db, query, is_ico):
         size_labels = {"11": "0 zam.", "12": "1-9 zam.", "21": "10-19 zam.", "22": "20-49 zam.",
                        "31": "50-99 zam.", "32": "100-249 zam.", "33": "250-999 zam.", "34": "1000+ zam."}
         velkost = size_labels.get(company.get("velkost", ""), company.get("velkost", ""))
-        text_parts = [f"{company.get('nazov', name)} | {company.get('pravna_forma', '')} | {company.get('status', '')}"]
-        if company.get("datum_vzniku"):
-            text_parts[0] += f" od {company['datum_vzniku'][:10]}"
-        if company.get("mesto"):
-            text_parts.append(f"Sídlo: {company.get('adresa', '')}, {company.get('psc', '')} {company['mesto']}")
-        if company.get("nace"):
-            text_parts.append(f"NACE: {company['nace']} | Veľkosť: {velkost}")
-        if company.get("trzby_posledne"):
-            text_parts.append(f"Tržby {company.get('rok_zavierky', '?')}: {_fmt_eur(company['trzby_posledne'])}")
-            if company.get("trzby_predosle"):
-                text_parts[-1] += f" (predchádzajúci rok: {_fmt_eur(company['trzby_predosle'])})"
-        if company.get("zisk_posledne") is not None:
-            zisk = company["zisk_posledne"]
-            text_parts.append(f"Zisk {company.get('rok_zavierky', '?')}: {_fmt_eur(zisk)}")
 
         result["sekcie"].append({
             "nazov": "Registre SR",
-            "text": ". ".join(text_parts) + ".",
+            "text": "",
             "data": {
                 "status": company.get("status", ""),
                 "pravna_forma": company.get("pravna_forma", ""),
@@ -311,33 +297,19 @@ def _profile_dodavatel(db, query, is_ico):
     wins_all = db.execute("SELECT COUNT(*) FROM ucastnici WHERE ico = ? AND je_vitaz = 1", (ico,)).fetchone()[0]
     total_bids = db.execute("SELECT COUNT(*) FROM ucastnici WHERE ico = ?", (ico,)).fetchone()[0]
 
-    years = db.execute("""
-        SELECT MIN(d.rok) as min_y, MAX(d.rok) as max_y
-        FROM ucastnici u JOIN dokumenty d ON u.doc_id = d.id WHERE u.ico = ?
-    """, (ico,)).fetchone()
-
-    # Biggest contract (won)
-    biggest = db.execute("""
-        SELECT u.cena, z.predmet FROM ucastnici u
-        JOIN zakazky z ON u.doc_id = z.doc_id
-        WHERE u.ico = ? AND u.je_vitaz = 1 AND u.cena IS NOT NULL
-        ORDER BY u.cena DESC LIMIT 1
-    """, (ico,)).fetchone()
-
-    text_parts = [f"Firma {name} (IČO: {ico}) sa zúčastnila {total_bids} tendrov"]
-    if years['min_y']:
-        text_parts[0] += f" od roku {years['min_y']} do roku {years['max_y']}"
-    text_parts[0] += "."
-    if wins_all > 0:
-        text_parts.append(f"Zvíťazila v {wins_all} z nich v hodnote {_fmt_eur(stats['total'])}.")
-        if biggest and biggest['predmet']:
-            text_parts.append(f"Najväčšia zákazka: {_fmt_eur(stats['max_val'])} za \"{biggest['predmet'][:80]}\".")
+    # Build short one-sentence summary
+    if wins_all > 0 and stats['total']:
+        celkovy_text = f"{total_bids} {'tender' if total_bids == 1 else 'tendrov'}, {wins_all} {'víťazstvo' if wins_all == 1 else 'víťazstiev'} ({_fmt_eur(stats['total'])})."
+        if company and company.get("trzby_posledne") and stats["max_val"] and stats["max_val"] > company["trzby_posledne"]:
+            celkovy_text += " Najväčšia zákazka presahuje ročné tržby firmy."
     elif total_bids > 0:
-        text_parts.append(f"Zatiaľ bez výhry — firma sa objavila ako uchádzač.")
+        celkovy_text = f"{total_bids} {'tender' if total_bids == 1 else 'tendrov'}, zatiaľ bez výhry."
+    else:
+        celkovy_text = "Žiadne záznamy o účasti v tendroch."
 
     result["sekcie"].append({
         "nazov": "Celkový profil",
-        "text": " ".join(text_parts),
+        "text": celkovy_text,
         "data": {
             "zakazky_vyhrane": wins_all, "ucasti_celkom": total_bids,
             "celkova_hodnota": stats['total'] or 0,
@@ -361,13 +333,12 @@ def _profile_dodavatel(db, query, is_ico):
                   "podiel": round(c["cnt"] / max(total_bids, 1) * 100, 1)} for c in customers]
 
     top_cust = cust_list[0] if cust_list else None
-    result["sekcie"].append({
-        "nazov": "Zákaznícky mix",
-        "text": (f"Firma sa zúčastnila tendrov u {len(cust_list)} obstarávateľov. "
-                 f"Najčastejší: {top_cust['nazov']} ({top_cust['zakazky']} tendrov, "
-                 f"z toho {top_cust['vyhry']} výhier)." if top_cust else "Žiadne účasti v tendroch."),
-        "data": cust_list
-    })
+    if cust_list:
+        result["sekcie"].append({
+            "nazov": "Zákaznícky mix",
+            "text": "",
+            "data": cust_list
+        })
 
     # 3. Sector focus (CPV)
     cpv_rows = db.execute("""
@@ -378,12 +349,12 @@ def _profile_dodavatel(db, query, is_ico):
     """, (ico,)).fetchall()
 
     cpv_list = [{"cpv": r["cpv_kod"], "pocet": r["cnt"]} for r in cpv_rows]
-    result["sekcie"].append({
-        "nazov": "Sektorové zameranie",
-        "text": (f"Firma sa primárne zameriava na oblasť {cpv_list[0]['cpv']} ({cpv_list[0]['pocet']} zákaziek)."
-                 if cpv_list else "Sektorové zameranie nie je možné určiť."),
-        "data": cpv_list
-    })
+    if cpv_list:
+        result["sekcie"].append({
+            "nazov": "Sektorové zameranie",
+            "text": "",
+            "data": cpv_list
+        })
 
     # 4. Competitive behavior
     single_bidder = db.execute("""
@@ -401,10 +372,7 @@ def _profile_dodavatel(db, query, is_ico):
     sb_rate = round(single_bidder / max(wins_all, 1) * 100, 1)
     result["sekcie"].append({
         "nazov": "Súťažné správanie",
-        "text": f"Z {total_bids} tendrov, v ktorých firma súťažila, zvíťazila v {wins_all} prípadoch "
-                f"(win rate {round(wins_all / max(total_bids, 1) * 100, 1)}%). "
-                f"V {single_bidder} prípadoch bola jediným uchádzačom ({sb_rate}%). "
-                + (f"Priemerný počet ponúk v tendroch bol {avg_bids:.1f}." if avg_bids else ""),
+        "text": "",
         "data": {
             "win_rate": round(wins_all / max(total_bids, 1) * 100, 1),
             "single_bidder": single_bidder,
@@ -422,11 +390,12 @@ def _profile_dodavatel(db, query, is_ico):
     """, (ico,)).fetchall()
 
     yearly_list = [{"rok": r["rok"], "zakazky": r["cnt"], "hodnota": r["total"] or 0} for r in yearly]
-    result["sekcie"].append({
-        "nazov": "Časový vývoj",
-        "text": " ".join(f"V roku {y['rok']}: {y['zakazky']} zákaziek za {_fmt_eur(y['hodnota'])}." for y in yearly_list),
-        "data": yearly_list
-    })
+    if yearly_list:
+        result["sekcie"].append({
+            "nazov": "Časový vývoj",
+            "text": "",
+            "data": yearly_list
+        })
 
     # 6. Network ties (co-bidders)
     cobidders = db.execute("""
@@ -438,12 +407,12 @@ def _profile_dodavatel(db, query, is_ico):
     """, (ico,)).fetchall()
 
     cobid_list = [{"nazov": c["nazov"], "ico": c["ico"], "spolocne_tendre": c["cnt"]} for c in cobidders]
-    result["sekcie"].append({
-        "nazov": "Sieťové väzby",
-        "text": (f"Firma sa najčastejšie stretáva v tendroch s firmou {cobid_list[0]['nazov']} "
-                 f"({cobid_list[0]['spolocne_tendre']}-krát)." if cobid_list else "Žiadne sieťové väzby."),
-        "data": cobid_list
-    })
+    if cobid_list:
+        result["sekcie"].append({
+            "nazov": "Sieťové väzby",
+            "text": "",
+            "data": cobid_list
+        })
 
     # 7. Contracts — ALL participations, mark wins
     contracts = db.execute("""
@@ -460,16 +429,16 @@ def _profile_dodavatel(db, query, is_ico):
                       "url": c["url"] or "", "je_vitaz": bool(c["je_vitaz"]), "poradie": c["poradie"],
                       "obstaravatel": c["obstaravatel"] or ""} for c in contracts]
     wins_in_list = sum(1 for c in contract_list if c.get("je_vitaz"))
-    result["sekcie"].append({
-        "nazov": "Zmluvy",
-        "text": f"Celkom {len(contract_list)} účastí v tendroch" + (f", z toho {wins_in_list} výhier." if wins_in_list else " (žiadna výhra).") if contract_list else "Žiadne záznamy o účasti v tendroch.",
-        "data": contract_list
-    })
+    if contract_list:
+        result["sekcie"].append({
+            "nazov": "Zmluvy",
+            "text": f"{len(contract_list)} {'účasť' if len(contract_list) == 1 else 'účasti'}, {wins_in_list} {'víťazstvo' if wins_in_list == 1 else 'víťazstiev'}.",
+            "data": contract_list
+        })
 
     # 7b. Contract value vs revenue
     if company and company.get("trzby_posledne") and stats["total"]:
         trzby = company["trzby_posledne"]
-        rok = company.get("rok_zavierky", "?")
         # Per-year contract values
         yearly_data = db.execute("""
             SELECT d.rok, SUM(u.cena) as total FROM ucastnici u
@@ -486,13 +455,11 @@ def _profile_dodavatel(db, query, is_ico):
                 comparisons.append({"rok": yr, "zakazky_hodnota": total_won, "trzby": trzby, "pomer": round(pomer, 1)})
 
         if comparisons:
-            text_parts = []
-            for c in comparisons:
-                text_parts.append(f"V roku {c['rok']} firma získala verejné zákazky za {_fmt_eur(c['zakazky_hodnota'])}, "
-                                  f"čo predstavuje {c['pomer']}% jej tržieb ({_fmt_eur(c['trzby'])} v roku {rok}).")
+            # Use the most recent year's ratio as the headline
+            latest = comparisons[-1]
             result["sekcie"].append({
                 "nazov": "Zákazky vs obrat",
-                "text": " ".join(text_parts),
+                "text": f"Zákazky = {latest['pomer']}% tržieb firmy.",
                 "data": comparisons
             })
 
@@ -512,12 +479,9 @@ def _profile_dodavatel(db, query, is_ico):
                         "adresa": u.get("adresa", ""),
                         "statna_prislusnost": u.get("statna_prislusnost", ""),
                     })
-                ubo_names = ", ".join(f"{u['meno']} {u['priezvisko']}" for u in ubo_list) if ubo_list else "neznámi"
                 result["sekcie"].append({
                     "nazov": "Vlastnícka štruktúra (RPVS)",
-                    "text": f"Firma je registrovaná v RPVS. Koneční užívatelia výhod: {ubo_names}."
-                            + (f" Platnosť registrácie: od {rpvs_data.get('platnost_od', '?')[:10]}."
-                               if rpvs_data.get("platnost_od") else ""),
+                    "text": "",
                     "data": {
                         "is_registered": True,
                         "ubos": ubo_list,
@@ -560,7 +524,7 @@ def _profile_dodavatel(db, query, is_ico):
         if dlhy_parts:
             result["sekcie"].append({
                 "nazov": "Dlhy voči štátu",
-                "text": ". ".join(dlhy_parts) + ".",
+                "text": "",
                 "data": dlhy_data
             })
     except Exception as e:
