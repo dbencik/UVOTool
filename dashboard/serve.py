@@ -973,7 +973,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
         params = parse_qs(parsed.query)
         requested = params.get("modules", [""])[0]
-        available = ["orsf", "ruz", "rpvs", "fs_dlznici", "sp_dlznici", "uvo", "ted"]
+        available = ["orsf", "ruz", "rpvs", "fs_dlznici", "sp_dlznici", "uvo", "ted",
+                     "frsr_dph", "frsr_dane", "frsr_dph_odpocty", "frsr_spolahliv"]
 
         if requested:
             modules = [m.strip() for m in requested.split(",") if m.strip() in available]
@@ -1059,7 +1060,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             return
 
         requested = data.get("modules", "")
-        available = ["orsf", "ruz", "rpvs", "fs_dlznici", "sp_dlznici", "uvo", "ted"]
+        available = ["orsf", "ruz", "rpvs", "fs_dlznici", "sp_dlznici", "uvo", "ted",
+                     "frsr_dph", "frsr_dane", "frsr_dph_odpocty", "frsr_spolahliv"]
         if requested:
             modules = [m.strip() for m in requested.split(",") if m.strip() in available]
         else:

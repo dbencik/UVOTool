@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import sqlite3
 import subprocess
 import sys
 import time
@@ -199,8 +200,14 @@ class PipelineEngine:
         if module_id in ("input", "output"):
             return {"status": "success", "data": dict(params), "duration_ms": 0, "cached": False}
 
-        # UVO/TED: read from DB when queried by IČO (not from parser)
+        # FR SR modules: read directly from SQLite
         ico = params.get("ico", "")
+        if module_id in ("frsr_dph", "frsr_dane", "frsr_dph_odpocty", "frsr_spolahliv") and ico:
+            data = self._read_frsr_from_db(module_id, ico)
+            elapsed = (time.time() - start) * 1000
+            return {"status": "success", "data": data, "duration_ms": round(elapsed), "cached": True}
+
+        # UVO/TED: read from DB when queried by IČO (not from parser)
         if module_id in ("uvo", "ted") and ico:
             data = self._read_uvo_ted_from_db(module_id, ico)
             elapsed = (time.time() - start) * 1000
@@ -267,6 +274,179 @@ class PipelineEngine:
             return {"status": "timeout", "data": {}, "duration_ms": 60000}
         except Exception as e:
             return {"status": "error", "message": str(e), "data": {}}
+
+    def _read_frsr_from_db(self, module_id: str, ico: str) -> dict:
+        """Read FR SR data for an ICO from SQLite."""
+        import sqlite3
+        if not DB_PATH.exists():
+            return {}
+        db = sqlite3.connect(str(DB_PATH))
+        db.row_factory = sqlite3.Row
+        try:
+            if module_id == "frsr_dph":
+                return self._frsr_dph(db, ico)
+            elif module_id == "frsr_dane":
+                return self._frsr_dane(db, ico)
+            elif module_id == "frsr_dph_odpocty":
+                return self._frsr_dph_odpocty(db, ico)
+            elif module_id == "frsr_spolahliv":
+                return self._frsr_spolahliv(db, ico)
+        except Exception as e:
+            print(f"[Pipeline] _read_frsr_from_db error for {module_id}/{ico}: {e}", flush=True)
+        finally:
+            db.close()
+        return {}
+
+    def _frsr_dph(self, db, ico: str) -> dict:
+        """DPH registration, IBAN accounts, cancellations, deletions."""
+        result = {
+            "ic_dph": None, "iban_list": [], "datum_registracie": None,
+            "druh_registracie": None, "je_zruseny": False, "datum_zrusenia": None,
+            "je_vymazany": False, "datum_vymazu": None,
+        }
+        # IBAN accounts
+        try:
+            rows = db.execute("SELECT DISTINCT IBAN FROM frsr_dph_iban WHERE ICO = ?", (ico,)).fetchall()
+            result["iban_list"] = [r["IBAN"] for r in rows if r["IBAN"]]
+            if rows:
+                first = db.execute("SELECT IC_DPH FROM frsr_dph_iban WHERE ICO = ? LIMIT 1", (ico,)).fetchone()
+                if first:
+                    result["ic_dph"] = first["IC_DPH"]
+        except sqlite3.OperationalError:
+            pass
+
+        # Registration
+        try:
+            reg = db.execute(
+                "SELECT IC_DPH, DATUM_REG, DRUH_REG_DPH, PLAT_DPH_OD FROM frsr_dphs WHERE ICO = ? ORDER BY DATUM_REG DESC LIMIT 1",
+                (ico,),
+            ).fetchone()
+            if reg:
+                result["ic_dph"] = result["ic_dph"] or reg["IC_DPH"]
+                result["datum_registracie"] = reg["DATUM_REG"]
+                result["druh_registracie"] = reg["DRUH_REG_DPH"]
+        except sqlite3.OperationalError:
+            pass
+
+        # Cancellation (dôvod na zrušenie)
+        try:
+            cancel = db.execute("SELECT DAT_ZVEREJNENIA FROM frsr_dphz WHERE ICO = ? LIMIT 1", (ico,)).fetchone()
+            if cancel:
+                result["je_zruseny"] = True
+                result["datum_zrusenia"] = cancel["DAT_ZVEREJNENIA"]
+        except sqlite3.OperationalError:
+            pass
+
+        # Deletion (vymazaný)
+        try:
+            delete = db.execute("SELECT DAT_VYMAZU FROM frsr_dphv WHERE ICO = ? LIMIT 1", (ico,)).fetchone()
+            if delete:
+                result["je_vymazany"] = True
+                result["datum_vymazu"] = delete["DAT_VYMAZU"]
+        except sqlite3.OperationalError:
+            pass
+
+        return result
+
+    def _frsr_dane(self, db, ico: str) -> dict:
+        """Tax profile: registered subject, tax debtor."""
+        result = {
+            "dic": None, "je_registrovany": False,
+            "je_dlznik": False, "dlh_suma": None, "dlznik_nazov_match": None,
+        }
+        # Is registered tax subject
+        try:
+            reg = db.execute("SELECT DIC FROM frsr_dsrdp WHERE ICO = ? LIMIT 1", (ico,)).fetchone()
+            if reg:
+                result["dic"] = reg["DIC"]
+                result["je_registrovany"] = True
+        except sqlite3.OperationalError:
+            pass
+
+        # Tax debtor — try by matched ICO first
+        try:
+            debtor = db.execute(
+                "SELECT NAZOV_SUBJEKTU, CIASTKA FROM frsr_dsdd WHERE ico_matched = ? LIMIT 1",
+                (ico,),
+            ).fetchone()
+            if debtor:
+                result["je_dlznik"] = True
+                result["dlh_suma"] = debtor["CIASTKA"]
+                result["dlznik_nazov_match"] = "exact"
+        except sqlite3.OperationalError:
+            pass
+
+        return result
+
+    def _frsr_dph_odpocty(self, db, ico: str) -> dict:
+        """VAT deductions: summary + yearly trend."""
+        result = {
+            "ma_odpocty": False, "posledne_obdobie": None,
+            "posledny_odpocet": None, "posledna_dan": None,
+            "celkovy_odpocet": 0.0, "celkova_dan": 0.0,
+            "pocet_obdobi": 0, "trend": [],
+        }
+        try:
+            rows = db.execute(
+                "SELECT ZDAN_OBDOBIE, NADMERNY_ODPOCET, VLAST_DAN_POV FROM frsr_dphno WHERE ICO = ? ORDER BY ZDAN_OBDOBIE DESC",
+                (ico,),
+            ).fetchall()
+        except sqlite3.OperationalError:
+            return result
+
+        if not rows:
+            return result
+
+        result["ma_odpocty"] = True
+        result["pocet_obdobi"] = len(rows)
+        result["posledne_obdobie"] = rows[0]["ZDAN_OBDOBIE"]
+        result["posledny_odpocet"] = rows[0]["NADMERNY_ODPOCET"] or 0.0
+        result["posledna_dan"] = rows[0]["VLAST_DAN_POV"] or 0.0
+
+        celk_odpocet = 0.0
+        celk_dan = 0.0
+        # Group by year (last 2 chars of ZDAN_OBDOBIE like "0125" → year "25")
+        year_data = {}
+        for r in rows:
+            obdobie = r["ZDAN_OBDOBIE"] or ""
+            odpocet = r["NADMERNY_ODPOCET"] or 0.0
+            dan = r["VLAST_DAN_POV"] or 0.0
+            celk_odpocet += odpocet
+            celk_dan += dan
+            # Extract year: last 2 digits of ZDAN_OBDOBIE (e.g., "1125" → "25", "0126" → "26")
+            year_key = obdobie[-2:] if len(obdobie) >= 2 else obdobie
+            if year_key not in year_data:
+                year_data[year_key] = {"obdobie": f"20{year_key}", "odpocet": 0.0, "dan": 0.0}
+            year_data[year_key]["odpocet"] += odpocet
+            year_data[year_key]["dan"] += dan
+
+        result["celkovy_odpocet"] = round(celk_odpocet, 2)
+        result["celkova_dan"] = round(celk_dan, 2)
+
+        # Sort trend by year
+        trend = sorted(year_data.values(), key=lambda x: x["obdobie"])
+        for t in trend:
+            t["odpocet"] = round(t["odpocet"], 2)
+            t["dan"] = round(t["dan"], 2)
+        result["trend"] = trend
+
+        return result
+
+    def _frsr_spolahliv(self, db, ico: str) -> dict:
+        """Tax reliability index."""
+        result = {"ids_status": "neznámy", "dic": None, "nazov": None}
+        try:
+            row = db.execute(
+                "SELECT IDS, DIC, NAZOV_SUBJEKTU FROM frsr_iz_ran WHERE ICO = ? LIMIT 1",
+                (ico,),
+            ).fetchone()
+            if row:
+                result["ids_status"] = row["IDS"] or "neznámy"
+                result["dic"] = row["DIC"]
+                result["nazov"] = row["NAZOV_SUBJEKTU"]
+        except sqlite3.OperationalError:
+            pass
+        return result
 
     def _read_uvo_ted_from_db(self, module_id: str, ico: str) -> dict:
         """Read UVO/TED participation data for an IČO from DB."""

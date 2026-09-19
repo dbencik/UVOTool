@@ -200,6 +200,78 @@ GRAPH = DataModule(
     ],
 )
 
+FRSR_DPH = DataModule(
+    id="frsr_dph",
+    name="FR SR — DPH registrácie",
+    description="DPH registrácia, IBAN účty, zrušenia a výmazy",
+    color="#d6336c",
+    primary_key="ico",
+    source_url="https://www.financnasprava.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("ic_dph", "Číslo IČ DPH", "string"),
+        ModuleOutput("iban_list", "Zoznam IBAN účtov", "array"),
+        ModuleOutput("datum_registracie", "Dátum registrácie k DPH", "date"),
+        ModuleOutput("druh_registracie", "Druh registrácie", "string"),
+        ModuleOutput("je_zruseny", "Bola registrácia zrušená", "boolean"),
+        ModuleOutput("datum_zrusenia", "Dátum zrušenia", "date"),
+        ModuleOutput("je_vymazany", "Bol z DPH vymazaný", "boolean"),
+        ModuleOutput("datum_vymazu", "Dátum výmazu", "date"),
+    ],
+)
+
+FRSR_DANE = DataModule(
+    id="frsr_dane",
+    name="FR SR — Daňový profil",
+    description="Daňoví dlžníci, registrované subjekty, DIČ",
+    color="#c2255c",
+    primary_key="ico",
+    source_url="https://www.financnasprava.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("dic", "Daňové identifikačné číslo", "string"),
+        ModuleOutput("je_registrovany", "Je registrovaný daňový subjekt", "boolean"),
+        ModuleOutput("je_dlznik", "Je na zozname daňových dlžníkov", "boolean"),
+        ModuleOutput("dlh_suma", "Výška dlhu v EUR", "number"),
+        ModuleOutput("dlznik_nazov_match", "Spôsob matchovania (exact/fuzzy)", "string"),
+    ],
+)
+
+FRSR_DPH_ODPOCTY = DataModule(
+    id="frsr_dph_odpocty",
+    name="FR SR — DPH odpočty",
+    description="Nadmerné odpočty DPH a vlastná daňová povinnosť",
+    color="#ae3ec9",
+    primary_key="ico",
+    source_url="https://www.financnasprava.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("ma_odpocty", "Firma žiada nadmerné odpočty", "boolean"),
+        ModuleOutput("posledne_obdobie", "Posledné zdaňovacie obdobie", "string"),
+        ModuleOutput("posledny_odpocet", "Posledný nadmerný odpočet", "number"),
+        ModuleOutput("posledna_dan", "Posledná vlastná daňová povinnosť", "number"),
+        ModuleOutput("celkovy_odpocet", "Celkový nadmerný odpočet", "number"),
+        ModuleOutput("celkova_dan", "Celková vlastná daň", "number"),
+        ModuleOutput("pocet_obdobi", "Počet zdaňovacích období", "number"),
+        ModuleOutput("trend", "Ročný trend [{obdobie, odpocet, dan}]", "array"),
+    ],
+)
+
+FRSR_SPOLAHLIV = DataModule(
+    id="frsr_spolahliv",
+    name="FR SR — Spoľahlivosť daňovníka",
+    description="Index daňovej spoľahlivosti z Finančnej správy",
+    color="#862e9c",
+    primary_key="ico",
+    source_url="https://www.financnasprava.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("ids_status", "Spoľahlivý / nespoľahlivý / neznámy", "string"),
+        ModuleOutput("dic", "DIČ", "string"),
+        ModuleOutput("nazov", "Názov subjektu", "string"),
+    ],
+)
+
 WATCHDOG = DataModule(
     id="watchdog",
     name="Watchdog — monitoring sledovaných firiem",
@@ -257,5 +329,6 @@ OUTPUT = DataModule(
 # Analyze, Graph, Watchdog are global tools, not pipeline modules
 MODULE_REGISTRY: dict[str, DataModule] = {
     m.id: m
-    for m in [INPUT, ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED, OUTPUT]
+    for m in [INPUT, ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED,
+              FRSR_DPH, FRSR_DANE, FRSR_DPH_ODPOCTY, FRSR_SPOLAHLIV, OUTPUT]
 }
