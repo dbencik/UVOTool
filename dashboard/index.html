@@ -1017,6 +1017,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
       <div>
         <label for="wl-hodnoty">Hodnoty (čiarkou oddelené)</label>
         <input type="text" id="wl-hodnoty" placeholder="napr. 00151866, 35919001">
+        <div id="wl-hodnoty-hint" style="font-size:11px;color:#868e96;margin-top:4px">Zadajte jedno alebo viac IČO oddelených čiarkou</div>
       </div>
       <div>
         <label>&nbsp;</label>
@@ -1530,6 +1531,80 @@ function showDetail(row) {
       }
       if (rozpocet == null && doc.action !== 'vysledok') {
         rozpocet = pril.hodnota;
+      }
+
+      // ── Timeline: vyhlásenie → lehota → výsledok → zmluva ──
+      function parseDateSk(s) {
+        if (!s) return null;
+        // DD.MM.YYYY or YYYY-MM-DD
+        let m = s.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+        if (m) return new Date(m[3], m[2]-1, m[1]);
+        m = s.match(/(\d{4})-(\d{2})-(\d{2})/);
+        if (m) return new Date(m[1], m[2]-1, m[3]);
+        return null;
+      }
+      function daysBetween(a, b) {
+        if (!a || !b) return null;
+        return Math.round((b - a) / (1000*60*60*24));
+      }
+
+      // Collect dates
+      let datumVyhlasenia = null;
+      let datumLehoty = null;
+      let datumZmluvy = null;
+      for (const vh of vyhlasenia) {
+        const pr = (vh.extraction || {}).prilezitost || {};
+        if (pr.lehota_datum) {
+          datumLehoty = parseDateSk(pr.lehota_datum);
+          // Vestnik date as vyhlásenie date (approximate from vestnik name)
+          const vhVest = vh.vestnik || '';
+          // Try to find publication date from vestnik number
+          if (!datumVyhlasenia && datumLehoty) {
+            // Estimate: vyhlásenie is typically 30-45 days before lehota
+            datumVyhlasenia = datumLehoty; // we'll use lehota as anchor
+          }
+          break;
+        }
+      }
+      // Zmluva date from výsledok
+      const zmluvyDocs = vys.zmluvy || [];
+      for (const z of zmluvyDocs) {
+        if (z.datum) {
+          const d = parseDateSk(z.datum);
+          if (d && (!datumZmluvy || d > datumZmluvy)) datumZmluvy = d;
+        }
+      }
+      // Výsledok vestnik date — estimate from vestnik number
+      // Use zmluva date as proxy for výsledok
+
+      const dniLehotaZmluva = daysBetween(datumLehoty, datumZmluvy);
+
+      if (datumLehoty || datumZmluvy) {
+        html += `<div class="detail-section"><h3>Casova os zakazky</h3>`;
+        html += `<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px">`;
+        if (datumLehoty) {
+          html += `<div class="card" style="padding:12px;flex:1;min-width:140px"><div class="label">Lehota na ponuky</div><div class="value" style="font-size:16px">${datumLehoty.toLocaleDateString('sk-SK')}</div></div>`;
+        }
+        if (datumZmluvy) {
+          html += `<div class="card" style="padding:12px;flex:1;min-width:140px"><div class="label">Podpis zmluvy</div><div class="value" style="font-size:16px">${datumZmluvy.toLocaleDateString('sk-SK')}</div></div>`;
+        }
+        if (dniLehotaZmluva != null) {
+          const dniColor = dniLehotaZmluva > 180 ? '#e03131' : (dniLehotaZmluva > 90 ? '#e8590c' : '#2b8a3e');
+          html += `<div class="card" style="padding:12px;flex:1;min-width:140px"><div class="label">Od lehoty po zmluvu</div><div class="value" style="font-size:16px;color:${dniColor}">${dniLehotaZmluva} dni</div></div>`;
+        }
+        html += `</div>`;
+
+        // Visual timeline bar
+        if (datumLehoty && datumZmluvy && dniLehotaZmluva != null) {
+          html += `<div style="position:relative;height:32px;background:#f1f3f5;border-radius:6px;margin-top:8px;overflow:hidden">
+            <div style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#1971c2"></div>
+            <div style="position:absolute;right:0;top:0;bottom:0;width:2px;background:#2b8a3e"></div>
+            <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:10px;color:#1971c2;font-weight:600;padding-left:6px">Lehota</div>
+            <div style="position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:10px;color:#2b8a3e;font-weight:600;padding-right:6px">Zmluva</div>
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:11px;font-weight:700;color:#495057">${dniLehotaZmluva} dni</div>
+          </div>`;
+        }
+        html += `</div>`;
       }
 
       html += `<div class="detail-section">
@@ -2528,6 +2603,17 @@ function saveWatchlist(callback) {
 }
 
 document.getElementById('wl-add-btn').addEventListener('click', addWatchlistRule);
+document.getElementById('wl-typ').addEventListener('change', function() {
+  var hint = document.getElementById('wl-hodnoty-hint');
+  var input = document.getElementById('wl-hodnoty');
+  if (this.value === 'cpv') {
+    hint.textContent = 'Zadajte CPV kódy oddelené čiarkou (napr. 72000000, 45000000)';
+    input.placeholder = 'napr. 72000000, 45000000';
+  } else {
+    hint.textContent = 'Zadajte jedno alebo viac IČO oddelených čiarkou';
+    input.placeholder = 'napr. 00151866, 35919001';
+  }
+});
 
 function renderMatches(matches) {
   var tbody = document.getElementById('matches-tbody');
