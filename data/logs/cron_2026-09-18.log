@@ -1,0 +1,53 @@
+[22:01:21] 
+[22:01:21] ═══════════════════════════════════════════════════
+[22:01:21] Vestník Cron (Mac) — 2026-09-18 22:01
+[22:01:21] ═══════════════════════════════════════════════════
+[22:01:21] [1/6] Sťahujem RSS...
+[22:01:31]    Vestník: VVO 191/2026
+[22:01:31] [2/6] 59 dokumentov v RSS
+[22:01:31] [3/6] Sťahujem HTML dokumenty...
+[22:01:31]    Stiahnutých: 0 nových, 59 existujúcich, 0 zlyhaných
+[22:01:31] [4/6] Spúšťam parser...
+[22:01:32] [5/6] Validujem výsledky...
+[22:01:32]    Výsledky: /Users/dodo/UVOTool/data/results/vestnik_191_2026_parser_results.json
+════════════════════════════════════════════════════════════
+VESTNÍK VALIDÁTOR
+════════════════════════════════════════════════════════════
+
+Súbor: /Users/dodo/UVOTool/data/results/vestnik_191_2026_parser_results.json
+
+📊 Štatistiky:
+   Dokumentov: 59
+   🔄 oprava: 16
+   📢 vyhlasenie: 22
+   📊 vysledok: 18
+   📋 zmena_zmluvy: 3
+   S obstarávateľom: 59/59
+   S IČO: 31/59
+   S predmetom: 59/59
+
+🎯 Kvalita: 100.0%
+
+⚠️  Varovania (2):
+   • [18] 1418025 (vysledok): žiadni účastníci
+   • [47] 1418197 (vysledok): žiadni účastníci
+
+════════════════════════════════════════════════════════════
+✅ VALIDÁCIA OK — 59 dokumentov, kvalita 100.0%
+════════════════════════════════════════════════════════════
+
+Report: /Users/dodo/UVOTool/data/results/vestnik_191_2026_parser_results_validation.json
+[22:01:32]    ✅ Validácia OK
+[22:01:32] 
+[22:01:32] [6/6] Hotovo!
+[22:01:32]    Vestník: VVO 191/2026
+[22:01:32]    Dokumentov: 59
+[22:01:32]    HTML: /tmp/vestnik191_full/
+[22:01:32]    Dátum: 2026-09-18 22:01
+[23:00:01] 
+[23:00:01] ═══════════════════════════════════════════════════
+[23:00:01] Vestník Cron (Mac) — 2026-09-18 23:00
+[23:00:01] ═══════════════════════════════════════════════════
+[23:00:01] [1/6] Sťahujem RSS...
+[23:00:09]    Vestník: VVO 191/2026
+[23:00:09]    ⏭️  Vestník 191/2026 už spracovaný, skipping

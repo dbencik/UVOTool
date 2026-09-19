@@ -3,16 +3,136 @@
   "name": "Due Diligence — kontrola firmy",
   "description": "Kompletná kontrola dodávateľa: registre, vlastníci, dlhy",
   "nodes": [
-    {"id": "n1", "module": "orsf", "x": 100, "y": 200, "settings": {}},
-    {"id": "n2", "module": "ruz", "x": 300, "y": 100, "settings": {}},
-    {"id": "n3", "module": "rpvs", "x": 300, "y": 200, "settings": {}},
-    {"id": "n4", "module": "fs_dlznici", "x": 300, "y": 300, "settings": {}},
-    {"id": "n5", "module": "sp_dlznici", "x": 300, "y": 400, "settings": {}}
+    {
+      "id": "n_input",
+      "module": "input",
+      "x": 250,
+      "y": 30,
+      "settings": {
+        "outputs": {
+          "ico": {
+            "enabled": true,
+            "label": "IČO"
+          },
+          "nazov": {
+            "enabled": true,
+            "label": "Názov firmy"
+          },
+          "rok": {
+            "enabled": true,
+            "label": "Rok"
+          },
+          "cpv": {
+            "enabled": true,
+            "label": "CPV kód"
+          },
+          "vestnik": {
+            "enabled": true,
+            "label": "Číslo vestníka"
+          },
+          "country": {
+            "enabled": true,
+            "label": "Krajina (TED)"
+          }
+        }
+      }
+    },
+    {
+      "id": "n1",
+      "module": "orsf",
+      "x": 250,
+      "y": 120,
+      "settings": {}
+    },
+    {
+      "id": "n2",
+      "module": "ruz",
+      "x": 250,
+      "y": 210,
+      "settings": {}
+    },
+    {
+      "id": "n3",
+      "module": "rpvs",
+      "x": 250,
+      "y": 300,
+      "settings": {}
+    },
+    {
+      "id": "n4",
+      "module": "fs_dlznici",
+      "x": 250,
+      "y": 390,
+      "settings": {}
+    },
+    {
+      "id": "n5",
+      "module": "sp_dlznici",
+      "x": 250,
+      "y": 480,
+      "settings": {}
+    },
+    {
+      "id": "n71156",
+      "module": "uvo",
+      "x": 250,
+      "y": 570,
+      "settings": {
+        "outputs": {
+          "documents": {
+            "enabled": true,
+            "label": "Dokumenty"
+          },
+          "total_count": {
+            "enabled": true,
+            "label": "Počet dokumentov"
+          }
+        }
+      }
+    }
   ],
   "edges": [
-    {"from": "n1", "to": "n2", "mapping": {"ico": "ico"}},
-    {"from": "n1", "to": "n3", "mapping": {"ico": "ico"}},
-    {"from": "n1", "to": "n4", "mapping": {"ico": "ico"}},
-    {"from": "n1", "to": "n5", "mapping": {"ico": "ico"}}
+    {
+      "from": "n_input",
+      "to": "n1",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n2",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n3",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n4",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n5",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n71156",
+      "mapping": {
+        "ico": "ico"
+      }
+    }
   ]
 }
