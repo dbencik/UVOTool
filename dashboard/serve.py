@@ -113,31 +113,31 @@ def _fetch_rpvs_data(ico):
             return {"is_registered": False, "ubos": [], "opravnene_osoby": []}
 
         ubos = []
-        seen_ubos = set()
+        ubo_map = {}  # key → best record (prefer one with DOB)
         opravnene_osoby = set()
         for rec in records:
             if rec.get("ubo_meno"):
-                # Dedup by name only (ignore date differences/nulls)
                 key = (rec["ubo_meno"], rec["ubo_priezvisko"])
-                if key not in seen_ubos:
-                    seen_ubos.add(key)
-                    # Convert ISO date to DD.MM.YYYY
-                    dob = rec.get("ubo_datum_narodenia") or ""
-                    if dob and "T" in dob:
-                        import re
-                        m = re.match(r"(\d{4})-(\d{2})-(\d{2})", dob)
-                        if m:
-                            dob = f"{m.group(3)}.{m.group(2)}.{m.group(1)}"
-                    ubos.append({
+                dob = rec.get("ubo_datum_narodenia") or ""
+                # Convert ISO date to DD.MM.YYYY
+                if dob and "T" in dob:
+                    import re
+                    m = re.match(r"(\d{4})-(\d{2})-(\d{2})", dob)
+                    if m:
+                        dob = f"{m.group(3)}.{m.group(2)}.{m.group(1)}"
+                # Keep record with DOB over one without
+                if key not in ubo_map or (dob and not ubo_map[key].get("datum_narodenia")):
+                    ubo_map[key] = {
                         "meno": rec["ubo_meno"],
                         "priezvisko": rec["ubo_priezvisko"],
                         "datum_narodenia": dob,
                         "je_verejny_cinitel": bool(rec.get("ubo_je_verejny_cinitel")),
                         "adresa": rec.get("ubo_adresa", ""),
                         "statna_prislusnost": rec.get("ubo_statna_prislusnost", ""),
-                    })
+                    }
             if rec.get("opravnena_osoba"):
                 opravnene_osoby.add(rec["opravnena_osoba"])
+        ubos = list(ubo_map.values())
 
         return {
             "is_registered": True,
