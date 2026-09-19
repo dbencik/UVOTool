@@ -917,8 +917,8 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   position: absolute; width: 10px; height: 10px; border-radius: 50%;
   background: #ced4da; border: 2px solid #fff;
 }
-.pipe-node .node-dot.input { left: -6px; top: 50%; transform: translateY(-50%); }
-.pipe-node .node-dot.output { right: -6px; top: 50%; transform: translateY(-50%); }
+.pipe-node .node-dot.input { left: 50%; top: -6px; transform: translateX(-50%); }
+.pipe-node .node-dot.output { left: 50%; bottom: -6px; transform: translateX(-50%); }
 .pipe-node .node-dot.output:hover { background: #1971c2; cursor: crosshair; }
 .pipe-node .node-dot.input:hover { background: #2b8a3e; cursor: crosshair; box-shadow: 0 0 0 4px rgba(43,138,62,0.2); }
 
@@ -3325,12 +3325,12 @@ function rebuildPipelineLayout() {
     return 0;
   });
 
-  // Auto-layout: vertical cascade
-  var startX = 80;
-  var startY = 40;
-  var stepY = 80;
+  // Auto-layout: top-down centered column
+  var centerX = 250;
+  var startY = 30;
+  var stepY = 90;
   pipeConfig.nodes.forEach(function(node, i) {
-    node.x = startX + (i % 2) * 200;
+    node.x = centerX;
     node.y = startY + i * stepY;
   });
 
@@ -3389,9 +3389,9 @@ function renderPipeCanvas() {
     if (fromNode && toNode) {
       var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
       line.setAttribute('x1', fromNode.x + 70);
-      line.setAttribute('y1', fromNode.y + 25);
-      line.setAttribute('x2', toNode.x);
-      line.setAttribute('y2', toNode.y + 25);
+      line.setAttribute('y1', fromNode.y + 52);
+      line.setAttribute('x2', toNode.x + 70);
+      line.setAttribute('y2', toNode.y);
       line.setAttribute('stroke', '#ced4da');
       line.setAttribute('stroke-width', '2');
       line.setAttribute('marker-end', 'url(#pipe-arrow)');
@@ -3429,7 +3429,7 @@ function renderPipeCanvas() {
     div.querySelector('.node-dot.output').addEventListener('mousedown', function(e) {
       e.stopPropagation();
       e.preventDefault();
-      pipeConnecting = { fromNodeId: node.id, startX: node.x + 140, startY: node.y + 25 };
+      pipeConnecting = { fromNodeId: node.id, startX: node.x + 70, startY: node.y + 52 };
     });
 
     // Drop on input dot to complete connection
