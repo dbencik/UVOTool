@@ -3379,7 +3379,7 @@ function renderTddInvoice(inv, el) {
   el.style.display = 'block';
   var html = '<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">';
   if (inv.document_id) html += '<div style="font-weight:700;font-size:14px">' + esc(inv.document_id) + '</div>';
-  if (inv.payable_amount != null) html += '<div style="font-size:20px;font-weight:700;color:#1971c2">' + profilFmtEur(inv.payable_amount) + ' ' + esc(inv.currency || 'EUR') + '</div>';
+  if (inv.payable_amount != null) html += '<div style="font-size:20px;font-weight:700;color:#1971c2">' + profilFmtEur(inv.payable_amount) + '</div>';
   if (inv.issue_date) html += '<div style="color:#868e96;font-size:13px">' + esc(fmtDate(inv.issue_date)) + '</div>';
   if (inv.document_type_code) html += '<div style="color:#868e96;font-size:12px">Typ: ' + esc(inv.document_type_code) + '</div>';
   html += '</div>';
