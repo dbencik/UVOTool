@@ -279,7 +279,7 @@ class PipelineEngine:
             # Get all tenders where this IČO participated
             rows = db.execute("""
                 SELECT u.nazov, u.cena, u.je_vitaz, u.poradie, z.predmet, z.cpv_kod, z.druh,
-                       o.nazov as obstaravatel, o.ico as obst_ico, d.rok, d.url, d.action
+                       o.nazov as obstaravatel, o.ico as obst_ico, d.rok, d.url, d.action, d.vestnik
                 FROM ucastnici u
                 JOIN dokumenty d ON u.doc_id = d.id
                 JOIN zakazky z ON u.doc_id = z.doc_id
@@ -294,6 +294,7 @@ class PipelineEngine:
                     "predmet": r["predmet"] or "", "obstaravatel": r["obstaravatel"] or "",
                     "hodnota": r["cena"], "je_vitaz": bool(r["je_vitaz"]),
                     "poradie": r["poradie"], "rok": r["rok"], "cpv": r["cpv_kod"] or "",
+                    "vestnik": r["vestnik"] or "",
                     "url": r["url"] or ""
                 })
 

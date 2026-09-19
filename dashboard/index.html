@@ -3696,7 +3696,7 @@ function renderPipeResults(result) {
             var badge = z.je_vitaz ? '<span style="color:#2b8a3e;font-weight:700">VITAZ</span>' : (z.poradie ? '#' + z.poradie : '');
             html += '<tr style="border-bottom:1px solid #f1f3f5"><td style="padding:3px 6px;color:#868e96;width:60px">' + badge + '</td>' +
               '<td style="padding:3px 6px"><a href="' + esc(z.url || '') + '" target="_blank" style="font-weight:500">' + esc((z.predmet || '').substring(0, 60)) + '</a>' +
-              '<div style="font-size:11px;color:#868e96">' + esc(z.obstaravatel || '') + (z.hodnota ? ' | ' + formatEurShort(z.hodnota) : '') + ' | ' + (z.rok || '') + '</div></td></tr>';
+              '<div style="font-size:11px;color:#868e96">' + esc(z.obstaravatel || '') + (z.hodnota ? ' | ' + formatEurShort(z.hodnota) : '') + (z.vestnik ? ' | ' + esc(z.vestnik) : (z.rok ? ' | ' + z.rok : '')) + '</div></td></tr>';
           });
         }
         // Special: array of UBOs
