@@ -530,7 +530,80 @@ def _profile_dodavatel(db, query, is_ico):
     except Exception as e:
         print(f"Dlznici section error: {e}")
 
-    # 10. Risk flags
+    # 10. FR SR sections
+    frsr_dph = frsr_dane = frsr_spolahliv = frsr_odpocty = {}
+    try:
+        if BASE_DIR not in sys.path:
+            sys.path.insert(0, BASE_DIR)
+        from pipeline import PipelineEngine
+        engine = PipelineEngine()
+        try:
+            frsr_dph = engine._run_module("frsr_dph", {"ico": ico}).get("data", {})
+        except:
+            pass
+        try:
+            frsr_dane = engine._run_module("frsr_dane", {"ico": ico}).get("data", {})
+        except:
+            pass
+        try:
+            frsr_spolahliv = engine._run_module("frsr_spolahliv", {"ico": ico}).get("data", {})
+        except:
+            pass
+        try:
+            frsr_odpocty = engine._run_module("frsr_dph_odpocty", {"ico": ico}).get("data", {})
+        except:
+            pass
+    except:
+        pass
+
+    if frsr_dph:
+        result["sekcie"].append({
+            "nazov": "DPH registrácia (FR SR)",
+            "text": "",
+            "data": {
+                "ic_dph": frsr_dph.get("ic_dph", ""),
+                "iban_ucty": frsr_dph.get("iban_ucty", []),
+                "datum_registracie": frsr_dph.get("datum_registracie", ""),
+                "druh_registracie": frsr_dph.get("druh_registracie", ""),
+                "je_zruseny": frsr_dph.get("je_zruseny", False),
+                "je_vymazany": frsr_dph.get("je_vymazany", False),
+            }
+        })
+
+    if frsr_dane:
+        result["sekcie"].append({
+            "nazov": "Daňový profil (FR SR)",
+            "text": "",
+            "data": {
+                "dic": frsr_dane.get("dic", ""),
+                "je_registrovany": frsr_dane.get("je_registrovany", False),
+                "je_dlznik": frsr_dane.get("je_dlznik", False),
+                "dlh_suma": frsr_dane.get("dlh_suma"),
+            }
+        })
+
+    if frsr_spolahliv:
+        result["sekcie"].append({
+            "nazov": "Spoľahlivosť daňovníka",
+            "text": "",
+            "data": {
+                "ids_status": frsr_spolahliv.get("ids_status", ""),
+            }
+        })
+
+    if frsr_odpocty:
+        result["sekcie"].append({
+            "nazov": "DPH odpočty",
+            "text": "",
+            "data": {
+                "posledny_odpocet": frsr_odpocty.get("posledny_odpocet"),
+                "celkovy": frsr_odpocty.get("celkovy"),
+                "pocet_obdobi": frsr_odpocty.get("pocet_obdobi"),
+                "obdobia": frsr_odpocty.get("obdobia", []),
+            }
+        })
+
+    # 11. Risk flags
     flags = []
     if sb_rate > 50:
         flags.append(f"Vysoký podiel zákaziek bez súťaže: {sb_rate}% single-bidder rate")
@@ -552,6 +625,18 @@ def _profile_dodavatel(db, query, is_ico):
                 flags.append("Firma je daňovým dlžníkom (Finančná správa)")
             if dlznici.get("sp") and dlznici["sp"].get("je_dlznik"):
                 flags.append("Firma je dlžníkom Sociálnej poisťovne")
+    except:
+        pass
+    # FR SR risk flags
+    try:
+        if frsr_spolahliv.get("ids_status", "").lower().startswith("nespoľahliv"):
+            flags.append("Nespoľahlivý daňovník (FR SR)")
+        if frsr_dane.get("je_dlznik"):
+            flags.append("Daňový dlžník (FR SR)")
+        if frsr_dph.get("je_zruseny"):
+            flags.append("DPH registrácia zrušená")
+        if frsr_dph.get("je_vymazany"):
+            flags.append("DPH výmaz")
     except:
         pass
 

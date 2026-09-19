@@ -1035,8 +1035,9 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div class="main-tab" data-tab="dokumenty">🔍 Dokumenty</div>
   <div class="main-tab" data-tab="analyza">📊 Analýza</div>
   <div class="main-tab" data-tab="graf">🕸 Graf</div>
-  <div class="main-tab" data-tab="profil">🏢 Profil</div>
   <div class="main-tab" data-tab="pipeline">⚙ Pipeline</div>
+  <div class="main-tab" data-tab="tdd">📄 TDD</div>
+  <div class="main-tab" data-tab="profil">🏢 Profil</div>
   <div class="main-tab" data-tab="monitoring">👁 Monitoring</div>
 </div>
 
@@ -1174,6 +1175,67 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div id="pipe-canvas" style="display:none"><svg id="pipe-svg"></svg></div>
 
   <!-- API Test Panel moved to placeholder above -->
+</div>
+
+<!-- ═══════════════════ TDD TAB ═══════════════════ -->
+<div class="main-content-section" id="section-tdd">
+
+  <!-- Input form -->
+  <div style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px;margin-bottom:16px">
+    <div style="display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:12px">
+      <div>
+        <div style="font-size:11px;color:#868e96;margin-bottom:4px">IC DPH dodavatela</div>
+        <input type="text" id="tdd-supplier" placeholder="SK2012345678" style="padding:8px 12px;border:1px solid #ced4da;border-radius:6px;font-size:14px;width:180px;font-family:monospace">
+      </div>
+      <div>
+        <div style="font-size:11px;color:#868e96;margin-bottom:4px">IC DPH odberatela</div>
+        <input type="text" id="tdd-customer" placeholder="SK2012345678" style="padding:8px 12px;border:1px solid #ced4da;border-radius:6px;font-size:14px;width:180px;font-family:monospace">
+      </div>
+      <div>
+        <div style="font-size:11px;color:#868e96;margin-bottom:4px">Level</div>
+        <select id="tdd-level" style="padding:8px 12px;border:1px solid #ced4da;border-radius:6px;font-size:13px">
+          <option value="fast">Rychly (fast)</option>
+          <option value="full">Kompletny (full)</option>
+        </select>
+      </div>
+      <button id="tdd-enrich-btn" style="padding:8px 20px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;height:36px">Obohatit</button>
+    </div>
+
+    <div style="text-align:center;color:#868e96;font-size:12px;margin:12px 0">alebo</div>
+
+    <div>
+      <div style="font-size:11px;color:#868e96;margin-bottom:4px">TDD XML</div>
+      <textarea id="tdd-xml" rows="4" placeholder="Vlozte raw TDD XML..." style="width:100%;padding:10px;border:1px solid #ced4da;border-radius:6px;font-size:12px;font-family:monospace;resize:vertical"></textarea>
+      <button id="tdd-xml-btn" style="margin-top:8px;padding:8px 20px;background:#7048e8;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Parsovat a obohatit</button>
+    </div>
+  </div>
+
+  <!-- Results area -->
+  <div id="tdd-results" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+      <div id="tdd-supplier-card" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px">
+        <h3 style="font-size:14px;color:#868e96;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px">Dodavatel</h3>
+        <div id="tdd-supplier-data"></div>
+      </div>
+      <div id="tdd-customer-card" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px">
+        <h3 style="font-size:14px;color:#868e96;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px">Odberatel</h3>
+        <div id="tdd-customer-data"></div>
+      </div>
+    </div>
+    <div id="tdd-invoice-info" style="display:none;background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px;margin-bottom:16px">
+      <h3 style="font-size:14px;color:#868e96;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px">Faktura</h3>
+      <div id="tdd-invoice-data"></div>
+    </div>
+  </div>
+
+  <!-- Batch section -->
+  <div style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px;margin-top:16px">
+    <h3 style="font-size:14px;color:#868e96;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px">Batch obohatenie</h3>
+    <textarea id="tdd-batch-input" rows="4" placeholder="Vlozte IC DPH pary (jeden par na riadok: supplier,customer)" style="width:100%;padding:10px;border:1px solid #ced4da;border-radius:6px;font-size:12px;font-family:monospace;resize:vertical"></textarea>
+    <button id="tdd-batch-btn" style="margin-top:8px;padding:8px 20px;background:#2b8a3e;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Batch obohatit</button>
+    <div id="tdd-batch-results" style="margin-top:12px"></div>
+  </div>
+
 </div>
 
 <!-- ═══════════════════ PROFIL TAB ═══════════════════ -->
@@ -3169,6 +3231,63 @@ function renderProfil(data, container) {
       html += '</div>';
     }
 
+    if (sn === 'DPH registrácia (FR SR)' && sekcia.data) {
+      var rd = sekcia.data;
+      html += '<table class="profil-mini-table" style="font-size:13px"><tbody>';
+      if (rd.ic_dph) html += '<tr><td style="color:#868e96;width:140px">IC DPH</td><td style="font-weight:500;font-family:monospace">' + esc(rd.ic_dph) + '</td></tr>';
+      if (rd.datum_registracie) html += '<tr><td style="color:#868e96">Datum registracie</td><td style="font-weight:500">' + esc(rd.datum_registracie) + '</td></tr>';
+      if (rd.druh_registracie) html += '<tr><td style="color:#868e96">Druh registracie</td><td style="font-weight:500">' + esc(rd.druh_registracie) + '</td></tr>';
+      if (Array.isArray(rd.iban_ucty) && rd.iban_ucty.length > 0) {
+        html += '<tr><td style="color:#868e96">IBAN ucty</td><td style="font-weight:500;font-family:monospace">' + rd.iban_ucty.map(function(i) { return esc(i); }).join('<br>') + '</td></tr>';
+      }
+      html += '</tbody></table>';
+      if (rd.je_zruseny || rd.je_vymazany) {
+        var flagLabel = rd.je_vymazany ? 'DPH VYMAZANY' : 'DPH ZRUSENY';
+        html += '<div style="background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:10px;margin-top:8px;color:#991b1b;font-size:13px;font-weight:600">' + flagLabel + '</div>';
+      }
+    }
+
+    if (sn === 'Danovy profil (FR SR)' && sekcia.data) {
+      var dp = sekcia.data;
+      html += '<table class="profil-mini-table" style="font-size:13px"><tbody>';
+      if (dp.dic) html += '<tr><td style="color:#868e96;width:140px">DIC</td><td style="font-weight:500;font-family:monospace">' + esc(dp.dic) + '</td></tr>';
+      html += '<tr><td style="color:#868e96">Registrovany</td><td style="font-weight:500">' + (dp.je_registrovany ? 'ano' : 'nie') + '</td></tr>';
+      html += '<tr><td style="color:#868e96">Dlznik</td><td>' + tddDlznikBadge(dp.je_dlznik) + '</td></tr>';
+      if (dp.dlh_suma) html += '<tr><td style="color:#868e96">Suma dlhu</td><td style="font-weight:500;color:#e03131">' + profilFmtEur(dp.dlh_suma) + '</td></tr>';
+      html += '</tbody></table>';
+    }
+
+    if (sn === 'Spolahlivos\u0165 da\u0148ovn\u00edka' && sekcia.data) {
+      var sp = sekcia.data;
+      var idsVal = sp.ids_status || '';
+      var isSpolahliv = typeof idsVal === 'string' && idsVal.toLowerCase().indexOf('spolahliv') >= 0 && idsVal.toLowerCase().indexOf('nespolahliv') < 0;
+      var isNespolahliv = typeof idsVal === 'string' && idsVal.toLowerCase().indexOf('nespolahliv') >= 0;
+      var cardBg = isSpolahliv ? '#f0fdf4' : (isNespolahliv ? '#fef2f2' : '#f8f9fa');
+      var cardBorder = isSpolahliv ? '#bbf7d0' : (isNespolahliv ? '#fecaca' : '#e9ecef');
+      var cardColor = isSpolahliv ? '#166534' : (isNespolahliv ? '#991b1b' : '#495057');
+      html += '<div style="background:' + cardBg + ';border:1px solid ' + cardBorder + ';border-radius:8px;padding:20px;text-align:center;margin-top:8px">';
+      html += '<div style="font-size:24px;font-weight:700;color:' + cardColor + '">' + esc(idsVal || 'neznamy') + '</div>';
+      html += '</div>';
+    }
+
+    if (sn === 'DPH odpocty' && sekcia.data) {
+      var od = sekcia.data;
+      // Summary cards
+      html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;margin-bottom:12px">';
+      if (od.posledny_odpocet != null) html += '<div class="card" style="padding:12px;min-width:140px"><div class="label">Posledny odpocet</div><div class="value" style="font-size:18px">' + profilFmtEurShort(od.posledny_odpocet) + '</div></div>';
+      if (od.celkovy != null) html += '<div class="card" style="padding:12px;min-width:140px"><div class="label">Celkovy</div><div class="value" style="font-size:18px">' + profilFmtEurShort(od.celkovy) + '</div></div>';
+      if (od.pocet_obdobi != null) html += '<div class="card" style="padding:12px;min-width:140px"><div class="label">Pocet obdobi</div><div class="value" style="font-size:18px">' + od.pocet_obdobi + '</div></div>';
+      html += '</div>';
+      // Trend table
+      if (Array.isArray(od.obdobia) && od.obdobia.length > 0) {
+        html += '<table class="profil-mini-table"><thead><tr><th>Obdobie</th><th class="val-col">Odpocet</th></tr></thead><tbody>';
+        od.obdobia.forEach(function(o) {
+          html += '<tr><td>' + esc(o.obdobie || '') + '</td><td class="val-col">' + profilFmtEur(o.suma) + '</td></tr>';
+        });
+        html += '</tbody></table>';
+      }
+    }
+
     if (sn === 'Rizikové indikátory') {
       if (Array.isArray(sekcia.data) && sekcia.data.length > 0) {
         html += '<ul class="profil-flags">';
@@ -3185,6 +3304,150 @@ function renderProfil(data, container) {
   html += '</div>'; // end profil-report
   container.innerHTML = html;
 }
+
+// ══════════════════════════════════════════════════════════════
+// TDD TAB
+// ══════════════════════════════════════════════════════════════
+
+function tddSpolahlBadge(val) {
+  if (!val) return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#f1f3f5;color:#868e96">neznamy</span>';
+  if (val === 'spolahliv' || val === 'spolahliva' || (typeof val === 'string' && val.toLowerCase().indexOf('spolahliv') >= 0 && val.toLowerCase().indexOf('nespolahliv') < 0))
+    return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#ebfbee;color:#2b8a3e">spolahliv\u00fd</span>';
+  if (typeof val === 'string' && val.toLowerCase().indexOf('nespolahliv') >= 0)
+    return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#fff5f5;color:#e03131">nespolahliv\u00fd</span>';
+  return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#f1f3f5;color:#868e96">' + esc(String(val)) + '</span>';
+}
+
+function tddDlznikBadge(val) {
+  if (val === true) return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#fff5f5;color:#e03131">DL\u017dN\u00cdK</span>';
+  if (val === false) return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#ebfbee;color:#2b8a3e">BEZ DLHOV</span>';
+  return '<span style="display:inline-block;padding:2px 10px;border-radius:10px;font-size:11px;font-weight:600;background:#f1f3f5;color:#868e96">?</span>';
+}
+
+function renderTddParty(party, el) {
+  if (!party) { el.innerHTML = '<div style="color:#868e96;font-size:13px">Ziadne data</div>'; return; }
+  var html = '<table style="width:100%;font-size:13px;border-collapse:collapse">';
+  if (party.ic_dph) html += '<tr><td style="color:#868e96;padding:3px 0;width:120px">IC DPH</td><td style="font-weight:500;font-family:monospace">' + esc(party.ic_dph) + '</td></tr>';
+  if (party.ico) html += '<tr><td style="color:#868e96;padding:3px 0">ICO</td><td style="font-weight:500;font-family:monospace">' + esc(party.ico) + '</td></tr>';
+  if (party.nazov) html += '<tr><td style="color:#868e96;padding:3px 0">Nazov</td><td style="font-weight:500">' + esc(party.nazov) + '</td></tr>';
+  if (party.dic) html += '<tr><td style="color:#868e96;padding:3px 0">DIC</td><td style="font-weight:500">' + esc(party.dic) + '</td></tr>';
+  html += '<tr><td style="color:#868e96;padding:3px 0">Spolahliv.</td><td>' + tddSpolahlBadge(party.spolahliv || party.ids_status) + '</td></tr>';
+  html += '<tr><td style="color:#868e96;padding:3px 0">Dlznik FS</td><td>' + tddDlznikBadge(party.je_dlznik) + '</td></tr>';
+  if (party.je_dlznik_sp !== undefined) html += '<tr><td style="color:#868e96;padding:3px 0">Dlznik SP</td><td>' + tddDlznikBadge(party.je_dlznik_sp) + '</td></tr>';
+  // Full level fields
+  if (party.trzby != null) html += '<tr><td style="color:#868e96;padding:3px 0">Trzby</td><td style="font-weight:500">' + profilFmtEurShort(party.trzby) + '</td></tr>';
+  if (party.zisk != null) html += '<tr><td style="color:#868e96;padding:3px 0">Zisk</td><td style="font-weight:500">' + profilFmtEurShort(party.zisk) + '</td></tr>';
+  if (party.pravna_forma) html += '<tr><td style="color:#868e96;padding:3px 0">Pravna forma</td><td style="font-weight:500">' + esc(party.pravna_forma) + '</td></tr>';
+  if (party.status) html += '<tr><td style="color:#868e96;padding:3px 0">Status</td><td style="font-weight:500">' + esc(party.status) + '</td></tr>';
+  html += '</table>';
+  el.innerHTML = html;
+}
+
+function renderTddInvoice(inv, el) {
+  if (!inv || (!inv.uuid && !inv.issue_date && !inv.payable_amount)) {
+    el.style.display = 'none';
+    return;
+  }
+  el.style.display = 'block';
+  var html = '<table style="width:100%;font-size:13px;border-collapse:collapse">';
+  if (inv.uuid) html += '<tr><td style="color:#868e96;padding:3px 0;width:120px">UUID</td><td style="font-weight:500;font-family:monospace">' + esc(inv.uuid) + '</td></tr>';
+  if (inv.issue_date) html += '<tr><td style="color:#868e96;padding:3px 0">Datum</td><td style="font-weight:500">' + esc(inv.issue_date) + '</td></tr>';
+  if (inv.payable_amount != null) html += '<tr><td style="color:#868e96;padding:3px 0">Suma</td><td style="font-weight:500">' + profilFmtEur(inv.payable_amount) + ' ' + esc(inv.currency || 'EUR') + '</td></tr>';
+  html += '</table>';
+  document.getElementById('tdd-invoice-data').innerHTML = html;
+}
+
+document.getElementById('tdd-enrich-btn').addEventListener('click', function() {
+  var supplier = document.getElementById('tdd-supplier').value.trim();
+  var customer = document.getElementById('tdd-customer').value.trim();
+  var level = document.getElementById('tdd-level').value;
+  if (!supplier && !customer) return;
+  document.getElementById('tdd-results').style.display = 'block';
+  document.getElementById('tdd-supplier-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
+  document.getElementById('tdd-customer-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
+  document.getElementById('tdd-invoice-info').style.display = 'none';
+  fetch('/api/v1/enrich-tdd?level=' + level, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ic_dph_supplier: supplier, ic_dph_customer: customer})
+  }).then(function(r) { return r.json(); }).then(function(data) {
+    if (data.error) {
+      document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(data.error) + '</div>';
+      return;
+    }
+    renderTddParty(data.supplier, document.getElementById('tdd-supplier-data'));
+    renderTddParty(data.customer, document.getElementById('tdd-customer-data'));
+  }).catch(function(err) {
+    document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+  });
+});
+
+document.getElementById('tdd-xml-btn').addEventListener('click', function() {
+  var xml = document.getElementById('tdd-xml').value.trim();
+  if (!xml) return;
+  var level = document.getElementById('tdd-level').value;
+  document.getElementById('tdd-results').style.display = 'block';
+  document.getElementById('tdd-supplier-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
+  document.getElementById('tdd-customer-data').innerHTML = '<div style="color:#868e96">Nacitavam...</div>';
+  fetch('/api/v1/enrich-tdd?level=' + level, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/xml'},
+    body: xml
+  }).then(function(r) { return r.json(); }).then(function(data) {
+    if (data.error) {
+      document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(data.error) + '</div>';
+      return;
+    }
+    renderTddParty(data.supplier, document.getElementById('tdd-supplier-data'));
+    renderTddParty(data.customer, document.getElementById('tdd-customer-data'));
+    renderTddInvoice(data.invoice, document.getElementById('tdd-invoice-info'));
+  }).catch(function(err) {
+    document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+  });
+});
+
+document.getElementById('tdd-batch-btn').addEventListener('click', function() {
+  var raw = document.getElementById('tdd-batch-input').value.trim();
+  if (!raw) return;
+  var lines = raw.split('\n').filter(function(l) { return l.trim(); });
+  var pairs = lines.map(function(l) {
+    var parts = l.split(',');
+    return {supplier: (parts[0] || '').trim(), customer: (parts[1] || '').trim()};
+  });
+  var level = document.getElementById('tdd-level').value;
+  var el = document.getElementById('tdd-batch-results');
+  el.innerHTML = '<div style="color:#868e96">Nacitavam ' + pairs.length + ' parov...</div>';
+  fetch('/api/v1/enrich-tdd/batch?level=' + level, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({pairs: pairs})
+  }).then(function(r) { return r.json(); }).then(function(data) {
+    if (data.error) { el.innerHTML = '<div class="error">' + esc(data.error) + '</div>'; return; }
+    var results = data.results || [];
+    var html = '<table class="profil-mini-table" style="font-size:12px"><thead><tr>';
+    html += '<th>Dodavatel IC DPH</th><th>Dodavatel</th><th>Spolahliv.</th><th>Dlznik</th>';
+    html += '<th>Odberatel IC DPH</th><th>Odberatel</th><th>Spolahliv.</th><th>Dlznik</th>';
+    html += '</tr></thead><tbody>';
+    results.forEach(function(r) {
+      var s = r.supplier || {};
+      var c = r.customer || {};
+      html += '<tr>';
+      html += '<td style="font-family:monospace">' + esc(s.ic_dph || '') + '</td>';
+      html += '<td>' + esc(s.nazov || '') + '</td>';
+      html += '<td>' + tddSpolahlBadge(s.spolahliv || s.ids_status) + '</td>';
+      html += '<td>' + tddDlznikBadge(s.je_dlznik) + '</td>';
+      html += '<td style="font-family:monospace">' + esc(c.ic_dph || '') + '</td>';
+      html += '<td>' + esc(c.nazov || '') + '</td>';
+      html += '<td>' + tddSpolahlBadge(c.spolahliv || c.ids_status) + '</td>';
+      html += '<td>' + tddDlznikBadge(c.je_dlznik) + '</td>';
+      html += '</tr>';
+    });
+    html += '</tbody></table>';
+    el.innerHTML = html;
+  }).catch(function(err) {
+    el.innerHTML = '<div class="error">' + esc(err.message) + '</div>';
+  });
+});
 
 // ══════════════════════════════════════════════════════════════
 // MONITORING TAB
