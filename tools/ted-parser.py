@@ -297,8 +297,9 @@ def extract_subject(root) -> dict:
         'max_casti_zadanie': None,
     }
 
-    # Count lots
-    lot_count = len(root.findall('.//cac:ProcurementProjectLot', NS))
+    # Count real lots (exclude summary elements like LOT-0000 with empty name)
+    all_lots = root.findall('.//cac:ProcurementProjectLot', NS)
+    lot_count = sum(1 for el in all_lots if is_real_lot(el))
     if lot_count > 0:
         subject['pocet_casti'] = lot_count
 
@@ -342,9 +343,28 @@ def extract_subject(root) -> dict:
 # XML Parsing — Lots
 # ═══════════════════════════════════════════════════════
 
+def is_real_lot(lot_el) -> bool:
+    """Return True if this ProcurementProjectLot is a real lot (not a summary element).
+
+    TED eForms sometimes includes a summary lot with ID 'LOT-0000' and an empty
+    name at the start of the lot list.  This element should be excluded from
+    the casti array and from pocet_casti counts.
+    """
+    lot_id = text_first(lot_el, 'cbc:ID')
+    if lot_id == 'LOT-0000':
+        return False
+    pp = lot_el.find('cac:ProcurementProject', NS)
+    if pp is not None:
+        lot_name = text(pp, 'cbc:Name')
+        if not lot_name:
+            return False
+    return True
+
+
 def extract_lots(root) -> list[dict]:
-    """Extract lot information. Returns empty list if only 1 lot."""
-    lot_els = root.findall('.//cac:ProcurementProjectLot', NS)
+    """Extract lot information. Returns empty list if only 1 real lot."""
+    all_lot_els = root.findall('.//cac:ProcurementProjectLot', NS)
+    lot_els = [el for el in all_lot_els if is_real_lot(el)]
     if len(lot_els) <= 1:
         return []
 

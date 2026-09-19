@@ -533,23 +533,30 @@ def extract_vysledok(containers: list[list[str]], orgs: dict) -> dict:
             # Remove trailing "(uchádzač N)" suffix
             name = re.sub(r'\s*\(uchádzač\s*\d+\)\s*$', '', name)
             current_tender['nazov'] = name
-            # Look up IČO: try ORG-XXXX first, then name index, then fuzzy
+            # Look up IČO: try ORG-XXXX (with name verification), then exact name index
             org_key = f"ORG-{m.group(1)}"
             if org_key in orgs and isinstance(orgs[org_key], dict) and orgs[org_key].get('ico') and orgs[org_key]['ico'] != '31797903':
-                current_tender['ico'] = orgs[org_key]['ico']
-                # Also get velkost_podniku from org registry
-                current_tender['velkost_podniku'] = orgs[org_key].get('velkost_podniku', '')
+                # Verify the org name matches the winner name before using its IČO
+                # ORG-XXXX numbering can be implicit and map to the wrong organization
+                org_name_in_registry = orgs[org_key].get('name', '')
+                if org_name_in_registry == name:
+                    current_tender['ico'] = orgs[org_key]['ico']
+                    current_tender['velkost_podniku'] = orgs[org_key].get('velkost_podniku', '')
+                else:
+                    # Names don't match — fall back to exact name lookup
+                    name_idx = orgs.get('_name_to_ico', {})
+                    if name in name_idx:
+                        current_tender['ico'] = name_idx[name]
+                    # Try to find velkost_podniku by exact name match
+                    for o in orgs.values():
+                        if isinstance(o, dict) and o.get('name') == name and o.get('velkost_podniku'):
+                            current_tender['velkost_podniku'] = o['velkost_podniku']
+                            break
             else:
                 name_idx = orgs.get('_name_to_ico', {})
                 if name in name_idx:
                     current_tender['ico'] = name_idx[name]
-                else:
-                    # Fuzzy: check if name contains or is contained in org name
-                    for org_name, ico in name_idx.items():
-                        if name in org_name or org_name in name:
-                            current_tender['ico'] = ico
-                            break
-                # Try to find velkost_podniku by name match
+                # Try to find velkost_podniku by exact name match
                 for o in orgs.values():
                     if isinstance(o, dict) and o.get('name') == name and o.get('velkost_podniku'):
                         current_tender['velkost_podniku'] = o['velkost_podniku']
@@ -790,15 +797,10 @@ def extract_zmena_zmluvy(containers: list[list[str]], orgs: dict) -> dict:
             if m and not result['dodavatel']['nazov']:
                 name = re.sub(r'\s*\(.*$', '', m.group(1)).strip()
                 result['dodavatel']['nazov'] = name
-                # Lookup IČO
+                # Lookup IČO — exact name match only
                 name_idx = orgs.get('_name_to_ico', {})
                 if name in name_idx:
                     result['dodavatel']['ico'] = name_idx[name]
-                else:
-                    for org_name, ico in name_idx.items():
-                        if name in org_name or org_name in name:
-                            result['dodavatel']['ico'] = ico
-                            break
 
             # Value after change
             m = re.match(r'Hodnota ponuky.*?\(hodnota\):\s*([\d\s,.]+)', item)

@@ -657,8 +657,9 @@ class TestExtractVysledok:
         assert result["ucastnici"][0]["cena"] == 200.0
         assert result["ucastnici"][0]["je_vitaz"] is True
 
-    def test_fuzzy_ico_lookup(self):
-        """When exact name match fails, fuzzy substring match should work."""
+    def test_no_fuzzy_ico_lookup(self):
+        """Fuzzy substring matching was removed to prevent IČO confusion.
+        Only exact name matches should assign IČO."""
         items5 = [
             "Identifikátor ponuky: TEN-0001",
             "ID uchádzača: TPA-0005 (Firma XY)",
@@ -666,10 +667,47 @@ class TestExtractVysledok:
             "Poradie ponuky: 1",
         ]
         containers = [[], [], [], [], [], items5]
-        # Name in index is longer but contains "Firma XY"
+        # Name in index is longer — should NOT match via fuzzy substring
         orgs = {"_name_to_ico": {"Firma XY Bratislava": "77777777"}}
         result = extract_vysledok(containers, orgs)
+        assert result["ucastnici"][0]["ico"] == ""
+
+    def test_exact_name_ico_lookup(self):
+        """Exact name match in _name_to_ico should still work."""
+        items5 = [
+            "Identifikátor ponuky: TEN-0001",
+            "ID uchádzača: TPA-0005 (Firma XY)",
+            "Hodnota ponuky (BT-720-Tender) (hodnota): 500",
+            "Poradie ponuky: 1",
+        ]
+        containers = [[], [], [], [], [], items5]
+        orgs = {"_name_to_ico": {"Firma XY": "77777777"}}
+        result = extract_vysledok(containers, orgs)
         assert result["ucastnici"][0]["ico"] == "77777777"
+
+    def test_org_id_name_mismatch_falls_back_to_name_index(self):
+        """When ORG-XXXX exists but name doesn't match the winner,
+        should fall back to name index instead of using wrong IČO."""
+        items5 = [
+            "Identifikátor ponuky: TEN-0001",
+            "ID uchádzača: ORG-0003 (BAX PHARMA s.r.o.)",
+            "Hodnota ponuky (BT-720-Tender) (hodnota): 500",
+            "Poradie ponuky: 1",
+        ]
+        containers = [[], [], [], [], [], items5]
+        # ORG-0003 is actually the buyer (hospital), not the winner
+        orgs = {
+            "ORG-0003": {"name": "Fakultná nemocnica Banská Bystrica", "ico": "00165549",
+                         "email": "", "city": "Banská Bystrica"},
+            "_name_to_ico": {
+                "Fakultná nemocnica Banská Bystrica": "00165549",
+                "BAX PHARMA s.r.o.": "44444444",
+            },
+        }
+        result = extract_vysledok(containers, orgs)
+        # Should NOT assign hospital's IČO to the pharma winner
+        assert result["ucastnici"][0]["nazov"] == "BAX PHARMA s.r.o."
+        assert result["ucastnici"][0]["ico"] == "44444444"
 
 
 # ═══════════════════════════════════════════════════════
