@@ -2567,19 +2567,64 @@ function renderProfil(data, container) {
 
     if (sn === 'Registre SR' && sekcia.data) {
       const d = sekcia.data;
-      html += '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px">';
+      // Two-column card layout
+      html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px">`;
+
+      // Left: Company identity
+      html += `<div style="background:#f8f9fa;border-radius:8px;padding:16px">`;
+      html += `<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">`;
       if (d.status) {
         const sc = d.status === 'aktívna' ? '#2b8a3e' : '#e03131';
-        html += `<div class="card" style="padding:10px;min-width:100px"><div class="label">Status</div><div class="value" style="font-size:14px;color:${sc}">${esc(d.status)}</div></div>`;
+        const bg = d.status === 'aktívna' ? '#ebfbee' : '#fff5f5';
+        html += `<span style="display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;background:${bg};color:${sc}">${esc(d.status)}</span>`;
       }
-      if (d.pravna_forma) html += `<div class="card" style="padding:10px;min-width:100px"><div class="label">Právna forma</div><div class="value" style="font-size:14px">${esc(d.pravna_forma)}</div></div>`;
-      if (d.velkost) html += `<div class="card" style="padding:10px;min-width:100px"><div class="label">Veľkosť</div><div class="value" style="font-size:14px">${esc(d.velkost)}</div></div>`;
-      if (d.trzby != null) html += `<div class="card" style="padding:10px;min-width:120px"><div class="label">Tržby ${d.rok||''}</div><div class="value" style="font-size:14px">${profilFmtEurShort(d.trzby)}</div></div>`;
-      if (d.zisk != null) {
-        const zc = d.zisk >= 0 ? '#2b8a3e' : '#e03131';
-        html += `<div class="card" style="padding:10px;min-width:120px"><div class="label">Zisk ${d.rok||''}</div><div class="value" style="font-size:14px;color:${zc}">${profilFmtEurShort(d.zisk)}</div></div>`;
+      if (d.pravna_forma) html += `<span style="font-size:13px;color:#495057">${esc(d.pravna_forma)}</span>`;
+      html += `</div>`;
+      html += `<table style="width:100%;font-size:13px;border-collapse:collapse">`;
+      if (d.datum_vzniku) html += `<tr><td style="color:#868e96;padding:3px 0;width:100px">Vznik</td><td style="font-weight:500">${esc(d.datum_vzniku)}</td></tr>`;
+      if (d.mesto) html += `<tr><td style="color:#868e96;padding:3px 0">Sidlo</td><td style="font-weight:500">${esc(d.mesto)}</td></tr>`;
+      if (d.nace) html += `<tr><td style="color:#868e96;padding:3px 0">NACE</td><td style="font-weight:500">${esc(d.nace)}</td></tr>`;
+      if (d.velkost) html += `<tr><td style="color:#868e96;padding:3px 0">Zamestnanci</td><td style="font-weight:500">${esc(d.velkost)}</td></tr>`;
+      if (d.dic) html += `<tr><td style="color:#868e96;padding:3px 0">DIC</td><td style="font-weight:500">${esc(d.dic)}</td></tr>`;
+      html += `</table></div>`;
+
+      // Right: Financials
+      html += `<div style="background:#f8f9fa;border-radius:8px;padding:16px">`;
+      if (d.trzby != null || d.zisk != null) {
+        html += `<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:12px">Financie ${d.rok || ''}</div>`;
+        if (d.trzby != null) {
+          html += `<div style="margin-bottom:12px">`;
+          html += `<div style="font-size:12px;color:#868e96">Trzby</div>`;
+          html += `<div style="font-size:22px;font-weight:700;color:#1a1a1a">${profilFmtEurShort(d.trzby)}</div>`;
+          if (d.trzby_predosle != null) {
+            const diff = d.trzby - d.trzby_predosle;
+            const pct = d.trzby_predosle > 0 ? ((diff / d.trzby_predosle) * 100).toFixed(1) : '?';
+            const arrow = diff >= 0 ? '▲' : '▼';
+            const clr = diff >= 0 ? '#2b8a3e' : '#e03131';
+            html += `<div style="font-size:12px;color:${clr}">${arrow} ${pct}% vs predch. rok (${profilFmtEurShort(d.trzby_predosle)})</div>`;
+          }
+          html += `</div>`;
+        }
+        if (d.zisk != null) {
+          const zc = d.zisk >= 0 ? '#2b8a3e' : '#e03131';
+          html += `<div>`;
+          html += `<div style="font-size:12px;color:#868e96">Zisk / Strata</div>`;
+          html += `<div style="font-size:22px;font-weight:700;color:${zc}">${profilFmtEurShort(d.zisk)}</div>`;
+          if (d.zisk_predosle != null) {
+            const diff2 = d.zisk - d.zisk_predosle;
+            const arrow2 = diff2 >= 0 ? '▲' : '▼';
+            const clr2 = diff2 >= 0 ? '#2b8a3e' : '#e03131';
+            html += `<div style="font-size:12px;color:${clr2}">${arrow2} vs predch. rok (${profilFmtEurShort(d.zisk_predosle)})</div>`;
+          }
+          html += `</div>`;
+        }
+      } else {
+        html += `<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:12px">Financie</div>`;
+        html += `<div style="color:#ced4da;font-size:13px">Strukturovane financne data nie su dostupne v RUZ (firma podava len PDF zavierky).</div>`;
       }
-      html += '</div>';
+      html += `</div>`;
+
+      html += `</div>`; // end grid
     }
 
     if (sn === 'Zákazky vs obrat' && Array.isArray(sekcia.data) && sekcia.data.length > 0) {
