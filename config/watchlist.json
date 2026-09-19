@@ -1,33 +1,11 @@
 {
   "pravidla": [
     {
-      "nazov": "Ministerstvo vnútra",
+      "nazov": "Ministerstvo zdravotnictva",
       "typ": "ico_obstaravatela",
-      "hodnoty": ["00151866"],
-      "notifikacia": true
-    },
-    {
-      "nazov": "Národná diaľničná spoločnosť",
-      "typ": "ico_obstaravatela",
-      "hodnoty": ["35919001"],
-      "notifikacia": true
-    },
-    {
-      "nazov": "LESY SR",
-      "typ": "ico_obstaravatela",
-      "hodnoty": ["36038351"],
-      "notifikacia": true
-    },
-    {
-      "nazov": "IT služby a konzultácie",
-      "typ": "cpv",
-      "hodnoty": ["72000000", "72200000", "72210000", "72220000", "72230000", "72240000", "72250000", "72260000", "72300000", "72400000"],
-      "notifikacia": true
-    },
-    {
-      "nazov": "Stavebné práce",
-      "typ": "cpv",
-      "hodnoty": ["45000000", "45100000", "45200000", "45300000", "45400000"],
+      "hodnoty": [
+        "00165565"
+      ],
       "notifikacia": true
     }
   ],

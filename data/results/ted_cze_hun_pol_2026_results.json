@@ -1,0 +1,217 @@
+[
+  {
+    "num": "4-2026",
+    "code": "cn-standard",
+    "type": "ContractNotice",
+    "action": "vyhlasenie",
+    "url": "https://ted.europa.eu/en/notice/4-2026/xml",
+    "id": "4-2026",
+    "vestnik": "TED",
+    "extraction": {
+      "metadata": {
+        "zdroj": "TED",
+        "publication_number": "4-2026",
+        "notice_type": "cn-standard",
+        "publication_date": "2026-01-02+01:00",
+        "sdk_version": "eforms-sdk-1.13",
+        "language": "POL"
+      },
+      "obstaravatel": {
+        "nazov": "Narodowy Instytut Onkologii im. Marii Skłodowskiej-Curie - Państwowy Instytut Badawczy",
+        "ico": "NIP: 525-000-80-57",
+        "email": "joanna.stradomska@nio.gov.pl",
+        "adresa": "ul. W. K. Roentgena 5",
+        "psc": "02-781",
+        "mesto": "Warszawa",
+        "telefon": "+48 22 57 09 474",
+        "typ_kupujuceho": "body-pl",
+        "cinnost": "health",
+        "profil_url": ""
+      },
+      "zakazka": {
+        "predmet": "Dostawa wyrobów medycznych i niemedycznych",
+        "cpv_kod": "33190000",
+        "druh": "supplies",
+        "opis": "Dostawa wyrobów medycznych i niemedycznych. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ.",
+        "nuts": "PL911",
+        "miesto_plnenia": "POL",
+        "druh_postupu": "open",
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 9,
+        "max_casti_ponuka": 9,
+        "max_casti_zadanie": 9
+      },
+      "casti": [
+        {
+          "cislo": 1,
+          "lot_id": "LOT-0001",
+          "nazov": "Część 1",
+          "opis": "Osłonki pomiarowe do termometrów Braun Pro Scan. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 2,
+          "lot_id": "LOT-0002",
+          "nazov": "Część 2",
+          "opis": "Aspirator ssący do biopsji endometrium. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 3,
+          "lot_id": "LOT-0003",
+          "nazov": "Część 3",
+          "opis": "Cewnik – kaniula typu Floswitch. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 4,
+          "lot_id": "LOT-0004",
+          "nazov": "Część 4",
+          "opis": "Strzykawki napełnione NaCl. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33141310",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 5,
+          "lot_id": "LOT-0005",
+          "nazov": "Część 5",
+          "opis": "System połączeniowy do cytostatyków. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33141624",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 6,
+          "lot_id": "LOT-0006",
+          "nazov": "Część 6",
+          "opis": "Papiery rejestracyjne do aparatów medycznych. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 7,
+          "lot_id": "LOT-0007",
+          "nazov": "Część 7",
+          "opis": "Narzędzia chirurgiczne. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 8,
+          "lot_id": "LOT-0008",
+          "nazov": "Część 8",
+          "opis": "Akcesoria do respiratora Airvo 2. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        },
+        {
+          "cislo": 9,
+          "lot_id": "LOT-0009",
+          "nazov": "Część 9",
+          "opis": "Filtr wdechowy do respiratora GE Carescape R860. Szczegółowy opis przedmiotu zamówienia zawiera Załącznik nr 2 do SWZ",
+          "cpv_kod": "33190000",
+          "hodnota": null,
+          "mena": "EUR"
+        }
+      ],
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "13.01.2026",
+        "lehota_cas": "09:00:00+01:00",
+        "eu_fond": "Nie",
+        "ramcova_dohoda": false,
+        "kriterium": "",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": 36,
+        "trvanie_dni": null,
+        "druh_postupu": "open"
+      }
+    },
+    "time_ms": 5.0
+  },
+  {
+    "num": "7-2026",
+    "code": "can-standard",
+    "type": "ContractAwardNotice",
+    "action": "vysledok",
+    "url": "https://ted.europa.eu/en/notice/7-2026/xml",
+    "id": "7-2026",
+    "vestnik": "TED",
+    "extraction": {
+      "metadata": {
+        "zdroj": "TED",
+        "publication_number": "7-2026",
+        "notice_type": "can-standard",
+        "publication_date": "2026-01-02+01:00",
+        "sdk_version": "eforms-sdk-1.13",
+        "language": "POL"
+      },
+      "obstaravatel": {
+        "nazov": "10 Wojskowy Szpital Kliniczny z Polikliniką Samodzielny Publiczny Zakład Opieki Zdrowotnej",
+        "ico": "090538318",
+        "email": "choroszynska3292@10wsk.mil.pl",
+        "adresa": "Powstańców Warszawy 5",
+        "psc": "85-681",
+        "mesto": "Bydgoszcz",
+        "telefon": "+48 261 417 449",
+        "typ_kupujuceho": "body-pl",
+        "cinnost": "health",
+        "profil_url": ""
+      },
+      "zakazka": {
+        "predmet": "Zakup subskrypcji - licencji i usługi serwisowej w związku z nadzorem autorskim umożliwiającej bieżącą eksploatację oprogramowania KS-ZZL firmy Kamsoft",
+        "cpv_kod": "72000000",
+        "druh": "services",
+        "opis": "Zakup subskrypcji - licencji i usługi serwisowej w związku z nadzorem autorskim umożliwiającej bieżącą eksploatację oprogramowania KS-ZZL firmy Kamsoft",
+        "nuts": "PL613",
+        "miesto_plnenia": "POL",
+        "druh_postupu": "oth-single",
+        "pravny_zaklad": "32014L0024",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 363622.0,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [
+          {
+            "nazov": "KAMSOFT S.A.",
+            "ico": "9542685559",
+            "cena": 330222.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "",
+            "subdodavatelia": "",
+            "lot_id": "LOT-0001"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "140-1/P/2025/TU",
+            "datum": "18.12.2025",
+            "nazov": "",
+            "url": ""
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 1.4
+  }
+]

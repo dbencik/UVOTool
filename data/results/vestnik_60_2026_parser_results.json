@@ -1,0 +1,4616 @@
+[
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1387948",
+    "id": "1387948",
+    "vestnik": "VVO 60/2026",
+    "result": "fetch_error"
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1387981",
+    "id": "1387981",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "551571",
+        "id_organizacie": "38599",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Stredoslovenská vodárenská spoločnosť, a.s.",
+        "ico": "36056006",
+        "email": "danis.ivan@stvs.sk",
+        "adresa": "Partizánska cesta 5",
+        "psc": "97401",
+        "mesto": "Banská Bystrica",
+        "telefon": "+421484327243",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8299"
+      },
+      "zakazka": {
+        "predmet": "Inovácia a modernizácia ÚV Hriňová",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je vypracovanie realizačnej projektovej dokumentácie a zhotovenie diela: „Inovácia a modernizácia ÚV Hriňová“; vrátane prevádzkového a manipulačného poriadku, archeologického prieskumu, geodetického zamerania, projektu organizácie výstavby, dokumentácie skutkového vyhotovenia a plánu užívania verejnej práce.",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 34300303.69,
+        "mena": "EUR",
+        "lehota_datum": "30.04.2026",
+        "lehota_cas": "11:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 48,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.3
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1388624",
+    "id": "1388624",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "544703",
+        "id_organizacie": "12340",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Západoslovenská distribučná, a.s.",
+        "ico": "36361518",
+        "email": "",
+        "adresa": "Čulenova 6",
+        "psc": "81647",
+        "mesto": "Bratislava",
+        "telefon": "+421917771848",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/15676"
+      },
+      "zakazka": {
+        "predmet": "Poskytovanie služieb ofenzívnej bezpečnosti - spoločné obstarávanie",
+        "cpv_kod": "Služby na vývoj softvéru na zaistenie bezpečnosti",
+        "druh": "Služby",
+        "opis": "Predmetom je poskytovanie služieb ktorých cieľom je proaktívny prístup k zabezpečeniu sietí a systémov pred útokmi aktívnym vyhľadávaním zraniteľností a slabín. Služby ofenzívnej bezpečnosti zahŕňajú simuláciu reálnych útokov a pokusy o prienik do systémov, sietí aplikácií s cieľom identifikovať bezpečnostné chyby.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [
+          {
+            "nazov": "Uchádzač 1 §55",
+            "ico": "§55",
+            "cena": null,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "Uchádzač 2 §55",
+            "ico": "§55",
+            "cena": null,
+            "poradie": 2,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "Uchádzač 3 §55",
+            "ico": "36361518",
+            "cena": null,
+            "poradie": 3,
+            "je_vitaz": false,
+            "velkost_podniku": "",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "104/2026; 105/2026; 106/2026; 108/2026; 109/2026; 110/2026",
+            "datum": "01.03.2026",
+            "nazov": "Rámcová dohoda 104/2026; 105/2026; 106/2026; 108/2026; 109/2026; 110/2026",
+            "url": "https://www.abcd.ef"
+          }
+        ],
+        "elektronicke_ponuky": null,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 1.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1390696",
+    "id": "1390696",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552617",
+        "id_organizacie": "8495",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Banskobystrický samosprávny kraj",
+        "ico": "37828100",
+        "email": "lubica.zolczerova@zdielanesluzby.sk",
+        "adresa": "Námestie SNP 23",
+        "psc": "97401",
+        "mesto": "Banská Bystrica",
+        "telefon": "+421948134142",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3406"
+      },
+      "zakazka": {
+        "predmet": "Zabezpečenie inovačného vzdelávania pre odborných pedagogických zamestnancov SZŠ Zvolen",
+        "cpv_kod": "Vzdelávanie dospelých a iné vzdelávacie služby",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je poskytnutie služieb inovačného vzdelávania pre odborných pedagogických zamestnancov v rámci realizácie projektu s názvom: SZŠ Zvolen - modernizácia infraštruktúry a podpora vzdelávania, odbornej prípravy a zručností. Podrobný opis predmetu zákazky je bližšie špecifikovaný v Prílohe č.2a – 2b Výzvy (Technická špecifikácia a cenová kalkulácia/NPK pre PZ1, PZ2) a v Prílohe č.1a – 1b Výzvy (Zmluva o poskytovaní služieb pre PZ1, PZ2). Predmet zákazky je rozdelený na 2 samostatné ",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 3493.0,
+        "mena": "EUR",
+        "lehota_datum": "10.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1391515",
+    "id": "1391515",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552939",
+        "id_organizacie": "92052",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Národná diaľničná spoločnosť, a.s.",
+        "ico": "35919001",
+        "email": "jana.jantosova@ndsas.sk",
+        "adresa": "Dúbravská cesta 14",
+        "psc": "84104",
+        "mesto": "Bratislava",
+        "telefon": "0258311523",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9127"
+      },
+      "zakazka": {
+        "predmet": "Vypracovanie štúdie uskutočniteľnosti R3 Martin – Mošovce",
+        "cpv_kod": "Štúdia realizovateľnosti, poradenská služba, analýza",
+        "druh": "Služby",
+        "opis": "Cieľom štúdie uskutočniteľnosti je nájsť a odporučiť technicko, ekonomicko a enviromentálne efektívny variant (s dôrazom na prepojenie s pripravovanou stavbou východného mestského okruhu mesta Martin), ktorý bude slúžiť pre ďalší proces prípravy (proces EIA). Podrobné vymedzenie predmetu zákazky tvorí časť B.1 Opis predmetu zákazky súťažných podkladov.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 357565.38,
+        "mena": "EUR",
+        "lehota_datum": "13.05.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 240
+      }
+    },
+    "time_ms": 4.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1392853",
+    "id": "1392853",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553542",
+        "id_organizacie": "8751",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Slovenské elektrárne, a.s.",
+        "ico": "35829052",
+        "email": "adriana.oltmanova@seas.sk",
+        "adresa": "Pribinova 40",
+        "psc": "811 09",
+        "mesto": "Bratislava - mestská časť Ružinov",
+        "telefon": "+421910674685",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8243"
+      },
+      "zakazka": {
+        "predmet": "Realizácia prác pre 63 MVA transformátor pre JE - EBO",
+        "cpv_kod": "Transformátory",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je realizácia prác súvisiacich s demontážou, montážou a pripojením olejového transformátora AU02 a jeho pomocných zariadení, vypracovanie projektovej dokumentácie pre pripojenie transformátora do obvodov činnosti. Podrobné vymedzenie predmetu zákazky vrátane technickej špecifikácie tvorí prílohu súťažných podkladov.",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Rokovacie konanie so zverejnením výzvy na súťaž/súťažné obstarávanie s rokovacím konaním",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 1076727.0,
+        "mena": "EUR",
+        "lehota_datum": "",
+        "lehota_cas": "",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": true,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 32,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1393415",
+    "id": "1393415",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "546447",
+        "id_organizacie": "34300",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
+        "ico": "36601284",
+        "email": "",
+        "adresa": "Ondavská 8",
+        "psc": "04011",
+        "mesto": "Košice - mestská časť Západ",
+        "telefon": "+421557891668",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná orgánom ústrednej štátnej správy",
+        "cinnost": "Zdravie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9391"
+      },
+      "zakazka": {
+        "predmet": "Dvojzložkové hemostatikum s obsahom ľudského trombínu a hovädzej želatíny a Chirurgické dvojzložkové lepidlo na základe albumínu a glutaldehydu",
+        "cpv_kod": "Absorbovateľné prostriedky na zastavenie krvácania",
+        "druh": "Tovary",
+        "opis": "Predmet obstarávania je rozdelený na časti (2) časť č. 1 - Dvojzložkové hemostatikum s obsahom ľudského trombínu a hovädzej želatíny časť č. 2 - Chirurgické dvojzložkové lepidlo na základe albumínu a glutaldehydu Podrobný opis predmetu zákazky je uvedený v Prílohe č. 8 - Špecifikácia predmetu zákazky Výzvy na predkladanie ponúk a v prílohách",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "MyDevice s. r. o.",
+            "ico": "48040428",
+            "cena": 52092.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          },
+          {
+            "nazov": "MG - Slovakia s.r.o.",
+            "ico": "48027073",
+            "cena": 74101.5,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "28-2025-RD",
+            "datum": "23.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12139693/"
+          },
+          {
+            "id": "15-2026-RD",
+            "datum": "23.02.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12022035/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1393540",
+    "id": "1393540",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553929",
+        "id_organizacie": "88934",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Generálna prokuratúra SR",
+        "ico": "00166481",
+        "email": "margareta.docarova@genpro.gov.sk",
+        "adresa": "Štúrova 2",
+        "psc": "81285",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "+421220837347",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/686"
+      },
+      "zakazka": {
+        "predmet": "Dodávka zemného plynu – DNS pre Generálnu prokuratúru SR a krajské prokuratúry",
+        "cpv_kod": "Zemný plyn",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky zadávanej v rámci dynamického nákupného systému je zabezpečenie dodávky zemného plynu vrátane prevzatia zodpovednosti za odchýlku a zabezpečenia distribučných služieb pre odberné miesta Generálnej prokuratúry Slovenskej republiky a 8 krajských prokuratúr, a to: KP v Bratislave, KP v Trnave, KP v Trenčíne, KP v Nitre, KP v Žiline, KP v Banskej Bystrici, KP v Prešove a KP v Košiciach. Dodávka bude realizovaná do jednotlivých odberných miest verejného obstarávateľa v súlade so zák",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 1405848.64,
+        "mena": "EUR",
+        "lehota_datum": "",
+        "lehota_cas": "",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Dynamický nákupný systém, použiteľný iba pre kupujúcich uvedených v tomto oznámení",
+        "trvanie_mesiace": 48,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394190",
+    "id": "1394190",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554297",
+        "id_organizacie": "78280",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Východoslovenská distribučná, a.s.",
+        "ico": "36599361",
+        "email": "dvoroznak_peter@vsdas.sk",
+        "adresa": "Mlynská 31",
+        "psc": "04291",
+        "mesto": "Košice",
+        "telefon": "+421907419194",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/15676"
+      },
+      "zakazka": {
+        "predmet": "Zhodnocovanie ostatných a nebezpečných odpadov",
+        "cpv_kod": "Služby súvisiace s likvidáciou odpadu a odpadom",
+        "druh": "Služby",
+        "opis": "Predmet zákazky Zhodnocovanie ostatných a nebezpečných odpadov, je prevzatie odpadov vznikajúceho činnosťou VSD a.s. ako aj odpadov a demontovaného materiálu vznikajúceho pri rekonštrukciách, opravách a údržbe prevádzkovaných energetických zariadení a iných objektov spoločnosti VSD a.s a budú s ním nakladať v súlade so zákonnými požiadavkami. Predmet zákazky je detailne špecifikovaný v Prílohe 1 súťažných podkladov.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 500000.0,
+        "mena": "EUR",
+        "lehota_datum": "27.04.2026",
+        "lehota_cas": "13:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 42,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 11.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394227",
+    "id": "1394227",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "546295",
+        "id_organizacie": "42618",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Gemersko-malohontské múzeum",
+        "ico": "35985097",
+        "email": "",
+        "adresa": "Nám. M. Tompu 5",
+        "psc": "97901",
+        "mesto": "Rimavská Sobota",
+        "telefon": "+421948292782",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou regionálneho orgánu",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3444"
+      },
+      "zakazka": {
+        "predmet": "Komplexná rekonštrukcia 2. nadzemného podlažia a reinštalácia stálej expozície Gemersko-malohontské múzea",
+        "cpv_kod": "Stavebné práce na stavbe budov",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je uskutočnenie stavebných prác. Objekt sa nachádza v území pamiatkovej zóny mesta Rimavská Sobota a pozostáva zo samostatnej historickej budovy NKP a z novostavby administratívnej časti. Objekty nie sú prepojené v účelových častiach, jedine v rovine povaly v súčasnosti bez využitia. Nachádzajú sa na dvoch samostatných parcelách. Predmetom riešenia je hlavne 2NP v historickej budove ktorá slúži hlavne pre účel stálej expozície pre návštevníkov verejnosti. Rekonštrukcia 2. NP bu",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 554066.0,
+        "mena": "EUR",
+        "pocet_ponuk": 7,
+        "ucastnici": [
+          {
+            "nazov": "DENCO, s.r.o.",
+            "ico": "53647955",
+            "cena": 554066.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Áno"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Zmluva o dielo č. 1/2026",
+            "datum": "06.03.2026",
+            "nazov": "Zmluva o dielo č. 1/2026",
+            "url": "https://www.crz.gov.sk/zmluva/12074123/"
+          }
+        ],
+        "elektronicke_ponuky": 7,
+        "subdodavatelia": "Áno"
+      }
+    },
+    "time_ms": 3.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394263",
+    "id": "1394263",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "547609",
+        "id_organizacie": "45157",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Jadrová a vyraďovacia spoločnosť, a.s.; skrátený názov: JAVYS, a. s.",
+        "ico": "35946024",
+        "email": "",
+        "adresa": "Jaslovské Bohunice 360",
+        "psc": "919 30",
+        "mesto": "Jaslovské Bohunice",
+        "telefon": "+421335315294",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Hospodárske záležitosti",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9542"
+      },
+      "zakazka": {
+        "predmet": "Zariadenia na meranie aktivity Trícia, C-14, Sr-90",
+        "cpv_kod": "Spektrometre",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodanie dvoch kusov zariadenia „Kvapalinový scintilačný analyzátor s automatickým meničom pre meranie strednej a nízkej objemovej aktivity trícia a aktivity beta v kvapalných vzorkách (3H, 14C, 90Sr )“ vrátane poskytnutia záruky a dodania návodu na obsluhu v slovenskom jazyku. Súčasťou predmetu zákazky je aj zaškolenie obsluhy (zamestnancov verejného obstarávateľa) na pracovisku v slovenskom jazyku a vykonanie prvotného metrologického overenia pre 3H, 14C, 90Sr. Podrobné vym",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 324208.0,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "CANBERRA - PACKARD, s.r.o.",
+            "ico": "31576303",
+            "cena": 324208.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "ZM-84-25-2-00777-03310",
+            "datum": "12.03.2026",
+            "nazov": "Zariadenia na meranie aktivity Trícia, C-14, Sr-90",
+            "url": "https://www.crz.gov.sk/zmluva/12107234/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394284",
+    "id": "1394284",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554334",
+        "id_organizacie": "75242",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Mestská časť Bratislava - Rača",
+        "ico": "00304557",
+        "email": "lucia.matulova@apuen.sk",
+        "adresa": "Kubačova 21",
+        "psc": "83106",
+        "mesto": "Bratislava - mestská časť Rača",
+        "telefon": "0910262579",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4111"
+      },
+      "zakazka": {
+        "predmet": "Vybavenie učební didaktickými pomôckami- Základná škola Plickova 9, Bratislava - Rača",
+        "cpv_kod": "Vybavenie na vyučovanie",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodávka didaktických pomôcok a materiálno-technického vybavenia pre výučbu prírodovedných predmetov - biológie, chémie a fyziky. Súčasťou dodávky je najmä obstaranie interaktívnych výučbových nástrojov, digitálnych rozhraní a výučbových programov, senzorov a meracích zariadení, 3D modelov, experimentálnych súprav, laboratórnych pomôcok, laboratórneho skla, chemikálií, ochranných pracovných prostriedkov a ďalšieho vybavenia určeného na realizáciu praktickej výučby a experimen",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 76891.07,
+        "mena": "EUR",
+        "lehota_datum": "21.04.2026",
+        "lehota_cas": "13:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 2,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 4.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394310",
+    "id": "1394310",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553313",
+        "id_organizacie": "92024",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "Oznámenie o vyhlásení obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "SPP - distribúcia, a.s.",
+        "ico": "35910739",
+        "email": "",
+        "adresa": "Plátennícka 19013/2",
+        "psc": "82109",
+        "mesto": "Bratislava - mestská časť Ružinov",
+        "telefon": "+421910521915",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9522"
+      },
+      "zakazka": {
+        "predmet": "Služba SOC – dohľadové centrum pre bezpečnosť IT v SPP-D",
+        "cpv_kod": "Počítačové podporné služby a poradenstvo",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je nákup služby SOC (Security Operations Centre), ktoré zahŕňajú integráciu SOC do prostredia obstarávateľa (SPP-D) a následné poskytovanie služieb SOC, a to na obdobie 4 rokov.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Rokovacie konanie so zverejnením výzvy na súťaž/súťažné obstarávanie s rokovacím konaním",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 969582.0,
+        "mena": "EUR",
+        "lehota_datum": "",
+        "lehota_cas": "",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 4,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394341",
+    "id": "1394341",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554360",
+        "id_organizacie": "5201",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Liptovský Mikuláš",
+        "ico": "",
+        "email": "info@uvo.gov.sk",
+        "adresa": "Ružová dolina 10",
+        "psc": "82109",
+        "mesto": "Bratislava - mestská časť Ružinov",
+        "telefon": "+421250264111",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4971"
+      },
+      "zakazka": {
+        "predmet": "Komplexná údržba miestnych komunikácií a chodníkov v meste Liptovský Mikuláš v roku 2026",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky sú opravy, úpravy, obnova a rekonštrukčné práce na miestnych komunikáciách a chodníkoch v meste Liptovský Mikuláš. Objektová skladba: SO 01 Rekonštrukcia chodníka ul. Priemyselná, pred cintorínom SO 02 Zjednosmernenie MK ul. Pltnícka, vrátane rekonštrukcie komunikácie + spevnené plochy SO 02.1 Zjednosmernenie MK ul. Pltnícka, vrátane rekonštrukcie komunikácie + spevnené plochy - trvalé dopravné značenie SO 03 Výmena asfaltového krytu ul. Vrbická SO 04 Rekonštrukcia chodníka Vrb",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 936900.56,
+        "mena": "EUR",
+        "lehota_datum": "16.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394401",
+    "id": "1394401",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554397",
+        "id_organizacie": "4917",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Prešovský samosprávny kraj",
+        "ico": "37870475",
+        "email": "erika.gavulova@psk.sk",
+        "adresa": "Námestie mieru 2",
+        "psc": "08001",
+        "mesto": "Prešov",
+        "telefon": "+421517081337",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/2914"
+      },
+      "zakazka": {
+        "predmet": "Havarijné stavy na sídle PSK, Námestie mieru 2, Prešov - vyhotovenie projektovej dokumentácie na opravu strechy",
+        "cpv_kod": "Inžinierske projektovanie",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je záväzok zhotoviteľa vyhotoviť v prospech objednávateľa projektovú dokumentáciu pre komplexnú opravu strechy sídla Prešovského samosprávneho kraja. Súčasťou dodávky je aj výkon inžinierskej činnosti spočívajúcej v dodaní povolenia stavby, resp. stavebných úprav v zmysle spracovanej projektovej dokumentácie. Súčasťou dodávky je taktiež aj výkon činnosti odborného autorského dohľadu projektanta počas realizácie stavby v zmysle spracovanej projektovej dokumentácie. Podrobné info",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 70833.33,
+        "mena": "EUR",
+        "lehota_datum": "13.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 4.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394489",
+    "id": "1394489",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552361",
+        "id_organizacie": "39686",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "03",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Hlavné mesto Slovenskej republiky Bratislava",
+        "ico": "00603481",
+        "email": "",
+        "adresa": "Primaciálne námestie 1",
+        "psc": "81499",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "+421903618654",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6563"
+      },
+      "zakazka": {
+        "predmet": "Zakladanie a údržba záhonov a služby s tým spojené",
+        "cpv_kod": "Záhradnícke služby",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je dodanie tovarov a služieb v oblasti zakladania a údržby záhonov a mobilnej zelene, ktoré bude dodávateľ vykonávať podľa stanovených požiadaviek verejného obstarávateľa, najmä na pozemkoch vo vlastníctve hlavného mesta Slovenskej republiky Bratislavy, najmä, nie však výlučne, na plochách verejnej zelene a na spevnených plochách/komunikáciách v správe verejného obstarávateľa s celkovou výmerou 120 859 700 m2. Podrobnosti sú uvedené v prílohe č. 1 – Opis predmetu zákazky súťažn",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 2845528.45,
+        "mena": "EUR",
+        "lehota_datum": "27.03.2026",
+        "lehota_cas": "10:15",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 48,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 1.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394491",
+    "id": "1394491",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "549649",
+        "id_organizacie": "90869",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Nitrianska teplárenská spoločnosť, a.s. (v skratke NTS, a.s.",
+        "ico": "",
+        "email": "",
+        "adresa": "",
+        "psc": "",
+        "mesto": "",
+        "telefon": "",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8402"
+      },
+      "zakazka": {
+        "predmet": "Dodávka kogeneračných jednotiek CTZ PÁROVCE vrátane servisných služieb",
+        "cpv_kod": "Mestské vykurovanie",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je: dodanie 1 - 4 kusov kogeneračných jednotiek (KGJ), v závislosti od počtu právoplatných rozhodnutí o Stavebných zámeroch k 31.12.2025 vydaných NTS, a.s., ktoré sú určené pre kombinovanú výrobu elektriny a tepla (KVET) v areáli centrálneho tepelného zdroja (CTZ) vrátane ich servisu až do uplynutia technickej životnosti KGJ, ktorá musí byť minimálne 79 999 mth pre jednu KGJ.",
+        "nuts": "Nitriansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394493",
+    "id": "1394493",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "549646",
+        "id_organizacie": "90869",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Nitrianska teplárenská spoločnosť, a.s. (v skratke NTS, a.s.",
+        "ico": "",
+        "email": "",
+        "adresa": "",
+        "psc": "",
+        "mesto": "",
+        "telefon": "",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8402"
+      },
+      "zakazka": {
+        "predmet": "Dodávka kogeneračných jednotiek CTZ CHRENOVÁ vrátane servisných služieb",
+        "cpv_kod": "Mestské vykurovanie",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je: dodanie 1 - 4 kusov kogeneračných jednotiek (KGJ), v závislosti od počtu právoplatných rozhodnutí o Stavebných zámeroch k 31.12.2025 vydaných NTS, a.s., ktoré sú určené pre kombinovanú výrobu elektriny a tepla (KVET) v areáli centrálneho tepelného zdroja (CTZ) vrátane ich servisu až do uplynutia technickej životnosti KGJ, ktorá musí byť minimálne 79 999 mth pre jednu KGJ.",
+        "nuts": "Nitriansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 0,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": 0,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394494",
+    "id": "1394494",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "549600",
+        "id_organizacie": "11427",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Košický samosprávny kraj",
+        "ico": "35541016",
+        "email": "",
+        "adresa": "Námestie Maratónu mieru 1",
+        "psc": "04001",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "0915627664",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3143"
+      },
+      "zakazka": {
+        "predmet": "SPŠ stavebná a geodetická, Lermontovova 1, Košice: Sektorový nábytok",
+        "cpv_kod": "Nábytok (vrátane kancelárskeho nábytku), zariadenie interiéru, domáce spotrebiče (s výnimkou osvetlenia) a čistiace prostriedky",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je nákup a dodanie nábytku pre učebne SPŠ stavebná a geodetická, ul. Lermontovova 1, 040 01 Košice vrátane dopravy ako aj všetky ďalšie súvisiace služby. Podrobný opis predmetu zákazky vrátane požiadaviek na technické parametre položiek tvoriacich predmet zákazky a informácie o ďalších požiadavkách a súvisiacich službách predmetu zákazky sú uvedené v Prílohe č.4 SP: Technická špecifikácia .",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 34580.0,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "DREVEX EU, s.r.o.",
+            "ico": "36835463",
+            "cena": 34580.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Č. zmluvy:148/2026/OPaI",
+            "datum": "16.03.2026",
+            "nazov": "Kúpna zmluva",
+            "url": "https://www.crz.gov.sk/zmluva/12122091/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394495",
+    "id": "1394495",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "545404",
+        "id_organizacie": "48427",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "07",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Hniezdne",
+        "ico": "00329886",
+        "email": "",
+        "adresa": "Hniezdne 1",
+        "psc": "06501",
+        "mesto": "Hniezdne",
+        "telefon": "0907952736",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6163"
+      },
+      "zakazka": {
+        "predmet": "Virtuálna a historická expozícia Hniezdne",
+        "cpv_kod": "Zariadenia pre výstavy",
+        "druh": "Tovary",
+        "opis": "Predmetom obstarávania je komplexné dodanie tovarov a poskytnutie služieb súvisiacich s predmetom zákazky, za účelom vytvorenia stálej expozície v historickom objekte bývalej Kráľovskej školy v Hniezdnom (národná kultúrna pamiatka, ďalej len „NKP“) a jej prístavby. Cieľom je vytvoriť multimediálne, interaktívne a imerzívne múzeum, ktoré návštevníkom sprístupní: - históriu obce Hniezdne, - archeologické a kultúrne dedičstvo regiónu, - vývoj vzdelávania od stredoveku až po digitálnu budúcnosť. Exp",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 773333.33,
+        "mena": "EUR",
+        "lehota_datum": "27.03.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 6,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Plánovanie",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394506",
+    "id": "1394506",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554410",
+        "id_organizacie": "77219",
+        "typ_oznamenia": "Predbežné oznámenie a Pravidelné informatívne oznámenie",
+        "typ_formulara": "Plánovanie",
+        "verzia": "01",
+        "podtyp": "Predbežné oznámenie – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Správa ciest Košického samosprávneho kraja",
+        "ico": "35555777",
+        "email": "info@smarting.sk",
+        "adresa": "Námestie Maratónu mieru 1",
+        "psc": "04266",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "+421915995846",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou regionálneho orgánu",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8746"
+      },
+      "zakazka": {
+        "predmet": "Súvislé opravy ciest KSK dodávateľským spôsobom",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Vo vzťahu k zamýšľanému verejnému obstarávaniu projektu Súvislé opravy ciest KSK dodávateľským spôsobom verejný obstarávateľ pripravuje prípravné trhové konzultácie a predbežné zapojenie záujemcov a odbornej verejnosti na účel prípravy následného verejného obstarávania, informovania hospodárskych subjektov a odborné konzultácie k požadovanému rozsahu a predmetu verejného obstarávania, stanoveniu predpokladanej hodnoty zákazky, overenia si aktuálnosti, objektívnosti a primeranosti požiadaviek na ",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      }
+    },
+    "time_ms": 1.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394507",
+    "id": "1394507",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "488234",
+        "id_organizacie": "85424",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+        "ico": "50349287",
+        "email": "",
+        "adresa": "Pribinova 25",
+        "psc": "81109",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "00421220928433",
+        "typ_kupujuceho": "Orgán ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/18008"
+      },
+      "zakazka": {
+        "predmet": "Poskytovanie servisných služieb a služieb aplikačného rozvoja pre informačný monitorovací systém ITMS21+",
+        "cpv_kod": "Služby informačných technológií",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky sú SLA služby k ITMS21+, a to najmä: služby technickej a aplikačnej podpory (paušál); služby technickej a aplikačnej podpory (nadpaušál), služby aplikačného rozvoja (nadpaušál); služby vývoja inkrementu 2 (nadpaušál). Služby technickej a aplikačnej podpory (paušál) sú paušálne služby, ktoré zahŕňajú zabezpečovanie bežnej servisnej podpory, ako aj poskytovanie podpory pre zaistenie spoľahlivej, kontinuálnej a bezpečnej prevádzky ITMS21+ a jeho prevádzkových prostredí. Služby tec",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 5185032.0,
+        "mena": "EUR",
+        "pocet_ponuk": 6,
+        "ucastnici": [
+          {
+            "nazov": "InQool, a.s.",
+            "ico": "29222389",
+            "cena": 5185032.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "165/2026",
+            "datum": "11.03.2026",
+            "nazov": "ZMLUVA O POSKYTOVANÍ SERVISNÝCH SLUŽIEB A SLUŽIEB APLIKAČNÉHO ROZVOJA PRE INFORMAČNÝ MONITOROVACÍ SYSTÉM",
+            "url": "https://www.crz.gov.sk/zmluva/12102289/"
+          }
+        ],
+        "elektronicke_ponuky": 6,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394510",
+    "id": "1394510",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554448",
+        "id_organizacie": "59496",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+        "ico": "36022047",
+        "email": "zuzana.valachovicova@svp.sk",
+        "adresa": "Karloveská 2",
+        "psc": "84104",
+        "mesto": "Bratislava - mestská časť Karlova Ves",
+        "telefon": "+421903520916",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Ochrana životného prostredia",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3510"
+      },
+      "zakazka": {
+        "predmet": "II. Prenájom mechanizácie s obsluhou vrátane príslušenstva",
+        "cpv_kod": "Prenájom nákladných vozidiel s vodičom",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je poskytnutie výkonov strojov a mechanizmov s obsluhou potrebných pri výkone údržby a výstavbe vodohospodárskych objektoch v správe SVP š.p. a prenájom technického vybavenia staveniska.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 747650.0,
+        "mena": "EUR",
+        "lehota_datum": "23.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 3,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394513",
+    "id": "1394513",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552702",
+        "id_organizacie": "11427",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Košický samosprávny kraj",
+        "ico": "35541016",
+        "email": "",
+        "adresa": "Námestie Maratónu mieru 1",
+        "psc": "04001",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "+421904281818",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.tenderia.sk/public/order/699d65d2f64483a4b182bbac"
+      },
+      "zakazka": {
+        "predmet": "Integračná dátová platforma pre rozvoj SMART riešení Košického samosprávneho kraja, (v2)",
+        "cpv_kod": "Softvérové balíky a informačné systémy",
+        "druh": "Tovary",
+        "opis": "Hlavným cieľom projektu je zavedenie efektívnejšieho rozhodovania založeného na dátach, zvýšenie transparentnosti, zlepšenie správy a efektívnosti prevádzky verejných budov Košického samosprávneho kraja (KSK) prostredníctvom implementácie integrovanej dátovej platformy, moderných technologických riešení a inteligentného riadenia, čím sa prispeje k udržateľnému rozvoju regiónu, efektívnemu využívaniu verejných zdrojov a zlepšeniu kvality života občanov. Predmetom projektu je: - špecifikácia a obs",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 1047399.34,
+        "mena": "EUR",
+        "lehota_datum": "27.03.2026",
+        "lehota_cas": "12:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 13,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394514",
+    "id": "1394514",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "547854",
+        "id_organizacie": "11427",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Košický samosprávny kraj",
+        "ico": "35541016",
+        "email": "",
+        "adresa": "Námestie Maratónu mieru 1",
+        "psc": "04001",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "+421904281818",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3143"
+      },
+      "zakazka": {
+        "predmet": "SYSTÉM PRE DIGITÁLNE ÚZEMNÉ PLÁNOVANIE KSK",
+        "cpv_kod": "Služby na vývoj softvéru na správu zariadení",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je vybudovanie komplexného digitálneho systému na podporu územného plánovania pre Košický samosprávny kraj (ďalej len „KSK“). Cieľom projektu je zaviesť moderné, modulárne a škálovateľné riešenie, ktoré umožní efektívnu správu, vizualizáciu, analýzu a editáciu priestorových údajov a dokumentov súvisiacich s územným plánovaním. Riešenie bude integrovať rôzne typy údajov a umožní prístup rôznym skupinám používateľov, vrátane interných zamestnancov KSK, samospráv, odborných použív",
+        "nuts": "",
+        "miesto_plnenia": "",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394515",
+    "id": "1394515",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554452",
+        "id_organizacie": "11427",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Košický samosprávny kraj",
+        "ico": "35541016",
+        "email": "dzuppa@ekoauris.sk",
+        "adresa": "Námestie Maratónu mieru 1",
+        "psc": "04001",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "+421904281818",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.tenderia.sk/public/order/69236aa0c094f78f8c415a77"
+      },
+      "zakazka": {
+        "predmet": "SYSTÉM PRE DIGITÁLNE ÚZEMNÉ PLÁNOVANIE KSK v2",
+        "cpv_kod": "Služby na vývoj softvéru na správu zariadení",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je vybudovanie komplexného digitálneho systému na podporu územného plánovania pre Košický samosprávny kraj (ďalej len „KSK“). Cieľom projektu je zaviesť moderné, modulárne a škálovateľné riešenie, ktoré umožní efektívnu správu, vizualizáciu, analýzu a editáciu priestorových údajov a dokumentov súvisiacich s územným plánovaním. Riešenie bude integrovať rôzne typy údajov a umožní prístup rôznym skupinám používateľov, vrátane interných zamestnancov KSK, samospráv, odborných použív",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 731390.0,
+        "mena": "EUR",
+        "lehota_datum": "20.04.2026",
+        "lehota_cas": "12:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 12,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394520",
+    "id": "1394520",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553618",
+        "id_organizacie": "46319",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Šaštín - Stráže",
+        "ico": "00310069",
+        "email": "",
+        "adresa": "Alej 36",
+        "psc": "90841",
+        "mesto": "Šaštín-Stráže",
+        "telefon": "+421911660209",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4555"
+      },
+      "zakazka": {
+        "predmet": "Vybudovanie uzamykateľných stojísk",
+        "cpv_kod": "Kontajnery na odpadový materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodávka uzamykateľných stojísk pre účely zabezpečenia komunálneho a separovaného odpadu v meste Šaštín-Stráže. Podrobné vymedzenie predmetu zákazky sa nachádza vo výkaze - výmer, ktorý tvorí prílohu č. 1 súťažných podkladov. Dodávka predmetu zákazky sa požaduje vrátane všetkých nákladov: doprava na miesto dodania, montáž, zaškolenie personálu, otestovania funkčnosti a zavedenia do plnohodnotnej prevádzky a užívania, v zmysle minimálnych technických parametrov a špecifikácií ",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 359371.25,
+        "mena": "EUR",
+        "lehota_datum": "30.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 5,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 4.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394524",
+    "id": "1394524",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554457",
+        "id_organizacie": "49262",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Stupava",
+        "ico": "00305081",
+        "email": "prednosta@stupava.sk",
+        "adresa": "Hlavná 24",
+        "psc": "90031",
+        "mesto": "Stupava",
+        "telefon": "0260200912",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4152"
+      },
+      "zakazka": {
+        "predmet": "Zber a nakladanie s odpadom v Stupave - dvojramenný nosič kontajnerov a traktorbager",
+        "cpv_kod": "Motorové vozidlá na špeciálne účely",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodanie tovarov – Dvojramenného nosiča kontajnerov s príslušenstvom a traktorbageru (rýpadlo-nakladač) s príslušenstvom. Zákazka rozdelená na 2 časti podľa druhov tovarov: Časť č. 1: Dvojramenný nosič kontajnerov s príslušenstvom Časť č. 2: Traktorbager Podrobný opis predmetu zákazky tvorí Kapitola B. Opis predmetu zákazky súťažných podkladov.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 152150.0,
+        "mena": "EUR",
+        "lehota_datum": "22.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 7,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394525",
+    "id": "1394525",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "549539",
+        "id_organizacie": "14195",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Združenie BIELA ORAVA, pre všestranný rozvoj obcí regiónu Biela Orava",
+        "ico": "37804332",
+        "email": "",
+        "adresa": "Grúnik 56",
+        "psc": "02953",
+        "mesto": "Breza",
+        "telefon": "+421908934680",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou miestneho orgánu",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/13035"
+      },
+      "zakazka": {
+        "predmet": "Teleskopický nakladač",
+        "cpv_kod": "Nakladače na kolesách",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodávka tovaru a to konkrétne: Teleskopický nakladač a to vrátane dopravy. Bližšie informácie ohľadom predmetu zákazky sú súčasťou súťažných podkladov.",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 99000.0,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "MANNET spol. s r.o.",
+            "ico": "36227552",
+            "cena": 99000.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "AH 06-2026",
+            "datum": "10.03.2026",
+            "nazov": "Kúpna zmluva č. AH 06-2026",
+            "url": "https://www.crz.gov.sk/zmluva/12109672/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394529",
+    "id": "1394529",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "430249",
+        "id_organizacie": "85424",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "07",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ministerstvo investícií, regionálneho rozvoja a informatizácie Slovenskej republiky",
+        "ico": "50349287",
+        "email": "",
+        "adresa": "Pribinova 25",
+        "psc": "81109",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "0220928433",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/18008"
+      },
+      "zakazka": {
+        "predmet": "Centrálne obstarávanie výpočtovej techniky",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákaziek zadávaných v zriadenom DNS bude nákup prenosných počítačov, pevných počítačov, pracovných staníc, plochých monitorov, dotykových monitorov, dokovacích staníc, klávesníc, myší, tašiek na prenosné počítače a zabezpečenie technickej podpory. Predmetom zákaziek tiež bude nákup tabletových počítačov a príslušenstva, dátových nosičov, externých pevných diskov, externých napaľovačiek CD/DVD, USB kľúčov. Cieľom zriadenia DNS a zadávania čiastkových zákaziek v DNS je umožniť verejným o",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "",
+        "lehota_cas": "",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": true,
+        "dns": "Dynamický nákupný systém, použiteľný iba pre kupujúcich uvedených v tomto oznámení",
+        "trvanie_mesiace": 72,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394534",
+    "id": "1394534",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "532788",
+        "id_organizacie": "19503",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ministerstvo životného prostredia Slovenskej republiky",
+        "ico": "42181810",
+        "email": "",
+        "adresa": "Námestie Ľudovíta Štúra 1",
+        "psc": "81235",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "+42159562113",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Ochrana životného prostredia",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/11716"
+      },
+      "zakazka": {
+        "predmet": "DNS_MŽP - Nákup tlačiarní",
+        "cpv_kod": "Tlačiarne a zapisovače",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je zriadenie DNS na zadávanie zákaziek bude nákup tlačiarní, ktoré sú bežne dostupné na trhu, a ktoré sú zaradená podľa Spoločného slovníka obstarávania (ďalej ako „CPV“) v rozsahu skupiny 302 321, hlavný CPV kód 30232100-5 – Tlačiarne a zapisovače.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 7577.0,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "COPY PRINT GROUP, a.s.",
+            "ico": "45310106",
+            "cena": 7577.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "KÚPNA ZMLUVA Č. 34/2026/TANAP",
+            "datum": "13.03.2026",
+            "nazov": "KÚPNA ZMLUVA Č. 34/2026/TANAP",
+            "url": "https://www.crz.gov.sk/zmluva/12136487/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 4.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394535",
+    "id": "1394535",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "549736",
+        "id_organizacie": "59496",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "07",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+        "ico": "36022047",
+        "email": "",
+        "adresa": "Karloveská 2",
+        "psc": "84104",
+        "mesto": "Bratislava - mestská časť Karlova Ves",
+        "telefon": "+421948490081",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Ochrana životného prostredia",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3510"
+      },
+      "zakazka": {
+        "predmet": "Nákup špeciálneho plávajúceho rýpadla s príslušenstvom",
+        "cpv_kod": "Obojživelné plavidlá a lode",
+        "druh": "Tovary",
+        "opis": "1. Predmetom zákazky je dodanie tovaru: 1 ks pracovného stroja – špeciálneho plávajúceho rýpadla s prídavnými zariadeniami. 2. Podrobné vymedzenie predmetu zákazky vrátane technických požiadaviek je uvedené v Prílohe č. 1 Technická špecifikácia súťažných podkladov a v Prílohe č. 2 Návrh zmluvy súťažných podkladov.",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 1897883.53,
+        "mena": "EUR",
+        "lehota_datum": "02.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 12,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394537",
+    "id": "1394537",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "547944",
+        "id_organizacie": "28336",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ústredná vojenská nemocnica SNP Ružomberok - FN",
+        "ico": "31936415",
+        "email": "",
+        "adresa": "Gen. Miloša Vesela 21",
+        "psc": "03426",
+        "mesto": "Ružomberok",
+        "telefon": "+421904281818",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Zdravie",
+        "profil_url": "https://www.tenderia.sk/public/order/692478adc094f78f8c42c9d3"
+      },
+      "zakazka": {
+        "predmet": "ENERGOCENTRUM PREŠOV",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "V rámci areálu existujúcej fakultnej nemocnice v Prešove je záujmom investora vybudovať nové energocentrum pre „starú - existujúcu“ časť nemocnice. Účelom tejto dokumentácie je vypracovanie projektu pre stavebné povolenie – Presun funkcie stavebných objektov existujúcej Kotolne K1, skladu kyslíka vrátane odparovacej stanice a trafostanice s dieselagregátom, t.j. uvoľnenie územia pre výstavbu novej nemocnice s tým, že je uvažované s komplet novou technologickou dodávkou. Nakoľko nové – navrhované",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 6510000.0,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "DAG SLOVAKIA, a. s.",
+            "ico": "44886021",
+            "cena": 6510000.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Veľký podnik",
+            "subdodavatelia": "Použitie zatiaľ nie je známe"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "UVN-Prešov-006/26",
+            "datum": "20.03.2026",
+            "nazov": "Zmluva o dielo č. UVN-Prešov-006/26",
+            "url": "https://crz.gov.sk/zmluva/12132915/"
+          }
+        ],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": "Použitie zatiaľ nie je známe"
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394538",
+    "id": "1394538",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "543259",
+        "id_organizacie": "28336",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ústredná vojenská nemocnica SNP Ružomberok - FN",
+        "ico": "31936415",
+        "email": "",
+        "adresa": "Gen. Miloša Vesela 21",
+        "psc": "03426",
+        "mesto": "Ružomberok",
+        "telefon": "+421904281818",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Zdravie",
+        "profil_url": "https://www.tenderia.sk/public/order/68d1910d73a0accf736dc428"
+      },
+      "zakazka": {
+        "predmet": "Činnosť Stavebnotechnického dozoru pre Projekt „Rozvoj a modernizácia fakultnej nemocnice s poliklinikou J. A. Reimana Prešov“",
+        "cpv_kod": "Stavebný dozor na stavenisku",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je činnosť Stavebnotechnického dozoru pre Projekt „Rozvoj a modernizácia fakultnej nemocnice s poliklinikou J. A. Reimana Prešov“ Podrobný rozsah predmetu zákazky je uvedený v časti B.2 týchto súťažných podkladov, resp. v prílohe č. 5 súťažných podkladov.",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394551",
+    "id": "1394551",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "541150",
+        "id_organizacie": "60490",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "08",
+        "podtyp": "Oznámenie o vyhlásení obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Západoslovenská vodárenská spoločnosť, a.s.",
+        "ico": "36550949",
+        "email": "",
+        "adresa": "Nábrežie za hydrocentrálou 4",
+        "psc": "94960",
+        "mesto": "Nitra",
+        "telefon": "+421902499209",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8417"
+      },
+      "zakazka": {
+        "predmet": "ČOV Šamorín - intenzifikácia ČOV",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je zhotovenie Diela „ČOV Šamorín - intenzifikácia ČOV\", a to za podmienok a v rozsahu stanovenom v Prílohe A1 Projektová dokumentácia a v Prílohe B. Návrh Zmluvy o dielo.",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 10755623.91,
+        "mena": "EUR",
+        "lehota_datum": "30.04.2026",
+        "lehota_cas": "14:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "",
+        "elektronicka_aukcia": true,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 24,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394552",
+    "id": "1394552",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "550051",
+        "id_organizacie": "59979",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "03",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Žilinský samosprávny kraj",
+        "ico": "37808427",
+        "email": "",
+        "adresa": "Komenského 48",
+        "psc": "01109",
+        "mesto": "Žilina",
+        "telefon": "+421415032317",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8276"
+      },
+      "zakazka": {
+        "predmet": "Vážska cyklodopravná trasa, úsek Lipovec - Krpeľany",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je novostavba úseku cyklodopravnej trasy Lipovec – Krpeľany v celkovej dĺžke 13843,02m. Viac k predmetu zákazky je uvedené v časti B.1 „Opis predmetu zákazky“ predmetných súťažných podkladov. Projektová dokumentácia, výkaz výmer a stavebné povolenie je súčasťou súťažných podkladov (ďalej len „SP“) ako samostatná príloha „B“.",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "23.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 270
+      }
+    },
+    "time_ms": 2.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394556",
+    "id": "1394556",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553467",
+        "id_organizacie": "17138",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Trenčiansky samosprávny kraj",
+        "ico": "36126624",
+        "email": "",
+        "adresa": "K dolnej stanici 20A",
+        "psc": "91101",
+        "mesto": "Trenčín",
+        "telefon": "+421326555867",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/2812"
+      },
+      "zakazka": {
+        "predmet": "Rekonštrukcia cesty č. II/511 Veľké Uherce - Skýcov - 2. etapa",
+        "cpv_kod": "Stavebné práce, práce spodnej a vrchnej stavby diaľnic, ciest",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom obstarávania sú stavebné práce týkajúce rekonštrukcie cesty č. II/511 Veľké Uherce – Skýcov – 2. etapa. Predmetný úsek cesty II/511 vykazuje nevyhovujúci stavebnotechnický stav. Na základe údajov získaných z vykonanej nedeštruktívnej diagnostiky bola zistená nedostatočná únosnosť konštrukcie vozovky, resp. asfaltových vrstiev. Na viacerých úsekoch dochádza k rozpadu asfaltového krytu, prepadu okraju vozovky a krajnice. Účelom stavby je vylepšenie bezpečnostných parametrov a stavebno-te",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 4307450.46,
+        "mena": "EUR",
+        "lehota_datum": "04.05.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 7,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 5.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394557",
+    "id": "1394557",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "542053",
+        "id_organizacie": "20276",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ministerstvo vnútra Slovenskej republiky",
+        "ico": "00151866",
+        "email": "",
+        "adresa": "Pribinova 2",
+        "psc": "81272",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "+421250944590",
+        "typ_kupujuceho": "Orgán ústrednej štátnej správy",
+        "cinnost": "Verejný poriadok a bezpečnosť",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/239"
+      },
+      "zakazka": {
+        "predmet": "IKT zariadenia a služby IT DNS",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je zriadenie dynamického nákupného systému (ďalej len DNS) a zadávanie zákaziek počas doby trvania DNS, t. j. od jeho zriadenia do jeho ukončenia. Predmetom zákaziek zadávaných v DNS je najmä dodávka vybraného sortimentu osobných počítačov, prenosných počítačov, serverov, sieťových prvkov, softvéru a podpory týchto produktov, snímačov, skenerov, tlačiarní, periférnych zariadení a príslušenstva, ktoré sú bežne dostupné na trhu a ktoré sú zaradené podľa CPV najmä v rozsahu skupín",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 669561.0,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "MICROCOMP - Computersystém s r. o.",
+            "ico": "31410952",
+            "cena": 669561.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "KÚPNA ZMLUVA č. SVO-RVO3-2026/000526 - 005",
+            "datum": "18.03.2026",
+            "nazov": "Bezpečnostné, monitorovacie a certifikačné centrum – projekt PFA – IKT vybavenie",
+            "url": "https://crz.gov.sk/zmluva/12129041/"
+          }
+        ],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394558",
+    "id": "1394558",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553143",
+        "id_organizacie": "8495",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Banskobystrický samosprávny kraj",
+        "ico": "37828100",
+        "email": "",
+        "adresa": "Námestie SNP 23",
+        "psc": "97401",
+        "mesto": "Banská Bystrica",
+        "telefon": "+421948134142",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/3406"
+      },
+      "zakazka": {
+        "predmet": "Dodanie výukového softwéru 3D aplikácie pre anatómiu",
+        "cpv_kod": "Softvérové balíky a informačné systémy",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodanie, inštalácia/montáž (a zaškolenie) 3D aplikácie pre výučbu anatómie v rámci realizácie projektu s názvom: SZŠ Zvolen - modernizácia infraštruktúry a podpora vzdelávania, odbornej prípravy a zručností. Súčasťou dodania sú aj súvisiace služby ako doprava na miesto plnenia, vynesenie a vyloženie tovaru na konkrétne miesto. Podrobná špecifikácia predmetu zákazky je uvedená v Prílohe č. 2 SP_Technická špecifikácia a cenová kalkulácia/Návrh na plnenie kritériá, v ktorej ver",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": null,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 1.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394565",
+    "id": "1394565",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "542053",
+        "id_organizacie": "20276",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ministerstvo vnútra Slovenskej republiky",
+        "ico": "00151866",
+        "email": "",
+        "adresa": "Pribinova 2",
+        "psc": "81272",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "+421250944590",
+        "typ_kupujuceho": "Orgán ústrednej štátnej správy",
+        "cinnost": "Verejný poriadok a bezpečnosť",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/239"
+      },
+      "zakazka": {
+        "predmet": "IKT zariadenia a služby IT DNS",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je zriadenie dynamického nákupného systému (ďalej len DNS) a zadávanie zákaziek počas doby trvania DNS, t. j. od jeho zriadenia do jeho ukončenia. Predmetom zákaziek zadávaných v DNS je najmä dodávka vybraného sortimentu osobných počítačov, prenosných počítačov, serverov, sieťových prvkov, softvéru a podpory týchto produktov, snímačov, skenerov, tlačiarní, periférnych zariadení a príslušenstva, ktoré sú bežne dostupné na trhu a ktoré sú zaradené podľa CPV najmä v rozsahu skupín",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 439370.0,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "BOOTIQ SK s.r.o.",
+            "ico": "52485692",
+            "cena": 439370.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "KÚPNA ZMLUVA č. SVO-RVO3-2026/000564 - 003",
+            "datum": "19.03.2026",
+            "nazov": "Obnova licencií Jira a Confluence a ich doplnkov pre projekt JIRA platforma / ID 74361",
+            "url": "https://crz.gov.sk/zmluva/12134111/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394571",
+    "id": "1394571",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "525671",
+        "id_organizacie": "88898",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ekonomická univerzita v Bratislave",
+        "ico": "00399957",
+        "email": "",
+        "adresa": "Dolnozemská cesta 1",
+        "psc": "85235",
+        "mesto": "Bratislava - mestská časť Petržalka",
+        "telefon": "+421267295147",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Vzdelávanie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/1068"
+      },
+      "zakazka": {
+        "predmet": "DNS - Výpočtová technika a príslušenstvo",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je zriadenie dynamického nákupného systému, ktorý bude slúžiť na zadávanie zákaziek na kúpu a dodanie bežne dostupných tovarov – nákup výpočtovej techniky a príslušenstva pre Ekonomickú univerzitu v Bratislave. Podrobná špecifikácia predmetu zákazky, jeho rozsah ako aj ostatné doplňujúce informácie budú uvedené v jednotlivých výzvach na predkladanie ponúk (ďalej len výzva) v rámci zriadeného DNS. Predmetom zákaziek zadávaných v DNS je najmä dodávka výpočtovej techniky a prísluš",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 3924.3,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "Henrich Sonnenschein - ITSK",
+            "ico": "37212931",
+            "cena": 3924.3,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "190015/015/2026",
+            "datum": "20.03.2026",
+            "nazov": "kúpna zmluva",
+            "url": "https://www.crz.gov.sk/zmluva/12138114/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Plánovanie",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394589",
+    "id": "1394589",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554485",
+        "id_organizacie": "19503",
+        "typ_oznamenia": "Predbežné oznámenie a Pravidelné informatívne oznámenie",
+        "typ_formulara": "Plánovanie",
+        "verzia": "01",
+        "podtyp": "Predbežné oznámenie – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ministerstvo životného prostredia Slovenskej republiky",
+        "ico": "42181810",
+        "email": "verejne.obstaravanie@enviro.gov.sk",
+        "adresa": "Námestie Ľudovíta Štúra 1",
+        "psc": "81235",
+        "mesto": "Bratislava - mestská časť Staré Mesto",
+        "telefon": "0259562113",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Ochrana životného prostredia",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/11716"
+      },
+      "zakazka": {
+        "predmet": "PTK - Elektronické sčítače turistov",
+        "cpv_kod": "Sčítacie stroje",
+        "druh": "Tovary",
+        "opis": "Predmetom pripravovanej zákazky je dodávka, inštalácia a sprevádzkovanie automatických sčítačov určených na dlhodobé monitorovanie návštevnosti v území národných parkov Slovenskej republiky.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      }
+    },
+    "time_ms": 1.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394591",
+    "id": "1394591",
+    "vestnik": "VVO 60/2026",
+    "result": "fetch_error"
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394597",
+    "id": "1394597",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552963",
+        "id_organizacie": "49137",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Stredná odborná škola elektrotechnická, Sibírska 1, Trnava",
+        "ico": "17055385",
+        "email": "",
+        "adresa": "Sibírska 1",
+        "psc": "91701",
+        "mesto": "Trnava",
+        "telefon": "0335559522",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou regionálneho orgánu",
+        "cinnost": "Vzdelávanie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/1895"
+      },
+      "zakazka": {
+        "predmet": "IKT technológie do učební",
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodanie IKT za účelom modernizácie vybavenia učební, vrátane služieb súvisiacich s dodaním, dopravou, inštaláciou, osadením, zapojením a poskytovaním záručného servisu tovarov v rozsahu uvedenom v podrobnom opise vrátane definovaných minimálnych požiadaviek na funkčné a výkonnostné parametre položiek tvoriacich predmet zákazky a informácie o ďalších požiadavkách a súvisiacich službách predmetu zákazky tvorí samostatné prílohy. Podrobné vymedzenie predmetu zákazky je uvedené ",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 368382.39,
+        "mena": "EUR",
+        "lehota_datum": "30.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 90
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394603",
+    "id": "1394603",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554489",
+        "id_organizacie": "35221",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Prievidza",
+        "ico": "00318442",
+        "email": "iveta.krajcikova@prievidza.sk",
+        "adresa": "Námestie slobody 14",
+        "psc": "97101",
+        "mesto": "Prievidza",
+        "telefon": "+421904752605",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5192"
+      },
+      "zakazka": {
+        "predmet": "Rekonštrukcia KD Malá Lehôtka a KD Veľká Lehôtka - zateplenie + hydroizolácia",
+        "cpv_kod": "Fasádne práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmet zákazky je rozdelený na dve časti: Časť č. 1. „Rekonštrukcia KD Veľká Lehôtka“ (zateplenie) Časť č. 2. „Rekonštrukcia KD Malá Lehôtka“ (zateplenie a hydroizolácia) Podrobné vymedzenie predmetu zákazky je uvedené vo Výzve na predloženie ponuky a jej prílohách.",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 172901.8,
+        "mena": "EUR",
+        "lehota_datum": "16.04.2026",
+        "lehota_cas": "11:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 80
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394612",
+    "id": "1394612",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "550819",
+        "id_organizacie": "77669",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Univerzitná nemocnica Bratislava",
+        "ico": "31813861",
+        "email": "",
+        "adresa": "Pažítková 4",
+        "psc": "82101",
+        "mesto": "Bratislava - mestská časť Ružinov",
+        "telefon": "+421248234344",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná orgánom ústrednej štátnej správy",
+        "cinnost": "Zdravie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8698"
+      },
+      "zakazka": {
+        "predmet": "Príslušenstvo k laparoskopickej zostave zn. Storz.",
+        "cpv_kod": "Zdravotnícke vybavenie",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodanie bipolárneho resektoskopu, pracovných bipolárnych elektród, hysteroskopu s príslušenstvom, vnútromaternicového shaveru.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "RADIX MEDICAL spol. s r. o.",
+            "ico": "53718879",
+            "cena": 68999.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "266/UNB/2026",
+            "datum": "19.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12138335/"
+          }
+        ],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394632",
+    "id": "1394632",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553038",
+        "id_organizacie": "47307",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "Oznámenie o vyhlásení obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Železnice Slovenskej republiky",
+        "ico": "31364501",
+        "email": "",
+        "adresa": "Klemensova 8",
+        "psc": "81361",
+        "mesto": "Bratislava",
+        "telefon": "+421908403743",
+        "typ_kupujuceho": "Subjekt s osobitnými alebo výlučnými právami",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/2583"
+      },
+      "zakazka": {
+        "predmet": "Služby aplikačnej, metodickej a užívateľskej podpory, zabezpečenie legislatívnych a malých zmien SAP a systémov na platforme SAP, služby vývoja, rozvoja do prechodu na SAP S/4HANA a BW/4 HANA",
+        "cpv_kod": "Služby súvisiace so softvérom",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je zabezpečovanie plynulej a stabilnej prevádzky informačného systému SAP prostredníctvom komplexnej podpory a zároveň jeho strategický rozvoj. Predmet zákazky preto zahŕňa nielen služby dennej údržby a užívateľskej podpory, ale aj realizáciu rozvojových požiadaviek a projektov nevyhnutných pre modernizáciu systému do prechodu na S/4HANA a BW/4HANA. Bližší opis predmetu zákazky tvorí prílohu č. 2 súťažných podkladov.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 7851950.0,
+        "mena": "EUR",
+        "lehota_datum": "11.05.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 36,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 4.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394645",
+    "id": "1394645",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "548711",
+        "id_organizacie": "92052",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Národná diaľničná spoločnosť, a.s.",
+        "ico": "",
+        "email": "",
+        "adresa": "",
+        "psc": "",
+        "mesto": "",
+        "telefon": "",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9127"
+      },
+      "zakazka": {
+        "predmet": "Energetický manažment pre potreby NDS, a.s.",
+        "cpv_kod": "Softvérové balíky a informačné systémy",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je obstaranie komplexného informačného systému za účelom monitorovania, kontrolovania, identifikácie slabých miest (napr. nadmerná spotreba vody alebo únikov, netesnosti potrubí, nevyhovujúce odťahy spalín, nesprávne nastavený tlak, nesprávne nastavené odberové špičky – vysoké zmluvné pokuty a pod) v rámci jednotlivých odberných miest a získania návrhov pre optimalizáciu spotreby energií za účelom zníženia energetickej náročnosti a zlepšenia energetickej účinnosti. Podrobnejšie",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": 196652.2,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "ENMON APP s.r.o.",
+            "ico": "53566653",
+            "cena": 196652.2,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "12134785",
+            "datum": "12.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12134785/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 4.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394647",
+    "id": "1394647",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554516",
+        "id_organizacie": "66962",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Komunálny podnik Bratislavy, skrátene KPB",
+        "ico": "54656885",
+        "email": "aneta.stuparovicova@bcs.bratislava.sk",
+        "adresa": "Technická 6",
+        "psc": "82104",
+        "mesto": "Bratislava - mestská časť Ružinov",
+        "telefon": "+421904587566",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná miestnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/21397"
+      },
+      "zakazka": {
+        "predmet": "Hala k silu a technologické zariadenia",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je zhotovenie výstavby stavebných objektov a dodanie technologických zariadení súvisiacich so skladovaním a manipuláciou s chemickými posypovými materiálmi (ďalej aj ako „CHPM“), vrátene ich montáže, uvedenia do prevádzky a súvisiacich služieb.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "17.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394649",
+    "id": "1394649",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553356",
+        "id_organizacie": "70132",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Ústav na výkon trestu odňatia slobody",
+        "ico": "00738298",
+        "email": "Monika.Vargova1@zvjs.sk",
+        "adresa": "Veľký Dvor 12",
+        "psc": "93701",
+        "mesto": "Želiezovce",
+        "telefon": "0362832803",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Verejný poriadok a bezpečnosť",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/7994"
+      },
+      "zakazka": {
+        "predmet": "Veľkoplošný aglomerovaný materiál, doplnky a polotovary z masívu",
+        "cpv_kod": "Drevotriesková doska",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky sú dodávky tovaru - veľkoplošného aglomerovaného materiálu, doplnkov a polotovarov z masívu, vrátane dopravy na určené miesto a vyloženie tovaru na určené miesto pre Ústav na výkon trestu odňatia slobody Želiezovce (ďalej len „ÚVTOS Želiezovce“).",
+        "nuts": "Nitriansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "prilezitost": {
+        "hodnota": 1964921.16,
+        "mena": "EUR",
+        "lehota_datum": "",
+        "lehota_cas": "",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Dynamický nákupný systém, použiteľný iba pre kupujúcich uvedených v tomto oznámení",
+        "trvanie_mesiace": 48,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 1.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394655",
+    "id": "1394655",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "441580",
+        "id_organizacie": "34582",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – smernica pre vybrané odvetvia"
+      },
+      "obstaravatel": {
+        "nazov": "Dopravný podnik Bratislava, akciová spoločnosť",
+        "ico": "00492736",
+        "email": "skopekova.zuzana@dpb.sk",
+        "adresa": "Olejkárska 1",
+        "psc": "81452",
+        "mesto": "Bratislava",
+        "telefon": "+421259501115",
+        "typ_kupujuceho": "Verejný podnik",
+        "cinnost": "",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6484"
+      },
+      "zakazka": {
+        "predmet": "Elektromateriál",
+        "cpv_kod": "Elektropotreby a príslušenstvo",
+        "druh": "Tovary",
+        "opis": "jednotlivé zákazky vyhlasované v rámci zriadeného dynamického nákupného systému za obdobie posledného kalendárneho štvrťroka",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/25/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 12895.21,
+        "mena": "EUR",
+        "pocet_ponuk": 5,
+        "ucastnici": [
+          {
+            "nazov": "Neuvedený (§26 ods. 8 ZVO",
+            "ico": "-",
+            "cena": 12895.21,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "",
+            "subdodavatelia": "Použitie zatiaľ nie je známe"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Elektromateriál 01/2026",
+            "datum": "20.03.2026",
+            "nazov": "objednávky pre 3 uchádzačov",
+            "url": "https://dpb.sk/sk/filter/dokumenty"
+          }
+        ],
+        "elektronicke_ponuky": 5,
+        "subdodavatelia": "Použitie zatiaľ nie je známe"
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394658",
+    "id": "1394658",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "550868",
+        "id_organizacie": "77669",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Univerzitná nemocnica Bratislava",
+        "ico": "31813861",
+        "email": "",
+        "adresa": "Pažítková 4",
+        "psc": "82101",
+        "mesto": "Bratislava - mestská časť Ružinov",
+        "telefon": "+421248234957",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná orgánom ústrednej štátnej správy",
+        "cinnost": "Zdravie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8698"
+      },
+      "zakazka": {
+        "predmet": "Prístroj na detekciu sentinelových uzlín s príslušenstvom",
+        "cpv_kod": "Diagnostické prístroje",
+        "druh": "Tovary",
+        "opis": "Navigačný systém, ktorý pracuje pomocou scintilačnej detekcie a lokalizácie vopred podaných rádiofarmák. Bezdrôtový systém s navigáciou na intraoperatívne použitie pri detekcii sentinelových lymfatických uzlín a karcinómu prsníka.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "Perfect Distribution a. s. - organizačná zložka",
+            "ico": "47719150",
+            "cena": 45600.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "108/UNB/2026",
+            "datum": "13.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12135399/"
+          }
+        ],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394659",
+    "id": "1394659",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "536281",
+        "id_organizacie": "92052",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Národná diaľničná spoločnosť, a.s.",
+        "ico": "35919001",
+        "email": "",
+        "adresa": "Dúbravská cesta 14",
+        "psc": "84104",
+        "mesto": "Bratislava",
+        "telefon": "+421258311111",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9127"
+      },
+      "zakazka": {
+        "predmet": "Podrobný inžinierskogeologický a hydrogeologický prieskum a monitoring vôd pre stavbu: Diaľnica D4 Bratislava, Rača – Záhorská Bystrica",
+        "cpv_kod": "Geologické a geofyzikálne služby",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je realizácia podrobného inžinierskogeologického a hydrogeologického prieskumu a monitoringu vôd na stavbe D4 Bratislava, Rača - Záhorská Bystrica s tunelom Karpaty. Cieľom podrobného prieskumu a monitoringu vôd je v zmysle záverečného stanoviska ElA MŽP SR preskúmať detailne inžinierskogeologické, hydrogeologické a geotechnické pomery pre razenie tunela metódou TBM (Tunnel Boring Machine). Verejný Obstarávateľ si dal vypracovať na STU v Bratislave na katedre Geotechniky pre pr",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 17892130.0,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "Geoexperts, spol. s r.o.",
+            "ico": "31621082",
+            "cena": 17892130.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Áno"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "ZM/2026/0154",
+            "datum": "18.03.2026",
+            "nazov": "Zmluva o dielo",
+            "url": "https://www.crz.gov.sk/zmluva/12132586/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": "Áno"
+      }
+    },
+    "time_ms": 4.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394660",
+    "id": "1394660",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "544595",
+        "id_organizacie": "90575",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "02",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "„NITRAVA“, Zariadenie sociálnych služieb Nitra",
+        "ico": "00351768",
+        "email": "",
+        "adresa": "Železničiarska 52",
+        "psc": "94901",
+        "mesto": "Nitra",
+        "telefon": "0911704425",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou regionálneho orgánu",
+        "cinnost": "Sociálna ochrana",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/891"
+      },
+      "zakazka": {
+        "predmet": "Základné potraviny pre ,,NITRAVA“, Zariadenie sociálnych služieb Nitra",
+        "cpv_kod": "Potraviny, nápoje, tabak a príbuzné produkty",
+        "druh": "Tovary",
+        "opis": "Predmet zákazky je zadefinovaný v súlade so zákonom č. 343/2015 Z. z. o verejnom obstarávaní a o zmene a doplnení niektorých zákonov (ďalej len „ZVO“): Zákazka na nákup tovaru s predmetom podrobne vymedzeným v súťažných podkladoch (ďalej len „SP“). Podrobná špecifikácia predmetu zákazky je uvedená v Časti B1 OPIS PREDMETU ZÁKAZKY a Časti B2 OBCHODNÉ PODMIENKY Súťažných podkladov. Názov predmetu zákazky: Základné potraviny pre ,,NITRAVA“, Zariadenie sociálnych služieb Nitra Logický celok č. 1 Mäs",
+        "nuts": "Nitriansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 5,
+        "ucastnici": [
+          {
+            "nazov": "Majster mäsiar, s.r.o.",
+            "ico": "46658181",
+            "cena": 62448.54,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "MIK, s.r.o.",
+            "ico": "34099514",
+            "cena": 67099.1,
+            "poradie": 2,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "Topoľčianske pekárne a cukrárne a.s. skrátený názov TOPEC a.s.",
+            "ico": "00351768",
+            "cena": 36988.67,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "LEBECO s.r.o.",
+            "ico": "46658181",
+            "cena": 56680.0,
+            "poradie": 2,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "INMEDIA, spol. s r.o.",
+            "ico": "34099514",
+            "cena": 53988.55,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "QUALITED s.r.o.",
+            "ico": "31412408",
+            "cena": 61208.5,
+            "poradie": 2,
+            "je_vitaz": false,
+            "velkost_podniku": "Veľký podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "YURONES s.r.o.",
+            "ico": "47544783",
+            "cena": 51807.56,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "CS - FRUIT, spol. s r.o.",
+            "ico": "36019208",
+            "cena": 54397.7,
+            "poradie": 2,
+            "je_vitaz": false,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "PPM LOGISTIC s. r. o.",
+            "ico": "36638528",
+            "cena": 32394.81,
+            "poradie": 2,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": "Nie"
+          },
+          {
+            "nazov": "NITRAZDROJ, a.s.",
+            "ico": "46103325",
+            "cena": 57621.2,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "ZSS-Z165/2025",
+            "datum": "22.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 1",
+            "url": "https://www.crz.gov.sk/zmluva/11790590/?csrt=16167258074179419945"
+          },
+          {
+            "id": "ZSS-Z166/2025",
+            "datum": "19.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č.2",
+            "url": "https://www.crz.gov.sk/zmluva/11783408/?csrt=10448978784393423761"
+          },
+          {
+            "id": "ZSS-Z167/2025",
+            "datum": "29.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 3",
+            "url": "https://www.crz.gov.sk/zmluva/11805323/?csrt=10448978784393423761"
+          },
+          {
+            "id": "ZSS-Z168/2025",
+            "datum": "19.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 4",
+            "url": "https://www.crz.gov.sk/zmluva/11784184/?csrt=10448978784393423761"
+          },
+          {
+            "id": "ZSS-Z169/2025",
+            "datum": "29.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 5",
+            "url": "https://www.crz.gov.sk/zmluva/11805389/?csrt=10448978784393423761"
+          },
+          {
+            "id": "ZSS-Z170/2025",
+            "datum": "29.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 6",
+            "url": "https://www.crz.gov.sk/zmluva/11805500/?csrt=10448978784393423761"
+          },
+          {
+            "id": "ZSS-Z171/2025",
+            "datum": "22.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 7",
+            "url": "https://www.crz.gov.sk/zmluva/11789940/?csrt=10448978784393423761"
+          },
+          {
+            "id": "ZSS-Z172/2025",
+            "datum": "29.12.2025",
+            "nazov": "Rámcová dohoda na dodanie tovaru č. 8",
+            "url": "https://www.crz.gov.sk/zmluva/11805560/?csrt=10448978784393423761"
+          }
+        ],
+        "elektronicke_ponuky": 5,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 5.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394674",
+    "id": "1394674",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "514021",
+        "id_organizacie": "53914",
+        "typ_oznamenia": "Oznámenie o výsledku verejného obstarávania alebo oznámenie o výsledku koncesie",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "Oznámenie o výsledku verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Univerzita Pavla Jozefa Šafárika v Košiciach",
+        "ico": "00397768",
+        "email": "",
+        "adresa": "Šrobárova 2",
+        "psc": "041 80",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "0552341157",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Vzdelávanie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/1036"
+      },
+      "zakazka": {
+        "predmet": "DNS - Chemikálie a spotrebný laboratórny materiál",
+        "cpv_kod": "Zdravotnícky spotrebný materiál",
+        "druh": "Tovary",
+        "opis": "Predmetom zákaziek zadávaných v rámci DNS je nákup a dodanie rôznych druhov chemikálií a spotrebného laboratórne materiálu pre jednotlivé fakulty, ústavy a pracoviská UPJŠ. Podrobná špecifikácia predmetu zákazky, jej presný rozsah a množstvo ako aj ostatné doplňujúce informácie týkajúce zmluvných podmienok a požiadaviek na plnenie predmetu zákazky budú uvedené v jednotlivých výzvach na predloženie ponúk v rámci zriadeného DNS. Dĺžka trvania zriadeného DNS - doba na ktorú sa zriaďuje DNS na zadáv",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Užšia súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ"
+      },
+      "vysledok": {
+        "celkova_hodnota": 2655.45,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "LABO - SK, s. r. o.",
+            "ico": "36365556",
+            "cena": 2655.45,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": "Nie"
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Objednávka B02/4500160530",
+            "datum": "12.03.2026",
+            "nazov": "Objednávka B02/4500160530",
+            "url": "https://cr.iedu.sk/univerzita-pavla-jozefa-safarika-v-kosiciach/objednavky/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394696",
+    "id": "1394696",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553540",
+        "id_organizacie": "82469",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Správa a údržba ciest Trnavského samosprávneho kraja",
+        "ico": "37847783",
+        "email": "",
+        "adresa": "Bulharská ulica 39",
+        "psc": "91701",
+        "mesto": "Trnava",
+        "telefon": "+421335531287",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná regionálnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8700"
+      },
+      "zakazka": {
+        "predmet": "Teplá obaľovaná asfaltová zmes",
+        "cpv_kod": "Obalené cestné kamenivo",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je teplá obaľovaná asfaltová zmes AC 16 O 50/70, II a AC 11 O 50/70, II určená pre opravy výtlkov na povrchu cestných komunikácií za tepla. Bližšie informácie sú uvedené v súťažných podkladoch.",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 20475.0,
+        "mena": "EUR",
+        "lehota_datum": "30.03.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394698",
+    "id": "1394698",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552745",
+        "id_organizacie": "38396",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Domov seniorov Lamač",
+        "ico": "00896276",
+        "email": "slobodnikova@legaltenders.sk",
+        "adresa": "Na barine 5",
+        "psc": "84103",
+        "mesto": "Bratislava - mestská časť Lamač",
+        "telefon": "+421917718040",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná miestnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/1813"
+      },
+      "zakazka": {
+        "predmet": "Úpravy izieb a kúpel'ní A11 - A13",
+        "cpv_kod": "Stavebné práce na stavbe budov určených pre sociálne služby",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je celková úprava izieb, kúpeľní a spoločnej chodby A11 – A13 demontáž a montáž kúpeľní, dverí, otvorov, podláh, nadhľadov, elektroinštalácie, zdravotechniky.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": 75114.57,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "VAD spol. s r.o.",
+            "ico": "36284408",
+            "cena": 75114.57,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "1/2026",
+            "datum": "11.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12090573/"
+          }
+        ],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394715",
+    "id": "1394715",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "548007",
+        "id_organizacie": "28876",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Banská Bystrica",
+        "ico": "00313271",
+        "email": "",
+        "adresa": "Československej armády 26",
+        "psc": "97401",
+        "mesto": "Banská Bystrica",
+        "telefon": "0484330550",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4778"
+      },
+      "zakazka": {
+        "predmet": "Rekonštrukcia mosta Mládežnícka ul.,nad odbočkou MHD, Poľná ul. - Kyjevské nám.",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je rekonštrukcia mosta a úprava nadväzujúcej komunikácie. Účelom stavby „Rekonštrukcia mosta Mládežnícka ul., nad odbočkou MHD, Poľná ul. – Kyjevské nám.“ je vybudovanie nového mostného objektu spolu s nadväzujúcou komunikáciou, ktoré budú vyhovovať požiadavkám STN. Úsek rekonštrukcie miestnej dokumentácie má celkovú dĺžku 218,0 m a je navrhnutý v kategórii MZ 8,5/40. Stavba je členená na nasledovné stavebné objekty: SO-102 Úprava MK na Poľnej ulici SO-202 Most, Mládežnícka ul.",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 7,
+        "ucastnici": [
+          {
+            "nazov": "SMS a.s.",
+            "ico": "35727951",
+            "cena": 983242.1,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Zmluva o dielo č.753/2026/ORA",
+            "datum": "19.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12141198/"
+          }
+        ],
+        "elektronicke_ponuky": 7,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394723",
+    "id": "1394723",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554565",
+        "id_organizacie": "77447",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mestská časť Bratislava - Lamač",
+        "ico": "00603414",
+        "email": "katarina.fridmanska@apuen.sk",
+        "adresa": "Malokarpatské námestie 9",
+        "psc": "84103",
+        "mesto": "Bratislava - mestská časť Lamač",
+        "telefon": "+421904420290",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6561"
+      },
+      "zakazka": {
+        "predmet": "Nákup nábytku na vybavenie učební – opakovaná zákazka",
+        "cpv_kod": "Nábytok (vrátane kancelárskeho nábytku), zariadenie interiéru, domáce spotrebiče (s výnimkou osvetlenia) a čistiace prostriedky",
+        "druh": "Tovary",
+        "opis": "Predmetom zákazky je dodanie, doprava a montáž nábytku na vybavenie učební do priestorov Základnej školy Malokarpatské námestie 1, 84103 Bratislava - Lamač. Jedná sa o dodávku a montáž nábytku do Cvičnej kuchynky s IKC, Multifunkčných učební a Oddychových zón. Podrobné vymedzenie predmetu zákazky, vrátane požiadaviek a technických špecifikácií jednotlivých tovarov, ktoré sú predmetom zákazky tvorí prílohu Súťažných podkladov. Predmet zákazky je rozdelený na časti: 1.časť: Nábytok na mieru 2.časť",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 27515.55,
+        "mena": "EUR",
+        "lehota_datum": "08.04.2026",
+        "lehota_cas": "15:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394724",
+    "id": "1394724",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553951",
+        "id_organizacie": "71409",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Leles",
+        "ico": "00331686",
+        "email": "",
+        "adresa": "Hlavná 62",
+        "psc": "07684",
+        "mesto": "Leles",
+        "telefon": "+421905317598",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6340"
+      },
+      "zakazka": {
+        "predmet": "Objekty pre športové účely",
+        "cpv_kod": "Stavebné práce na športových halách",
+        "druh": "Stavebné práce",
+        "opis": "Predmetn zákazky je rozdelený na dve časti: Časť č. 1: Predmetom zákazky je vybudovanie objektu pre športové účely - telocvične, vrátane stavebných prác v učebniach tohto stavebného objektu. Rozsah stavebných prác podľa projektovej dokumentácie a výkazu výmer: 1. Vodovodná prípojka 2. 1 Kotolňa 2.2 UK-rozvody 4. Zdravotechnika 4.1 Rozvody vody, kanal, dážď v základoch 7 Dažďová kanalizácia prípojka 8 Vzduchotechnika 9 Stavebné práce 10 Elektroinštalácia Učebne Časť č. 2: Predmetom zákazky je vyb",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": null,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394725",
+    "id": "1394725",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553951",
+        "id_organizacie": "71409",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Leles",
+        "ico": "00331686",
+        "email": "",
+        "adresa": "Hlavná 62",
+        "psc": "07684",
+        "mesto": "Leles",
+        "telefon": "+421905317598",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6340"
+      },
+      "zakazka": {
+        "predmet": "Objekty pre športové účely",
+        "cpv_kod": "Stavebné práce na športových halách",
+        "druh": "Stavebné práce",
+        "opis": "Predmetn zákazky je rozdelený na dve časti: Časť č. 1: Predmetom zákazky je vybudovanie objektu pre športové účely - telocvične, vrátane stavebných prác v učebniach tohto stavebného objektu. Rozsah stavebných prác podľa projektovej dokumentácie a výkazu výmer: 1. Vodovodná prípojka 2. 1 Kotolňa 2.2 UK-rozvody 4. Zdravotechnika 4.1 Rozvody vody, kanal, dážď v základoch 7 Dažďová kanalizácia prípojka 8 Vzduchotechnika 9 Stavebné práce 10 Elektroinštalácia Učebne Časť č. 2: Predmetom zákazky je vyb",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": null,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394726",
+    "id": "1394726",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554566",
+        "id_organizacie": "24813",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Brezno",
+        "ico": "00313319",
+        "email": "sutaz@tenderpro.sk",
+        "adresa": "Námestie gen. M.R.Štefánika 1",
+        "psc": "97701",
+        "mesto": "Brezno",
+        "telefon": "0918660990",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4782"
+      },
+      "zakazka": {
+        "predmet": "Znižovanie množstva ZKO v meste Brezno – kontajnerové stojiská",
+        "cpv_kod": "Stavebné práce na stavbách zariadení na spracovanie odpadu",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky sú stavebné práce na vybudovaní stojísk na kontajnery na území mesta Brezno. Podrobné vymedzenie predmetu zákazky tvorí časť B.1 Opis predmetu zákazky súťažných podkladov.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 708026.28,
+        "mena": "EUR",
+        "lehota_datum": "16.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 1.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394744",
+    "id": "1394744",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553010",
+        "id_organizacie": "4917",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "03",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Prešovský samosprávny kraj",
+        "ico": "37870475",
+        "email": "",
+        "adresa": "Námestie mieru 2",
+        "psc": "08001",
+        "mesto": "Prešov",
+        "telefon": "0517081321",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/2914"
+      },
+      "zakazka": {
+        "predmet": "Zdravotnícky kampus/Centrum simulačnej medicíny PS",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky sú stavebné práce v rámci investičnej akcie: „Zdravotnícky kampus/Centrum simulačnej medicíny PS“. Podrobné informácie o predmete zákazky sú uvedené v projektovej dokumentácii: príloha č. 1-1-PD.zip.001, 1-1-PD.zip.002, 1-1-PD.zip.003, 1-1-PD.zip.004 súťažných podkladov.",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 4359720.06,
+        "mena": "EUR",
+        "lehota_datum": "16.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": true,
+        "dns": "",
+        "trvanie_mesiace": 18,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394745",
+    "id": "1394745",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "545432",
+        "id_organizacie": "45363",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Kanianka",
+        "ico": "00518239",
+        "email": "",
+        "adresa": "SNP 1",
+        "psc": "97217",
+        "mesto": "Kanianka",
+        "telefon": "+421907855607",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/6492"
+      },
+      "zakazka": {
+        "predmet": "Revitalizácia amfiteátra a okolia",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "1. Predmetom zákazky je uskutočnenie stavebných prác, a to konkrétne revitalizácia amfiteátra a jeho okolia v obci Kanianka, ktorej cieľom je upravenie zhodnotenie miesta, kde sa koná väčšina kultúrno-spoločenských udalostí organizovaných v exteriéry obce. 2. Podrobný opis predmetu zákazky obsahuje projektová dokumentácia (výkresová a textová časť), ktorá je prílohou č. 8 - Dokumentácia realizácie stavby týchto SP a výkaz výmer ako príloha č. 3 týchto SP. 3. Na preukázanie splnenia požiadaviek v",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "MIPE Invest, s.r.o.",
+            "ico": "36837075",
+            "cena": 448000.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "21/2026 Zmluva o dielo",
+            "datum": "16.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12119178/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394747",
+    "id": "1394747",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554520",
+        "id_organizacie": "99942",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Halič",
+        "ico": "00316091",
+        "email": "obstaravam@gmail.com",
+        "adresa": "Mieru 66",
+        "psc": "98511",
+        "mesto": "Halič",
+        "telefon": "0904576327",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5024"
+      },
+      "zakazka": {
+        "predmet": "Stavba - Centrum integrovanej zdravotnej starostlivosti Halič",
+        "cpv_kod": "Stavebné práce na stavbe budov určených pre zdravotníctvo",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je uskutočnenie stavebných prác spočívajúcich v nadstavbe, stavebných úpravách a modernizácii existujúceho objektu za účelom vybudovania Centra integrovanej zdravotnej starostlivosti v obci Halič, vrátane realizácie bezbariérových úprav, energeticky úsporných opatrení a vybudovania súvisiacich spevnených plôch. Bližšie informácie sú uvedené v súťažných podkladoch.",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 1010474.38,
+        "mena": "EUR",
+        "lehota_datum": "24.04.2026",
+        "lehota_cas": "14:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": 12,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394761",
+    "id": "1394761",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "543053",
+        "id_organizacie": "1713",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "TECHNICKÉ SLUŽBY Žiar nad Hronom, spol. s r.o.",
+        "ico": "31609651",
+        "email": "stanislav.bazalik@tszh.eu",
+        "adresa": "A. Dubčeka 380/45",
+        "psc": "965 01",
+        "mesto": "Žiar nad Hronom",
+        "telefon": "0915088822",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná miestnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/9228"
+      },
+      "zakazka": {
+        "predmet": "Vodozádržné - zákazka č. 10 Vegetačná strecha – SO02 a SO04 - opakovanie",
+        "cpv_kod": "Terénne úpravy strešných záhrad",
+        "druh": "Stavebné práce",
+        "opis": "Realizácia vegetačných striech na objektoch SO02 a SO04",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 2,
+        "ucastnici": [
+          {
+            "nazov": "ZUS servis, s.r.o.",
+            "ico": "36662780",
+            "cena": 46494.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "149/2025",
+            "datum": "03.10.2025",
+            "nazov": "",
+            "url": "https://www.tszh.sk/docpublishing.php?work=contracts_detail&ContractID=891"
+          }
+        ],
+        "elektronicke_ponuky": 2,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394766",
+    "id": "1394766",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554584",
+        "id_organizacie": "58862",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Správa telovýchovných a rekreačných zariadení hlavného mesta Slovenskej republiky Bratislavy",
+        "ico": "00179663",
+        "email": "natalia.paugschova@bcs.bratislava.sk",
+        "adresa": "Junácka 4",
+        "psc": "83104",
+        "mesto": "Bratislava - mestská časť Nové Mesto",
+        "telefon": "0910587107",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná miestnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/721"
+      },
+      "zakazka": {
+        "predmet": "Vodná záchranná služba 2026",
+        "cpv_kod": "Záchranné služby",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je zabezpečenie služieb vodnej záchrannej služby počas letnej sezóny 2026 v zmysle informácií uvedených vo výzve na predkladanie ponúk a v zmysle podmienok Zmluvy.",
+        "nuts": "",
+        "miesto_plnenia": "Slovensko, Kdekoľvek v danej krajine",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 100604.3,
+        "mena": "EUR",
+        "lehota_datum": "09.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 4.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394769",
+    "id": "1394769",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552678",
+        "id_organizacie": "101154",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Oravská Lesná",
+        "ico": "00314722",
+        "email": "benet@benet.sk",
+        "adresa": "Oravská Lesná 291",
+        "psc": "02957",
+        "mesto": "Oravská Lesná",
+        "telefon": "0948627672",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4905"
+      },
+      "zakazka": {
+        "predmet": "Športová infraštruktúra – Oravská Lesná 1. etapa",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je výstavba športovej infraštruktúry v obci Oravská Lesná",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "Benet Sport, s.r.o.",
+            "ico": "50988662",
+            "cena": 239807.56,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "12102169",
+            "datum": "09.03.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12102169/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 1.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394785",
+    "id": "1394785",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554598",
+        "id_organizacie": "31879",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Správa ciest Bratislavského samosprávneho kraja",
+        "ico": "53871103",
+        "email": "karolina.vavrincikova@scbsk.sk",
+        "adresa": "Čučoriedková 6",
+        "psc": "82712",
+        "mesto": "Bratislava - mestská časť Vrakuňa",
+        "telefon": "0904539885",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná regionálnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/20975"
+      },
+      "zakazka": {
+        "predmet": "PZ10/2026 “Recyklácia vozovky za horúca II/502 Pezinok - Vinosady”",
+        "cpv_kod": "Práce na oprave ciest",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je revitalizácia nevyhovujúceho krytu asfaltobetónových vrstiev vozovky na ceste II/502 Pezinok - Vinosady technológiou recyklácie za horúca na mieste a výmenou asfaltových vrstiev vozovky. Podrobné vymedzenie predmetu zákazky tvorí: „Príloha č. 1 Opis predmetu zákazky, Príloha č. 2 Výkaz výmer“",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 700851.07,
+        "mena": "EUR",
+        "lehota_datum": "20.04.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 30
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394786",
+    "id": "1394786",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552374",
+        "id_organizacie": "59979",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "04",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Žilinský samosprávny kraj",
+        "ico": "37808427",
+        "email": "",
+        "adresa": "Komenského 48",
+        "psc": "01109",
+        "mesto": "Žilina",
+        "telefon": "0415032407",
+        "typ_kupujuceho": "Regionálny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8276"
+      },
+      "zakazka": {
+        "predmet": "Reštaurátorské a rekonštrukčné práce na Oravskom hrade",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky stavebných prác je obnova dvoch objektov Oravského hradu – druhej hradnej brány a hradobného múru. Podrobnejšie informácie sú dostupné v prílohe č.1 a v prílohe č. 5 Výzvy.",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "30.03.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394792",
+    "id": "1394792",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554602",
+        "id_organizacie": "24664",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Centrum sociálnych služieb - SLOVEN",
+        "ico": "00632406",
+        "email": "lubica.hudcovska@csssloven.sk",
+        "adresa": "Slavnica 68",
+        "psc": "01854",
+        "mesto": "Slavnica",
+        "telefon": "0901918632",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná regionálnym orgánom",
+        "cinnost": "Sociálna ochrana",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/1508"
+      },
+      "zakazka": {
+        "predmet": "Oprava stropu v spoločenskej miestnosti",
+        "cpv_kod": "Montáž znížených stropov",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom obstarávania je oprava stropu v spoločenskej miestnosti, ktorá sa nachádza v hospodárskej budove. Strop v spoločenskej miestnosti je zavesený a je nepochôdzny. V rámci opravy bude jestvujúci strop, vrátane jeho súčastí demontovaný a nahradený sadrokartónovým podhľadom. Súčasťou prác je aj výmena tepelnej izolácie stropu a výmena svietidiel zabudovaných v strope. Po ukončení stavebných prác bude celá spoločenská miestnosť vymaľovaná.",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 32729.27,
+        "mena": "EUR",
+        "lehota_datum": "20.04.2026",
+        "lehota_cas": "08:30",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 31
+      }
+    },
+    "time_ms": 3.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394798",
+    "id": "1394798",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "547317",
+        "id_organizacie": "10959",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Divín",
+        "ico": "00316041",
+        "email": "info@divin.sk",
+        "adresa": "Námestie Mieru 3",
+        "psc": "98552",
+        "mesto": "Divín",
+        "telefon": "+4210474397301",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5019"
+      },
+      "zakazka": {
+        "predmet": "Vybudovanie zberného dvora v obci Divín a vybudovanie štyroch stojísk",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Stavby - SO 01 OBJEKT SPRÁVCU, - SO 02 EKO SKLAD, - SO 03 PRÍSTREŠOK MANIPULAČNEJ TECHNIKY A SKLAD, - SO 04 SPEVNENÁ PLOCHA, - SO 05 OPLOTENIE, - SO 06 ELEKTRICKÁ NN PRÍPOJKA ZEMNÁ, - SO 07 VNÚTROAREÁLOVÉ ELEKTRICKÉ ROZVODY, - SO 08 VODOVODNÁ PRÍPOJKA A VNÚTROAREÁLOVÝ DOMÁCI VODOVOD, - SO 09 VNÚTROAREÁLOVÁ A DAŽĎOVÁ KANALIZÁCIA. - V rámci hlavnej aktivity vybudovania Zberného dvora v obci Divín sa zrealizuje: - osadenie objektu správcu – kancelárskeho kontajnera so sociálnym zázemím, - osadenie ",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "COSTRUO, spol. s r.o.",
+            "ico": "31588794",
+            "cena": 338222.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "3/12/2025",
+            "datum": "22.12.2025",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/11798335/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394799",
+    "id": "1394799",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554604",
+        "id_organizacie": "22978",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Sabinov",
+        "ico": "00327735",
+        "email": "anton.tomcan@sabinov.sk",
+        "adresa": "Námestie slobody 57",
+        "psc": "08301",
+        "mesto": "Sabinov",
+        "telefon": "0514880420",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5972"
+      },
+      "zakazka": {
+        "predmet": "Nabíjacia infraštruktúra - mesto Sabinov",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Zákazka sa skladá z troch častí: 9.1. Vypracovanie projektovej dokumentácie vrátane kladných stanovísk dotknutých orgánov a správcov sieti. (pozn.: víťazný uchádzač v zmysle zmluvy predloží kompletne spracovanú projektovú dokumentáciu pre účely ohlásenia drobnej stavby/stavebný zámer v termíne podľa bodu 8.1) 9.2. Realizácia a montáž nabíjacích staníc podľa vypracovanej a schválenej projektovej dokumentácie z bodu č. 9.1. 9.3. Manažment nabíjacích staníc po realizácií bodu č. 9.2 – maximálne do ",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 89717.64,
+        "mena": "EUR",
+        "lehota_datum": "16.04.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": 2,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394829",
+    "id": "1394829",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "552765",
+        "id_organizacie": "54998",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Kráľová pri Senci",
+        "ico": "00306061",
+        "email": "",
+        "adresa": "Záhumenská 23",
+        "psc": "90050",
+        "mesto": "Kráľová pri Senci",
+        "telefon": "0221292210",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4241"
+      },
+      "zakazka": {
+        "predmet": "Základná škola Kráľová pri Senci - obnova",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Inžinierka činnosť, projekčné práce a stavebné práce na stavbe Základnej školy. Podrobnejší opis ako i množstvo alebo rozsah vyplývajú zo súťažných podkladov a ich príloh.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "02.04.2026",
+        "lehota_cas": "08:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 425
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394834",
+    "id": "1394834",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554626",
+        "id_organizacie": "78087",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Martin",
+        "ico": "00316792",
+        "email": "ranto@martin.sk",
+        "adresa": "Nám. S. H. Vajanského 1",
+        "psc": "03649",
+        "mesto": "Martin",
+        "telefon": "0915821032",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5089"
+      },
+      "zakazka": {
+        "predmet": "Opravy a rekonštrukcie ciest mesta Martin recyklovaným asfaltom",
+        "cpv_kod": "Práce na oprave ciest",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky sú opravy a rekonštrukcie poškodenia miestnych a účelových ciest na území mesta Martin recyklovaným asfaltom AC 11-16. Miestne a účelové cesty na území mesta Martin sú vo vlastníctve mesta Martin. Opravy a rekonštrukcie ciest musia spĺňať platné STN. Práce na oprave a rekonštrukcii poškodenej cesty budú realizované na základe výzvy objednávateľa, s uvedením konkrétneho miesta, rozsahu, termínu plnenia a podľa závažnosti poškodenia ciest, pri bežných opravách a rekonštrukciách a",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 554342.5,
+        "mena": "EUR",
+        "lehota_datum": "20.04.2026",
+        "lehota_cas": "08:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 1.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394860",
+    "id": "1394860",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "554642",
+        "id_organizacie": "82469",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Správa a údržba ciest Trnavského samosprávneho kraja",
+        "ico": "37847783",
+        "email": "vo@spravaciest.sk",
+        "adresa": "Bulharská ulica 39",
+        "psc": "91701",
+        "mesto": "Trnava",
+        "telefon": "+421335531287",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná regionálnym orgánom",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8700"
+      },
+      "zakazka": {
+        "predmet": "Odvoz a likvidácia odpadov kategórie \"O\" a \"N\" vrátane prenechania veľkokapacitných kontajnerov na zber odpadov kategórie \"O\" do užívania",
+        "cpv_kod": "Služby súvisiace s likvidáciou odpadu a odpadom",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je poskytnutie služieb súvisiacich s odvozom (nakládka, odvoz a vykládka) a likvidáciou odpadov kategórie „O“ a „N“ v zmysle vyhlášky Ministerstva životného prostredia Slovenskej republiky č. 365/2015 Z. z., ktorou sa ustanovuje Katalóg odpadov v znení neskorších predpisov, z jednotlivých stredísk Správy a údržby ciest TTSK v súlade s hierarchiou odpadového hospodárstva podľa § 6 zákona č. 79/2015 Z. z. o odpadoch a o zmene a doplnení niektorých zákonov v znení neskorších predp",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 44394.0,
+        "mena": "EUR",
+        "lehota_datum": "10.04.2026",
+        "lehota_cas": "11:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "",
+    "action": "unknown",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394861",
+    "id": "1394861",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "",
+        "id_organizacie": "",
+        "typ_oznamenia": "",
+        "typ_formulara": "",
+        "verzia": "",
+        "podtyp": ""
+      },
+      "obstaravatel": {
+        "nazov": "",
+        "ico": "",
+        "email": "",
+        "adresa": "",
+        "psc": "",
+        "mesto": "",
+        "telefon": "",
+        "typ_kupujuceho": "",
+        "cinnost": "",
+        "profil_url": ""
+      },
+      "zakazka": {
+        "predmet": "",
+        "cpv_kod": "",
+        "druh": "Súhrny",
+        "opis": "",
+        "nuts": "",
+        "miesto_plnenia": "",
+        "druh_postupu": "",
+        "pravny_zaklad": ""
+      }
+    },
+    "time_ms": 0.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1394882",
+    "id": "1394882",
+    "vestnik": "VVO 60/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "553075",
+        "id_organizacie": "32476",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "03",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Poprad",
+        "ico": "00326470",
+        "email": "",
+        "adresa": "Nábrežie Jána Pavla II. 3",
+        "psc": "05842",
+        "mesto": "Poprad",
+        "telefon": "+421424443891",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5858"
+      },
+      "zakazka": {
+        "predmet": "Parkoviská Ul. Banícka",
+        "cpv_kod": "Stavebné práce na stavbe parkovísk",
+        "druh": "Stavebné práce",
+        "opis": "Zámerom realizácie stavby je vybudovanie parkovacích plôch pred bytovými domami, prístupových komunikácií, verejného osvetlenia, nabíjacích staníc elektromobilov, detského ihriska, chodníkov a sadových úprav v časti mesta na Ul. Baníckej. Celkový počet nových parkovacích miest je 82. Stavba „Parkoviská Ul. Banícka pozostáva z nasledovných stavebných objektov: - SO 01 Parkovisko súp. č. 794/1, 794/3 - SO 02 Parkovisko súp. č. 795/5, 795/7, 795/9 - SO 03 Parkovisko súp. č. 796/11, 796/13, 796/15 -",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": ""
+      },
+      "prilezitost": {
+        "hodnota": 952099.27,
+        "mena": "EUR",
+        "lehota_datum": "31.03.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 120
+      }
+    },
+    "time_ms": 2.7
+  }
+]

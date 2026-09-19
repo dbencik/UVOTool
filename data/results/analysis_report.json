@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-19T00:58:15.192248",
+  "generated_at": "2026-09-19T15:08:01.646016",
   "db_path": "/Users/dodo/UVOTool/data/vestnik.db",
   "single_bidder": {
     "celkovo": {
-      "total": 432,
-      "single_bidder": 157,
-      "rate_pct": 36.3
+      "total": 651,
+      "single_bidder": 224,
+      "rate_pct": 34.4
     },
     "top_obstaravatelia": [
       {
@@ -18,13 +18,6 @@
       {
         "nazov": "Základná škola s materskou školou, Jatov 189",
         "ico": "37866672",
-        "total_tenders": 3,
-        "single_bidder": 3,
-        "rate_pct": 100.0
-      },
-      {
-        "nazov": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
-        "ico": "36601284",
         "total_tenders": 3,
         "single_bidder": 3,
         "rate_pct": 100.0
@@ -51,37 +44,90 @@
         "rate_pct": 100.0
       },
       {
-        "nazov": "Základná škola s materskou školou, Na Hôrke 30, Nitra",
-        "ico": "54054010",
-        "total_tenders": 10,
-        "single_bidder": 7,
-        "rate_pct": 70.0
+        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+        "ico": "36022047",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
       },
       {
-        "nazov": "Všeobecná zdravotná poisťovňa, a.s.",
-        "ico": "35937874",
-        "total_tenders": 6,
+        "nazov": "Trnavská univerzita v Trnave",
+        "ico": "31825249",
+        "total_tenders": 3,
+        "single_bidder": 3,
+        "rate_pct": 100.0
+      },
+      {
+        "nazov": "Národný ústav srdcových a cievnych chorôb, a.s.",
+        "ico": "35971126",
+        "total_tenders": 7,
+        "single_bidder": 6,
+        "rate_pct": 85.7
+      },
+      {
+        "nazov": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
+        "ico": "36601284",
+        "total_tenders": 5,
         "single_bidder": 4,
-        "rate_pct": 66.7
+        "rate_pct": 80.0
       },
       {
-        "nazov": "Slovenská televízia a rozhlas",
-        "ico": "56398255",
-        "total_tenders": 3,
-        "single_bidder": 2,
-        "rate_pct": 66.7
-      },
-      {
-        "nazov": "Mesto Prešov",
-        "ico": "00327646",
-        "total_tenders": 3,
-        "single_bidder": 2,
-        "rate_pct": 66.7
+        "nazov": "Finančné riaditeľstvo Slovenskej republiky",
+        "ico": "42499500",
+        "total_tenders": 4,
+        "single_bidder": 3,
+        "rate_pct": 75.0
       }
     ]
   },
   "repeated_winners": {
-    "flagged_pairs": []
+    "flagged_pairs": [
+      {
+        "obstaravatel": "Dopravný podnik Bratislava, akciová spoločnosť",
+        "obstaravatel_ico": "00492736",
+        "vitaz": "",
+        "vitaz_ico": "",
+        "win_count": 3,
+        "total_tenders": 4,
+        "rate_pct": 75.0
+      },
+      {
+        "obstaravatel": "Dopravný podnik Bratislava, akciová spoločnosť",
+        "obstaravatel_ico": "00492736",
+        "vitaz": "Neuvedený (§26 ods. 8 ZVO",
+        "vitaz_ico": "-",
+        "win_count": 3,
+        "total_tenders": 4,
+        "rate_pct": 75.0
+      },
+      {
+        "obstaravatel": "Ústav na výkon trestu odňatia slobody",
+        "obstaravatel_ico": "00738328",
+        "vitaz": "GLOBUS spol. s r.o.",
+        "vitaz_ico": "31571697",
+        "win_count": 3,
+        "total_tenders": 4,
+        "rate_pct": 75.0
+      },
+      {
+        "obstaravatel": "Ministerstvo zdravotníctva Slovenskej republiky",
+        "obstaravatel_ico": "00165565",
+        "vitaz": "Datacomp s.r.o.",
+        "vitaz_ico": "36212466",
+        "win_count": 5,
+        "total_tenders": 8,
+        "rate_pct": 62.5
+      },
+      {
+        "obstaravatel": "Spojená škola, Školská 535/5, Lendak",
+        "obstaravatel_ico": "36158917",
+        "vitaz": "CIMBAĽÁK s.r.o.",
+        "vitaz_ico": "36473219",
+        "win_count": 3,
+        "total_tenders": 5,
+        "rate_pct": 60.0
+      }
+    ]
   },
   "price_anomalies": {
     "threshold_proximity": [
@@ -119,6 +165,30 @@
             "vestnik": "VVO 131/2025",
             "obstaravatel": "Základná škola s materskou školou, Centrum I 32, Dubnica nad Váhom",
             "hodnota": 4922.0
+          },
+          {
+            "doc_id": "1382789",
+            "vestnik": "VVO 5/2026",
+            "obstaravatel": "Trnavská univerzita v Trnave",
+            "hodnota": 4943.7
+          },
+          {
+            "doc_id": "1382789",
+            "vestnik": "VVO 5/2026",
+            "obstaravatel": "Trnavská univerzita v Trnave",
+            "hodnota": 4943.7
+          },
+          {
+            "doc_id": "1383667",
+            "vestnik": "VVO 8/2026",
+            "obstaravatel": "Ústav na výkon väzby a Ústav na výkon trestu odňatia slobody",
+            "hodnota": 5004.5
+          },
+          {
+            "doc_id": "1383935",
+            "vestnik": "VVO 10/2026",
+            "obstaravatel": "Ministerstvo obrany Slovenskej republiky",
+            "hodnota": 4964.95
           },
           {
             "doc_id": "489687",
@@ -245,37 +315,13 @@
             "vestnik": "",
             "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
             "hodnota": 4881.0
-          },
-          {
-            "doc_id": "558846",
-            "vestnik": "",
-            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
-            "hodnota": 4900.0
-          },
-          {
-            "doc_id": "558846",
-            "vestnik": "",
-            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
-            "hodnota": 4950.0
-          },
-          {
-            "doc_id": "558846",
-            "vestnik": "",
-            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
-            "hodnota": 4990.0
-          },
-          {
-            "doc_id": "558846",
-            "vestnik": "",
-            "obstaravatel": "Verejnoprospešné služby Mesta Kežmarok",
-            "hodnota": 4995.0
           }
         ]
       },
       {
         "threshold": 70000,
         "label": "70 000 €",
-        "count": 20,
+        "count": 26,
         "records": [
           {
             "doc_id": "1260923",
@@ -362,6 +408,42 @@
             "hodnota": 70320.0
           },
           {
+            "doc_id": "1382944",
+            "vestnik": "VVO 6/2026",
+            "obstaravatel": "Ústav na výkon trestu odňatia slobody a Ústav na výkon väzby Leopoldov",
+            "hodnota": 72480.0
+          },
+          {
+            "doc_id": "1383044",
+            "vestnik": "VVO 5/2026",
+            "obstaravatel": "Národný ústav srdcových a cievnych chorôb, a.s.",
+            "hodnota": 69224.75
+          },
+          {
+            "doc_id": "1383369",
+            "vestnik": "VVO 7/2026",
+            "obstaravatel": "Mesto Trnava",
+            "hodnota": 70979.62
+          },
+          {
+            "doc_id": "1383549",
+            "vestnik": "VVO 8/2026",
+            "obstaravatel": "Západoslovenská vodárenská spoločnosť, a.s.",
+            "hodnota": 68400.0
+          },
+          {
+            "doc_id": "1384358",
+            "vestnik": "VVO 11/2026",
+            "obstaravatel": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
+            "hodnota": 69296.7
+          },
+          {
+            "doc_id": "1384481",
+            "vestnik": "VVO 11/2026",
+            "obstaravatel": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
+            "hodnota": 67200.0
+          },
+          {
             "doc_id": "1418232",
             "vestnik": "VVO 191/2026",
             "obstaravatel": "Stredná priemyselná škola stavebná Oskara Winklera - Winkler Oszkár Építőipari Szakközépiskola a Stredná odborná škola technická, Ulica Dukelských hrdinov 2, Lučenec",
@@ -402,7 +484,7 @@
       {
         "threshold": 260000,
         "label": "260 000 €",
-        "count": 20,
+        "count": 29,
         "records": [
           {
             "doc_id": "1292353",
@@ -463,6 +545,60 @@
             "vestnik": "VVO 4/2026",
             "obstaravatel": "Fakultná nemocnica s poliklinikou Žilina",
             "hodnota": 263177.04
+          },
+          {
+            "doc_id": "1383045",
+            "vestnik": "VVO 6/2026",
+            "obstaravatel": "Základná škola Alexandra Dubčeka, Majerníkova 62, Bratislava",
+            "hodnota": 268974.6
+          },
+          {
+            "doc_id": "1383150",
+            "vestnik": "VVO 6/2026",
+            "obstaravatel": "Univerzita Pavla Jozefa Šafárika v Košiciach",
+            "hodnota": 250000.0
+          },
+          {
+            "doc_id": "1383150",
+            "vestnik": "VVO 6/2026",
+            "obstaravatel": "Univerzita Pavla Jozefa Šafárika v Košiciach",
+            "hodnota": 250000.0
+          },
+          {
+            "doc_id": "1383405",
+            "vestnik": "VVO 7/2026",
+            "obstaravatel": "Východoslovenský ústav srdcových a cievnych chorôb, a.s.",
+            "hodnota": 271032.0
+          },
+          {
+            "doc_id": "1383418",
+            "vestnik": "VVO 7/2026",
+            "obstaravatel": "Národný ústav srdcových a cievnych chorôb, a.s.",
+            "hodnota": 270250.0
+          },
+          {
+            "doc_id": "1383549",
+            "vestnik": "VVO 8/2026",
+            "obstaravatel": "Západoslovenská vodárenská spoločnosť, a.s.",
+            "hodnota": 260300.0
+          },
+          {
+            "doc_id": "1383635",
+            "vestnik": "VVO 10/2026",
+            "obstaravatel": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+            "hodnota": 249475.0
+          },
+          {
+            "doc_id": "1383726",
+            "vestnik": "VVO 10/2026",
+            "obstaravatel": "Národný ústav srdcových a cievnych chorôb, a.s.",
+            "hodnota": 262500.0
+          },
+          {
+            "doc_id": "1384472",
+            "vestnik": "VVO 10/2026",
+            "obstaravatel": "Bratislavská vodárenská spoločnosť, a.s.",
+            "hodnota": 270715.94
           },
           {
             "doc_id": "1415609",
@@ -625,9 +761,9 @@
       },
       {
         "rok": 2026,
-        "pocet_zakaziek": 76,
-        "celkova_hodnota": 96859806.0,
-        "priemerna_hodnota": 1274471.0
+        "pocet_zakaziek": 176,
+        "celkova_hodnota": 173332552.0,
+        "priemerna_hodnota": 984844.0
       }
     ],
     "top_vitazi": [
@@ -656,40 +792,40 @@
         "celkova_cena": 19103479.0
       },
       {
-        "nazov": "VODOHOSPODÁRSKA VÝSTAVBA, ŠTÁTNY PODNIK",
-        "ico": "00156752",
-        "pocet_vyher": 1,
-        "celkova_cena": 10397974.0
-      },
-      {
-        "nazov": "Metrostav DS a.s.",
-        "ico": "46120602",
-        "pocet_vyher": 4,
-        "celkova_cena": 9022162.0
-      },
-      {
-        "nazov": "COLAS Slovakia, a.s.",
-        "ico": "31651402",
-        "pocet_vyher": 7,
-        "celkova_cena": 8991947.0
-      },
-      {
-        "nazov": "Metrostav Slovakia a. s.",
-        "ico": "47144190",
-        "pocet_vyher": 1,
-        "celkova_cena": 8603850.0
-      },
-      {
-        "nazov": "Aricoma Systems s.r.o.",
-        "ico": "36396222",
+        "nazov": "SMART CORPORATION, s. r. o.",
+        "ico": "45552584",
         "pocet_vyher": 2,
-        "celkova_cena": 8115938.0
+        "celkova_cena": 17085300.0
+      },
+      {
+        "nazov": "Czech Airlines Technics, a.s.",
+        "ico": "27145573",
+        "pocet_vyher": 1,
+        "celkova_cena": 13000000.0
+      },
+      {
+        "nazov": "CSM Industry s.r.o.",
+        "ico": "50720350",
+        "pocet_vyher": 1,
+        "celkova_cena": 12372915.0
       },
       {
         "nazov": "STRABAG s.r.o.",
         "ico": "17317282",
-        "pocet_vyher": 5,
-        "celkova_cena": 7458883.0
+        "pocet_vyher": 7,
+        "celkova_cena": 11717005.0
+      },
+      {
+        "nazov": "COMBIN BANSKÁ ŠTIAVNICA, s.r.o.",
+        "ico": "31631134",
+        "pocet_vyher": 2,
+        "celkova_cena": 11464512.0
+      },
+      {
+        "nazov": "Kloboucká lesní s.r.o., organizačná zložka",
+        "ico": "57109095",
+        "pocet_vyher": 1,
+        "celkova_cena": 10742898.0
       }
     ],
     "top_obstaravatelia": [
@@ -700,28 +836,46 @@
         "celkovy_vydavok": 25858816.0
       },
       {
+        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
+        "ico": "36022047",
+        "pocet_zakaziek": 2,
+        "celkovy_vydavok": 22770889.0
+      },
+      {
+        "nazov": "Národná diaľničná spoločnosť, a.s.",
+        "ico": "35919001",
+        "pocet_zakaziek": 6,
+        "celkovy_vydavok": 19249702.0
+      },
+      {
         "nazov": "Slovenský hydrometeorologický ústav",
         "ico": "00156884",
         "pocet_zakaziek": 1,
         "celkovy_vydavok": 19033613.0
       },
       {
-        "nazov": "Národná diaľničná spoločnosť, a.s.",
-        "ico": "35919001",
-        "pocet_zakaziek": 5,
-        "celkovy_vydavok": 15450930.0
+        "nazov": "Železničná spoločnosť Slovensko, a.s.",
+        "ico": "35914939",
+        "pocet_zakaziek": 2,
+        "celkovy_vydavok": 17085300.0
       },
       {
         "nazov": "Ministerstvo školstva, výskumu, vývoja a mládeže Slovenskej republiky",
         "ico": "00164381",
-        "pocet_zakaziek": 3,
-        "celkovy_vydavok": 11042428.0
+        "pocet_zakaziek": 5,
+        "celkovy_vydavok": 12549828.0
       },
       {
-        "nazov": "SLOVENSKÝ VODOHOSPODÁRSKY PODNIK, štátny podnik",
-        "ico": "36022047",
+        "nazov": "Obec Rakúsy",
+        "ico": "00326488",
         "pocet_zakaziek": 1,
-        "celkovy_vydavok": 10397974.0
+        "celkovy_vydavok": 9186463.0
+      },
+      {
+        "nazov": "Univerzita Komenského v Bratislave",
+        "ico": "00397865",
+        "pocet_zakaziek": 11,
+        "celkovy_vydavok": 8642925.0
       },
       {
         "nazov": "MH Teplárenský holding, a.s.",
@@ -730,45 +884,32 @@
         "celkovy_vydavok": 8480063.0
       },
       {
-        "nazov": "Univerzita Komenského v Bratislave",
-        "ico": "00397865",
-        "pocet_zakaziek": 4,
-        "celkovy_vydavok": 7538783.0
-      },
-      {
         "nazov": "Železnice Slovenskej republiky",
         "ico": "31364501",
         "pocet_zakaziek": 1,
         "celkovy_vydavok": 7192926.0
-      },
-      {
-        "nazov": "Psychiatrická nemocnica Profesora Matulaya Kremnica",
-        "ico": "00606987",
-        "pocet_zakaziek": 1,
-        "celkovy_vydavok": 5355878.0
-      },
-      {
-        "nazov": "Univerzitná nemocnica L. Pasteura Košice",
-        "ico": "00606707",
-        "pocet_zakaziek": 5,
-        "celkovy_vydavok": 4592093.0
       }
     ],
     "top_cpv": [
       {
         "cpv_kod": "",
-        "pocet": 278,
+        "pocet": 331,
         "celkova_hodnota": 749568.0
       },
       {
         "cpv_kod": "Stavebné práce",
-        "pocet": 143,
-        "celkova_hodnota": 17098401.0
+        "pocet": 206,
+        "celkova_hodnota": 21765823.0
       },
       {
         "cpv_kod": "Potraviny, nápoje, tabak a príbuzné produkty",
-        "pocet": 35,
-        "celkova_hodnota": 276597.0
+        "pocet": 72,
+        "celkova_hodnota": 517587.0
+      },
+      {
+        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
+        "pocet": 50,
+        "celkova_hodnota": 7384812.0
       },
       {
         "cpv_kod": "45000000-7",
@@ -781,53 +922,48 @@
         "celkova_hodnota": null
       },
       {
-        "cpv_kod": "Počítačové zariadenia a spotrebný materiál",
-        "pocet": 17,
-        "celkova_hodnota": 5340615.0
-      },
-      {
         "cpv_kod": "Elektrická energia",
-        "pocet": 13,
-        "celkova_hodnota": 372571.0
+        "pocet": 18,
+        "celkova_hodnota": 5092819.0
       },
       {
         "cpv_kod": "Zemný plyn",
-        "pocet": 12,
+        "pocet": 14,
         "celkova_hodnota": 675000.0
       },
       {
-        "cpv_kod": "Inžinierske projektovanie",
-        "pocet": 12,
-        "celkova_hodnota": 338904.0
-      },
-      {
         "cpv_kod": "Služby informačných technológií: konzultácie, vývoj softvéru, internet a podpora",
-        "pocet": 10,
-        "celkova_hodnota": 174180.0
+        "pocet": 14,
+        "celkova_hodnota": 669077.0
       },
       {
         "cpv_kod": "Rôzne náhradné diely",
-        "pocet": 10,
+        "pocet": 14,
         "celkova_hodnota": null
       },
       {
+        "cpv_kod": "Laboratórne, optické a presné prístroje a vybavenie (s výnimkou skiel)",
+        "pocet": 14,
+        "celkova_hodnota": 6133852.0
+      },
+      {
+        "cpv_kod": "Inžinierske projektovanie",
+        "pocet": 14,
+        "celkova_hodnota": 338904.0
+      },
+      {
+        "cpv_kod": "Zdravotnícky spotrebný materiál",
+        "pocet": 12,
+        "celkova_hodnota": 52408.0
+      },
+      {
         "cpv_kod": "Stavebné práce na objektoch nemocničných zariadení",
-        "pocet": 9,
+        "pocet": 11,
         "celkova_hodnota": 4761895.0
       },
       {
-        "cpv_kod": "Poisťovacie služby",
-        "pocet": 7,
-        "celkova_hodnota": 684735.0
-      },
-      {
-        "cpv_kod": "Opravy, údržba a súvisiace služby pre vozidlá a príbuzné vybavenie",
-        "pocet": 7,
-        "celkova_hodnota": 104860.0
-      },
-      {
-        "cpv_kod": "Stavebné práce na stavbe budov materských škôl",
-        "pocet": 6,
+        "cpv_kod": "Stavebné práce na stavbe budov",
+        "pocet": 10,
         "celkova_hodnota": null
       }
     ]

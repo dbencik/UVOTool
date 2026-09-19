@@ -1,0 +1,1523 @@
+[
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1413941",
+    "id": "1413941",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562605",
+        "id_organizacie": "272758",
+        "typ_oznamenia": "Oznámenie o vyhlásení verejného obstarávania alebo oznámenie o koncesii",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "Oznámenie o vyhlásení verejného obstarávania – všeobecná smernica"
+      },
+      "obstaravatel": {
+        "nazov": "Slovenská televízia a rozhlas",
+        "ico": "56398255",
+        "email": "jan.rydzi@stvr.sk",
+        "adresa": "Mlynská dolina 0",
+        "psc": "84545",
+        "mesto": "Bratislava - mestská časť Karlova Ves",
+        "telefon": "+421903600483",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia pod kontrolou orgánu ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/218548"
+      },
+      "zakazka": {
+        "predmet": "Zabezpečenie stravovania zamestnancov STVR prostredníctvom elektronických stravovacích kariet",
+        "cpv_kod": "Služby hromadného stravovania",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je zabezpečenie stravovania zamestnancov verejného obstarávateľa formou stravných poukážok v elektronickej podobe, v súlade s ustanovením § 152 zákona č. 311/2001 Z. z. Zákonník práce v platnom znení a so zákonom č. 87/2009 Z. z., ktorým sa mení a dopĺňa zákon č. 377/2004 Z. z. o ochrane nefajčiarov a o zmene a doplnení niektorých zákonov v znení neskorších predpisov, v zariadeniach partnerov uchádzača, v ktorých sú poskytované teplé hlavné jedlá alebo v ktorých sa predáva potr",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Verejná súťaž",
+        "pravny_zaklad": "Smernica 2014/24/EÚ",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 2345280.0,
+        "mena": "EUR",
+        "lehota_datum": "30.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": true,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "Žiadny",
+        "trvanie_mesiace": 48,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1415665",
+    "id": "1415665",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562749",
+        "id_organizacie": "2179",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mestská časť Košice-Staré Mesto",
+        "ico": "00690937",
+        "email": "",
+        "adresa": "Hviezdoslavova 7",
+        "psc": "04001",
+        "mesto": "Košice - mestská časť Staré Mesto",
+        "telefon": "0903643183",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/7930"
+      },
+      "zakazka": {
+        "predmet": "Zníženie energetickej náročnosti pri prevádzke MŠ Zádielska 4, Košice",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je uskutočnenie stavebných prác, ktoré spočívajú v zhotovení stavby: Zníženie energetickej náročnosti pri prevádzke MŠ Zádielska 4, Košice ” na parcele registra „C“ č. 3555 v k. ú. Huštáky",
+        "nuts": "Košický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 1325356.29,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "BETPRES, s.r.o.",
+            "ico": "31684343",
+            "cena": 1325356.29,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Zmluva o dielo č. 01/2011/2026",
+            "datum": "28.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12730827/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 4.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1415862",
+    "id": "1415862",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "538968",
+        "id_organizacie": "7582",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Považská Bystrica",
+        "ico": "00317667",
+        "email": "",
+        "adresa": "Centrum 2/3",
+        "psc": "01713",
+        "mesto": "Považská Bystrica",
+        "telefon": "0907804266",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5145"
+      },
+      "zakazka": {
+        "predmet": "Bytový dom s 42. b.j.",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je výstavba bytového domu so 42 bytovými jednotkami pozostávajúca najmä z vypracovania projektovej dokumentácie pre konanie o stavebnom zámere a pre overenie projektu stavby, vrátane vypracovania položkového rozpočtu – výkaz výmer a samotné uskutočnenie stavebných prác vrátane zabezpečenia kolaudačného osvedčenia. Bližší popis v súťažných podkladoch a ich prílohách.",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "HANT BA, a.s.",
+            "ico": "36328375",
+            "cena": 4050000.0,
+            "poradie": 3,
+            "je_vitaz": false,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "457/2026",
+            "datum": "20.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/2171273-sk/centralny-register-zmluv/?art_zs2=&art_predmet=&art_ico=&art_suma_spolu_od=&art_suma_spolu_do=&art_datum_zverejnene_od=&art_datum_zverejnene_do=&art_rezort=0&art_zs1=Mesto+Pova%C5%BEsk%C3%A1+Bystrica&nazov=&art_ico1=&odoslat=&ID=2171273&frm_id_frm_filter_3=69a5365b337b1"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416206",
+    "id": "1416206",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "560640",
+        "id_organizacie": "48116",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Záhorská Ves",
+        "ico": "00305219",
+        "email": "",
+        "adresa": "Hlavná 184",
+        "psc": "90065",
+        "mesto": "Záhorská Ves",
+        "telefon": "0903564661",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4165"
+      },
+      "zakazka": {
+        "predmet": "Zníženie energetickej náročnosti základnej školy v obci Záhorská Ves",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je zníženie energetickej náročnosti základnej školy v obci Záhorská Ves. Predmetom prác je rekonštrukcia budovy za účelom dosiahnutia zníženia energetickej náročnosti budovy. Rozsah prác zahŕňa: Zateplenie obvodových stien, Zateplenie stropu, Výmena odkvapového systému, Výmena vonkajších okien a dverí, Tieniaca technika, Rekonštrukcia elektroinštalácie, Rekonštrukcia bleskozvodu-komplet, Rekonštrukcia NN prípojky, Obnova vnútorných povrchov, Odvedenie časti dažďových vôd zo str",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 6,
+        "ucastnici": [
+          {
+            "nazov": "MMelektrostav s.r.o.",
+            "ico": "52837408",
+            "cena": 198446.62,
+            "poradie": null,
+            "je_vitaz": false,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          },
+          {
+            "nazov": "EURO-ŠTUKONZ a.s.",
+            "ico": "35972297",
+            "cena": 1340306.31,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          },
+          {
+            "nazov": "PRO EXTERIÉR s. r. o.",
+            "ico": "52157164",
+            "cena": 1361415.75,
+            "poradie": 2,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          },
+          {
+            "nazov": "GENESIS POZEMNÉ STAVBY, s.r.o.",
+            "ico": "46059105",
+            "cena": 1483481.65,
+            "poradie": 3,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          },
+          {
+            "nazov": "HÍLEK a spol., a.s.",
+            "ico": "36239542",
+            "cena": 1495955.85,
+            "poradie": 4,
+            "je_vitaz": false,
+            "velkost_podniku": "Veľký podnik",
+            "subdodavatelia": ""
+          },
+          {
+            "nazov": "Emera Group s. r. o.",
+            "ico": "53391454",
+            "cena": 1698025.0,
+            "poradie": 5,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Zmluva o dielo",
+            "datum": "28.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12732663/"
+          }
+        ],
+        "elektronicke_ponuky": 6,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 4.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416264",
+    "id": "1416264",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "560669",
+        "id_organizacie": "279106",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Úrad podpredsedu vlády Slovenskej republiky pre Plán obnovy a znalostnú ekonomiku",
+        "ico": "56565321",
+        "email": "martin.beniac@vicepremier.gov.sk",
+        "adresa": "Tomášikova 64A",
+        "psc": "83104",
+        "mesto": "Bratislava - mestská časť Nové Mesto",
+        "telefon": "+421220095174",
+        "typ_kupujuceho": "Orgán ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/220324"
+      },
+      "zakazka": {
+        "predmet": "Návrh a komplexné zabezpečenie odpočtovej kampane plánu obnovy",
+        "cpv_kod": "Tvorba (výroba) reklamných videozáznamov",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je kreatívny návrh a dodanie hlavného reklamného spotu pre odpočtovú kampaň plánu obnovy vrátane jeho variácií a adaptácií. Súčasťou sú aj podporné reklamné, marketingové služby a poradenstvo pre vzťahy s verejnosťou.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "MullenLowe GGK s. r. o.",
+            "ico": "18629555",
+            "cena": 134400.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Objednávka",
+            "datum": "13.08.2026",
+            "nazov": "",
+            "url": "https://www.vicepremier.gov.sk/wp-content/uploads/2026/08/Zverejnenie-objednavky-2026.pdf"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.1
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416280",
+    "id": "1416280",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "547116",
+        "id_organizacie": "78230",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Závod",
+        "ico": "00310158",
+        "email": "",
+        "adresa": "Sokolská ulica 20",
+        "psc": "90872",
+        "mesto": "Závod",
+        "telefon": "0918820778",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4562"
+      },
+      "zakazka": {
+        "predmet": "Modernizácia ZŠ Závod SP a RP",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je uskutočnenie stavebných prác zameraných na modernizáciu Základnej školy. Jedná sa o existujúci školský objekt, ktorému je potrebné zabezpečiť požiadavku vedenia obce a školy na splnenie platnej teplotechnickej legislatívy na vykonanie takých krkov, aby bol objekt hospodárny z hľadiska spotreby energií. Objekt bol postavený v roku 1947. Od svojho začiatku plní rovnakú funkciu. Má tri nadzemné podlažia a je čiastočne podpivničená. Zastrešenie je krovom so šikmou strechou, v st",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 1199232.53,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "KREATOR ATELIER, s. r. o.",
+            "ico": "44023189",
+            "cena": 1199232.53,
+            "poradie": 3,
+            "je_vitaz": false,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "76/20026",
+            "datum": "31.08.2026",
+            "nazov": "",
+            "url": "https://crz.gov.sk/zmluva/12743066/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416323",
+    "id": "1416323",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "564743",
+        "id_organizacie": "5125",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Červeník",
+        "ico": "00312355",
+        "email": "cervenik@cervenik.sk",
+        "adresa": "Kalinčiakova 26",
+        "psc": "92042",
+        "mesto": "Červeník",
+        "telefon": "+421911538599",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4717"
+      },
+      "zakazka": {
+        "predmet": "Zníženie energetickej náročnosti OÚ v obci Červeník",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky sú stavebné práce zamerané na zníženie energetickej náročnosti OÚ v obci Červeník. Cieľom projektu je zníženie energetickej náročnosti budovy. Samotná stavba obecného úradu sa nachádza v zastavanej časti obce Červeník v katastrálnom území Červeník, na parcele číslo 1186/36. List vlastníctva č. 1400. Majiteľom / vlastníkom objektu je : Obec Červeník, Kalinčiakova č.26, 920 42 Červeník.",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 1157988.79,
+        "mena": "EUR",
+        "lehota_datum": "23.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": true,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416358",
+    "id": "1416358",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "560700",
+        "id_organizacie": "5532",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Cerovo",
+        "ico": "00319775",
+        "email": "",
+        "adresa": "Cerovo 259",
+        "psc": "96252",
+        "mesto": "Cerovo",
+        "telefon": "+42100000000",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5305"
+      },
+      "zakazka": {
+        "predmet": "Výmena okien a zateplenie fasády a strechy ZŠ Cerovo",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky výmena okien a zateplenie fasády a strechy ZŠ Cerovo. Podrobné vymedzenie predmetu zákazky je uvedené: • príloha č. 1 súťažných podkladov - Projektová dokumentácia, • príloha č. 3a príloha č. 3b súťažných podkladov - Výkaz výmer, • príloha č. 4 súťažných podkladov - Návrh zmluvy o dielo.",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 8,
+        "ucastnici": [
+          {
+            "nazov": "XENEX, s.r.o.",
+            "ico": "36416291",
+            "cena": 2075068.52,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "2026/016",
+            "datum": "29.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12733612/"
+          }
+        ],
+        "elektronicke_ponuky": 8,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.5
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416359",
+    "id": "1416359",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "561967",
+        "id_organizacie": "59458",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "05",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Ľutina",
+        "ico": "00327425",
+        "email": "",
+        "adresa": "Ľutina 96",
+        "psc": "08257",
+        "mesto": "Ľutina",
+        "telefon": "0948 106 653",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5945"
+      },
+      "zakazka": {
+        "predmet": "Cyklochodník - Ľutina",
+        "cpv_kod": "Práce na kompletnej alebo čiastočnej stavbe a práce inžinierskych stavieb",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je výstavba nového cyklochodníka v k.ú. Ľutina 1. úsek: Hranica katastrálneho územia Ľutina - začiatok zástavby rodinných domov - dĺžka: 940 m (0,000 km - 0,940 km) 2. úsek: Verejná komunikácia (parcela č. 628/3) – Bazilika - dĺžka: 1110 m (0,940 km - 2,050 km) Cyklotrasa je napojená na navrhovanú cyklotrasu v katastri obce Pečovská Nová Ves. Cyklotrasa je rozdelená na dve časti ktoré sú prepojené existujúcou cestnou komunikáciou. Prvá časť začína na hranici katastrálneho územi",
+        "nuts": "Prešovský kraj",
+        "miesto_plnenia": "Slovensko, Kdekoľvek",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 545461.0,
+        "mena": "EUR",
+        "lehota_datum": "24.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": 245
+      }
+    },
+    "time_ms": 2.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416360",
+    "id": "1416360",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "560559",
+        "id_organizacie": "6048",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "05",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Tomášikovo",
+        "ico": "00306223",
+        "email": "",
+        "adresa": "Hlavná 319",
+        "psc": "92504",
+        "mesto": "Tomášikovo",
+        "telefon": "+421907855607",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4255"
+      },
+      "zakazka": {
+        "predmet": "OBNOVA HISTORICKEJ BUDOVY - SÝPKA",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "1. Predmetom zákazky je uskutočnenie stavebných prác, a to konkrétne modernizácia, prestavba a rekonštrukcia existujúceho objektu sýpky v areáli Historického parku. Rozsah stavebných prác a dodávok materiálov je bližšie špecifikovaných v prílohe č. 3 - Výkaz výmer týchto SP a v prílohe č. 4 - Dokumentácia stavby týchto SP. 2. Realizácia stavebných prác a dodávok materiálov, ktoré sú schválené certifikačným orgánom v rozsahu podľa prílohy č. 3 týchto SP – Výkaz výmer, bude prebiehať v súlade s pr",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 424386.49,
+        "mena": "EUR",
+        "lehota_datum": "23.09.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": 12,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416361",
+    "id": "1416361",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562583",
+        "id_organizacie": "35662",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Baloň",
+        "ico": "00305278",
+        "email": "",
+        "adresa": "",
+        "psc": "93008",
+        "mesto": "Baloň",
+        "telefon": "0904236199",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4169"
+      },
+      "zakazka": {
+        "predmet": "Zvyšovanie energetickej hospodárnosti Kultúrneho domu Baloň",
+        "cpv_kod": "Stavebné práce na stavbe budov pre voľný čas, šport, kultúru, ubytovanie a reštauračné stravovanie",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je uskutočnenie stavebných prác súvisiacich s komplexnou obnovou existujúcej verejnej budovy kultúrneho domu v obci Baloň. Hlavným cieľom projektu je zvýšenie energetickej hospodárnosti budovy, zníženie jej energetickej náročnosti a prevádzkových nákladov, zlepšenie stavebno-technického stavu konštrukcií a modernizácia technických zariadení budovy. Opis predmetu zákazky tvorí prílohu č. 1 (príloha č. 1A a č. 1B) tejto Výzvy.",
+        "nuts": "Trnavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "BS-MA s.r.o.",
+            "ico": "52909891",
+            "cena": 1256678.6,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Zmluva č. 176-031/2026, ID 12730405",
+            "datum": "28.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12730405/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.3
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416362",
+    "id": "1416362",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "560103",
+        "id_organizacie": "51199",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mestská časť Bratislava - Nové Mesto",
+        "ico": "00603317",
+        "email": "",
+        "adresa": "Junácka 1",
+        "psc": "83291",
+        "mesto": "Bratislava - mestská časť Nové Mesto",
+        "telefon": "0249253238",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/8221"
+      },
+      "zakazka": {
+        "predmet": "Dopracovanie pôvodnej PD na kúrenie ZŠ Kalinčiakova v súlade so správou z obhliadky vykurovacieho a vetracieho systému – vrátane zateplenia",
+        "cpv_kod": "Stavebné práce na objektoch základných škôl",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky ,,Dopracovanie pôvodnej PD na kúrenie ZŠ Kalinčiakova v súlade so správou z obhliadky vykurovacieho a vetracieho systému – vrátane zateplenia“ dodanie predmetu zákazky v súlade s opisom predmetu zákazky, projektovou dokumentáciou, výkazom výmer, požiadavkami uvedenými v týchto súťažných podkladoch vrátane príloh a zmluvnými podmienkami. Podrobný opis predmetu zákazky je uvedený v Prílohe č. 1 súťažných podkladov.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 1,
+        "ucastnici": [
+          {
+            "nazov": "EH bau, s. r. o.",
+            "ico": "53342674",
+            "cena": 1897527.8,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "12733849",
+            "datum": "30.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12733849/"
+          }
+        ],
+        "elektronicke_ponuky": 1,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.6
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416363",
+    "id": "1416363",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562969",
+        "id_organizacie": "91304",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Poniky",
+        "ico": "00313734",
+        "email": "ldnkprojekt@gmail.com",
+        "adresa": "Malá Stráňa 12",
+        "psc": "97633",
+        "mesto": "Poniky",
+        "telefon": "+421918209468",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4821"
+      },
+      "zakazka": {
+        "predmet": "Obnova kultúrneho domu – zníženie energetickej náročnosti objektu Ponická Huta",
+        "cpv_kod": "Stavebné práce na stavbe budov určených pre umenie a kultúru",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je zníženie energetickej náročnosti budovy kultúrneho domu nachádzajúceho sa v časti Ponická Huta. Jedná sa o prízemný objekt pôdorysných rozmerov 27,92 m x 14,46 m zastrešený sedlovou strechou, krytina plech. V rámci zníženia energetickej náročnosti objekt má verejný obstarávateľ záujem zatepliť zatepľovacím systémom vrátane podláh, vymeniť okná, dvere, vybudovať novú kotolňu vrátane vykurovacích telies a rozvodov – tepelné čerpadlo, fotovoltické články na streche, novú elektr",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 786937.48,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "H - TRADE Co., s.r.o.",
+            "ico": "45538476",
+            "cena": 786937.48,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "103/2026",
+            "datum": "27.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12732308/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.3
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416365",
+    "id": "1416365",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562778",
+        "id_organizacie": "42694",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Žarnovica",
+        "ico": "00321117",
+        "email": "ldnkprojekt@gmail.com",
+        "adresa": "Námestie Slovenského národného povstania 33",
+        "psc": "96681",
+        "mesto": "Žarnovica",
+        "telefon": "0911396464",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5404"
+      },
+      "zakazka": {
+        "predmet": "Zníženie energetickej náročnosti budovy ZŠ pre I. stupeň",
+        "cpv_kod": "Stavebné práce na objektoch základných škôl",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je zníženie energetickej náročnosti budovy základnej školy. Objekt sa nachádza na ulici Fraňa Kráľa v meste Žarnovica. Objekt pozostáva z troch navzájom prepojených budov – pavilónov A, B a C. Objekt je v majetku mesta Žarnovica a využíva sa ako zariadenie pre výučbu žiakov prvého stupňa základnej školy. V jednotlivých budovách sa nachádzajú priestory učební, kancelárií, telocvičňa, sklady, technické a obslužné miestnosti, sociálne a hygienické priestory, hospodárska časť a vým",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": 794108.21,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "REKOSTAV ss-vp, s.r.o.",
+            "ico": "45390720",
+            "cena": 794108.21,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "ZS2026122/PM",
+            "datum": "26.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12721787/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.9
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416367",
+    "id": "1416367",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "540741",
+        "id_organizacie": "64751",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Slovenská správa ciest",
+        "ico": "00003328",
+        "email": "",
+        "adresa": "Dúbravská cesta 3",
+        "psc": "84104",
+        "mesto": "Bratislava - mestská časť Karlova Ves",
+        "telefon": "+421484343242",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná orgánom ústrednej štátnej správy",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/15"
+      },
+      "zakazka": {
+        "predmet": "I/75 Čebovce - rekonštrukcia mosta ev.č. 75 - 048",
+        "cpv_kod": "Stavebné práce na cestných mostoch",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom obstarania je výber zhotoviteľa pre uskutočnenie stavebných prác na rekonštrukciu mostného objektu situovaného na ceste I/75 ev. č. 75 – 048 v k. ú. Kosihovce v okrese Veľký Krtíš s cieľom odstránenia jeho súčasného veľmi zlého stavebno – technického stavu (stupeň technického stavu mosta je VI. – veľmi zlý). Nevyhovujúci stav sa odstráni vybúraním existujúceho mosta, nahradený novou prefabrikovanou rámovou železobetónovou konštrukciou. Na moste a predmostí bude zrealizovaná nová konštr",
+        "nuts": "Banskobystrický kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 6,
+        "ucastnici": [
+          {
+            "nazov": "VIAKORP, s.r.o.",
+            "ico": "50228455",
+            "cena": 662323.66,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Stredný podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "1278/2420/2026",
+            "datum": "26.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12740537/"
+          }
+        ],
+        "elektronicke_ponuky": 6,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416384",
+    "id": "1416384",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562623",
+        "id_organizacie": "71075",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Prečín",
+        "ico": "00317691",
+        "email": "",
+        "adresa": "Prečín 304",
+        "psc": "01815",
+        "mesto": "Prečín",
+        "telefon": "+421424443891",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/5146"
+      },
+      "zakazka": {
+        "predmet": "Prečín – Zníženie energetickej náročnosti kultúrneho domu č.s. 212",
+        "cpv_kod": "Stavebné práce na stavbe budov určených pre umenie a kultúru",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je komplexná obnova a zníženie energetickej náročnosti budovy Kultúrneho domu č. s. 212 v Prečíne, nachádzajúcej sa v katastrálnom území Prečín na pozemkoch parc. č. KN-C 407/1, 407/2 a 391/2. Investorom stavby je Obec Prečín. Stavba zahŕňa jeden stavebný objekt — SO 01 Prestavba objektu kultúrneho domu, jestvujúci jednopodlažný, čiastočne podpivničený objekt, ktorý je predmetom zmeny dokončenej stavby spojenej so znížením jeho energetickej náročnosti a s prístavbou malej sály ",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 4,
+        "ucastnici": [
+          {
+            "nazov": "POH, s.r.o. \"registrovaný sociálny podnik\"",
+            "ico": "52713725",
+            "cena": 1288558.85,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "12730248",
+            "datum": "28.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12730248/"
+          }
+        ],
+        "elektronicke_ponuky": 4,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.4
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416390",
+    "id": "1416390",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562807",
+        "id_organizacie": "71890",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Obec Rudina",
+        "ico": "00314251",
+        "email": "",
+        "adresa": "",
+        "psc": "02331",
+        "mesto": "Rudina",
+        "telefon": "+421905300500",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4863"
+      },
+      "zakazka": {
+        "predmet": "Zníženie energetickej náročnosti Základnej školy v Rudine",
+        "cpv_kod": "Stavebné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky je zníženie energetickej náročnosti a debarierizácia budovy základnej školy v Rudine. Predmet zákazky zahŕňa najmä: zateplenie obvodového plášťa minerálnou vlnou vrátane soklovej časti z extrudovaného polystyrénu a zateplenia ostenia; zateplenie stropu v povalovej časti vrátane novej povalovej podlahy; výmenu požiarnych výplní otvorov a montáž nových predokenných žalúzií s elektrickým ovládaním; vytvorenie nových a stavebné úpravy jestvujúcich hygienických zariadení so zdravote",
+        "nuts": "Žilinský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 3,
+        "ucastnici": [
+          {
+            "nazov": "MIPE Invest, s.r.o.",
+            "ico": "36837075",
+            "cena": 1201710.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Malý podnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "12740566",
+            "datum": "01.09.2026",
+            "nazov": "",
+            "url": "https://crz.gov.sk/zmluva/12740566/"
+          }
+        ],
+        "elektronicke_ponuky": 3,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 3.3
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416402",
+    "id": "1416402",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "564749",
+        "id_organizacie": "60674",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Pezinok",
+        "ico": "00305022",
+        "email": "",
+        "adresa": "Radničné námestie 7",
+        "psc": "90214",
+        "mesto": "Pezinok",
+        "telefon": "+421336901143",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4146"
+      },
+      "zakazka": {
+        "predmet": "Obnova spevnených plôch – Bystrická 30-34, Pezinok",
+        "cpv_kod": "Stavebné práce na stavbe parkovísk",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom plnenia zákazky je výmena asfaltového krytu časti parkoviska pred bytovým domom Bystrická č. 30 – 34 a úseku chodníka pred vstupom do bytového domu Bystrická č. 32. Súčasťou výmeny krytu je aj výšková úprava kanalizačných poklopov a dažďovej vpuste, nové vodorovné dopravné značenie, demontáž a osadenie nových stĺpikov zvislého dopravného značenia. Všetky práce budú realizované v zmysle projektovej dokumentácie a výkazu výmer. Súčasťou prác je aj odvoz a likvidácia stavebného odpadu. Zh",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": 1,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 37023.84,
+        "mena": "EUR",
+        "lehota_datum": "25.09.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 3.0
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "vyhlasenie",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416467",
+    "id": "1416467",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "564595",
+        "id_organizacie": "6224",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "01",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Ústav materiálov a mechaniky strojov Slovenskej akadémie vied, verejná výskumná inštitúcia",
+        "ico": "00490750",
+        "email": "",
+        "adresa": "Dúbravská cesta 9",
+        "psc": "845 13",
+        "mesto": "Bratislava - mestská časť Karlova Ves",
+        "telefon": "+421904573259",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná orgánom ústrednej štátnej správy",
+        "cinnost": "Vzdelávanie",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/1094"
+      },
+      "zakazka": {
+        "predmet": "Poskytnutie služieb projektového manažmentu pre projekt Lightweight EU: Strengthening EU lightweight policies for a unified European approach",
+        "cpv_kod": "Riadenie projektov iných ako pre stavebné práce",
+        "druh": "Služby",
+        "opis": "Predmetom zákazky je poskytnutie služieb projektového manažmentu pre projekt Lightweight EU: Strengthening EU lightweight policies for a unified European approach. Podrobné vymedzenie predmetu zákazky je uvedené v súťažných podkladoch v časti B. Opis predmetu Zákazky.",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": null,
+        "mena": "EUR",
+        "lehota_datum": "16.09.2026",
+        "lehota_cas": "10:00",
+        "eu_fond": "Obstarávanie je plne alebo čiastočne financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": 33,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 2.7
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416479",
+    "id": "1416479",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "510279",
+        "id_organizacie": "89335",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Levice",
+        "ico": "00307203",
+        "email": "",
+        "adresa": "Nám. hrdinov 1",
+        "psc": "93401",
+        "mesto": "Levice",
+        "telefon": "+421917502395",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4334"
+      },
+      "zakazka": {
+        "predmet": "Modernizácia verejného osvetlenia mesta Levice",
+        "cpv_kod": "Stavebno-inštalačné práce",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom Verejného obstarávania je Modernizácia verejného osvetlenia mesta Levice v rozsahu podľa súťažných podkladov.",
+        "nuts": "Nitriansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": null,
+        "ucastnici": [],
+        "zmluvy": [],
+        "elektronicke_ponuky": null,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 1.8
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Výsledok",
+    "action": "vysledok",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416482",
+    "id": "1416482",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "562353",
+        "id_organizacie": "68252",
+        "typ_oznamenia": "",
+        "typ_formulara": "Výsledok",
+        "verzia": "01",
+        "podtyp": "PF-VYSLEDOK-1"
+      },
+      "obstaravatel": {
+        "nazov": "MH Invest II, s. r. o.",
+        "ico": "50021150",
+        "email": "tender@p-m.sk",
+        "adresa": "Trnavská cesta 100",
+        "psc": "82101",
+        "mesto": "Bratislava",
+        "telefon": "+421254653904",
+        "typ_kupujuceho": "Verejnoprávna inštitúcia kontrolovaná orgánom ústrednej štátnej správy",
+        "cinnost": "Hospodárske záležitosti",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/17757"
+      },
+      "zakazka": {
+        "predmet": "Poskytnutie právnych, poradenských a konzultačných služieb",
+        "cpv_kod": "Právne služby",
+        "druh": "Služby",
+        "opis": "Poskytovanie právnych, poradenských a konzultačných služieb v zmysle zákona č. 586/2003 Z. z. o advokácii a o zmene a doplnení zákona č. 455/1991 Zb. o živnostenskom podnikaní (živnostenský zákon) v znení neskorších predpisov (ďalej len „Zákon o advokácii“), v právnych veciach, ktoré súvisia s plnením odborných úloh verejného obstarávateľa. Právne, poradenské a konzultačné služby budú poskytované v súlade s podmienkami Zmluvy o poskytovaní právnych služieb a podľa požiadaviek verejného obstaráva",
+        "nuts": "Bratislavský kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "vysledok": {
+        "celkova_hodnota": null,
+        "mena": "EUR",
+        "pocet_ponuk": 5,
+        "ucastnici": [
+          {
+            "nazov": "Seman & Partners advokátska kancelária s. r. o.",
+            "ico": "56028873",
+            "cena": 211560.0,
+            "poradie": 1,
+            "je_vitaz": true,
+            "velkost_podniku": "Mikropodnik",
+            "subdodavatelia": ""
+          }
+        ],
+        "zmluvy": [
+          {
+            "id": "Z26/029",
+            "datum": "31.08.2026",
+            "nazov": "",
+            "url": "https://www.crz.gov.sk/zmluva/12734737/"
+          }
+        ],
+        "elektronicke_ponuky": 5,
+        "subdodavatelia": ""
+      }
+    },
+    "time_ms": 2.2
+  },
+  {
+    "num": "",
+    "code": "",
+    "type": "Súťaž",
+    "action": "oprava",
+    "url": "https://www.uvo.gov.sk/vestnik-a-registre/vestnik/oznamenie/detail/1416489",
+    "id": "1416489",
+    "vestnik": "VVO 180/2026",
+    "extraction": {
+      "metadata": {
+        "id_zakazky": "563410",
+        "id_organizacie": "91271",
+        "typ_oznamenia": "",
+        "typ_formulara": "Súťaž",
+        "verzia": "02",
+        "podtyp": "PF-SUTAZ-1"
+      },
+      "obstaravatel": {
+        "nazov": "Mesto Nové Mesto nad Váhom",
+        "ico": "00311863",
+        "email": "",
+        "adresa": "Ulica čsl. armády 1",
+        "psc": "91501",
+        "mesto": "Nové Mesto nad Váhom",
+        "telefon": "032 7402 419",
+        "typ_kupujuceho": "Miestny orgán",
+        "cinnost": "Všeobecné verejné služby",
+        "profil_url": "https://www.uvo.gov.sk/vyhladavanie/vyhladavanie-profilov/detail/4680"
+      },
+      "zakazka": {
+        "predmet": "20_26 Modernizácia zariadenia zimného štadióna v Novom Meste nad Váhom",
+        "cpv_kod": "Stavebné práce na stavbe športových zariadení",
+        "druh": "Stavebné práce",
+        "opis": "Predmetom zákazky sú stavebné práce – Modernizácia zariadenia zimného štadióna v Novom Meste nad Váhom v rozsahu podľa priloženej projektovej dokumentácie a výkazu/výmeru.",
+        "nuts": "Trenčiansky kraj",
+        "miesto_plnenia": "Slovensko",
+        "druh_postupu": "Iný jednofázový postup",
+        "pravny_zaklad": "",
+        "pocet_casti": 1,
+        "max_casti_ponuka": null,
+        "max_casti_zadanie": null
+      },
+      "casti": [],
+      "prilezitost": {
+        "hodnota": 1694106.99,
+        "mena": "EUR",
+        "lehota_datum": "17.09.2026",
+        "lehota_cas": "09:00",
+        "eu_fond": "Obstarávanie nie je financované z fondov EÚ",
+        "ramcova_dohoda": false,
+        "kriterium": "Cena",
+        "elektronicka_aukcia": false,
+        "dns": "",
+        "trvanie_mesiace": null,
+        "trvanie_dni": null
+      }
+    },
+    "time_ms": 4.5
+  }
+]

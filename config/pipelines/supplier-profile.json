@@ -75,6 +75,142 @@
           }
         }
       }
+    },
+    {
+      "id": "n86516",
+      "module": "fs_dlznici",
+      "x": 250,
+      "y": 480,
+      "settings": {
+        "outputs": {
+          "je_dlznik": {
+            "enabled": true,
+            "label": "Je dlžník"
+          },
+          "dlh_suma": {
+            "enabled": true,
+            "label": "Suma dlhu"
+          },
+          "typ_dlhu": {
+            "enabled": true,
+            "label": "Typ dlhu"
+          }
+        }
+      }
+    },
+    {
+      "id": "n87147",
+      "module": "sp_dlznici",
+      "x": 250,
+      "y": 570,
+      "settings": {
+        "outputs": {
+          "je_dlznik": {
+            "enabled": true,
+            "label": "Je dlžník"
+          },
+          "dlh_suma": {
+            "enabled": true,
+            "label": "Suma dlhu"
+          },
+          "obdobie": {
+            "enabled": true,
+            "label": "Obdobie"
+          }
+        }
+      }
+    },
+    {
+      "id": "n88616",
+      "module": "ted",
+      "x": 250,
+      "y": 660,
+      "settings": {
+        "outputs": {
+          "documents": {
+            "enabled": true,
+            "label": "Dokumenty"
+          },
+          "total_count": {
+            "enabled": true,
+            "label": "Počet dokumentov"
+          }
+        }
+      }
+    },
+    {
+      "id": "n88998",
+      "module": "analyze",
+      "x": 250,
+      "y": 750,
+      "settings": {
+        "outputs": {
+          "single_bidder_rate": {
+            "enabled": true,
+            "label": "Miera jedného uchádzača"
+          },
+          "top_vitazi": {
+            "enabled": true,
+            "label": "Top víťazi"
+          },
+          "top_obstaravatelia": {
+            "enabled": true,
+            "label": "Top obstarávatelia"
+          },
+          "cenove_anomalie": {
+            "enabled": true,
+            "label": "Cenové anomálie"
+          }
+        }
+      }
+    },
+    {
+      "id": "n89399",
+      "module": "graph",
+      "x": 250,
+      "y": 840,
+      "settings": {
+        "outputs": {
+          "nodes": {
+            "enabled": true,
+            "label": "Uzly grafu"
+          },
+          "edges": {
+            "enabled": true,
+            "label": "Hrany grafu"
+          },
+          "pagerank": {
+            "enabled": true,
+            "label": "PageRank skóre"
+          },
+          "communities": {
+            "enabled": true,
+            "label": "Komunity"
+          },
+          "self_dealing": {
+            "enabled": true,
+            "label": "Self-dealing väzby"
+          }
+        }
+      }
+    },
+    {
+      "id": "n90284",
+      "module": "watchdog",
+      "x": 250,
+      "y": 930,
+      "settings": {
+        "outputs": {
+          "matches": {
+            "enabled": true,
+            "label": "Zhody"
+          },
+          "total_matches": {
+            "enabled": true,
+            "label": "Počet zhôd"
+          }
+        }
+      }
     }
   ],
   "edges": [
@@ -102,6 +238,48 @@
     {
       "from": "n_input",
       "to": "n12239",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n86516",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n87147",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n88616",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n88998",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n89399",
+      "mapping": {
+        "ico": "ico"
+      }
+    },
+    {
+      "from": "n_input",
+      "to": "n90284",
       "mapping": {
         "ico": "ico"
       }
