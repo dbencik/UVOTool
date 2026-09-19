@@ -1203,10 +1203,14 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 
     <div style="text-align:center;color:#868e96;font-size:12px;margin:12px 0">alebo</div>
 
-    <div>
-      <div style="font-size:11px;color:#868e96;margin-bottom:4px">TDD XML</div>
-      <textarea id="tdd-xml" rows="4" placeholder="Vlozte raw TDD XML..." style="width:100%;padding:10px;border:1px solid #ced4da;border-radius:6px;font-size:12px;font-family:monospace;resize:vertical"></textarea>
-      <button id="tdd-xml-btn" style="margin-top:8px;padding:8px 20px;background:#7048e8;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Parsovat a obohatit</button>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <label style="padding:8px 20px;background:#7048e8;color:#fff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">
+        Nahrat TDD XML <input type="file" id="tdd-xml-file" accept=".xml" style="display:none">
+      </label>
+      <label style="padding:8px 20px;background:#e7f5ff;color:#1971c2;border:1px solid #a5d8ff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">
+        Batch XML (priecinok) <input type="file" id="tdd-xml-batch" accept=".xml" multiple style="display:none">
+      </label>
+      <span id="tdd-file-status" style="font-size:12px;color:#868e96"></span>
     </div>
   </div>
 
@@ -3247,7 +3251,7 @@ function renderProfil(data, container) {
       }
     }
 
-    if (sn === 'Danovy profil (FR SR)' && sekcia.data) {
+    if (sn === 'Daňový profil (FR SR)' && sekcia.data) {
       var dp = sekcia.data;
       html += '<table class="profil-mini-table" style="font-size:13px"><tbody>';
       if (dp.dic) html += '<tr><td style="color:#868e96;width:140px">DIC</td><td style="font-weight:500;font-family:monospace">' + esc(dp.dic) + '</td></tr>';
@@ -3257,7 +3261,7 @@ function renderProfil(data, container) {
       html += '</tbody></table>';
     }
 
-    if (sn === 'Spolahlivos\u0165 da\u0148ovn\u00edka' && sekcia.data) {
+    if (sn === 'Spoľahlivosť daňovníka' && sekcia.data) {
       var sp = sekcia.data;
       var idsVal = sp.ids_status || '';
       var isSpolahliv = typeof idsVal === 'string' && idsVal.toLowerCase().indexOf('spolahliv') >= 0 && idsVal.toLowerCase().indexOf('nespolahliv') < 0;
@@ -3270,7 +3274,7 @@ function renderProfil(data, container) {
       html += '</div>';
     }
 
-    if (sn === 'DPH odpocty' && sekcia.data) {
+    if (sn === 'DPH odpočty' && sekcia.data) {
       var od = sekcia.data;
       // Summary cards
       html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;margin-bottom:12px">';
