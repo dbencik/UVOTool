@@ -253,7 +253,9 @@ OUTPUT = DataModule(
     cache_ttl=0,
 )
 
+# Pipeline modules — only per-IČO data enrichment sources
+# Analyze, Graph, Watchdog are global tools, not pipeline modules
 MODULE_REGISTRY: dict[str, DataModule] = {
     m.id: m
-    for m in [INPUT, ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED, ANALYZE, GRAPH, WATCHDOG, OUTPUT]
+    for m in [INPUT, ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED, OUTPUT]
 }

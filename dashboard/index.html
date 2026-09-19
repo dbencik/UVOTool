@@ -2199,8 +2199,8 @@ function renderAnalysis(data) {
           let rateClass = 'rate-normal';
           if (o.rate_pct > 70) rateClass = 'rate-high';
           else if (o.rate_pct > 50) rateClass = 'rate-medium';
-          return `<tr>
-            <td>${esc(o.nazov)}</td>
+          return `<tr style="cursor:pointer" data-filter-name="${esc(o.nazov)}">
+            <td style="color:#1971c2;font-weight:500">${esc(o.nazov)}</td>
             <td class="num-col">${esc(o.ico)}</td>
             <td style="text-align:center">${o.total_tenders}</td>
             <td style="text-align:center">${o.single_bidder}</td>
@@ -2228,11 +2228,12 @@ function renderAnalysis(data) {
       html += `<div class="threshold-group">
         <span class="threshold-label">Prah: ${esc(thr.label)} (${thr.count} zaznamov)</span>
         <table class="analyza-table" style="margin-top:8px">
-          <thead><tr><th>Vestnik</th><th>Obstaravatel</th><th style="text-align:right">Hodnota</th></tr></thead>
+          <thead><tr><th>Vestnik</th><th>Obstaravatel</th><th>Predmet</th><th style="text-align:right">Hodnota</th></tr></thead>
           <tbody>
-            ${unique.slice(0, 10).map(r => `<tr>
+            ${unique.slice(0, 10).map(r => `<tr style="cursor:pointer" data-filter-name="${esc(r.obstaravatel)}">
               <td style="white-space:nowrap;font-size:12px;color:#868e96">${esc(r.vestnik || '-')}</td>
-              <td>${esc(r.obstaravatel)}</td>
+              <td style="color:#1971c2">${esc(r.obstaravatel)}</td>
+              <td style="font-size:12px;color:#495057">${esc((r.predmet || '').substring(0, 50))}</td>
               <td class="val-col">${formatEur(r.hodnota)}</td>
             </tr>`).join('')}
             ${unique.length > 10 ? `<tr><td colspan="3" style="text-align:center;color:#868e96;font-size:12px">... a dalsich ${unique.length - 10}</td></tr>` : ''}
@@ -2350,6 +2351,19 @@ function renderAnalysis(data) {
     el.addEventListener('click', () => {
       const si = document.getElementById('search');
       si.value = el.dataset.filterVitaz;
+      if (typeof searchClearBtn !== 'undefined') searchClearBtn.classList.toggle('visible', si.value.length > 0);
+      document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-tab="dokumenty"]').classList.add('active');
+      document.querySelectorAll('.main-content-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('section-dokumenty').classList.add('active');
+      render();
+    });
+  });
+  // Click on single-bidder / anomaly rows → filter Dokumenty
+  document.querySelectorAll('[data-filter-name]').forEach(el => {
+    el.addEventListener('click', () => {
+      const si = document.getElementById('search');
+      si.value = el.dataset.filterName;
       if (typeof searchClearBtn !== 'undefined') searchClearBtn.classList.toggle('visible', si.value.length > 0);
       document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
       document.querySelector('[data-tab="dokumenty"]').classList.add('active');
@@ -2721,7 +2735,9 @@ function renderAktualny(data) {
   html += renderGroup(`UVO — ${esc(data.uvo_vestnik || 'Posledny vestnik')}`, 'UVO', data.uvo);
   html += renderGroup(esc(data.ted_label || 'TED'), 'TED', data.ted);
 
-  document.getElementById('aktualny-content').innerHTML = html;
+  var aktEl = document.getElementById('aktualny-content');
+  aktEl.className = '';
+  aktEl.innerHTML = html;
 
   // Click handler — open detail or URL
   document.getElementById('aktualny-content').querySelectorAll('tr[data-aktualny-id]').forEach(tr => {
