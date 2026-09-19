@@ -15,6 +15,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data", "results")
 DB_PATH = os.path.join(BASE_DIR, "data", "vestnik.db")
 DASHBOARD_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_DIR = os.path.join(BASE_DIR, "config")
+WATCHLIST_PATH = os.path.join(CONFIG_DIR, "watchlist.json")
+WATCHDOG_MATCHES_PATH = os.path.join(DATA_DIR, "watchdog_matches.json")
 
 
 def query_profile(query: str, profile_type: str) -> dict:
@@ -403,8 +406,69 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_json_file("graph_analysis.json")
         elif parsed.path == "/api/profile":
             self.send_profile(parsed)
+        elif parsed.path == "/api/watchlist":
+            self.send_watchlist()
+        elif parsed.path == "/api/watchdog-matches":
+            self.send_watchdog_matches()
         else:
             super().do_GET()
+
+    def do_POST(self):
+        parsed = urlparse(self.path)
+        if parsed.path == "/api/watchlist":
+            self.save_watchlist()
+        else:
+            self.send_response(404)
+            self.end_headers()
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def send_watchlist(self):
+        if not os.path.exists(WATCHLIST_PATH):
+            self.send_json({"pravidla": [], "notifikacia": {}})
+            return
+        with open(WATCHLIST_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.send_json(data)
+
+    def save_watchlist(self):
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            data = json.loads(body.decode("utf-8"))
+            os.makedirs(CONFIG_DIR, exist_ok=True)
+            with open(WATCHLIST_PATH, "w", encoding="utf-8") as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+            self.send_json({"ok": True})
+        except Exception as e:
+            self.send_response(400)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}, ensure_ascii=False).encode("utf-8"))
+
+    def send_watchdog_matches(self):
+        if not os.path.exists(WATCHDOG_MATCHES_PATH):
+            self.send_json([])
+            return
+        with open(WATCHDOG_MATCHES_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        # Also attach last_run from watchdog_state.json
+        state_path = os.path.join(BASE_DIR, "data", "watchdog_state.json")
+        last_run = None
+        if os.path.exists(state_path):
+            try:
+                with open(state_path, "r", encoding="utf-8") as f:
+                    state = json.load(f)
+                    last_run = state.get("last_run")
+            except Exception:
+                pass
+        self.send_json({"matches": data, "last_run": last_run})
 
     def send_profile(self, parsed):
         params = parse_qs(parsed.query)
@@ -539,6 +603,7 @@ if __name__ == "__main__":
     server = HTTPServer(("0.0.0.0", PORT), DashboardHandler)
     print(f"UVO Vestnik Dashboard: http://localhost:{PORT}")
     print(f"API: /api/data, /api/analysis, /api/graph, /api/profile?type=dodavatel&q=ICO")
+    print(f"     /api/watchlist (GET/POST), /api/watchdog-matches")
     print(f"Data: {DATA_DIR}")
     print(f"DB: {DB_PATH}")
     try:

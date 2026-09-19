@@ -622,6 +622,266 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   color: #2b8a3e;
   font-size: 13px;
 }
+
+/* ── Monitoring tab styles ── */
+.monitoring-info {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.monitoring-info-stat {
+  text-align: center;
+  min-width: 100px;
+}
+
+.monitoring-info-stat .label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #868e96;
+  margin-bottom: 2px;
+}
+
+.monitoring-info-stat .value {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.monitoring-info-stat .value.blue { color: #1971c2; }
+.monitoring-info-stat .value.green { color: #2b8a3e; }
+
+.monitoring-info-note {
+  flex: 1;
+  min-width: 200px;
+  font-size: 13px;
+  color: #868e96;
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 10px 14px;
+  line-height: 1.6;
+}
+
+.monitoring-section {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.monitoring-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+/* Add-rule form */
+.watchlist-form {
+  display: grid;
+  grid-template-columns: 1fr 180px 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  align-items: end;
+}
+
+@media (max-width: 800px) { .watchlist-form { grid-template-columns: 1fr; } }
+
+.watchlist-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.watchlist-form input,
+.watchlist-form select {
+  width: 100%;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a1a1a;
+  outline: none;
+}
+
+.watchlist-form input:focus,
+.watchlist-form select:focus {
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 2px rgba(77,171,247,0.15);
+}
+
+.watchlist-form-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #495057;
+  padding-bottom: 2px;
+}
+
+.watchlist-form-actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.btn-primary {
+  padding: 8px 18px;
+  background: #1971c2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary:hover { background: #1864ab; }
+
+.btn-danger {
+  padding: 4px 10px;
+  background: #fff5f5;
+  color: #e03131;
+  border: 1px solid #ffc9c9;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-danger:hover { background: #ffe3e3; }
+
+/* Rule cards */
+.watchlist-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.watchlist-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.watchlist-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.watchlist-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.watchlist-card-type {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f1f3f5;
+  color: #495057;
+}
+
+.watchlist-card-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.pill-blue { background: #d0ebff; color: #1971c2; }
+.pill-gray { background: #f1f3f5; color: #495057; }
+
+.watchlist-empty {
+  padding: 24px;
+  text-align: center;
+  color: #868e96;
+  font-size: 14px;
+}
+
+/* Matches table */
+.matches-table-wrap {
+  overflow-x: auto;
+}
+
+.matches-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.matches-table thead th {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #495057;
+  white-space: nowrap;
+}
+
+.matches-table tbody td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f1f3f5;
+  vertical-align: top;
+}
+
+.matches-table tbody tr:last-child td { border-bottom: none; }
+.matches-table tbody tr:hover { background: #f8f9fa; }
+
+.match-rule-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #e7f5ff;
+  color: #1971c2;
+  white-space: nowrap;
+}
+
+.matches-empty {
+  padding: 40px;
+  text-align: center;
+  color: #868e96;
+}
 </style>
 </head>
 <body>
@@ -641,6 +901,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div class="main-tab" data-tab="analyza">Analyza</div>
   <div class="main-tab" data-tab="graf">Graf</div>
   <div class="main-tab" data-tab="profil">Profil</div>
+  <div class="main-tab" data-tab="monitoring">Monitoring</div>
 </div>
 
 <!-- ═══════════════════ DOKUMENTY TAB ═══════════════════ -->
@@ -711,6 +972,94 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   </div>
   <div id="profil-result"></div>
 </div>
+
+<!-- ═══════════════════ MONITORING TAB ═══════════════════ -->
+<div class="main-content-section" id="section-monitoring">
+
+  <!-- Info box -->
+  <div class="monitoring-info" id="monitoring-info-box">
+    <div class="monitoring-info-stat">
+      <div class="label">Aktívne pravidlá</div>
+      <div class="value blue" id="mon-rules-count">—</div>
+    </div>
+    <div class="monitoring-info-stat">
+      <div class="label">Zhody celkom</div>
+      <div class="value green" id="mon-matches-count">—</div>
+    </div>
+    <div class="monitoring-info-stat">
+      <div class="label">Posledný sken</div>
+      <div class="value" id="mon-last-run" style="font-size:13px;padding-top:6px">—</div>
+    </div>
+    <div class="monitoring-info-note">
+      Automatické skenovanie beží cez cron (Po–Pi 23:00). Výsledky sa ukladajú do
+      <code>data/results/watchdog_matches.json</code>. Notifikácie cez ntfy.sh topic
+      <strong>vestnik-uvo</strong>.
+    </div>
+  </div>
+
+  <!-- Watchlist rules section -->
+  <div class="monitoring-section">
+    <h3>Aktívne pravidlá</h3>
+
+    <!-- Add rule form -->
+    <div class="watchlist-form">
+      <div>
+        <label for="wl-nazov">Názov pravidla</label>
+        <input type="text" id="wl-nazov" placeholder="napr. Ministerstvo zdravotníctva">
+      </div>
+      <div>
+        <label for="wl-typ">Typ</label>
+        <select id="wl-typ">
+          <option value="ico_obstaravatela">IČO obstarávateľa</option>
+          <option value="cpv">CPV kód</option>
+        </select>
+      </div>
+      <div>
+        <label for="wl-hodnoty">Hodnoty (čiarkou oddelené)</label>
+        <input type="text" id="wl-hodnoty" placeholder="napr. 00151866, 35919001">
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <div class="watchlist-form-checkbox">
+          <input type="checkbox" id="wl-notifikacia" checked>
+          <label for="wl-notifikacia" style="text-transform:none;letter-spacing:0;font-weight:400">Notifikácia</label>
+        </div>
+      </div>
+      <div class="watchlist-form-actions">
+        <button class="btn-primary" id="wl-add-btn">Pridať pravidlo</button>
+      </div>
+    </div>
+
+    <!-- Rule cards -->
+    <div class="watchlist-cards" id="watchlist-cards">
+      <div class="watchlist-empty">Načítavam pravidlá...</div>
+    </div>
+  </div>
+
+  <!-- Recent matches section -->
+  <div class="monitoring-section">
+    <h3>Posledné zhody</h3>
+    <div class="matches-table-wrap">
+      <table class="matches-table">
+        <thead>
+          <tr>
+            <th>Dátum</th>
+            <th>Obstarávateľ</th>
+            <th>Predmet</th>
+            <th>Hodnota</th>
+            <th>Lehota</th>
+            <th>Pravidlo</th>
+            <th>Dokument</th>
+          </tr>
+        </thead>
+        <tbody id="matches-tbody">
+          <tr><td colspan="7" class="matches-empty">Načítavam zhody...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- end section-monitoring -->
 
 <footer>UVO Vestnik Dashboard &mdash; data z vestnik-parser.py</footer>
 
@@ -2026,6 +2375,207 @@ function renderProfil(data, container) {
 
   html += '</div>'; // end profil-report
   container.innerHTML = html;
+}
+
+// ══════════════════════════════════════════════════════════════
+// MONITORING TAB
+// ══════════════════════════════════════════════════════════════
+
+let monitoringLoaded = false;
+let watchlistData = { pravidla: [] };
+
+// Hook into tab switching to load monitoring data on first open
+document.querySelectorAll('.main-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    if (tab.dataset.tab === 'monitoring' && !monitoringLoaded) {
+      loadMonitoring();
+    }
+  });
+});
+
+function loadMonitoring() {
+  Promise.all([
+    fetch('/api/watchlist').then(function(r) { return r.json(); }),
+    fetch('/api/watchdog-matches').then(function(r) { return r.json(); })
+  ]).then(function(results) {
+    monitoringLoaded = true;
+    watchlistData = results[0];
+    var matchesData = results[1];
+    renderWatchlistCards();
+    renderMatches(matchesData.matches || []);
+    updateMonitoringInfo(matchesData.last_run);
+  }).catch(function(err) {
+    document.getElementById('watchlist-cards').innerHTML =
+      '<div class="watchlist-empty error">Chyba pri načítaní: ' + esc(err.message) + '</div>';
+  });
+}
+
+function updateMonitoringInfo(lastRun) {
+  var pravidla = watchlistData.pravidla || [];
+  document.getElementById('mon-rules-count').textContent = pravidla.length;
+
+  // matches count comes from the table
+  var tbody = document.getElementById('matches-tbody');
+  var rows = tbody.querySelectorAll('tr[data-match]');
+  document.getElementById('mon-matches-count').textContent = rows.length;
+
+  if (lastRun) {
+    try {
+      var d = new Date(lastRun);
+      document.getElementById('mon-last-run').textContent =
+        d.toLocaleDateString('sk-SK') + ' ' + d.toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
+    } catch (e) {
+      document.getElementById('mon-last-run').textContent = lastRun;
+    }
+  }
+}
+
+function renderWatchlistCards() {
+  var pravidla = watchlistData.pravidla || [];
+  var container = document.getElementById('watchlist-cards');
+
+  if (pravidla.length === 0) {
+    container.innerHTML = '<div class="watchlist-empty">Žiadne pravidlá. Pridajte prvé pravidlo vyššie.</div>';
+    document.getElementById('mon-rules-count').textContent = '0';
+    return;
+  }
+
+  document.getElementById('mon-rules-count').textContent = pravidla.length;
+
+  container.innerHTML = pravidla.map(function(p, idx) {
+    var typLabel = p.typ === 'ico_obstaravatela' ? 'IČO' : 'CPV';
+    var pillClass = p.typ === 'cpv' ? 'pill-blue' : 'pill-gray';
+    var hodnoty = (p.hodnoty || []);
+    var pills = hodnoty.map(function(v) {
+      return '<span class="pill ' + pillClass + '">' + esc(v) + '</span>';
+    }).join('');
+
+    return '<div class="watchlist-card">' +
+      '<div class="watchlist-card-header">' +
+        '<span class="watchlist-card-name">' + esc(p.nazov) + '</span>' +
+        '<span class="watchlist-card-type">' + typLabel + '</span>' +
+      '</div>' +
+      (pills ? '<div class="watchlist-card-values">' + pills + '</div>' : '') +
+      '<div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">' +
+        '<span style="font-size:12px;color:#adb5bd">' +
+          (p.notifikacia ? '🔔 Notifikácia zapnutá' : 'Notifikácia vypnutá') +
+        '</span>' +
+        '<button class="btn-danger" data-idx="' + idx + '">Odstrániť</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  // Attach remove handlers
+  container.querySelectorAll('.btn-danger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var idx = parseInt(btn.dataset.idx);
+      removeWatchlistRule(idx);
+    });
+  });
+}
+
+function removeWatchlistRule(idx) {
+  watchlistData.pravidla.splice(idx, 1);
+  saveWatchlist(function() {
+    renderWatchlistCards();
+    document.getElementById('mon-rules-count').textContent = watchlistData.pravidla.length;
+  });
+}
+
+function addWatchlistRule() {
+  var nazov = document.getElementById('wl-nazov').value.trim();
+  var typ = document.getElementById('wl-typ').value;
+  var hodnotyRaw = document.getElementById('wl-hodnoty').value.trim();
+  var notifikacia = document.getElementById('wl-notifikacia').checked;
+
+  if (!nazov) {
+    alert('Zadajte názov pravidla.');
+    return;
+  }
+  if (!hodnotyRaw) {
+    alert('Zadajte aspoň jednu hodnotu (IČO alebo CPV kód).');
+    return;
+  }
+
+  var hodnoty = hodnotyRaw.split(',').map(function(v) { return v.trim(); }).filter(function(v) { return v.length > 0; });
+
+  watchlistData.pravidla = watchlistData.pravidla || [];
+  watchlistData.pravidla.push({ nazov: nazov, typ: typ, hodnoty: hodnoty, notifikacia: notifikacia });
+
+  saveWatchlist(function() {
+    renderWatchlistCards();
+    document.getElementById('mon-rules-count').textContent = watchlistData.pravidla.length;
+    // Clear form
+    document.getElementById('wl-nazov').value = '';
+    document.getElementById('wl-hodnoty').value = '';
+    document.getElementById('wl-notifikacia').checked = true;
+  });
+}
+
+function saveWatchlist(callback) {
+  fetch('/api/watchlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(watchlistData)
+  }).then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).then(function() {
+    if (callback) callback();
+  }).catch(function(err) {
+    alert('Chyba pri ukladaní watchlistu: ' + err.message);
+  });
+}
+
+document.getElementById('wl-add-btn').addEventListener('click', addWatchlistRule);
+
+function renderMatches(matches) {
+  var tbody = document.getElementById('matches-tbody');
+
+  if (!matches || matches.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="matches-empty">Žiadne zhody zatiaľ nenájdené.</td></tr>';
+    document.getElementById('mon-matches-count').textContent = '0';
+    return;
+  }
+
+  // Sort by timestamp descending, take last 50
+  var sorted = matches.slice().sort(function(a, b) {
+    return (b.timestamp || '').localeCompare(a.timestamp || '');
+  }).slice(0, 50);
+
+  document.getElementById('mon-matches-count').textContent = matches.length;
+
+  tbody.innerHTML = sorted.map(function(m) {
+    var dt = '';
+    if (m.timestamp) {
+      try {
+        var d = new Date(m.timestamp);
+        dt = d.toLocaleDateString('sk-SK') + ' ' + d.toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
+      } catch (e) {
+        dt = m.timestamp.substring(0, 16);
+      }
+    }
+    var hodnotaStr = m.hodnota != null ? formatEurShort(m.hodnota) : '<span style="color:#ced4da">—</span>';
+    var lehotaStr = m.lehota ? esc(m.lehota.substring(0, 10)) : '<span style="color:#ced4da">—</span>';
+    var pravidlaStr = (m.pravidla || []).map(function(pr) {
+      return '<span class="match-rule-badge">' + esc(pr) + '</span>';
+    }).join(' ');
+    var docLink = m.url
+      ? '<a href="' + esc(m.url) + '" target="_blank" style="font-family:monospace;font-size:11px">' + esc(m.doc_id || 'odkaz') + '</a>'
+      : (m.doc_id ? esc(m.doc_id) : '—');
+
+    return '<tr data-match="1">' +
+      '<td style="white-space:nowrap;color:#868e96;font-size:12px">' + esc(dt) + '</td>' +
+      '<td>' + esc(m.obstaravatel || '—') +
+        (m.ico ? ' <span style="color:#adb5bd;font-size:11px">(' + esc(m.ico) + ')</span>' : '') +
+      '</td>' +
+      '<td class="predmet-col">' + esc(m.predmet || '—') + '</td>' +
+      '<td class="val-col">' + hodnotaStr + '</td>' +
+      '<td style="white-space:nowrap">' + lehotaStr + '</td>' +
+      '<td>' + (pravidlaStr || '—') + '</td>' +
+      '<td>' + docLink + '</td>' +
+    '</tr>';
+  }).join('');
 }
 </script>
 </body>
