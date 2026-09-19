@@ -2705,6 +2705,76 @@ function renderProfil(data, container) {
       html += '</tbody></table>';
     }
 
+    if (sn === 'Vlastnícka štruktúra (RPVS)' && sekcia.data) {
+      const rd = sekcia.data;
+      if (rd.is_registered && Array.isArray(rd.ubos) && rd.ubos.length > 0) {
+        html += '<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px;margin-top:8px">';
+        html += '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#166534;margin-bottom:12px;font-weight:600">Registrovaný partner verejného sektora</div>';
+        html += '<table class="profil-mini-table"><thead><tr><th>Meno</th><th>Dátum narodenia</th><th>Štátna príslušnosť</th><th>Verejný činiteľ</th></tr></thead><tbody>';
+        rd.ubos.forEach(function(u) {
+          var dn = u.datum_narodenia || '';
+          // Mask date of birth: show only year
+          var dnMasked = '';
+          if (dn) {
+            var yearMatch = dn.match(/(\d{4})/);
+            dnMasked = yearMatch ? '**.**.' + yearMatch[1] : dn;
+          }
+          var cinitelBadge = u.je_verejny_cinitel
+            ? '<span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">verejný činiteľ</span>'
+            : '<span style="color:#9ca3af;font-size:12px">nie</span>';
+          html += '<tr><td style="font-weight:500">' + esc(u.meno + ' ' + u.priezvisko) + '</td>';
+          html += '<td>' + esc(dnMasked) + '</td>';
+          html += '<td>' + esc(u.statna_prislusnost || '') + '</td>';
+          html += '<td>' + cinitelBadge + '</td></tr>';
+        });
+        html += '</tbody></table>';
+        if (Array.isArray(rd.opravnene_osoby) && rd.opravnene_osoby.length > 0) {
+          html += '<div style="margin-top:10px;font-size:12px;color:#495057"><strong>Oprávnené osoby:</strong> ' + rd.opravnene_osoby.map(function(o) { return esc(o); }).join('; ') + '</div>';
+        }
+        html += '</div>';
+      } else if (rd.is_registered === false) {
+        html += '<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:12px;margin-top:8px;color:#991b1b;font-size:13px">';
+        html += 'Firma nie je registrovaná v RPVS (Register partnerov verejného sektora).';
+        html += '</div>';
+      }
+    }
+
+    if (sn === 'Dlhy voči štátu' && sekcia.data) {
+      var dd = sekcia.data;
+      html += '<div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px">';
+      // FS card
+      if (dd.fs) {
+        var fsBg = dd.fs.je_dlznik ? '#fef2f2' : '#f0fdf4';
+        var fsBorder = dd.fs.je_dlznik ? '#fecaca' : '#bbf7d0';
+        var fsColor = dd.fs.je_dlznik ? '#991b1b' : '#166534';
+        var fsIcon = dd.fs.je_dlznik ? '&#9888;' : '&#10003;';
+        var fsLabel = dd.fs.je_dlznik ? 'DLŽNÍK' : 'BEZ DLHOV';
+        html += '<div style="background:' + fsBg + ';border:1px solid ' + fsBorder + ';border-radius:8px;padding:16px;min-width:200px;flex:1">';
+        html += '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#6b7280;margin-bottom:8px">Finančná správa SR</div>';
+        html += '<div style="font-size:20px;font-weight:700;color:' + fsColor + '">' + fsIcon + ' ' + fsLabel + '</div>';
+        if (dd.fs.je_dlznik && dd.fs.dlh_suma) {
+          html += '<div style="font-size:14px;color:' + fsColor + ';margin-top:4px">Dlh: ' + profilFmtEur(dd.fs.dlh_suma) + '</div>';
+        }
+        html += '</div>';
+      }
+      // SP card
+      if (dd.sp) {
+        var spBg = dd.sp.je_dlznik ? '#fef2f2' : '#f0fdf4';
+        var spBorder = dd.sp.je_dlznik ? '#fecaca' : '#bbf7d0';
+        var spColor = dd.sp.je_dlznik ? '#991b1b' : '#166534';
+        var spIcon = dd.sp.je_dlznik ? '&#9888;' : '&#10003;';
+        var spLabel = dd.sp.je_dlznik ? 'DLŽNÍK' : 'BEZ DLHOV';
+        html += '<div style="background:' + spBg + ';border:1px solid ' + spBorder + ';border-radius:8px;padding:16px;min-width:200px;flex:1">';
+        html += '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#6b7280;margin-bottom:8px">Sociálna poisťovňa</div>';
+        html += '<div style="font-size:20px;font-weight:700;color:' + spColor + '">' + spIcon + ' ' + spLabel + '</div>';
+        if (dd.sp.je_dlznik && dd.sp.dlh_suma) {
+          html += '<div style="font-size:14px;color:' + spColor + ';margin-top:4px">Dlh: ' + profilFmtEur(dd.sp.dlh_suma) + '</div>';
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+
     if (sn === 'Rizikové indikátory') {
       if (Array.isArray(sekcia.data) && sekcia.data.length > 0) {
         html += '<ul class="profil-flags">';

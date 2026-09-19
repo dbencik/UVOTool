@@ -79,6 +79,153 @@ def _enrich_if_needed(db, ico):
     )
 
 
+def _fetch_rpvs_data(ico):
+    """Lazy-load RPVS data for IČO. Returns dict or None."""
+    try:
+        rpvs_script = os.path.join(BASE_DIR, "tools", "rpvs-lookup.py")
+        if not os.path.exists(rpvs_script):
+            return None
+        # Try importing directly first (faster)
+        sys.path.insert(0, os.path.join(BASE_DIR, "tools"))
+        try:
+            from importlib import import_module
+            rpvs = import_module("rpvs-lookup".replace("-", "_"))
+            # Module name with hyphens can't be imported directly
+        except (ImportError, ModuleNotFoundError):
+            pass
+
+        # Fallback to subprocess
+        result = subprocess.run(
+            [sys.executable, rpvs_script, ico],
+            capture_output=True, timeout=15, text=True
+        )
+        # Read from DB after subprocess ran
+        db = sqlite3.connect(DB_PATH)
+        db.row_factory = sqlite3.Row
+        rows = db.execute("SELECT * FROM rpvs WHERE ico = ?", (ico,)).fetchall()
+        db.close()
+        if not rows:
+            return None
+        records = [dict(r) for r in rows]
+        # Check if it's just a negative cache entry
+        if len(records) == 1 and not records[0].get("ubo_meno"):
+            return {"is_registered": False, "ubos": [], "opravnene_osoby": []}
+
+        ubos = []
+        seen_ubos = set()
+        opravnene_osoby = set()
+        for rec in records:
+            if rec.get("ubo_meno"):
+                key = (rec["ubo_meno"], rec["ubo_priezvisko"], rec.get("ubo_datum_narodenia", ""))
+                if key not in seen_ubos:
+                    seen_ubos.add(key)
+                    ubos.append({
+                        "meno": rec["ubo_meno"],
+                        "priezvisko": rec["ubo_priezvisko"],
+                        "datum_narodenia": rec.get("ubo_datum_narodenia", ""),
+                        "je_verejny_cinitel": bool(rec.get("ubo_je_verejny_cinitel")),
+                        "adresa": rec.get("ubo_adresa", ""),
+                        "statna_prislusnost": rec.get("ubo_statna_prislusnost", ""),
+                    })
+            if rec.get("opravnena_osoba"):
+                opravnene_osoby.add(rec["opravnena_osoba"])
+
+        return {
+            "is_registered": True,
+            "obchodne_meno": records[0].get("obchodne_meno", ""),
+            "ubos": ubos,
+            "opravnene_osoby": list(opravnene_osoby),
+            "platnost_od": records[0].get("platnost_od", ""),
+            "platnost_do": records[0].get("platnost_do", ""),
+        }
+    except Exception as e:
+        print(f"RPVS lookup error for {ico}: {e}")
+        return None
+
+
+def _fetch_dlznici_data(ico):
+    """Lazy-load FS + SP debtor data for IČO. Returns dict or None."""
+    result = {"fs": None, "sp": None}
+    try:
+        # Check if data exists in DB (cached)
+        db = sqlite3.connect(DB_PATH)
+        db.row_factory = sqlite3.Row
+
+        # FS dlžníci
+        fs_row = db.execute("SELECT * FROM fs_dlznici WHERE ico = ?", (ico,)).fetchone()
+        if fs_row:
+            from datetime import datetime, timedelta
+            try:
+                checked = datetime.fromisoformat(fs_row["checked_at"])
+                if datetime.now() - checked < timedelta(days=30):
+                    result["fs"] = {
+                        "je_dlznik": bool(fs_row["je_dlznik"]),
+                        "dlh_suma": fs_row["dlh_suma"],
+                        "typ_dlhu": fs_row["typ_dlhu"] or "",
+                    }
+            except:
+                pass
+
+        # SP dlžníci
+        sp_row = db.execute("SELECT * FROM sp_dlznici WHERE ico = ?", (ico,)).fetchone()
+        if sp_row:
+            from datetime import datetime, timedelta
+            try:
+                checked = datetime.fromisoformat(sp_row["checked_at"])
+                if datetime.now() - checked < timedelta(days=30):
+                    result["sp"] = {
+                        "je_dlznik": bool(sp_row["je_dlznik"]),
+                        "dlh_suma": sp_row["dlh_suma"],
+                        "obdobie": sp_row["obdobie"] or "",
+                    }
+            except:
+                pass
+
+        db.close()
+
+        # If not cached, run lookups via subprocess
+        if result["fs"] is None:
+            fs_script = os.path.join(BASE_DIR, "tools", "fs-dlznici-lookup.py")
+            if os.path.exists(fs_script):
+                subprocess.run(
+                    [sys.executable, fs_script, ico],
+                    capture_output=True, timeout=15, text=True
+                )
+                db = sqlite3.connect(DB_PATH)
+                db.row_factory = sqlite3.Row
+                fs_row = db.execute("SELECT * FROM fs_dlznici WHERE ico = ?", (ico,)).fetchone()
+                if fs_row:
+                    result["fs"] = {
+                        "je_dlznik": bool(fs_row["je_dlznik"]),
+                        "dlh_suma": fs_row["dlh_suma"],
+                        "typ_dlhu": fs_row["typ_dlhu"] or "",
+                    }
+                db.close()
+
+        if result["sp"] is None:
+            sp_script = os.path.join(BASE_DIR, "tools", "sp-dlznici-lookup.py")
+            if os.path.exists(sp_script):
+                subprocess.run(
+                    [sys.executable, sp_script, ico],
+                    capture_output=True, timeout=15, text=True
+                )
+                db = sqlite3.connect(DB_PATH)
+                db.row_factory = sqlite3.Row
+                sp_row = db.execute("SELECT * FROM sp_dlznici WHERE ico = ?", (ico,)).fetchone()
+                if sp_row:
+                    result["sp"] = {
+                        "je_dlznik": bool(sp_row["je_dlznik"]),
+                        "dlh_suma": sp_row["dlh_suma"],
+                        "obdobie": sp_row["obdobie"] or "",
+                    }
+                db.close()
+
+    except Exception as e:
+        print(f"Dlznici lookup error for {ico}: {e}")
+
+    return result
+
+
 def _get_company_info(db, ico):
     """Get enriched company data from firmy table."""
     try:
@@ -327,7 +474,77 @@ def _profile_dodavatel(db, query, is_ico):
                 "data": comparisons
             })
 
-    # 8. Risk flags
+    # 8. RPVS — Vlastnícka štruktúra
+    try:
+        rpvs_data = _fetch_rpvs_data(ico)
+        if rpvs_data:
+            if rpvs_data.get("is_registered"):
+                ubos = rpvs_data.get("ubos", [])
+                ubo_list = []
+                for u in ubos:
+                    ubo_list.append({
+                        "meno": u.get("meno", ""),
+                        "priezvisko": u.get("priezvisko", ""),
+                        "datum_narodenia": u.get("datum_narodenia", ""),
+                        "je_verejny_cinitel": u.get("je_verejny_cinitel", False),
+                        "adresa": u.get("adresa", ""),
+                        "statna_prislusnost": u.get("statna_prislusnost", ""),
+                    })
+                ubo_names = ", ".join(f"{u['meno']} {u['priezvisko']}" for u in ubo_list) if ubo_list else "neznámi"
+                result["sekcie"].append({
+                    "nazov": "Vlastnícka štruktúra (RPVS)",
+                    "text": f"Firma je registrovaná v RPVS. Koneční užívatelia výhod: {ubo_names}."
+                            + (f" Platnosť registrácie: od {rpvs_data.get('platnost_od', '?')[:10]}."
+                               if rpvs_data.get("platnost_od") else ""),
+                    "data": {
+                        "is_registered": True,
+                        "ubos": ubo_list,
+                        "opravnene_osoby": rpvs_data.get("opravnene_osoby", []),
+                        "platnost_od": rpvs_data.get("platnost_od", ""),
+                        "platnost_do": rpvs_data.get("platnost_do", ""),
+                    }
+                })
+            else:
+                result["sekcie"].append({
+                    "nazov": "Vlastnícka štruktúra (RPVS)",
+                    "text": "Firma NIE JE registrovaná v Registri partnerov verejného sektora.",
+                    "data": {"is_registered": False}
+                })
+    except Exception as e:
+        print(f"RPVS section error: {e}")
+
+    # 9. Dlhy voči štátu (FS + SP)
+    try:
+        dlznici = _fetch_dlznici_data(ico)
+        fs = dlznici.get("fs") if dlznici else None
+        sp = dlznici.get("sp") if dlznici else None
+
+        dlhy_parts = []
+        dlhy_data = {"fs": fs, "sp": sp}
+
+        if fs:
+            if fs.get("je_dlznik"):
+                suma = f" ({_fmt_eur(fs['dlh_suma'])})" if fs.get("dlh_suma") else ""
+                dlhy_parts.append(f"Finančná správa: DLŽNÍK{suma}")
+            else:
+                dlhy_parts.append("Finančná správa: bez dlhov")
+        if sp:
+            if sp.get("je_dlznik"):
+                suma = f" ({_fmt_eur(sp['dlh_suma'])})" if sp.get("dlh_suma") else ""
+                dlhy_parts.append(f"Sociálna poisťovňa: DLŽNÍK{suma}")
+            else:
+                dlhy_parts.append("Sociálna poisťovňa: bez dlhov")
+
+        if dlhy_parts:
+            result["sekcie"].append({
+                "nazov": "Dlhy voči štátu",
+                "text": ". ".join(dlhy_parts) + ".",
+                "data": dlhy_data
+            })
+    except Exception as e:
+        print(f"Dlznici section error: {e}")
+
+    # 10. Risk flags
     flags = []
     if sb_rate > 50:
         flags.append(f"Vysoký podiel zákaziek bez súťaže: {sb_rate}% single-bidder rate")
@@ -342,6 +559,15 @@ def _profile_dodavatel(db, query, is_ico):
             biggest_val = stats["max_val"] or 0
             if biggest_val > company["trzby_posledne"] * 0.5 and company["trzby_posledne"] > 0:
                 flags.append(f"Najväčšia zákazka ({_fmt_eur(biggest_val)}) presahuje 50% tržieb ({_fmt_eur(company['trzby_posledne'])})")
+    # Add debtor flags
+    try:
+        if dlznici:
+            if dlznici.get("fs") and dlznici["fs"].get("je_dlznik"):
+                flags.append("Firma je daňovým dlžníkom (Finančná správa)")
+            if dlznici.get("sp") and dlznici["sp"].get("je_dlznik"):
+                flags.append("Firma je dlžníkom Sociálnej poisťovne")
+    except:
+        pass
 
     result["sekcie"].append({
         "nazov": "Rizikové indikátory",
