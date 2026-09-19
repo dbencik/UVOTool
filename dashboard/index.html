@@ -1044,8 +1044,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
       <table class="matches-table">
         <thead>
           <tr>
-            <th>Dátum</th>
-            <th>Obstarávateľ</th>
+            <th>Typ</th>
             <th>Predmet</th>
             <th>Hodnota</th>
             <th>Lehota</th>
@@ -1054,7 +1053,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
           </tr>
         </thead>
         <tbody id="matches-tbody">
-          <tr><td colspan="7" class="matches-empty">Načítavam zhody...</td></tr>
+          <tr><td colspan="6" class="matches-empty">Načítavam zhody...</td></tr>
         </tbody>
       </table>
     </div>
@@ -2641,52 +2640,67 @@ document.getElementById('wl-typ').addEventListener('change', function() {
 });
 
 function renderMatches(matches) {
-  var tbody = document.getElementById('matches-tbody');
+  var container = document.getElementById('matches-tbody');
 
   if (!matches || matches.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="7" class="matches-empty">Žiadne zhody zatiaľ nenájdené.</td></tr>';
+    container.innerHTML = '<tr><td colspan="6" class="matches-empty">Žiadne zhody zatiaľ nenájdené.</td></tr>';
     document.getElementById('mon-matches-count').textContent = '0';
     return;
   }
 
-  // Sort by timestamp descending, take last 50
-  var sorted = matches.slice().sort(function(a, b) {
-    return (b.timestamp || '').localeCompare(a.timestamp || '');
-  }).slice(0, 50);
-
   document.getElementById('mon-matches-count').textContent = matches.length;
 
-  tbody.innerHTML = sorted.map(function(m) {
-    var dt = '';
-    if (m.timestamp) {
-      try {
-        var d = new Date(m.timestamp);
-        dt = d.toLocaleDateString('sk-SK') + ' ' + d.toLocaleTimeString('sk-SK', { hour: '2-digit', minute: '2-digit' });
-      } catch (e) {
-        dt = m.timestamp.substring(0, 16);
-      }
-    }
-    var hodnotaStr = m.hodnota != null ? formatEurShort(m.hodnota) : '<span style="color:#ced4da">—</span>';
-    var lehotaStr = m.lehota ? esc(m.lehota.substring(0, 10)) : '<span style="color:#ced4da">—</span>';
-    var pravidlaStr = (m.pravidla || []).map(function(pr) {
-      return '<span class="match-rule-badge">' + esc(pr) + '</span>';
-    }).join(' ');
-    var docLink = m.url
-      ? '<a href="' + esc(m.url) + '" target="_blank" style="font-family:monospace;font-size:11px">' + esc(m.doc_id || 'odkaz') + '</a>'
-      : (m.doc_id ? esc(m.doc_id) : '—');
+  // Group by IČO + obstarávateľ
+  var groups = {};
+  matches.forEach(function(m) {
+    var key = m.ico || m.obstaravatel || '?';
+    if (!groups[key]) groups[key] = { nazov: m.obstaravatel || '?', ico: m.ico || '', items: [] };
+    groups[key].items.push(m);
+  });
 
-    return '<tr data-match="1">' +
-      '<td style="white-space:nowrap;color:#868e96;font-size:12px">' + esc(dt) + '</td>' +
-      '<td>' + esc(m.obstaravatel || '—') +
-        (m.ico ? ' <span style="color:#adb5bd;font-size:11px">(' + esc(m.ico) + ')</span>' : '') +
-      '</td>' +
-      '<td class="predmet-col">' + esc(m.predmet || '—') + '</td>' +
-      '<td class="val-col">' + hodnotaStr + '</td>' +
-      '<td style="white-space:nowrap">' + lehotaStr + '</td>' +
-      '<td>' + (pravidlaStr || '—') + '</td>' +
-      '<td>' + docLink + '</td>' +
-    '</tr>';
-  }).join('');
+  // Sort groups by name
+  var groupList = Object.values(groups).sort(function(a, b) {
+    return a.nazov.localeCompare(b.nazov, 'sk');
+  });
+
+  var html = '';
+  groupList.forEach(function(g) {
+    // Sort items: newest first (by lehota date, then timestamp)
+    g.items.sort(function(a, b) {
+      var da = a.lehota || a.timestamp || '';
+      var db = b.lehota || b.timestamp || '';
+      return db.localeCompare(da);
+    });
+
+    html += '<tr style="background:#f1f3f5"><td colspan="7" style="padding:10px 12px;font-weight:700;font-size:14px">';
+    html += esc(g.nazov);
+    if (g.ico) html += ' <span style="color:#868e96;font-size:12px;font-weight:400">(ICO: ' + esc(g.ico) + ')</span>';
+    html += ' <span style="color:#1971c2;font-size:12px;font-weight:500;margin-left:8px">' + g.items.length + ' zakaziek</span>';
+    html += '</td></tr>';
+
+    g.items.forEach(function(m) {
+      var hodnotaStr = m.hodnota != null ? formatEurShort(m.hodnota) : '<span style="color:#ced4da">—</span>';
+      var lehotaStr = m.lehota ? esc(m.lehota.substring(0, 10)) : '<span style="color:#ced4da">—</span>';
+      var pravidlaStr = (m.pravidla || []).map(function(pr) {
+        return '<span class="match-rule-badge">' + esc(pr) + '</span>';
+      }).join(' ');
+      var docLink = m.url
+        ? '<a href="' + esc(m.url) + '" target="_blank" style="font-family:monospace;font-size:11px">' + esc(m.doc_id || 'odkaz') + '</a>'
+        : (m.doc_id ? esc(m.doc_id) : '—');
+      var actionBadge = '<span class="badge badge-' + (m.action || '') + '">' + esc(m.action || '?') + '</span>';
+
+      html += '<tr data-match="1">' +
+        '<td>' + actionBadge + '</td>' +
+        '<td class="predmet-col">' + esc(m.predmet || '—') + '</td>' +
+        '<td class="val-col">' + hodnotaStr + '</td>' +
+        '<td style="white-space:nowrap">' + lehotaStr + '</td>' +
+        '<td>' + (pravidlaStr || '—') + '</td>' +
+        '<td>' + docLink + '</td>' +
+      '</tr>';
+    });
+  });
+
+  container.innerHTML = html;
 }
 </script>
 </body>
