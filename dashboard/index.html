@@ -1326,50 +1326,9 @@ function attachRowClicks(tbody, rows) {
 }
 
 function renderStats(rows) {
-  const obstCounts = {};
-  rows.forEach(r => {
-    if (r.obstaravatel) obstCounts[r.obstaravatel] = (obstCounts[r.obstaravatel] || 0) + 1;
-  });
-  const topObst = Object.entries(obstCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  const maxObstCount = topObst.length > 0 ? topObst[0][1] : 1;
-
-  const vitazValues = {};
-  rows.forEach(r => {
-    if (r.action === 'vysledok' && r.vitaz && r.hodnota > 0) {
-      vitazValues[r.vitaz] = (vitazValues[r.vitaz] || 0) + r.hodnota;
-    }
-  });
-  const topVitaz = Object.entries(vitazValues).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  const maxVitazVal = topVitaz.length > 0 ? topVitaz[0][1] : 1;
-
-  document.getElementById('stats').innerHTML = `
-    <div class="stats-panel">
-      <h3>Top 5 obstaravatelia (podla poctu)</h3>
-      <ul class="stats-list">
-        ${topObst.map(([name, count]) => `
-          <li>
-            <span class="name">${esc(name)}</span>
-            <div class="bar-bg"><div class="bar-fill" style="width:${(count / maxObstCount * 100).toFixed(0)}%"></div></div>
-            <span class="count">${count}</span>
-          </li>
-        `).join('')}
-        ${topObst.length === 0 ? '<li class="no-results">Ziadne data</li>' : ''}
-      </ul>
-    </div>
-    <div class="stats-panel">
-      <h3>Top 5 vitazi (podla hodnoty)</h3>
-      <ul class="stats-list">
-        ${topVitaz.map(([name, val]) => `
-          <li>
-            <span class="name">${esc(name)}</span>
-            <div class="bar-bg"><div class="bar-fill" style="width:${(val / maxVitazVal * 100).toFixed(0)}%;background:#51cf66"></div></div>
-            <span class="count">${formatEurShort(val)}</span>
-          </li>
-        `).join('')}
-        ${topVitaz.length === 0 ? '<li class="no-results">Ziadne data</li>' : ''}
-      </ul>
-    </div>
-  `;
+  // Stats moved to Analyza tab — compute here for global access
+  window._topStats = { rows: rows };
+  document.getElementById('stats').innerHTML = '';
 }
 
 // ──── Detail panel ────
@@ -1998,7 +1957,74 @@ function renderAnalysis(data) {
     </table>
   </div>`;
 
+  // Top 5 obstarávatelia a dodávatelia z live dát
+  const liveRows = (window._topStats || {}).rows || DATA;
+  const liveObstCounts = {};
+  liveRows.forEach(r => { if (r.obstaravatel) liveObstCounts[r.obstaravatel] = (liveObstCounts[r.obstaravatel] || 0) + 1; });
+  const liveTopObst = Object.entries(liveObstCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const liveMaxObst = liveTopObst.length > 0 ? liveTopObst[0][1] : 1;
+
+  const liveVitazValues = {};
+  liveRows.forEach(r => {
+    if (r.action === 'vysledok' && r.vitaz && r.hodnota > 0) {
+      liveVitazValues[r.vitaz] = (liveVitazValues[r.vitaz] || 0) + r.hodnota;
+    }
+  });
+  const liveTopVitaz = Object.entries(liveVitazValues).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const liveMaxVitaz = liveTopVitaz.length > 0 ? liveTopVitaz[0][1] : 1;
+
+  html += `<div class="side-by-side">
+    <div class="analyza-section">
+      <h3>Top 5 obstaravatelia (podla poctu)</h3>
+      <ul class="stats-list">
+        ${liveTopObst.map(([name, count]) => `
+          <li>
+            <span class="name" style="cursor:pointer;color:#1971c2" data-filter-obst="${esc(name)}">${esc(name)}</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:${(count / liveMaxObst * 100).toFixed(0)}%"></div></div>
+            <span class="count">${count}</span>
+          </li>
+        `).join('')}
+        ${liveTopObst.length === 0 ? '<li class="no-results">Ziadne data</li>' : ''}
+      </ul>
+    </div>
+    <div class="analyza-section">
+      <h3>Top 5 dodavatelia (podla hodnoty)</h3>
+      <ul class="stats-list">
+        ${liveTopVitaz.map(([name, val]) => `
+          <li>
+            <span class="name" style="cursor:pointer;color:#1971c2" data-filter-vitaz="${esc(name)}">${esc(name)}</span>
+            <div class="bar-bg"><div class="bar-fill" style="width:${(val / liveMaxVitaz * 100).toFixed(0)}%;background:#51cf66"></div></div>
+            <span class="count">${formatEurShort(val)}</span>
+          </li>
+        `).join('')}
+        ${liveTopVitaz.length === 0 ? '<li class="no-results">Ziadne data</li>' : ''}
+      </ul>
+    </div>
+  </div>`;
+
   document.getElementById('analyza-content').innerHTML = html;
+
+  // Click handlers: filter Dokumenty tab by name
+  document.querySelectorAll('[data-filter-obst]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('search').value = el.dataset.filterObst;
+      document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-tab="dokumenty"]').classList.add('active');
+      document.querySelectorAll('.main-content-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('section-dokumenty').classList.add('active');
+      render();
+    });
+  });
+  document.querySelectorAll('[data-filter-vitaz]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('search').value = el.dataset.filterVitaz;
+      document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+      document.querySelector('[data-tab="dokumenty"]').classList.add('active');
+      document.querySelectorAll('.main-content-section').forEach(s => s.classList.remove('active'));
+      document.getElementById('section-dokumenty').classList.add('active');
+      render();
+    });
+  });
 }
 
 // ══════════════════════════════════════════════════════════════
