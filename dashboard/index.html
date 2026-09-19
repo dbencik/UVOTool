@@ -3677,19 +3677,40 @@ function renderPipeResults(result) {
       '</div>';
 
     if (res.data && typeof res.data === 'object' && !Array.isArray(res.data)) {
-      html += '<table style="width:100%;font-size:12px;border-collapse:collapse">';
       var data = res.filtered_data || res.data;
+      html += '<table style="width:100%;font-size:12px;border-collapse:collapse">';
       Object.keys(data).forEach(function(key) {
         var val = data[key];
-        var displayVal = (typeof val === 'object' && val !== null)
-          ? (val.value !== undefined ? val.value : JSON.stringify(val))
-          : val;
+        var displayVal = (typeof val === 'object' && val !== null && val.value !== undefined) ? val.value : val;
         var label = (typeof val === 'object' && val && val.label) ? val.label : key;
-        var displayStr = (displayVal === null || displayVal === undefined) ? '\u2014'
-          : Array.isArray(displayVal) ? displayVal.length + ' poloziek'
-          : typeof displayVal === 'boolean' ? (displayVal ? 'Ano' : 'Nie')
-          : String(displayVal);
-        html += '<tr><td style="padding:3px 6px;color:#868e96;width:140px">' + esc(String(label)) + '</td><td style="padding:3px 6px;font-weight:500">' + esc(displayStr.substring(0, 100)) + '</td></tr>';
+
+        // Special: array of zákazky — render as mini table
+        if (Array.isArray(displayVal) && displayVal.length > 0 && displayVal[0].predmet) {
+          html += '<tr><td colspan="2" style="padding:6px;font-weight:600;color:#495057">' + esc(String(label)) + ' (' + displayVal.length + ')</td></tr>';
+          displayVal.forEach(function(z) {
+            var badge = z.je_vitaz ? '<span style="color:#2b8a3e;font-weight:700">VITAZ</span>' : (z.poradie ? '#' + z.poradie : '');
+            html += '<tr style="border-bottom:1px solid #f1f3f5"><td style="padding:3px 6px;color:#868e96;width:60px">' + badge + '</td>' +
+              '<td style="padding:3px 6px"><a href="' + esc(z.url || '') + '" target="_blank" style="font-weight:500">' + esc((z.predmet || '').substring(0, 60)) + '</a>' +
+              '<div style="font-size:11px;color:#868e96">' + esc(z.obstaravatel || '') + (z.hodnota ? ' | ' + formatEurShort(z.hodnota) : '') + ' | ' + (z.rok || '') + '</div></td></tr>';
+          });
+        }
+        // Special: array of UBOs
+        else if (Array.isArray(displayVal) && displayVal.length > 0 && displayVal[0].meno) {
+          html += '<tr><td colspan="2" style="padding:6px;font-weight:600;color:#495057">' + esc(String(label)) + '</td></tr>';
+          displayVal.forEach(function(u) {
+            html += '<tr><td style="padding:3px 6px" colspan="2">' + esc(u.meno + ' ' + u.priezvisko) +
+              (u.datum_narodenia ? ' <span style="color:#868e96;font-size:11px">(*' + esc(u.datum_narodenia) + ')</span>' : '') + '</td></tr>';
+          });
+        }
+        // Normal scalar
+        else {
+          var displayStr = (displayVal === null || displayVal === undefined) ? '\u2014'
+            : Array.isArray(displayVal) ? displayVal.length + ' poloziek'
+            : typeof displayVal === 'boolean' ? (displayVal ? 'Ano' : 'Nie')
+            : typeof displayVal === 'number' ? (displayVal > 10000 ? formatEurShort(displayVal) : String(displayVal))
+            : String(displayVal);
+          html += '<tr><td style="padding:3px 6px;color:#868e96;width:160px">' + esc(String(label)) + '</td><td style="padding:3px 6px;font-weight:500">' + esc(displayStr.substring(0, 120)) + '</td></tr>';
+        }
       });
       html += '</table>';
     } else if (res.message) {
