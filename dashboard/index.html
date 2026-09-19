@@ -3235,19 +3235,118 @@ function loadPipeline() {
 
 function renderPipelinePalette(modules) {
   var el = document.getElementById('pipe-palette');
-  el.innerHTML = '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:8px">Moduly</div>' +
-    modules.map(function(m) {
-      return '<div class="pipe-module-card" draggable="true" data-module="' + esc(m.id) + '" style="border-left-color:' + (m.color || '#868e96') + '">' +
-        esc(m.name) +
-        '<div class="desc">' + esc(m.description || '') + '</div>' +
-      '</div>';
-    }).join('');
+  // Input module is always first and always on
+  var inputMod = modules.find(function(m) { return m.id === 'input'; });
+  var otherMods = modules.filter(function(m) { return m.id !== 'input' && m.id !== 'output'; });
 
-  el.querySelectorAll('.pipe-module-card').forEach(function(card) {
-    card.addEventListener('dragstart', function(e) {
-      e.dataTransfer.setData('module-id', card.dataset.module);
+  var html = '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:8px">Moduly</div>';
+
+  // Input — always enabled, no toggle
+  if (inputMod) {
+    html += '<div class="pipe-module-card" style="border-left-color:' + inputMod.color + ';opacity:0.6">' +
+      '<div style="display:flex;align-items:center;gap:8px">' +
+      '<span style="font-size:11px;color:#2b8a3e;font-weight:700">ON</span> ' + esc(inputMod.name) +
+      '</div><div class="desc">Automaticky prvy</div></div>';
+  }
+
+  // Other modules with toggle
+  otherMods.forEach(function(m) {
+    var isActive = pipeConfig.nodes.some(function(n) { return n.module === m.id; });
+    html += '<div class="pipe-module-card" data-module="' + esc(m.id) + '" style="border-left-color:' + (m.color || '#868e96') + ';cursor:pointer;' + (isActive ? 'background:#e7f5ff;' : '') + '">' +
+      '<div style="display:flex;align-items:center;gap:8px">' +
+      '<div class="pipe-toggle" style="width:36px;height:20px;border-radius:10px;background:' + (isActive ? '#1971c2' : '#ced4da') + ';position:relative;flex-shrink:0;transition:background 0.2s">' +
+      '<div style="width:16px;height:16px;border-radius:50%;background:#fff;position:absolute;top:2px;' + (isActive ? 'right:2px' : 'left:2px') + ';transition:all 0.2s;box-shadow:0 1px 2px rgba(0,0,0,0.2)"></div></div>' +
+      '<span>' + esc(m.name) + '</span></div>' +
+      '<div class="desc">' + esc(m.description || '') + '</div></div>';
+  });
+
+  el.innerHTML = html;
+
+  // Toggle click handlers
+  el.querySelectorAll('.pipe-module-card[data-module]').forEach(function(card) {
+    card.addEventListener('click', function() {
+      var moduleId = card.dataset.module;
+      togglePipeModule(moduleId);
     });
   });
+}
+
+function togglePipeModule(moduleId) {
+  var existingIdx = -1;
+  pipeConfig.nodes.forEach(function(n, i) {
+    if (n.module === moduleId) existingIdx = i;
+  });
+
+  if (existingIdx >= 0) {
+    // Remove this module
+    var removedId = pipeConfig.nodes[existingIdx].id;
+    pipeConfig.nodes.splice(existingIdx, 1);
+    pipeConfig.edges = pipeConfig.edges.filter(function(e) {
+      return e.from !== removedId && e.to !== removedId;
+    });
+  } else {
+    // Add this module
+    var mod = pipeModules.find(function(m) { return m.id === moduleId; });
+    if (!mod) return;
+    var nodeId = 'n' + (Date.now() % 100000);
+    var node = { id: nodeId, module: moduleId, x: 0, y: 0, settings: { outputs: {} } };
+    mod.outputs.forEach(function(o) {
+      node.settings.outputs[o.id] = { enabled: o.enabled !== false, label: o.label };
+    });
+    pipeConfig.nodes.push(node);
+  }
+
+  // Rebuild pipeline: ensure Input is first, auto-connect sequentially
+  rebuildPipelineLayout();
+  renderPipelinePalette(pipeModules);
+  renderPipeCanvas();
+}
+
+function rebuildPipelineLayout() {
+  // Ensure Input node exists
+  var hasInput = pipeConfig.nodes.some(function(n) { return n.module === 'input'; });
+  if (!hasInput) {
+    var inputMod = pipeModules.find(function(m) { return m.id === 'input'; });
+    if (inputMod) {
+      var inputNode = { id: 'n_input', module: 'input', x: 0, y: 0, settings: { outputs: {} } };
+      inputMod.outputs.forEach(function(o) {
+        inputNode.settings.outputs[o.id] = { enabled: true, label: o.label };
+      });
+      pipeConfig.nodes.unshift(inputNode);
+    }
+  }
+
+  // Sort: Input first, then others in order they were added
+  pipeConfig.nodes.sort(function(a, b) {
+    if (a.module === 'input') return -1;
+    if (b.module === 'input') return 1;
+    if (a.module === 'output') return 1;
+    if (b.module === 'output') return -1;
+    return 0;
+  });
+
+  // Auto-layout: vertical cascade
+  var startX = 80;
+  var startY = 40;
+  var stepY = 80;
+  pipeConfig.nodes.forEach(function(node, i) {
+    node.x = startX + (i % 2) * 200;
+    node.y = startY + i * stepY;
+  });
+
+  // Auto-connect: each non-input node connects from Input
+  pipeConfig.edges = [];
+  var inputNodeId = null;
+  pipeConfig.nodes.forEach(function(n) {
+    if (n.module === 'input') inputNodeId = n.id;
+  });
+  if (inputNodeId) {
+    pipeConfig.nodes.forEach(function(n) {
+      if (n.module !== 'input' && n.module !== 'output') {
+        pipeConfig.edges.push({ from: inputNodeId, to: n.id, mapping: { ico: 'ico' } });
+      }
+    });
+  }
 }
 
 function renderPipelineTemplates(pipelines) {
@@ -3259,16 +3358,7 @@ function renderPipelineTemplates(pipelines) {
 }
 
 // Canvas: drop to add node
-document.getElementById('pipe-canvas').addEventListener('dragover', function(e) { e.preventDefault(); });
-document.getElementById('pipe-canvas').addEventListener('drop', function(e) {
-  e.preventDefault();
-  var moduleId = e.dataTransfer.getData('module-id');
-  if (!moduleId) return;
-  var rect = e.currentTarget.getBoundingClientRect();
-  var x = e.clientX - rect.left;
-  var y = e.clientY - rect.top;
-  addPipeNode(moduleId, x, y);
-});
+// Canvas drag & drop removed — use toggle in palette instead
 
 function addPipeNode(moduleId, x, y) {
   var mod = pipeModules.find(function(m) { return m.id === moduleId; });
@@ -3513,6 +3603,8 @@ document.getElementById('pipe-template').addEventListener('change', function() {
     if (config.error) { alert(config.error); return; }
     pipeConfig = config;
     document.getElementById('pipe-name').value = config.name || '';
+    rebuildPipelineLayout();
+    renderPipelinePalette(pipeModules);
     renderPipeCanvas();
   });
 });
