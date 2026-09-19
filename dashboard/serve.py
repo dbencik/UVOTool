@@ -441,11 +441,18 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         import os as _os
         result = {"uvo": [], "ted": [], "uvo_vestnik": "", "ted_label": ""}
 
-        # Latest UVO file by mtime
+        # Latest UVO file by vestník number (highest number = newest)
+        def _vestnik_sort_key(filepath):
+            import re as _re
+            fname = os.path.basename(filepath)
+            m = _re.search(r'vestnik_(\d+)_(\d{4})', fname)
+            if m:
+                return int(m.group(2)) * 1000 + int(m.group(1))
+            return 0
         uvo_files = sorted(
             glob.glob(os.path.join(DATA_DIR, "vestnik_*_2026_parser_results.json")) +
             glob.glob(os.path.join(DATA_DIR, "vestnik_*_2025_parser_results.json")),
-            key=_os.path.getmtime, reverse=True
+            key=_vestnik_sort_key, reverse=True
         )
         if uvo_files:
             with open(uvo_files[0], "r", encoding="utf-8") as f:
