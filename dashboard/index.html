@@ -1232,6 +1232,11 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
     </div>
   </div>
 
+  <!-- Download JSON button -->
+  <div id="tdd-download-bar" style="display:none;margin-bottom:16px">
+    <button id="tdd-download-json" style="padding:8px 20px;background:#e7f5ff;color:#1971c2;border:1px solid #a5d8ff;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Stiahnut JSON</button>
+  </div>
+
   <!-- Batch section -->
   <div style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:20px;margin-top:16px">
     <h3 style="font-size:14px;color:#868e96;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px">Batch obohatenie</h3>
@@ -3523,6 +3528,8 @@ document.getElementById('tdd-enrich-btn').addEventListener('click', function() {
     }
     renderTddParty(data.supplier, document.getElementById('tdd-supplier-data'));
     renderTddParty(data.customer, document.getElementById('tdd-customer-data'));
+    window._lastTddResult = data;
+    showTddDownload();
   }).catch(function(err) {
     document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
   });
@@ -3552,6 +3559,8 @@ document.getElementById('tdd-xml-file').addEventListener('change', function(e) {
       renderTddParty(data.supplier, document.getElementById('tdd-supplier-data'));
       renderTddParty(data.customer, document.getElementById('tdd-customer-data'));
       renderTddInvoice(data.invoice, document.getElementById('tdd-invoice-info'));
+      window._lastTddResult = data;
+      showTddDownload();
     }).catch(function(err) {
       document.getElementById('tdd-supplier-data').innerHTML = '<div class="error">' + esc(err.message) + '</div>';
     });
@@ -3613,7 +3622,25 @@ document.getElementById('tdd-batch-btn').addEventListener('click', function() {
   });
 });
 
+function showTddDownload() {
+  document.getElementById('tdd-download-bar').style.display = 'block';
+}
+
+document.getElementById('tdd-download-json').addEventListener('click', function() {
+  var data = window._lastTddResult;
+  if (!data) return;
+  var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'tdd_enrichment_' + (data.invoice ? (data.invoice.document_id || 'result') : 'batch') + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
 function renderTddBatchTable(results) {
+  window._lastTddResult = {results: results};
+  showTddDownload();
   if (!results.length) return '<div class="error">Ziadne vysledky</div>';
   var h = '<div style="font-size:13px;font-weight:600;margin-bottom:8px">' + results.length + ' výsledkov</div>';
   h += '<div style="overflow-x:auto"><table class="analyza-table" style="font-size:12px;white-space:nowrap"><thead><tr>';
