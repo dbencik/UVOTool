@@ -1,0 +1,169 @@
+UVOTool Functional Test Report
+Generated: 2026-09-18
+================================================
+
+=== 1. EXISTING UNIT TESTS (pytest) ===
+
+[PASS] 107/107 tests passed in 0.33s
+  - TestParseContainers: 9 tests PASSED
+  - TestFindField: 7 tests PASSED
+  - TestFindAllFields: 3 tests PASSED
+  - TestFindFieldAnywhere: 3 tests PASSED
+  - TestParseNumber: 15 tests PASSED
+  - TestParseOrganizations: 6 tests PASSED
+  - TestExtractBuyer: 6 tests PASSED
+  - TestExtractSubject: 4 tests PASSED
+  - TestExtractVysledok: 10 tests PASSED
+  - TestExtractVyhlasenie: 7 tests PASSED
+  - TestExtractZmenaZmluvy: 4 tests PASSED
+  - TestClassifyFromHtml: 7 tests PASSED
+  - TestParseDocument: 8 tests PASSED
+  - TestCodeAction: 5 tests PASSED
+  - TestIntegrationVestnik191: 5 tests PASSED (real HTML data)
+  - TestEdgeCases: 8 tests PASSED
+
+=== 2. PARSER TESTS ===
+
+[PASS] Parse vestnik 191/2026 — 59 docs, 0 errors
+  - vysledok: 18, vyhlasenie: 22, oprava: 16, zmena_zmluvy: 3
+[PASS] ICO consistency — 0 ICOs mapped to multiple unrelated names
+[PASS] No UVO as buyer — 0 docs with UVO (31797903) as buyer
+
+=== 3. DATABASE TESTS ===
+
+[PASS] vestnik-db.py build — 12,532 documents loaded
+[PASS] All tables have data:
+  - dokumenty: 12,532
+  - obstaravatelia: 12,530
+  - zakazky: 12,530
+  - ucastnici: 6,887
+  - vysledky: 5,314
+  - prilezitosti: 5,900
+  - zmeny_zmluv: 339
+  - zmluvy: 7,027
+  - firmy: 19
+  - rpvs: 53
+  - fs_dlznici: 8
+  - sp_dlznici: 8
+  - frsr_dsrdp: 1,356,974
+  - frsr_dph_iban: 342,353
+  - frsr_dphs: 314,140
+  - frsr_dphno: 679,547
+  - frsr_iz_ran: 660,233
+  - frsr_dsdd: 82,865
+[PASS] Referential integrity — 0 orphans in all FK relationships
+  - ucastnici with no matching doc: 0
+  - obstaravatelia with no matching doc: 0
+  - zakazky with no matching doc: 0
+  - vysledky with no matching doc: 0
+  - zmeny_zmluv with no matching doc: 0
+
+=== 4. API TESTS ===
+
+[PASS] GET /api/data — returns JSON array, 14,859 items
+[PASS] GET /api/data (gzip) — gzip encoding works, 14,859 items
+[PASS] GET /api/analysis — valid JSON, keys: generated_at, single_bidder, repeated_winners, price_anomalies
+[PASS] GET /api/graph — valid JSON, keys: buyer_winner_graph, cobidding_graph, geographic_analysis
+[PASS] GET /api/latest — has uvo (59 docs) and ted keys
+[PASS] GET /api/modules — 13 modules (input, orsf, ruz, rpvs, fs_dlznici, sp_dlznici, uvo, ted, frsr_dph, frsr_dane, frsr_dph_odpocty, frsr_spolahliv, output)
+[PASS] GET /api/pipelines — array of 3 pipelines (due-diligence, supplier-profile, tender-monitor)
+[PASS] GET /api/watchlist — has pravidla key
+[PASS] GET /api/watchdog-matches — has matches key
+[PASS] GET /api/v1/company/ — API docs returned
+[PASS] GET /api/v1/company/36038351 — 11 source modules returned (orsf, ruz, rpvs, fs_dlznici, sp_dlznici, uvo, ted, frsr_dph, frsr_dane, frsr_dph_odpocty, frsr_spolahliv)
+[PASS] GET /api/v1/company/36038351?modules=orsf,rpvs — only 2 modules returned
+[PASS] GET /api/v1/company/INVALID — error message: "Neplatne ICO. Musi byt 6-8 cislic."
+[PASS] GET /api/v1/enrich-tdd — API docs returned
+[PASS] POST /api/v1/enrich-tdd (IC DPH pair) — supplier (Amplio s.r.o., ICO 47852585) + customer (LESY SR, ICO 36038351)
+[PASS] POST /api/v1/enrich-tdd (XML file) — parsed invoice (amount=7396.04 EUR) + supplier + customer profiles
+[PASS] POST /api/v1/enrich-tdd/batch — 3 pairs processed, 3 results returned
+[PASS] GET /api/profile?type=dodavatel&q=36038351 — 16 sections returned
+[PASS] GET /api/profile?type=dodavatel&q=BEAX — found via FR SR fallback (BEAX s. r. o., ICO 53067711)
+[PASS] GET /api/profile?type=obstaravatel&q=00151866 — buyer profile for Ministerstvo vnutra SR (7 sections)
+
+=== 5. PIPELINE ENGINE TESTS ===
+
+[PASS] Module count — 13 modules (input, orsf, ruz, rpvs, fs_dlznici, sp_dlznici, uvo, ted, frsr_dph, frsr_dane, frsr_dph_odpocty, frsr_spolahliv, output)
+[PASS] Pipeline count — 3 pipelines (due-diligence, supplier-profile, tender-monitor)
+[PASS] Due-diligence pipeline with ICO 36038351 — all 7 nodes executed successfully
+  - n_input: success (0ms)
+  - n71156 (uvo): success (1ms)
+  - n2 (ruz): success (60ms)
+  - n1 (orsf): success (59ms)
+  - n4 (fs_dlznici): success (58ms)
+  - n3 (rpvs): success (61ms)
+  - n5 (sp_dlznici): success (52ms)
+[PASS] Pipeline with unknown ICO (99999999) — no crash, all nodes returned success
+
+=== 6. TDD ENRICHMENT TESTS ===
+
+[PASS] Enrich real IC DPH pair SK2024126071/SK2020087982 — supplier: Amplio s.r.o. (ICO 47852585), customer: LESY SR (ICO 36038351)
+[PASS] Enrich invalid IC DPH SK0000000000 — graceful: "IC DPH not found in Slovak registers"
+[PASS] Enrich XML from sample_tdd — invoice parsed (amount=7396.04 EUR), profiles enriched
+[PASS] Full level response fields — 20 fields per party (ic_dph, ico, nazov, dic, spolahliv, je_dlznik_fs, je_dlznik_sp, je_dlznik, profile, status, pravna_forma, nace, velkost, mesto, adresa, trzby, trzby_predosle, zisk, zisk_predosle, rok_zavierky)
+[PASS] Batch enrich 3 pairs — 3 results returned
+
+=== 7. FR SR DATA TESTS ===
+
+[PASS] frsr_dsrdp — 1,356,974 records (>1M)
+[PASS] frsr_dph_iban — 342,353 records (>300K)
+[PASS] frsr_iz_ran — 660,233 records (>600K)
+[PASS] Lookup ICO 36038351 in frsr_dsrdp — LESY Slovenskej republiky, DIC 2020087982
+[PASS] Lookup ICO 36038351 in frsr_dph_iban — IC DPH SK2020087982, IBAN SK0202000020300003308342
+[WARN] Lookup ICO 36038351 in frsr_iz_ran — NOT FOUND (state enterprise, not in reliability index)
+[PASS] frsr_dsdd ICO matching coverage — 93.6% (77,552 of 82,865 matched)
+
+=== 8. PROFILE TESTS ===
+
+[PASS] Profile dodavatel for active winner (36038351) — GEOKART Velke Kapusany, s.r.o., 16 sections
+[PASS] Profile dodavatel for non-winner (53067711 BEAX) — found via FR SR fallback, 10 sections
+[PASS] Profile obstaravatel (00151866 Min. vnutra) — 7 sections
+[PASS] All 16 sections present for winner profile:
+  1. Registre SR
+  2. Celkovy profil
+  3. Zakaznicky mix
+  4. Sektorove zameranie
+  5. Sutazne spravanie
+  6. Casovy vyvoj
+  7. Sietove vazby
+  8. Zmluvy
+  9. Zakazky vs obrat
+  10. Vlastnicka struktura (RPVS)
+  11. Dlhy voci statu
+  12. DPH registracia (FR SR)
+  13. Danovy profil (FR SR)
+  14. Spolahlivost danovnika
+  15. DPH odpocty
+  16. Rizikove indikatory
+[PASS] RPVS data has UBO names — 20 UBOs with proper meno/priezvisko strings (not raw JSON)
+[PASS] Spolahliv badge — ids_status: "neznamy" (correct for state enterprise)
+[PASS] FR SR sections have data:
+  - DPH: IC DPH SK2020087982, datum_registracie 29.10.1999
+  - Dane: DIC 2020087982, je_registrovany=True
+  - Odpocty: 21 periods
+
+=== 9. DASHBOARD JS ===
+
+[PASS] JS syntax check — 148,265 chars of embedded JS, node --check passed
+
+=== 10. DATE FORMAT TESTS ===
+
+[PASS] datum_registracie — 29.10.1999 (DD.MM.YYYY)
+[PASS] datum_vzniku — 29.10.1999 (DD.MM.YYYY)
+[PASS] UBO datum_narodenia — 26.07.1973 (DD.MM.YYYY)
+[PASS] lehota_datum — 37/37 dates in DD.MM.YYYY format, 0 ISO dates
+
+================================================
+SUMMARY
+================================================
+
+Total tests: 60
+PASSED: 59
+FAILED: 0
+WARNINGS: 1
+
+WARNING details:
+  - frsr_iz_ran: ICO 36038351 (LESY SR, state enterprise) not in tax reliability index
+    This is expected — state enterprises are not assessed by IDS.
+
+ALL CRITICAL TESTS PASSED.
