@@ -750,6 +750,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_watchdog_matches()
         elif parsed.path == "/api/modules":
             self.send_modules()
+        elif parsed.path == "/api/v1/enrich-tdd":
+            self.send_enrich_tdd_docs()
         elif parsed.path.startswith("/api/v1/company/"):
             self.send_company_api(parsed)
         elif parsed.path.startswith("/api/pipelines/") and "/run" in parsed.path:
@@ -775,6 +777,10 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 self.save_pipeline_api()
         elif parsed.path == "/api/v1/batch":
             self.batch_company_api()
+        elif parsed.path == "/api/v1/enrich-tdd":
+            self.enrich_tdd_api()
+        elif parsed.path == "/api/v1/enrich-tdd/batch":
+            self.enrich_tdd_batch_api()
         else:
             self.send_response(404)
             self.end_headers()
@@ -1147,6 +1153,172 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         except Exception as e:
             self.send_json({"error": f"Failed to run pipeline: {e}"})
 
+    # ─── TDD Enrichment API ────────────────────────────────────────────────
+
+    def _get_tdd_enricher(self):
+        """Return singleton TDDEnricher instance."""
+        if not hasattr(DashboardHandler, '_tdd_enricher'):
+            tools_dir = os.path.join(BASE_DIR, "tools")
+            import importlib.util
+            spec = importlib.util.spec_from_file_location(
+                "tdd_enrichment", os.path.join(tools_dir, "tdd-enrichment.py")
+            )
+            tdd_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(tdd_mod)
+            DashboardHandler._tdd_enricher = tdd_mod.TDDEnricher.get_instance(DB_PATH)
+        return DashboardHandler._tdd_enricher
+
+    def send_enrich_tdd_docs(self):
+        """GET /api/v1/enrich-tdd → documentation."""
+        self.send_json({
+            "api": "TDD Enrichment API v1",
+            "description": "Obohacuje Peppol TDD (Tax Data Document) XML o firemne data zo slovenskych registrov.",
+            "endpoints": {
+                "POST /api/v1/enrich-tdd": {
+                    "description": "Enrich single TDD",
+                    "body_formats": [
+                        "Raw TDD XML string (Content-Type: application/xml)",
+                        'JSON: {"xml": "<TaxData>...</TaxData>"}',
+                        '{"ic_dph_supplier": "SK2012345678", "ic_dph_customer": "SK2098765432"}',
+                    ],
+                    "query_params": {
+                        "level": "fast (default) | full — fast uses in-memory lookups (<0.1ms), full adds ORSF+RUZ (~5ms)"
+                    },
+                    "response": {
+                        "invoice": {"uuid": "...", "issue_date": "...", "payable_amount": 1805.0, "currency": "EUR"},
+                        "supplier": {"ic_dph": "SK...", "ico": "12345678", "nazov": "...", "spolahliv": "...", "je_dlznik": False},
+                        "customer": {"ic_dph": "SK...", "ico": "87654321", "nazov": "...", "spolahliv": "...", "je_dlznik": False},
+                    },
+                },
+                "POST /api/v1/enrich-tdd/batch": {
+                    "description": "Enrich multiple TDDs at once",
+                    "body_formats": [
+                        '{"tdds": ["<xml1>...", "<xml2>..."]}',
+                        '{"pairs": [{"supplier": "SK...", "customer": "SK..."}, ...]}',
+                    ],
+                    "query_params": {
+                        "level": "fast (default) | full"
+                    },
+                },
+            },
+            "levels": {
+                "fast": "IC DPH -> ICO + nazov + spolahliv + dlznik (in-memory, <0.1ms/party)",
+                "full": "fast + trzby, zisk, status, pravna_forma z ORSF/RUZ (~5ms/party)",
+            },
+        })
+
+    def enrich_tdd_api(self):
+        """POST /api/v1/enrich-tdd — enrich single TDD."""
+        try:
+            enricher = self._get_tdd_enricher()
+        except Exception as e:
+            self.send_json({"error": f"TDD Enricher not available: {e}"})
+            return
+
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        level = params.get("level", ["fast"])[0]
+        if level not in ("fast", "full"):
+            level = "fast"
+
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            content_type = self.headers.get("Content-Type", "")
+        except Exception as e:
+            self.send_json({"error": f"Failed to read request body: {e}"})
+            return
+
+        if not body:
+            self.send_json({"error": "Empty request body"})
+            return
+
+        body_str = body.decode("utf-8")
+
+        # Detect format: raw XML or JSON
+        if content_type.startswith("application/xml") or content_type.startswith("text/xml") or body_str.strip().startswith("<"):
+            # Raw XML
+            result = enricher.enrich_tdd_xml(body_str, level)
+            self.send_json(result)
+            return
+
+        # JSON body
+        try:
+            data = json.loads(body_str)
+        except json.JSONDecodeError as e:
+            self.send_json({"error": f"Invalid JSON: {e}"})
+            return
+
+        if "xml" in data:
+            result = enricher.enrich_tdd_xml(data["xml"], level)
+        elif "ic_dph_supplier" in data or "ic_dph_customer" in data:
+            supplier = data.get("ic_dph_supplier", "")
+            customer = data.get("ic_dph_customer", "")
+            result = enricher.enrich_pair(supplier, customer, level)
+        else:
+            result = {"error": "Request must contain 'xml', or 'ic_dph_supplier'/'ic_dph_customer'"}
+
+        self.send_json(result)
+
+    def enrich_tdd_batch_api(self):
+        """POST /api/v1/enrich-tdd/batch — enrich multiple TDDs."""
+        try:
+            enricher = self._get_tdd_enricher()
+        except Exception as e:
+            self.send_json({"error": f"TDD Enricher not available: {e}"})
+            return
+
+        parsed = urlparse(self.path)
+        params = parse_qs(parsed.query)
+        level = params.get("level", ["fast"])[0]
+        if level not in ("fast", "full"):
+            level = "fast"
+
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            data = json.loads(body.decode("utf-8")) if body else {}
+        except Exception as e:
+            self.send_json({"error": f"Invalid request: {e}"})
+            return
+
+        from datetime import datetime as dt
+
+        if "tdds" in data:
+            tdds = data["tdds"]
+            if not isinstance(tdds, list):
+                self.send_json({"error": "'tdds' must be an array of XML strings"})
+                return
+            if len(tdds) > 1000:
+                self.send_json({"error": "Maximum 1000 TDDs per batch request"})
+                return
+            results = enricher.enrich_batch(tdds, level)
+            self.send_json({
+                "total": len(tdds),
+                "processed": len(results),
+                "level": level,
+                "timestamp": dt.now().isoformat(),
+                "results": results,
+            })
+        elif "pairs" in data:
+            pairs = data["pairs"]
+            if not isinstance(pairs, list):
+                self.send_json({"error": "'pairs' must be an array of {supplier, customer} objects"})
+                return
+            if len(pairs) > 1000:
+                self.send_json({"error": "Maximum 1000 pairs per batch request"})
+                return
+            results = enricher.enrich_batch_pairs(pairs, level)
+            self.send_json({
+                "total": len(pairs),
+                "processed": len(results),
+                "level": level,
+                "timestamp": dt.now().isoformat(),
+                "results": results,
+            })
+        else:
+            self.send_json({"error": "Request must contain 'tdds' (array of XML strings) or 'pairs' (array of {supplier, customer})"})
+
     def send_json(self, data):
         import gzip as gz
         raw = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -1272,6 +1444,8 @@ if __name__ == "__main__":
     print(f"API: /api/data, /api/analysis, /api/graph, /api/profile?type=dodavatel&q=ICO")
     print(f"     /api/watchlist (GET/POST), /api/watchdog-matches")
     print(f"     /api/modules, /api/pipelines, /api/pipelines/<id>/run")
+    print(f"     /api/v1/enrich-tdd (GET=docs, POST=enrich)")
+    print(f"     /api/v1/enrich-tdd/batch (POST=batch enrich)")
     print(f"Data: {DATA_DIR}")
     print(f"DB: {DB_PATH}")
     try:
