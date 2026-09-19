@@ -417,10 +417,21 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         self.send_json(result)
 
     def send_json(self, data):
-        response = json.dumps(data, ensure_ascii=False).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Content-Length", str(len(response)))
+        import gzip as gz
+        raw = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        # Use gzip if client accepts it and response is large
+        accept_enc = self.headers.get("Accept-Encoding", "")
+        if "gzip" in accept_enc and len(raw) > 10000:
+            response = gz.compress(raw)
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Encoding", "gzip")
+            self.send_header("Content-Length", str(len(response)))
+        else:
+            response = raw
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(response)))
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(response)
@@ -456,7 +467,71 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 except (json.JSONDecodeError, IOError) as e:
                     print(f"Error reading {filepath}: {e}")
 
-        self.send_json(all_docs)
+        # Slim down for dashboard — keep only fields needed for table + detail
+        slim = []
+        for d in all_docs:
+            ext = d.get("extraction", {})
+            if "error" in ext:
+                continue
+            obst = ext.get("obstaravatel", {})
+            zak = ext.get("zakazka", {})
+            meta = ext.get("metadata", {})
+            vys = ext.get("vysledok", {})
+            pril = ext.get("prilezitost", {})
+            zm = ext.get("zmena_zmluvy", {})
+            casti = ext.get("casti", [])
+
+            slim.append({
+                "id": d.get("id", ""),
+                "num": d.get("num", ""),
+                "code": d.get("code", ""),
+                "type": d.get("type", ""),
+                "action": d.get("action", ""),
+                "url": d.get("url", ""),
+                "vestnik": d.get("vestnik", ""),
+                "extraction": {
+                    "metadata": {"id_zakazky": meta.get("id_zakazky", ""),
+                                 "typ_oznamenia": meta.get("typ_oznamenia", ""),
+                                 "typ_formulara": meta.get("typ_formulara", ""),
+                                 "verzia": meta.get("verzia", "")},
+                    "obstaravatel": {"nazov": obst.get("nazov", ""), "ico": obst.get("ico", ""),
+                                     "email": obst.get("email", ""), "adresa": obst.get("adresa", ""),
+                                     "mesto": obst.get("mesto", ""), "typ_kupujuceho": obst.get("typ_kupujuceho", ""),
+                                     "cinnost": obst.get("cinnost", ""), "profil_url": obst.get("profil_url", "")},
+                    "zakazka": {"predmet": zak.get("predmet", ""), "cpv_kod": zak.get("cpv_kod", ""),
+                                "druh": zak.get("druh", ""), "opis": (zak.get("opis", "") or "")[:300],
+                                "nuts": zak.get("nuts", ""), "druh_postupu": zak.get("druh_postupu", ""),
+                                "pocet_casti": zak.get("pocet_casti", 1),
+                                "max_casti_ponuka": zak.get("max_casti_ponuka"),
+                                "max_casti_zadanie": zak.get("max_casti_zadanie")},
+                    **({"vysledok": {"celkova_hodnota": vys.get("celkova_hodnota"),
+                                     "pocet_ponuk": vys.get("pocet_ponuk"),
+                                     "ucastnici": [{"nazov": u.get("nazov",""), "ico": u.get("ico",""),
+                                                     "cena": u.get("cena"), "poradie": u.get("poradie"),
+                                                     "je_vitaz": u.get("je_vitaz")}
+                                                    for u in vys.get("ucastnici", [])],
+                                     "zmluvy": [{"id": z.get("id",""), "datum": z.get("datum",""),
+                                                  "url": z.get("url","")}
+                                                 for z in (vys.get("zmluvy") or [])[:5]]}} if vys else {}),
+                    **({"prilezitost": {"hodnota": pril.get("hodnota"), "mena": pril.get("mena", "EUR"),
+                                        "lehota_datum": pril.get("lehota_datum", ""),
+                                        "lehota_cas": pril.get("lehota_cas", ""),
+                                        "eu_fond": pril.get("eu_fond", ""),
+                                        "ramcova_dohoda": pril.get("ramcova_dohoda"),
+                                        "kriterium": pril.get("kriterium", "")}} if pril else {}),
+                    **({"zmena_zmluvy": {"dodavatel": zm.get("dodavatel", {}),
+                                         "hodnota_po_zmene": zm.get("hodnota_po_zmene"),
+                                         "zmluva_id": zm.get("zmluva_id", ""),
+                                         "dovod_zmeny": zm.get("dovod_zmeny", ""),
+                                         "zhrnutie": (zm.get("zhrnutie", "") or "")[:200]}} if zm else {}),
+                    **({"casti": [{"cislo": c.get("cislo"), "lot_id": c.get("lot_id",""),
+                                   "nazov": c.get("nazov",""), "cpv_kod": c.get("cpv_kod",""),
+                                   "hodnota": c.get("hodnota"), "opis": (c.get("opis","") or "")[:150]}
+                                  for c in casti]} if casti else {}),
+                },
+            })
+
+        self.send_json(slim)
 
 
 if __name__ == "__main__":
