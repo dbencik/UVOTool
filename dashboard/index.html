@@ -882,6 +882,53 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   text-align: center;
   color: #868e96;
 }
+
+/* Pipeline editor */
+.pipe-module-card {
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  cursor: grab;
+  font-size: 13px;
+  font-weight: 600;
+  border-left: 4px solid;
+  background: #f8f9fa;
+  user-select: none;
+}
+.pipe-module-card:hover { background: #e9ecef; }
+.pipe-module-card .desc { font-size: 11px; font-weight: 400; color: #868e96; margin-top: 2px; }
+
+.pipe-node {
+  position: absolute;
+  min-width: 140px;
+  background: #fff;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: move;
+  font-size: 13px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  z-index: 10;
+}
+.pipe-node.selected { border-color: #1971c2; box-shadow: 0 0 0 3px rgba(25,113,194,0.15); }
+.pipe-node .node-title { font-weight: 700; margin-bottom: 2px; }
+.pipe-node .node-outputs { font-size: 11px; color: #868e96; }
+.pipe-node .node-dot {
+  position: absolute; width: 10px; height: 10px; border-radius: 50%;
+  background: #ced4da; border: 2px solid #fff;
+}
+.pipe-node .node-dot.input { left: -6px; top: 50%; transform: translateY(-50%); }
+.pipe-node .node-dot.output { right: -6px; top: 50%; transform: translateY(-50%); }
+.pipe-node .node-dot:hover { background: #1971c2; cursor: crosshair; }
+
+.pipe-result-card {
+  background: #fff; border: 1px solid #e9ecef; border-radius: 8px;
+  padding: 14px; margin-bottom: 10px;
+}
+.pipe-result-card.success { border-left: 4px solid #2b8a3e; }
+.pipe-result-card.error { border-left: 4px solid #e03131; }
+.pipe-result-card.cached { border-left: 4px solid #e8590c; }
+.pipe-result-card.timeout { border-left: 4px solid #868e96; }
 </style>
 </head>
 <body>
@@ -901,6 +948,7 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
   <div class="main-tab" data-tab="analyza">Analyza</div>
   <div class="main-tab" data-tab="graf">Graf</div>
   <div class="main-tab" data-tab="aktualny">Aktualny vestnik</div>
+  <div class="main-tab" data-tab="pipeline">Pipeline</div>
   <div class="main-tab" data-tab="profil">Profil</div>
   <div class="main-tab" data-tab="monitoring">Monitoring</div>
 </div>
@@ -965,6 +1013,41 @@ footer { text-align: center; padding: 16px; font-size: 12px; color: #adb5bd; }
 <!-- ═══════════════════ AKTUALNY VESTNIK TAB ═══════════════════ -->
 <div class="main-content-section" id="section-aktualny">
   <div id="aktualny-content" class="loading">Nacitavam aktualny vestnik...</div>
+</div>
+
+<!-- ═══════════════════ PIPELINE TAB ═══════════════════ -->
+<div class="main-content-section" id="section-pipeline">
+  <!-- Top bar -->
+  <div style="display:flex;gap:12px;margin-bottom:16px;align-items:center;flex-wrap:wrap">
+    <select id="pipe-template" style="padding:8px 12px;border:1px solid #e9ecef;border-radius:6px;font-size:13px;min-width:200px">
+      <option value="">Novy pipeline...</option>
+    </select>
+    <input type="text" id="pipe-name" placeholder="Nazov pipeline" style="padding:8px 12px;border:1px solid #e9ecef;border-radius:6px;font-size:13px;min-width:180px">
+    <button id="pipe-save-btn" style="padding:8px 20px;background:#1971c2;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Ulozit</button>
+    <button id="pipe-run-btn" style="padding:8px 20px;background:#2b8a3e;color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer">Spustit</button>
+  </div>
+
+  <!-- Main layout: sidebar + canvas + settings -->
+  <div style="display:grid;grid-template-columns:200px 1fr 300px;gap:16px;min-height:500px">
+
+    <!-- Left: Module palette -->
+    <div id="pipe-palette" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:12px;overflow-y:auto">
+      <div style="color:#868e96;text-align:center;padding:20px 10px;font-size:13px">Nacitavam moduly...</div>
+    </div>
+
+    <!-- Center: Canvas -->
+    <div id="pipe-canvas" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;position:relative;overflow:hidden">
+      <svg id="pipe-svg" width="100%" height="100%"></svg>
+    </div>
+
+    <!-- Right: Settings panel -->
+    <div id="pipe-settings" style="background:#fff;border:1px solid #e9ecef;border-radius:8px;padding:16px;overflow-y:auto">
+      <div style="color:#868e96;text-align:center;padding:40px 10px">Kliknite na modul pre zobrazenie nastaveni</div>
+    </div>
+  </div>
+
+  <!-- Bottom: Results -->
+  <div id="pipe-results" style="margin-top:16px"></div>
 </div>
 
 <!-- ═══════════════════ PROFIL TAB ═══════════════════ -->
@@ -1145,6 +1228,9 @@ document.querySelectorAll('.main-tab').forEach(tab => {
     }
     if (tab.dataset.tab === 'graf' && !graphLoaded) {
       loadGraph();
+    }
+    if (tab.dataset.tab === 'pipeline' && !pipelineLoaded) {
+      loadPipeline();
     }
   });
 });
@@ -3040,6 +3126,356 @@ function renderMatches(matches) {
       }
     });
   });
+}
+
+// ══════════════════════════════════════════════════════
+//  PIPELINE TAB
+// ══════════════════════════════════════════════════════
+
+var pipelineLoaded = false;
+var pipeModules = [];
+var pipeConfig = { id: '', name: '', nodes: [], edges: [] };
+var pipeSelectedNode = null;
+var pipeDragging = null;
+
+function loadPipeline() {
+  Promise.all([
+    fetch('/api/modules').then(function(r) { return r.json(); }),
+    fetch('/api/pipelines').then(function(r) { return r.json(); })
+  ]).then(function(results) {
+    var modules = results[0];
+    var pipelines = results[1];
+    pipelineLoaded = true;
+    if (modules.error) {
+      document.getElementById('pipe-palette').innerHTML = '<div style="color:#e03131;padding:12px;font-size:12px">Pipeline engine nie je dostupny. ' + esc(modules.error) + '</div>';
+      return;
+    }
+    pipeModules = Array.isArray(modules) ? modules : [];
+    renderPipelinePalette(pipeModules);
+    renderPipelineTemplates(Array.isArray(pipelines) ? pipelines : []);
+  }).catch(function(err) {
+    document.getElementById('pipe-palette').innerHTML = '<div style="color:#e03131;padding:12px;font-size:12px">Chyba: ' + esc(err.message) + '</div>';
+  });
+}
+
+function renderPipelinePalette(modules) {
+  var el = document.getElementById('pipe-palette');
+  el.innerHTML = '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:8px">Moduly</div>' +
+    modules.map(function(m) {
+      return '<div class="pipe-module-card" draggable="true" data-module="' + esc(m.id) + '" style="border-left-color:' + (m.color || '#868e96') + '">' +
+        esc(m.name) +
+        '<div class="desc">' + esc(m.description || '') + '</div>' +
+      '</div>';
+    }).join('');
+
+  el.querySelectorAll('.pipe-module-card').forEach(function(card) {
+    card.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('module-id', card.dataset.module);
+    });
+  });
+}
+
+function renderPipelineTemplates(pipelines) {
+  var sel = document.getElementById('pipe-template');
+  sel.innerHTML = '<option value="">Novy pipeline...</option>' +
+    pipelines.map(function(p) {
+      return '<option value="' + esc(p.id) + '">' + esc(p.name) + ' (' + (p.nodes || 0) + ' modulov)</option>';
+    }).join('');
+}
+
+// Canvas: drop to add node
+document.getElementById('pipe-canvas').addEventListener('dragover', function(e) { e.preventDefault(); });
+document.getElementById('pipe-canvas').addEventListener('drop', function(e) {
+  e.preventDefault();
+  var moduleId = e.dataTransfer.getData('module-id');
+  if (!moduleId) return;
+  var rect = e.currentTarget.getBoundingClientRect();
+  var x = e.clientX - rect.left;
+  var y = e.clientY - rect.top;
+  addPipeNode(moduleId, x, y);
+});
+
+function addPipeNode(moduleId, x, y) {
+  var mod = pipeModules.find(function(m) { return m.id === moduleId; });
+  if (!mod) return;
+  var nodeId = 'n' + (pipeConfig.nodes.length + 1);
+  var node = {
+    id: nodeId, module: moduleId, x: x, y: y,
+    settings: { outputs: {} }
+  };
+  (mod.outputs || []).forEach(function(o) {
+    node.settings.outputs[o.id] = { enabled: o.enabled !== false, label: o.label };
+  });
+  pipeConfig.nodes.push(node);
+  renderPipeCanvas();
+  selectPipeNode(nodeId);
+}
+
+function renderPipeCanvas() {
+  var canvas = document.getElementById('pipe-canvas');
+  canvas.querySelectorAll('.pipe-node').forEach(function(n) { n.remove(); });
+
+  var svg = document.getElementById('pipe-svg');
+  svg.innerHTML = '<defs><marker id="pipe-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ced4da"/></marker></defs>';
+
+  pipeConfig.edges.forEach(function(edge) {
+    var fromNode = pipeConfig.nodes.find(function(n) { return n.id === edge.from; });
+    var toNode = pipeConfig.nodes.find(function(n) { return n.id === edge.to; });
+    if (fromNode && toNode) {
+      var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', fromNode.x + 70);
+      line.setAttribute('y1', fromNode.y + 25);
+      line.setAttribute('x2', toNode.x);
+      line.setAttribute('y2', toNode.y + 25);
+      line.setAttribute('stroke', '#ced4da');
+      line.setAttribute('stroke-width', '2');
+      line.setAttribute('marker-end', 'url(#pipe-arrow)');
+      svg.appendChild(line);
+    }
+  });
+
+  pipeConfig.nodes.forEach(function(node) {
+    var mod = pipeModules.find(function(m) { return m.id === node.module; });
+    if (!mod) return;
+    var outputs = node.settings.outputs || {};
+    var enabledCount = Object.values(outputs).filter(function(o) { return o.enabled !== false; }).length;
+    var totalOutputs = (mod.outputs || []).length;
+
+    var div = document.createElement('div');
+    div.className = 'pipe-node' + (pipeSelectedNode === node.id ? ' selected' : '');
+    div.style.left = node.x + 'px';
+    div.style.top = node.y + 'px';
+    div.style.borderLeftColor = mod.color || '#868e96';
+    div.style.borderLeftWidth = '4px';
+    div.dataset.nodeId = node.id;
+    div.innerHTML =
+      '<div class="node-dot input"></div>' +
+      '<div class="node-title">' + esc(mod.name) + '</div>' +
+      '<div class="node-outputs">' + enabledCount + '/' + totalOutputs + ' atributov</div>' +
+      '<div class="node-dot output" style="background:' + (mod.color || '#868e96') + '"></div>';
+
+    div.addEventListener('mousedown', function(e) {
+      if (e.target.classList.contains('node-dot')) return;
+      selectPipeNode(node.id);
+      pipeDragging = { nodeId: node.id, startX: e.clientX - node.x, startY: e.clientY - node.y };
+    });
+
+    div.querySelector('.node-dot.output').addEventListener('mousedown', function(e) {
+      e.stopPropagation();
+      var targets = pipeConfig.nodes.filter(function(n) { return n.id !== node.id; }).map(function(n) { return n.id + ' (' + n.module + ')'; });
+      if (targets.length === 0) return;
+      var target = prompt('Pripojit k uzlu:\n' + targets.join('\n') + '\n\nZadajte ID uzla:');
+      if (target) {
+        var targetId = target.split(' ')[0];
+        if (pipeConfig.nodes.find(function(n) { return n.id === targetId; })) {
+          pipeConfig.edges.push({ from: node.id, to: targetId, mapping: { ico: 'ico' } });
+          renderPipeCanvas();
+        }
+      }
+    });
+
+    canvas.appendChild(div);
+  });
+}
+
+document.addEventListener('mousemove', function(e) {
+  if (!pipeDragging) return;
+  var node = pipeConfig.nodes.find(function(n) { return n.id === pipeDragging.nodeId; });
+  if (node) {
+    node.x = e.clientX - pipeDragging.startX;
+    node.y = e.clientY - pipeDragging.startY;
+    renderPipeCanvas();
+  }
+});
+document.addEventListener('mouseup', function() { pipeDragging = null; });
+
+function selectPipeNode(nodeId) {
+  pipeSelectedNode = nodeId;
+  renderPipeCanvas();
+  renderPipeSettings(nodeId);
+}
+
+function renderPipeSettings(nodeId) {
+  var panel = document.getElementById('pipe-settings');
+  var node = pipeConfig.nodes.find(function(n) { return n.id === nodeId; });
+  if (!node) { panel.innerHTML = ''; return; }
+
+  var mod = pipeModules.find(function(m) { return m.id === node.module; });
+  if (!mod) return;
+
+  var html = '<div style="margin-bottom:16px">' +
+    '<div style="font-size:16px;font-weight:700;margin-bottom:4px">' + esc(mod.name) + '</div>' +
+    '<div style="font-size:12px;color:#868e96;margin-bottom:8px">' + esc(mod.description || '') + '</div>' +
+    '<div style="font-size:11px;color:#ced4da">Zdroj: ' + esc(mod.source_url || '') + '</div>' +
+    '<div style="font-size:11px;color:#ced4da">Cache: ' + (mod.cache_ttl || 0) + ' dni | Rate limit: ' + (mod.rate_limit || 0) + 's</div>' +
+  '</div>' +
+  '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:8px">' +
+    'Primarny kluc: <strong style="color:#1a1a1a">' + esc(mod.primary_key || '') + '</strong>' +
+  '</div>' +
+  '<div style="font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:#868e96;margin-bottom:8px">Datove atributy</div>' +
+  '<table style="width:100%;font-size:12px;border-collapse:collapse">' +
+    '<thead><tr>' +
+      '<th style="text-align:left;padding:4px;border-bottom:1px solid #e9ecef;width:30px"></th>' +
+      '<th style="text-align:left;padding:4px;border-bottom:1px solid #e9ecef">Label</th>' +
+      '<th style="text-align:left;padding:4px;border-bottom:1px solid #e9ecef;width:60px">Typ</th>' +
+    '</tr></thead><tbody>';
+
+  (mod.outputs || []).forEach(function(o) {
+    var setting = (node.settings.outputs || {})[o.id] || { enabled: true, label: o.label };
+    var checked = setting.enabled !== false ? 'checked' : '';
+    html += '<tr>' +
+      '<td style="padding:4px"><input type="checkbox" ' + checked + ' data-attr="' + esc(o.id) + '" class="pipe-attr-toggle"></td>' +
+      '<td style="padding:4px"><input type="text" value="' + esc(setting.label || o.label || '') + '" data-attr="' + esc(o.id) + '" class="pipe-attr-label" style="width:100%;border:1px solid #e9ecef;border-radius:4px;padding:2px 6px;font-size:12px"></td>' +
+      '<td style="padding:4px;color:#868e96">' + esc(o.type || '') + '</td>' +
+    '</tr>';
+  });
+
+  html += '</tbody></table>' +
+    '<button id="pipe-remove-node" style="margin-top:16px;padding:6px 16px;background:#fff5f5;color:#e03131;border:1px solid #ffc9c9;border-radius:6px;font-size:12px;cursor:pointer;width:100%">Odstranit modul</button>';
+
+  panel.innerHTML = html;
+
+  panel.querySelectorAll('.pipe-attr-toggle').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      if (!node.settings.outputs) node.settings.outputs = {};
+      if (!node.settings.outputs[cb.dataset.attr]) node.settings.outputs[cb.dataset.attr] = {};
+      node.settings.outputs[cb.dataset.attr].enabled = cb.checked;
+      renderPipeCanvas();
+    });
+  });
+
+  panel.querySelectorAll('.pipe-attr-label').forEach(function(inp) {
+    inp.addEventListener('input', function() {
+      if (!node.settings.outputs) node.settings.outputs = {};
+      if (!node.settings.outputs[inp.dataset.attr]) node.settings.outputs[inp.dataset.attr] = {};
+      node.settings.outputs[inp.dataset.attr].label = inp.value;
+    });
+  });
+
+  document.getElementById('pipe-remove-node').addEventListener('click', function() {
+    pipeConfig.nodes = pipeConfig.nodes.filter(function(n) { return n.id !== nodeId; });
+    pipeConfig.edges = pipeConfig.edges.filter(function(e) { return e.from !== nodeId && e.to !== nodeId; });
+    pipeSelectedNode = null;
+    panel.innerHTML = '<div style="color:#868e96;text-align:center;padding:40px 10px">Kliknite na modul</div>';
+    renderPipeCanvas();
+  });
+}
+
+// Save pipeline
+document.getElementById('pipe-save-btn').addEventListener('click', function() {
+  var name = document.getElementById('pipe-name').value.trim() || 'Moj pipeline';
+  pipeConfig.name = name;
+  pipeConfig.id = pipeConfig.id || name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+  fetch('/api/pipelines', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(pipeConfig)
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d.ok) {
+      alert('Pipeline ulozeny: ' + pipeConfig.id);
+      loadPipeline();
+    } else if (d.error) {
+      alert('Chyba: ' + d.error);
+    }
+  });
+});
+
+// Load template
+document.getElementById('pipe-template').addEventListener('change', function() {
+  if (!this.value) {
+    pipeConfig = { id: '', name: '', nodes: [], edges: [] };
+    renderPipeCanvas();
+    document.getElementById('pipe-settings').innerHTML = '<div style="color:#868e96;text-align:center;padding:40px 10px">Kliknite na modul</div>';
+    document.getElementById('pipe-name').value = '';
+    return;
+  }
+  var templateId = this.value;
+  fetch('/api/pipelines/' + templateId).then(function(r) { return r.json(); }).then(function(config) {
+    if (config.error) { alert(config.error); return; }
+    pipeConfig = config;
+    document.getElementById('pipe-name').value = config.name || '';
+    renderPipeCanvas();
+  });
+});
+
+// Run pipeline
+document.getElementById('pipe-run-btn').addEventListener('click', function() {
+  if (pipeConfig.nodes.length === 0) { alert('Pridajte aspon jeden modul'); return; }
+  var ico = prompt('Zadajte ICO pre spustenie pipeline:');
+  if (!ico) return;
+
+  var resultsEl = document.getElementById('pipe-results');
+  resultsEl.innerHTML = '<div class="loading">Spustam pipeline...</div>';
+
+  if (!pipeConfig.id) {
+    pipeConfig.id = 'temp-' + Date.now();
+    pipeConfig.name = document.getElementById('pipe-name').value || 'Temp pipeline';
+  }
+
+  fetch('/api/pipelines', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(pipeConfig)
+  }).then(function() {
+    return fetch('/api/pipelines/' + pipeConfig.id + '/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ico: ico })
+    });
+  }).then(function(r) { return r.json(); }).then(function(result) {
+    renderPipeResults(result);
+  }).catch(function(err) {
+    resultsEl.innerHTML = '<div class="pipe-result-card error"><strong>Chyba:</strong> ' + esc(err.message) + '</div>';
+  });
+});
+
+function renderPipeResults(result) {
+  var el = document.getElementById('pipe-results');
+  if (result.error) {
+    el.innerHTML = '<div class="pipe-result-card error"><strong>Chyba:</strong> ' + esc(result.error) + '</div>';
+    return;
+  }
+
+  var html = '<div style="font-size:14px;font-weight:600;margin-bottom:12px">Vysledky pipeline: ' + esc(result.pipeline || '') + ' (ICO: ' + esc((result.params && result.params.ico) || '') + ')</div>';
+
+  var nodeResults = result.results || {};
+  Object.keys(nodeResults).forEach(function(nodeId) {
+    var res = nodeResults[nodeId];
+    var node = pipeConfig.nodes.find(function(n) { return n.id === nodeId; });
+    var mod = node ? pipeModules.find(function(m) { return m.id === node.module; }) : null;
+    var status = res.status || 'error';
+
+    html += '<div class="pipe-result-card ' + status + '">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">' +
+        '<strong style="color:' + (mod ? (mod.color || '#495057') : '#495057') + '">' + (mod ? esc(mod.name) : esc(nodeId)) + '</strong>' +
+        '<span style="font-size:11px;color:#868e96">' + (res.duration_ms || 0) + 'ms ' + (res.cached ? '(cache)' : '') + '</span>' +
+      '</div>';
+
+    if (res.data && typeof res.data === 'object' && !Array.isArray(res.data)) {
+      html += '<table style="width:100%;font-size:12px;border-collapse:collapse">';
+      var data = res.filtered_data || res.data;
+      Object.keys(data).forEach(function(key) {
+        var val = data[key];
+        var displayVal = (typeof val === 'object' && val !== null)
+          ? (val.value !== undefined ? val.value : JSON.stringify(val))
+          : val;
+        var label = (typeof val === 'object' && val && val.label) ? val.label : key;
+        var displayStr = (displayVal === null || displayVal === undefined) ? '\u2014'
+          : Array.isArray(displayVal) ? displayVal.length + ' poloziek'
+          : typeof displayVal === 'boolean' ? (displayVal ? 'Ano' : 'Nie')
+          : String(displayVal);
+        html += '<tr><td style="padding:3px 6px;color:#868e96;width:140px">' + esc(String(label)) + '</td><td style="padding:3px 6px;font-weight:500">' + esc(displayStr.substring(0, 100)) + '</td></tr>';
+      });
+      html += '</table>';
+    } else if (res.message) {
+      html += '<div style="color:#e03131;font-size:12px">' + esc(res.message) + '</div>';
+    }
+
+    html += '</div>';
+  });
+
+  el.innerHTML = html;
 }
 </script>
 </body>

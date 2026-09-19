@@ -7,6 +7,7 @@ import os
 import sqlite3
 import subprocess
 import sys
+import time
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
 
@@ -762,6 +763,16 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_watchlist()
         elif parsed.path == "/api/watchdog-matches":
             self.send_watchdog_matches()
+        elif parsed.path == "/api/modules":
+            self.send_modules()
+        elif parsed.path.startswith("/api/pipelines/") and "/run" in parsed.path:
+            pipeline_id = parsed.path.split("/")[3]
+            self.run_pipeline_api_post(pipeline_id)
+        elif parsed.path.startswith("/api/pipelines/"):
+            pipeline_id = parsed.path.split("/")[3] if len(parsed.path.split("/")) > 3 else None
+            self.send_pipeline(pipeline_id)
+        elif parsed.path == "/api/pipelines":
+            self.send_pipelines_list()
         else:
             super().do_GET()
 
@@ -769,6 +780,12 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         parsed = urlparse(self.path)
         if parsed.path == "/api/watchlist":
             self.save_watchlist()
+        elif parsed.path == "/api/pipelines" or parsed.path.startswith("/api/pipelines/"):
+            if "/run" in parsed.path:
+                pipeline_id = parsed.path.split("/")[3]
+                self.run_pipeline_api_post(pipeline_id)
+            else:
+                self.save_pipeline_api()
         else:
             self.send_response(404)
             self.end_headers()
@@ -919,6 +936,63 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         result = query_profile(query, ptype)
         self.send_json(result)
 
+    def _get_pipeline_engine(self):
+        """Import and return PipelineEngine, adding pipeline dir to sys.path."""
+        if BASE_DIR not in sys.path:
+            sys.path.insert(0, BASE_DIR)
+        from pipeline import PipelineEngine
+        return PipelineEngine()
+
+    def send_modules(self):
+        try:
+            engine = self._get_pipeline_engine()
+            self.send_json(engine.get_modules())
+        except Exception as e:
+            self.send_json({"error": f"Pipeline engine not available: {e}"})
+
+    def send_pipelines_list(self):
+        try:
+            engine = self._get_pipeline_engine()
+            self.send_json(engine.list_pipelines())
+        except Exception as e:
+            self.send_json({"error": f"Pipeline engine not available: {e}"})
+
+    def send_pipeline(self, pipeline_id):
+        if not pipeline_id:
+            return self.send_pipelines_list()
+        try:
+            engine = self._get_pipeline_engine()
+            config = engine.get_pipeline(pipeline_id)
+            if config:
+                self.send_json(config)
+            else:
+                self.send_json({"error": "Pipeline not found"})
+        except Exception as e:
+            self.send_json({"error": f"Pipeline engine not available: {e}"})
+
+    def save_pipeline_api(self):
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            data = json.loads(body.decode("utf-8"))
+            pid = data.get("id", "custom-" + str(int(time.time())))
+            engine = self._get_pipeline_engine()
+            engine.save_pipeline(pid, data)
+            self.send_json({"ok": True, "id": pid})
+        except Exception as e:
+            self.send_json({"error": f"Failed to save pipeline: {e}"})
+
+    def run_pipeline_api_post(self, pipeline_id):
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(length)
+            params = json.loads(body.decode("utf-8")) if body else {}
+            engine = self._get_pipeline_engine()
+            result = engine.run_pipeline(pipeline_id, params)
+            self.send_json(result)
+        except Exception as e:
+            self.send_json({"error": f"Failed to run pipeline: {e}"})
+
     def send_json(self, data):
         import gzip as gz
         raw = json.dumps(data, ensure_ascii=False).encode("utf-8")
@@ -1043,6 +1117,7 @@ if __name__ == "__main__":
     print(f"UVO Vestnik Dashboard: http://localhost:{PORT}")
     print(f"API: /api/data, /api/analysis, /api/graph, /api/profile?type=dodavatel&q=ICO")
     print(f"     /api/watchlist (GET/POST), /api/watchdog-matches")
+    print(f"     /api/modules, /api/pipelines, /api/pipelines/<id>/run")
     print(f"Data: {DATA_DIR}")
     print(f"DB: {DB_PATH}")
     try:

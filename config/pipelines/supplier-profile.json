@@ -1,0 +1,14 @@
+{
+  "id": "supplier-profile",
+  "name": "Profil dodávateľa — obohatený",
+  "description": "ORSF → RÚZ → RPVS: základné údaje, financie a koneční užívatelia výhod",
+  "nodes": [
+    {"id": "n1", "module": "orsf", "x": 100, "y": 200, "settings": {}},
+    {"id": "n2", "module": "ruz", "x": 300, "y": 150, "settings": {}},
+    {"id": "n3", "module": "rpvs", "x": 300, "y": 300, "settings": {}}
+  ],
+  "edges": [
+    {"from": "n1", "to": "n2", "mapping": {"ico": "ico"}},
+    {"from": "n1", "to": "n3", "mapping": {"ico": "ico"}}
+  ]
+}

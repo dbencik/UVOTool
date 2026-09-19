@@ -1,0 +1,224 @@
+from dataclasses import dataclass, field
+
+
+@dataclass
+class ModuleOutput:
+    id: str
+    label: str
+    type: str  # "string", "number", "date", "boolean", "array"
+    enabled: bool = True
+
+
+@dataclass
+class ModuleInput:
+    id: str
+    label: str
+    type: str
+    required: bool = True
+
+
+@dataclass
+class DataModule:
+    id: str
+    name: str
+    description: str
+    color: str
+    primary_key: str
+    inputs: list[ModuleInput]
+    outputs: list[ModuleOutput]
+    source_url: str
+    rate_limit: float = 1.0
+    cache_ttl: int = 30  # days
+
+    def to_dict(self) -> dict:
+        """Serialize for API/JSON."""
+        return {
+            "id": self.id, "name": self.name, "description": self.description,
+            "color": self.color, "primary_key": self.primary_key,
+            "source_url": self.source_url,
+            "rate_limit": self.rate_limit, "cache_ttl": self.cache_ttl,
+            "inputs": [{"id": i.id, "label": i.label, "type": i.type, "required": i.required} for i in self.inputs],
+            "outputs": [{"id": o.id, "label": o.label, "type": o.type, "enabled": o.enabled} for o in self.outputs],
+        }
+
+
+# ---------------------------------------------------------------------------
+# Module definitions
+# ---------------------------------------------------------------------------
+
+ORSF = DataModule(
+    id="orsf",
+    name="ORSF — Obchodný register",
+    description="Základné údaje o firme z Obchodného registra SR",
+    color="#1971c2",
+    primary_key="ico",
+    source_url="https://api.orsf.sk/v1/companies/{ico}",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("nazov", "Názov firmy", "string"),
+        ModuleOutput("status", "Stav subjektu", "string"),
+        ModuleOutput("pravna_forma", "Právna forma", "string"),
+        ModuleOutput("nace", "NACE kód", "string"),
+        ModuleOutput("datum_vzniku", "Dátum vzniku", "date"),
+        ModuleOutput("datum_zaniku", "Dátum zániku", "date"),
+        ModuleOutput("adresa", "Adresa sídla", "string"),
+        ModuleOutput("mesto", "Mesto", "string"),
+        ModuleOutput("psc", "PSČ", "string"),
+        ModuleOutput("velkost", "Veľkostná kategória", "string"),
+        ModuleOutput("dic", "DIČ", "string"),
+        ModuleOutput("icdph", "IČ DPH", "string"),
+        ModuleOutput("pocet_aktivit", "Počet NACE aktivít", "number"),
+    ],
+)
+
+RUZ = DataModule(
+    id="ruz",
+    name="RÚZ — Register účtovných závierok",
+    description="Finančné údaje firmy z Registra účtovných závierok",
+    color="#2b8a3e",
+    primary_key="ico",
+    source_url="https://www.registeruz.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("trzby_posledne", "Tržby (posledné)", "number"),
+        ModuleOutput("trzby_predosle", "Tržby (predošlé)", "number"),
+        ModuleOutput("zisk_posledne", "Zisk (posledné)", "number"),
+        ModuleOutput("zisk_predosle", "Zisk (predošlé)", "number"),
+        ModuleOutput("rok_zavierky", "Rok závierky", "number"),
+    ],
+)
+
+RPVS = DataModule(
+    id="rpvs",
+    name="RPVS — Register partnerov VS",
+    description="Koneční užívatelia výhod z Registra partnerov verejného sektora",
+    color="#e8590c",
+    primary_key="ico",
+    source_url="https://rpvs.gov.sk/opendatav2/partneri",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("is_registered", "Je registrovaný", "boolean"),
+        ModuleOutput("obchodne_meno", "Obchodné meno", "string"),
+        ModuleOutput("ubos", "Koneční užívatelia výhod", "array"),
+        ModuleOutput("opravnene_osoby", "Oprávnené osoby", "array"),
+        ModuleOutput("platnost_od", "Platnosť od", "date"),
+        ModuleOutput("platnost_do", "Platnosť do", "date"),
+    ],
+)
+
+FS_DLZNICI = DataModule(
+    id="fs_dlznici",
+    name="FS — Dlžníci Finančnej správy",
+    description="Kontrola dlhov voči Finančnej správe SR",
+    color="#e03131",
+    primary_key="ico",
+    source_url="https://www.financnasprava.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("je_dlznik", "Je dlžník", "boolean"),
+        ModuleOutput("dlh_suma", "Suma dlhu", "number"),
+        ModuleOutput("typ_dlhu", "Typ dlhu", "string"),
+    ],
+)
+
+SP_DLZNICI = DataModule(
+    id="sp_dlznici",
+    name="SP — Dlžníci Sociálnej poisťovne",
+    description="Kontrola dlhov voči Sociálnej poisťovni",
+    color="#c92a2a",
+    primary_key="ico",
+    source_url="https://www.socpoist.sk",
+    inputs=[ModuleInput("ico", "IČO", "string", required=True)],
+    outputs=[
+        ModuleOutput("je_dlznik", "Je dlžník", "boolean"),
+        ModuleOutput("dlh_suma", "Suma dlhu", "number"),
+        ModuleOutput("obdobie", "Obdobie", "string"),
+    ],
+)
+
+UVO = DataModule(
+    id="uvo",
+    name="UVO — Vestník verejného obstarávania",
+    description="Parsing dokumentov z Vestníka UVO",
+    color="#495057",
+    primary_key="vestnik",
+    source_url="https://www.uvo.gov.sk",
+    inputs=[ModuleInput("vestnik", "Číslo vestníka", "string", required=True)],
+    outputs=[
+        ModuleOutput("documents", "Dokumenty", "array"),
+        ModuleOutput("total_count", "Počet dokumentov", "number"),
+    ],
+)
+
+TED = DataModule(
+    id="ted",
+    name="TED — Tenders Electronic Daily",
+    description="Európske verejné obstarávanie z TED",
+    color="#1864ab",
+    primary_key="country",
+    source_url="https://api.ted.europa.eu",
+    inputs=[
+        ModuleInput("country", "Krajina (ISO kód)", "string", required=True),
+        ModuleInput("year", "Rok", "string", required=True),
+    ],
+    outputs=[
+        ModuleOutput("documents", "Dokumenty", "array"),
+        ModuleOutput("total_count", "Počet dokumentov", "number"),
+    ],
+)
+
+ANALYZE = DataModule(
+    id="analyze",
+    name="Analýza — štatistiky obstarávania",
+    description="Analytické štatistiky nad celou databázou vestníkov",
+    color="#7048e8",
+    primary_key="db",
+    source_url="local DB",
+    inputs=[],
+    outputs=[
+        ModuleOutput("single_bidder_rate", "Miera jedného uchádzača", "number"),
+        ModuleOutput("top_vitazi", "Top víťazi", "array"),
+        ModuleOutput("top_obstaravatelia", "Top obstarávatelia", "array"),
+        ModuleOutput("cenove_anomalie", "Cenové anomálie", "array"),
+    ],
+)
+
+GRAPH = DataModule(
+    id="graph",
+    name="Graf — sieťová analýza",
+    description="Sieťová analýza vzťahov medzi obstarávateľmi a dodávateľmi",
+    color="#9c36b5",
+    primary_key="db",
+    source_url="local DB",
+    inputs=[],
+    outputs=[
+        ModuleOutput("nodes", "Uzly grafu", "array"),
+        ModuleOutput("edges", "Hrany grafu", "array"),
+        ModuleOutput("pagerank", "PageRank skóre", "array"),
+        ModuleOutput("communities", "Komunity", "array"),
+        ModuleOutput("self_dealing", "Self-dealing väzby", "array"),
+    ],
+)
+
+WATCHDOG = DataModule(
+    id="watchdog",
+    name="Watchdog — monitoring sledovaných firiem",
+    description="Monitoring nových zákaziek pre sledované firmy",
+    color="#e67700",
+    primary_key="watchlist",
+    source_url="config/watchlist.json",
+    inputs=[],
+    outputs=[
+        ModuleOutput("matches", "Zhody", "array"),
+        ModuleOutput("total_matches", "Počet zhôd", "number"),
+    ],
+)
+
+# ---------------------------------------------------------------------------
+# Registry
+# ---------------------------------------------------------------------------
+
+MODULE_REGISTRY: dict[str, DataModule] = {
+    m.id: m
+    for m in [ORSF, RUZ, RPVS, FS_DLZNICI, SP_DLZNICI, UVO, TED, ANALYZE, GRAPH, WATCHDOG]
+}

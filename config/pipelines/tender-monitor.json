@@ -1,0 +1,12 @@
+{
+  "id": "tender-monitor",
+  "name": "Monitoring vestníkov",
+  "description": "UVO parsing → Watchdog: spracovanie vestníka a kontrola sledovaných firiem",
+  "nodes": [
+    {"id": "n1", "module": "uvo", "x": 100, "y": 200, "settings": {}},
+    {"id": "n2", "module": "watchdog", "x": 350, "y": 200, "settings": {}}
+  ],
+  "edges": [
+    {"from": "n1", "to": "n2", "mapping": {}}
+  ]
+}

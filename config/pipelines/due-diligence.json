@@ -1,0 +1,18 @@
+{
+  "id": "due-diligence",
+  "name": "Due Diligence — kontrola firmy",
+  "description": "Kompletná kontrola dodávateľa: registre, vlastníci, dlhy",
+  "nodes": [
+    {"id": "n1", "module": "orsf", "x": 100, "y": 200, "settings": {}},
+    {"id": "n2", "module": "ruz", "x": 300, "y": 100, "settings": {}},
+    {"id": "n3", "module": "rpvs", "x": 300, "y": 200, "settings": {}},
+    {"id": "n4", "module": "fs_dlznici", "x": 300, "y": 300, "settings": {}},
+    {"id": "n5", "module": "sp_dlznici", "x": 300, "y": 400, "settings": {}}
+  ],
+  "edges": [
+    {"from": "n1", "to": "n2", "mapping": {"ico": "ico"}},
+    {"from": "n1", "to": "n3", "mapping": {"ico": "ico"}},
+    {"from": "n1", "to": "n4", "mapping": {"ico": "ico"}},
+    {"from": "n1", "to": "n5", "mapping": {"ico": "ico"}}
+  ]
+}
