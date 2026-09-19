@@ -1370,6 +1370,7 @@ function showDetail(row) {
     <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
       <a href="${row.url}" target="_blank" style="display:inline-block;padding:5px 12px;background:#1971c2;color:#fff;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none">Originalny dokument</a>
       ${obst.profil_url ? `<a href="${obst.profil_url}" target="_blank" style="display:inline-block;padding:5px 12px;background:#e9ecef;color:#495057;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none">Profil obstaravatela</a>` : ''}
+      <a href="${buildMailtoLink(row, ext)}" style="display:inline-block;padding:5px 12px;background:#f8f0ff;color:#7048e8;border-radius:5px;font-size:12px;font-weight:600;text-decoration:none">Preposlat emailom</a>
     </div>
   </div>`;
 
@@ -1699,6 +1700,82 @@ document.getElementById('detail-panel').addEventListener('click', (e) => {
   if (!ico) return;
   openProfilTab(ico, 'dodavatel');
 });
+
+function buildMailtoLink(row, ext) {
+  const obst = ext.obstaravatel || {};
+  const zak = ext.zakazka || {};
+  const vys = ext.vysledok || {};
+  const pril = ext.prilezitost || {};
+  const zm = ext.zmena_zmluvy || {};
+
+  const subject = `Zakazka: ${zak.predmet || 'Verejne obstaravanie'} (${obst.nazov || ''})`;
+
+  let body = `VEREJNE OBSTARAVANIE\n\n`;
+  body += `Predmet: ${zak.predmet || '-'}\n`;
+  body += `Obstaravatel: ${obst.nazov || '-'}`;
+  if (obst.ico) body += ` (ICO: ${obst.ico})`;
+  body += `\n`;
+  body += `Typ: ${row.type_label || row.action || '-'}\n`;
+
+  if (row.action === 'vysledok') {
+    if (vys.celkova_hodnota != null) body += `Celkova hodnota: ${formatEur(vys.celkova_hodnota)}\n`;
+    if (vys.pocet_ponuk) body += `Pocet ponuk: ${vys.pocet_ponuk}\n`;
+    const winners = (vys.ucastnici || []).filter(u => u.je_vitaz);
+    if (winners.length > 0) {
+      body += `\nVITAZI:\n`;
+      winners.forEach(w => {
+        body += `  ${w.nazov}`;
+        if (w.ico) body += ` (ICO: ${w.ico})`;
+        if (w.cena != null) body += ` — ${formatEur(w.cena)}`;
+        body += `\n`;
+      });
+    }
+  } else if (row.action === 'vyhlasenie') {
+    if (pril.hodnota != null) body += `Predpokladana hodnota: ${formatEur(pril.hodnota)}\n`;
+    if (pril.lehota_datum) body += `Lehota na predkladanie ponuk: ${fmtDate(pril.lehota_datum)}`;
+    if (pril.lehota_cas) body += ` ${pril.lehota_cas}`;
+    body += `\n`;
+    if (pril.kriterium) body += `Kriterium: ${pril.kriterium}\n`;
+  } else if (row.action === 'zmena_zmluvy') {
+    if (zm.dodavatel) body += `Dodavatel: ${zm.dodavatel.nazov || '-'}`;
+    if (zm.dodavatel?.ico) body += ` (ICO: ${zm.dodavatel.ico})`;
+    body += `\n`;
+    if (zm.hodnota_po_zmene != null) body += `Hodnota po zmene: ${formatEur(zm.hodnota_po_zmene)}\n`;
+    if (zm.dovod_zmeny) body += `Dovod: ${zm.dovod_zmeny}\n`;
+  }
+
+  if (zak.cpv_kod) body += `CPV: ${zak.cpv_kod}\n`;
+  if (zak.druh) body += `Druh zakazky: ${zak.druh}\n`;
+
+  body += `\nDOKUMENTY:\n`;
+  body += `Dokument: ${row.url || '-'}\n`;
+  if (obst.profil_url) body += `Profil obstaravatela: ${obst.profil_url}\n`;
+
+  // Related documents
+  const metaZid = (ext.metadata || {}).id_zakazky;
+  if (metaZid && window.ZAKAZKA_INDEX && window.ZAKAZKA_INDEX[metaZid]) {
+    const related = window.ZAKAZKA_INDEX[metaZid];
+    if (related.length > 1) {
+      body += `\nSUVISIACE DOKUMENTY (zakazka ${metaZid}):\n`;
+      related.forEach(rd => {
+        body += `  ${rd.action}: ${rd.url || rd.id || '-'}\n`;
+      });
+    }
+  }
+
+  // Contracts
+  const zmluvy = vys.zmluvy || [];
+  if (zmluvy.length > 0) {
+    body += `\nZMLUVY:\n`;
+    zmluvy.forEach(z => {
+      body += `  ${z.datum ? fmtDate(z.datum) + ' ' : ''}${z.url || z.id || '-'}\n`;
+    });
+  }
+
+  body += `\n---\nVygenerovane z UVO Vestnik Dashboard`;
+
+  return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 function openProfilTab(query, type) {
   closeDetail();
