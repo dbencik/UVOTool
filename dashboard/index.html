@@ -2875,12 +2875,7 @@ function renderProfil(data, container) {
         html += '<table class="profil-mini-table"><thead><tr><th>Meno</th><th>Dátum narodenia</th><th>Štátna príslušnosť</th><th>Verejný činiteľ</th></tr></thead><tbody>';
         rd.ubos.forEach(function(u) {
           var dn = u.datum_narodenia || '';
-          // Mask date of birth: show only year
-          var dnMasked = '';
-          if (dn) {
-            var yearMatch = dn.match(/(\d{4})/);
-            dnMasked = yearMatch ? '**.**.' + yearMatch[1] : dn;
-          }
+          var dnMasked = dn || '—';
           var cinitelBadge = u.je_verejny_cinitel
             ? '<span style="background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600">verejný činiteľ</span>'
             : '<span style="color:#9ca3af;font-size:12px">nie</span>';
